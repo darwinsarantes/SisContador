@@ -45,6 +45,9 @@ namespace SisContador.Formularios
                     Program.oConfiguracionEN.PathMysSQLDump = Fila["PathMysSQLDump"].ToString();
                     Program.oConfiguracionEN.PathMySQL = Fila["PathMySQL"].ToString();
                     Program.oConfiguracionEN.CuentaPrincipalDeBanco = Fila["CuentaPrincipalDeBanco"].ToString();
+                    Program.oConfiguracionEN.NombreDelSistema = Fila["NombreDelSistema"].ToString();
+                    Program.oConfiguracionEN.UtilidadOPerdidaDelEjercicio = Fila["UtilidadOPerdidaDelEjercicio"].ToString();
+                    Program.oConfiguracionEN.TiempoDeRespaldo = Convert.ToInt32(Fila["TiempoDeRespaldo"].ToString());
 
                 }
 
@@ -161,9 +164,15 @@ namespace SisContador.Formularios
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            LoginUsuario();
+        }
+
+        private void LoginUsuario()
+        {
             EP.Clear();
 
-            if (string.IsNullOrEmpty(txtUsuario.Text) || txtUsuario.Text.Trim().Length == 0) {
+            if (string.IsNullOrEmpty(txtUsuario.Text) || txtUsuario.Text.Trim().Length == 0)
+            {
                 EP.SetError(txtUsuario, "Este campo no puede quedar vacio");
                 txtUsuario.Focus();
                 return;
@@ -183,7 +192,8 @@ namespace SisContador.Formularios
 
             LoginLN oLoginLN = new LoginLN();
 
-            if (oLoginLN.IniciarLaSesionDelUsuario(Program.oLoginEN, Program.oDatosDeConexion)) {
+            if (oLoginLN.IniciarLaSesionDelUsuario(Program.oLoginEN, Program.oDatosDeConexion))
+            {
 
                 if (oLoginLN.TraerDatos().Rows.Count > 0)
                 {
@@ -192,7 +202,8 @@ namespace SisContador.Formularios
                     this.Cursor = Cursors.Default;
                     CargarInformacionDeLaConfiguracion();
                     this.Close();
-                }else
+                }
+                else
                 {
                     this.Cursor = Cursors.Default;
                     Program.Iniciar = false;
@@ -201,7 +212,8 @@ namespace SisContador.Formularios
                 }
 
             }
-            else{
+            else
+            {
 
                 this.Cursor = Cursors.Default;
                 Program.Iniciar = false;
@@ -209,13 +221,27 @@ namespace SisContador.Formularios
                 txtUsuario.Focus();
 
             }
-            
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Program.Iniciar = false;
             this.Close();
+        }
+
+        private void frmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Program.Iniciar = false;
+                this.Close();
+            }
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                LoginUsuario();
+            }
         }
     }
 }

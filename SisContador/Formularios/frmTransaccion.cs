@@ -30,6 +30,14 @@ namespace SisContador.Formularios
         private frmVisor ofrmVisor = null;
         private frmVisor ofrmVisor_1 = null;
 
+        private frmTransaccionOperacionBack ofrmEgresos = null;
+        private frmTransaccionOperacionBack ofrmIngresos = null;
+        private frmTransaccionOperacionBack ofrmDiarios = null;
+
+        private frmTransaccionOperacionBack ofrmEgresos1 = null;
+        private frmTransaccionOperacionBack ofrmIngresos1 = null;
+        private frmTransaccionOperacionBack ofrmDiarios1 = null;
+
         #region "Funciones del programador"
 
         public bool ActivarFiltros { set; get; }
@@ -518,8 +526,7 @@ namespace SisContador.Formularios
 
             if (Controles.IsNullOEmptyElControl(chkFecha) == false)
             {
-                Where += string.Format(" and Fecha between '{0}' and '{1}' ", dtpkFecha1.Value.ToString("yyyy-MM-dd 00:00:00"), dtpkFecha2.Value.ToString("yyyy-MM-dd H:m:s"));
-                MessageBox.Show(Where);
+                Where += string.Format(" and SoloFecha( Fecha ) between SoloFecha('{0}') and SoloFecha('{1}') ", dtpkFecha1.Value.ToString("yyyy-MM-dd 00:00:00"), dtpkFecha2.Value.ToString("yyyy-MM-dd H:m:s"));                
             }
 
             if (Controles.IsNullOEmptyElControl(chkIdCuenta) == false && SeDigitoEnLaMascara())
@@ -613,6 +620,7 @@ namespace SisContador.Formularios
                 TransaccionTMPLN oRegistrosLN = new TransaccionTMPLN();
 
                 oRegistrosEN.Where = WhereDinamico();
+                oRegistrosEN.OrderBy = " Order by idTipoDeTransaccion asc,Fecha desc ";
 
                 if (oRegistrosLN.Listado(oRegistrosEN, Program.oDatosDeConexion)) {
 
@@ -679,6 +687,8 @@ namespace SisContador.Formularios
                 OcultarColumnasEnElDGV(OcultarColumnas);
 
                 FormatearColumnasDelDGV();
+
+                dgvLista.Columns["Valor"].DefaultCellStyle.Format = "###,###,##0.00";
 
                 this.dgvLista.RowHeadersWidth = 25;
 
@@ -821,6 +831,10 @@ namespace SisContador.Formularios
                     {
                         actualizarToolStripMenuItem.Enabled = false;
                         eliminarToolStripMenuItem.Enabled = false;
+                    }else
+                    {
+                        actualizarToolStripMenuItem.Enabled = true;
+                        eliminarToolStripMenuItem.Enabled = true;
                     }
 
                     if(Estado.ToUpper() == "GRABADA")
@@ -830,29 +844,192 @@ namespace SisContador.Formularios
 
                 }
             }
+            
+        }
+
+        private void AbrirVentanasOperaconesBak(string OperacionesARealizar)
+        {
+            
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                switch (IdTipoDeTransaccion)
+                {
+
+                    case 1:
+
+                        if(ofrmEgresos == null || ofrmEgresos.IsDisposed)
+                        {
+                            ofrmEgresos = new frmTransaccionOperacionBack();
+                            ofrmEgresos.OperacionARealizar = OperacionesARealizar;
+                            ofrmEgresos.NOMBRE_ENTIDAD_PRIVILEGIO = NOMBRE_ENTIDAD_PRIVILEGIO;
+                            ofrmEgresos.NombreEntidad = NOMBRE_ENTIDAD;
+                            ofrmEgresos.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
+                            ofrmEgresos.MdiParent = this.ParentForm;
+                            ofrmEgresos.IdTipoDeTransaccion_ = this.IdTipoDeTransaccion;
+                            ofrmEgresos.Show();
+                        }else
+                        {
+                            MessageBox.Show("Actualmente la ventana se encuentra en una operacion de '" + ofrmEgresos.OperacionARealizar + "'");
+                            ofrmEgresos.BringToFront();
+                            
+                        }
+
+                        break;
+
+                    case 2:
+
+                        if (ofrmIngresos == null || ofrmIngresos.IsDisposed)
+                        {
+                            ofrmIngresos = new frmTransaccionOperacionBack();
+                            ofrmIngresos.OperacionARealizar = OperacionesARealizar;
+                            ofrmIngresos.NOMBRE_ENTIDAD_PRIVILEGIO = NOMBRE_ENTIDAD_PRIVILEGIO;
+                            ofrmIngresos.NombreEntidad = NOMBRE_ENTIDAD;
+                            ofrmIngresos.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
+                            ofrmIngresos.MdiParent = this.ParentForm;
+                            ofrmIngresos.IdTipoDeTransaccion_ = this.IdTipoDeTransaccion;
+                            ofrmIngresos.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Actualmente la ventana se encuentra en una operacion de '" + ofrmIngresos.OperacionARealizar + "'");
+                            ofrmIngresos.BringToFront();
+                            
+                        }
+
+                        break;
+
+                    case 3:
+
+                        if (ofrmDiarios == null || ofrmDiarios.IsDisposed)
+                        {
+                            ofrmDiarios = new frmTransaccionOperacionBack();
+                            ofrmDiarios.OperacionARealizar = OperacionesARealizar;
+                            ofrmDiarios.NOMBRE_ENTIDAD_PRIVILEGIO = NOMBRE_ENTIDAD_PRIVILEGIO;
+                            ofrmDiarios.NombreEntidad = NOMBRE_ENTIDAD;
+                            ofrmDiarios.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
+                            ofrmDiarios.MdiParent = this.ParentForm;
+                            ofrmDiarios.IdTipoDeTransaccion_ = this.IdTipoDeTransaccion;
+                            ofrmDiarios.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Actualmente la ventana se encuentra en una operacion de '" + ofrmDiarios.OperacionARealizar + "'");
+                            ofrmDiarios.BringToFront();
+                            
+                        }
+
+                        break;
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ventana de operaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+
+        }
+
+        private void AbrirVentanasOperacones(string OperacionesARealizar)
+        {
+
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                switch (IdTipoDeTransaccion)
+                {
+
+                    case 1:
+
+                        if (ofrmEgresos1 == null || ofrmEgresos1.IsDisposed)
+                        {
+                            ofrmEgresos1 = new frmTransaccionOperacionBack();
+                            ofrmEgresos1.OperacionARealizar = OperacionesARealizar;
+                            ofrmEgresos1.NOMBRE_ENTIDAD_PRIVILEGIO = NOMBRE_ENTIDAD_PRIVILEGIO;
+                            ofrmEgresos1.NombreEntidad = NOMBRE_ENTIDAD;
+                            ofrmEgresos1.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
+                            ofrmEgresos1.MdiParent = this.ParentForm;
+                            ofrmEgresos1.IdTipoDeTransaccion_ = this.IdTipoDeTransaccion;
+                            ofrmEgresos1.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Actualmente la ventana se encuentra en una operacion de '" + ofrmEgresos1.OperacionARealizar + "'");
+                            ofrmEgresos1.BringToFront();                            
+                        }
+
+                        break;
+
+                    case 2:
+
+                        if (ofrmIngresos1 == null || ofrmIngresos1.IsDisposed)
+                        {
+                            ofrmIngresos1 = new frmTransaccionOperacionBack();
+                            ofrmIngresos1.OperacionARealizar = OperacionesARealizar;
+                            ofrmIngresos1.NOMBRE_ENTIDAD_PRIVILEGIO = NOMBRE_ENTIDAD_PRIVILEGIO;
+                            ofrmIngresos1.NombreEntidad = NOMBRE_ENTIDAD;
+                            ofrmIngresos1.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
+                            ofrmIngresos1.MdiParent = this.ParentForm;
+                            ofrmIngresos1.IdTipoDeTransaccion_ = this.IdTipoDeTransaccion;
+                            ofrmIngresos1.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Actualmente la ventana se encuentra en una operacion de '" + ofrmIngresos1.OperacionARealizar + "'");
+                            ofrmIngresos1.BringToFront();
+                            
+                        }
+
+                        break;
+
+                    case 3:
+
+                        if (ofrmDiarios1 == null || ofrmDiarios1.IsDisposed)
+                        {
+                            ofrmDiarios1 = new frmTransaccionOperacionBack();
+                            ofrmDiarios1.OperacionARealizar = OperacionesARealizar;
+                            ofrmDiarios1.NOMBRE_ENTIDAD_PRIVILEGIO = NOMBRE_ENTIDAD_PRIVILEGIO;
+                            ofrmDiarios1.NombreEntidad = NOMBRE_ENTIDAD;
+                            ofrmDiarios1.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
+                            ofrmDiarios1.MdiParent = this.ParentForm;
+                            ofrmDiarios1.IdTipoDeTransaccion_ = this.IdTipoDeTransaccion;
+                            ofrmDiarios1.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Actualmente la ventana se encuentra en una operacion de '" + ofrmDiarios1.OperacionARealizar + "'");
+                            ofrmDiarios1.BringToFront();                            
+                        }
+
+                        break;
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ventana de operaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
 
         }
 
         private void MostrarFormularioParaOperacion(string OperacionesARealizar)
         {
-            
-            /*ofrmTransaccionOperacion ofrmTransaccionOperacion = new frmTransaccionOperacion();
-            ofrmTransaccionOperacion.OperacionARealizar = OperacionesARealizar;
-            ofrmTransaccionOperacion.NOMBRE_ENTIDAD_PRIVILEGIO = NOMBRE_ENTIDAD_PRIVILEGIO;
-            ofrmTransaccionOperacion.NombreEntidad = NOMBRE_ENTIDAD;
-            ofrmTransaccionOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
-            ofrmTransaccionOperacion.MdiParent = this.ParentForm;
-            ofrmTransaccionOperacion.IdTipoDeTransaccion_ = this.IdTipoDeTransaccion;
-            ofrmTransaccionOperacion.Show();*/
-            
-            frmTransaccionOperacionBack ofrmTransaccionOperacion = new frmTransaccionOperacionBack();
-            ofrmTransaccionOperacion.OperacionARealizar = OperacionesARealizar;
-            ofrmTransaccionOperacion.NOMBRE_ENTIDAD_PRIVILEGIO = NOMBRE_ENTIDAD_PRIVILEGIO;
-            ofrmTransaccionOperacion.NombreEntidad = NOMBRE_ENTIDAD;
-            ofrmTransaccionOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
-            ofrmTransaccionOperacion.MdiParent = this.ParentForm;
-            ofrmTransaccionOperacion.IdTipoDeTransaccion_ = this.IdTipoDeTransaccion;
-            ofrmTransaccionOperacion.Show();
+            //AbrirVentanasOperacones(OperacionesARealizar);                                    
+            AbrirVentanasOperaconesBak(OperacionesARealizar);
 
         }
 
@@ -872,8 +1049,30 @@ namespace SisContador.Formularios
             CargarPrivilegiosDelUsuario();
 
             ActivarFiltrosDelaBusqueda();
-            tsbFiltroAutomatico_Click(null, null);          
-            
+            tsbFiltroAutomatico_Click(null, null);
+
+            ConfiguracionesDeLaVentana();
+
+
+        }
+
+        private void ConfiguracionesDeLaVentana()
+        {
+            try
+            {
+
+                DateTime fecha1 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                dtpkFecha1.Value = fecha1;
+                chkFecha.CheckState = CheckState.Checked;
+
+                DateTime Fecha2 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
+                dtpkFecha2.Value = Fecha2;
+
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Configuración generales dentro de la ventana", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void tsbFiltrar_Click(object sender, EventArgs e)
@@ -1240,15 +1439,31 @@ namespace SisContador.Formularios
         private void dtpkFecha1_ValueChanged(object sender, EventArgs e)
         {
             chkFecha.CheckState = CheckState.Checked;
-            if(tsbFiltroAutomatico.Checked == true)
+
+            if (tsbAplicarRangoDeFecha.CheckState == CheckState.Checked)
             {
+                DateTime Fecha2 = new DateTime(dtpkFecha1.Value.Year, dtpkFecha1.Value.Month, DateTime.DaysInMonth(dtpkFecha1.Value.Year, dtpkFecha1.Value.Month));
+                dtpkFecha2.Value = Fecha2;
+            }
+
+            if (tsbFiltroAutomatico.Checked == true)
+            {
+
                 LLenarListado();
             }
+
         }
 
         private void dtpkFecha2_ValueChanged(object sender, EventArgs e)
         {
             chkFecha.CheckState = CheckState.Checked;
+
+            if (tsbAplicarRangoDeFecha.CheckState == CheckState.Checked)
+            {
+                DateTime fecha1 = new DateTime(dtpkFecha2.Value.Year, dtpkFecha2.Value.Month, 1);
+                dtpkFecha1.Value = fecha1;
+            }
+
             if (tsbFiltroAutomatico.Checked == true)
             {
                 LLenarListado();
@@ -1295,7 +1510,7 @@ namespace SisContador.Formularios
                 if (ofrmVisor == null || ofrmVisor.IsDisposed)
                 {
                     ofrmVisor = new frmVisor();
-
+                    ofrmVisor.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
                     ofrmVisor.NombreReporte = "Transacciones - Listado";
                     TransaccionTMPEN oRegistroEN = new TransaccionTMPEN();
                     oRegistroEN.Where = WhereDinamico();
@@ -1326,7 +1541,7 @@ namespace SisContador.Formularios
                     if (ofrmVisor_1 == null || ofrmVisor_1.IsDisposed)
                     {
                         ofrmVisor_1 = new frmVisor();
-
+                        ofrmVisor_1.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
                         ofrmVisor_1.NombreReporte = "Transacciones - Imprimir comprobante";
                         TransaccionTMPEN oRegistroEN = new TransaccionTMPEN();
                         oRegistroEN.Where = "";
@@ -1381,7 +1596,7 @@ namespace SisContador.Formularios
                         if (ofrmVisor_1 == null || ofrmVisor_1.IsDisposed)
                         {
                             ofrmVisor_1 = new frmVisor();
-
+                            ofrmVisor_1.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
                             ofrmVisor_1.NombreReporte = "Transacciones - Imprimir comprobante";
                             TransaccionTMPEN oRegistroEN = new TransaccionTMPEN();
                             oRegistroEN.Where = string.Format(" AND t.idTransacciones = {0} ", idTransacciones);
@@ -1404,6 +1619,33 @@ namespace SisContador.Formularios
                 MessageBox.Show(ex.Message, "Imprimir Listado de transacciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        
+
+        private void tsbAplicarRangoDeFecha_Click(object sender, EventArgs e)
+        {
+            tsbAplicarRangoDeFecha.Checked = !tsbAplicarRangoDeFecha.Checked;
+
+            if (tsbAplicarRangoDeFecha.Checked == true)
+            {
+                tsbAplicarRangoDeFecha.Image = Properties.Resources.unchecked16x16;
+            }
+            else
+            {
+                tsbAplicarRangoDeFecha.Image = Properties.Resources.checked16x16;
+            }
+        }
+
+        private void tsbAplicarBorde_Click(object sender, EventArgs e)
+        {
+            tsbAplicarBorde.Checked = !tsbAplicarBorde.Checked;
+
+            if (tsbAplicarBorde.Checked == true)
+            {
+                tsbAplicarBorde.Image = Properties.Resources.unchecked16x16;
+            }
+            else
+            {
+                tsbAplicarBorde.Image = Properties.Resources.checked16x16;
+            }
+        }
     }
 }

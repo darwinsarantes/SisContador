@@ -138,6 +138,22 @@ namespace Logica
 
         }
 
+        public bool ListadoDeMovimientoAlCierreDePeriodo(TransaccionTMPEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (oTransaccionAD.ListadoDeMovimientoAlCierreDePeriodo(oREgistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oTransaccionAD.Error;
+                return false;
+            }
+
+        }
+
         public bool ListadoPorIdentificador(TransaccionTMPEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
@@ -186,10 +202,58 @@ namespace Logica
 
         }
 
+        public bool ListadoParaReportesParaMostrarELHistorico(TransaccionTMPEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (oTransaccionAD.ListadoParaReportesParaMostrarELHistorico(oREgistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oTransaccionAD.Error;
+                return false;
+            }
+
+        }
+
         public bool EvaluarSiHayDatosEnLaTablaTMP(TransaccionTMPEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
             if (oTransaccionAD.EvaluarSiHayDatosEnLaTablaTMP(oREgistroEN, oDatos))
+            {
+                Error = oTransaccionAD.Error;
+                return true;
+            }
+            else
+            {
+                Error = string.Empty;
+                return false;
+            }
+
+        }
+
+        public bool TraerNumeroDeLaTransaccion(TransaccionTMPEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (oTransaccionAD.TraerNumeroDeLaTransaccion(oREgistroEN, oDatos))
+            {
+                Error = oTransaccionAD.Error;
+                return true;
+            }
+            else
+            {
+                Error = string.Empty;
+                return false;
+            }
+
+        }
+
+        public bool EvaluarSiHayDatosEnLaTablaTMP(TransaccionTMPEN oREgistroEN, DatosDeConexionEN oDatos, DateTime Fecha1, DateTime Fecha2)
+        {
+
+            if (oTransaccionAD.EvaluarSiHayDatosEnLaTablaTMP(oREgistroEN, oDatos, Fecha1, Fecha2))
             {
                 Error = oTransaccionAD.Error;
                 return true;

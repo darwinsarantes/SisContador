@@ -37,6 +37,7 @@ namespace SisContador.Formularios
         private Decimal TotalHaber = 0;
         private Decimal TotalDebe = 0;
         private BindingSource Binding = new BindingSource();
+        private frmInformacionDeLaCuenta ofrmInformacionDeLaCuenta = null;
 
         #region Funciones               
 
@@ -120,42 +121,75 @@ namespace SisContador.Formularios
 
                 if (oRegistroEN.Length > 0)
                 {
+                   
                     foreach (CuentaEN Fila in oRegistroEN) {
-
-                        if (EvaluarSiHayFilasDisponiblesEnLaGrilla())
-                        {
-
-                            int Index = IndicieDelRegistroBasioEnLaGrilla();
-
-                            if (Index == -1)
-                            {
-                                dgvLista.Rows.Add(0, 0, 0, Fila.NoCuenta, Fila.idCuenta, Fila.DescCuenta, 0, 0, "", "", Fila.EsCuentaDeBanco, 1, 0);
-                            } else
-                            {
-                                DataGridViewRow Row = dgvLista.Rows[Index];
-                                Row.Cells["idTransaccionDetalle"].Value = 0;
-                                Row.Cells["NoCuenta"].Value = Fila.NoCuenta;
-                                Row.Cells["idCuenta"].Value = Fila.idCuenta;
-                                Row.Cells["DescCuenta"].Value = Fila.DescCuenta;
-                                Row.Cells["Debe"].Value = 0;
-                                Row.Cells["Haber"].Value = 0;
-                                Row.Cells["RefBanco"].Value = "";
-                                Row.Cells["ConceptoDeBanco"].Value = "";
-                                Row.Cells["EsCuentaDeBanco"].Value = Fila.EsCuentaDeBanco;
-                                Row.Cells["Ocupada"].Value = 1;
-                                Row.Cells["Actualizar"].Value = true;
-                                Row.Cells["Eliminar"].Value = false;
-                            }
-
-                        } else
-                        {
-                            dgvLista.Rows.Add(0, Fila.idCuenta, 0, 0, Fila.NoCuenta, Fila.DescCuenta, 0, 0, "", "", Fila.EsCuentaDeBanco, 1, 0);
-                        }
-
+                        
+                        dgvLista.Rows.Add(0, Fila.idCuenta, 0, 0, Fila.NoCuenta, Fila.DescCuenta, 0, 0, "", "", Fila.EsCuentaDeBanco, 1, 0);
+                        
                     }
-
+                    
                     ActivarColumnas();
 
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Buscar información de las cuentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void BuscarCuentasAsociadasAlaCuenta()
+        {
+
+            try
+            {
+                if (ofrmInformacionDeLaCuenta == null || ofrmInformacionDeLaCuenta.IsDisposed)
+                {
+                    ofrmInformacionDeLaCuenta = new frmInformacionDeLaCuenta();
+                }
+                else
+                {
+                    ofrmInformacionDeLaCuenta.BringToFront();
+                }
+
+                ofrmInformacionDeLaCuenta.idCuenta = ExtraerCadenaDelaMascar(ref mskIdCuenta);
+                ofrmInformacionDeLaCuenta.ShowDialog();                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Buscar información de las cuentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void BuscarCuentasAsociadasAlaCuentaApartirDelDGV()
+        {
+
+            try
+            {
+                if (ofrmInformacionDeLaCuenta == null || ofrmInformacionDeLaCuenta.IsDisposed)
+                {
+                    ofrmInformacionDeLaCuenta = new frmInformacionDeLaCuenta();
+                }
+                else
+                {
+                    ofrmInformacionDeLaCuenta.BringToFront();
+                }
+                
+                if (dgvListarCuentas.RowCount > 0)
+                {
+                    
+                    if (dgvListarCuentas.CurrentRow != null)
+                    {
+                        DataGridViewRow Fila = dgvListarCuentas.CurrentRow;
+
+                        ofrmInformacionDeLaCuenta.idCuenta = ExtraerCadenaDelaMascar(Fila.Cells["idCuenta"].Value.ToString());
+                        ofrmInformacionDeLaCuenta.ShowDialog();
+
+                    }
                 }
 
             }
@@ -208,6 +242,50 @@ namespace SisContador.Formularios
             }
         }
 
+        private void ActivarColumnasApartirDelBancoOCuentaEgresos()
+        {
+            if (EvaluarSiHayCuentasDeBancoOCuentaDeEgresos())
+            {
+
+                int Opcion = 0;
+
+                if (cmbTipoDeTransacción.SelectedIndex > -1)
+                {
+                    Opcion = Convert.ToInt32(cmbTipoDeTransacción.SelectedValue);
+                }
+                else Opcion = 0;
+
+                switch (Opcion)
+                {
+                    case 1:
+                        dgvLista.Columns["ConceptoDeBanco"].HeaderText = "Concepto de Emisión de CK o Nota de Debito";
+                        break;
+
+                    case 2:
+                        dgvLista.Columns["ConceptoDeBanco"].HeaderText = "Concepto de Emisión de CK o Nota de Crédito";
+                        break;
+
+                    case 3:
+                        dgvLista.Columns["ConceptoDeBanco"].HeaderText = "Concepto de Crédito o Debito";
+                        break;
+
+                    default:
+                        dgvLista.Columns["ConceptoDeBanco"].HeaderText = "Concepto de Emisión de CK";
+                        break;
+
+                }
+
+                dgvLista.Columns["ConceptoDeBanco"].Visible = true;
+                dgvLista.Columns["RefBanco"].Visible = true;
+
+            }
+            else
+            {
+                dgvLista.Columns["ConceptoDeBanco"].Visible = false;
+                dgvLista.Columns["RefBanco"].Visible = false;
+            }
+        }
+
         private bool EvaluarSiHayCuentasDeBanco()
         {
             bool Valor = false;
@@ -218,6 +296,25 @@ namespace SisContador.Formularios
                                           //let Ocupada = Convert.ToString(item.Cells["Ocupada"].Value ?? string.Empty).ToUpper() 
                                           //let EsCuentaDeBanco = Convert.ToString(item.Cells["Ocupada"].Value ?? string.Empty).ToUpper()
                                           where Ocupada == 1 && EsCuentaDeBanco == 1
+                                          select item).ToList<DataGridViewRow>();
+
+            if (rows.Count > 0) Valor = true; else Valor = false;
+
+            return Valor;
+
+        }
+
+        private bool EvaluarSiHayCuentasDeBancoOCuentaDeEgresos()
+        {
+            bool Valor = false;
+
+            List<DataGridViewRow> rows = (from item in dgvLista.Rows.Cast<DataGridViewRow>()
+                                          let Ocupada = Convert.ToInt32(item.Cells["Ocupada"].Value)
+                                          let EsCuentaDeBanco = Convert.ToInt32(item.Cells["EsCuentaDeBanco"].Value)
+                                          let idCuenta = item.Cells["idCuenta"].Value
+                                          //let Ocupada = Convert.ToString(item.Cells["Ocupada"].Value ?? string.Empty).ToUpper() 
+                                          //let EsCuentaDeBanco = Convert.ToString(item.Cells["Ocupada"].Value ?? string.Empty).ToUpper()
+                                          where Ocupada == 1 && (EsCuentaDeBanco == 1 || idCuenta.ToString().Contains("700") == true)
                                           select item).ToList<DataGridViewRow>();
 
             if (rows.Count > 0) Valor = true; else Valor = false;
@@ -241,7 +338,7 @@ namespace SisContador.Formularios
                 {
                     oRegistroEN.Where = string.Format(" and idTipoDeTransaccion = {0} ", IdTipoDeTransaccion_);
                 }
-
+                
                 oRegistroEN.OrderBy = "";
 
                 if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexion))
@@ -402,6 +499,7 @@ namespace SisContador.Formularios
             switch (this.OperacionARealizar.ToUpper())
             {
                 case "NUEVO":
+
                     tsbGuardar.Enabled = true;
                     tsbLimpiarCampos.Enabled = true;
                     tsbActualizar.Enabled = false;
@@ -414,10 +512,13 @@ namespace SisContador.Formularios
                     txtNumeroDeTransaccion.Text = string.Empty;
                     txtNumeroDeTransaccion.ReadOnly = true;
                     dtpkFecha.Value = System.DateTime.Now;
-                    cmbEstado.SelectedIndex = 0;
+                    txtValor.Text = "0.00";
 
                     LimpiarControles();
                     LimpiarCampos();
+
+                    cmbEstado.SelectedIndex = 0;
+                    cmbEstado.Enabled = false;
 
                     txtConcepto.Focus();
 
@@ -433,10 +534,11 @@ namespace SisContador.Formularios
                     txtIdentificador.ReadOnly = true;
                     txtNumeroDeTransaccion.ReadOnly = true;
                     tsbGrabarDatos.Visible = false;
-                    cmbEstado.Enabled = false;
 
                     LimpiarControles();
                     mskIdCuenta.Focus();
+
+                    cmbEstado.Enabled = false;                    
 
                     break;
 
@@ -469,6 +571,8 @@ namespace SisContador.Formularios
                     tsbCuentas.Enabled = false;
                     tsbModificarRegistros.Enabled = false;
 
+
+
                     break;
 
                 case "CONSULTAR":
@@ -490,6 +594,9 @@ namespace SisContador.Formularios
                     tsbCuentas.Enabled = false;
                     tsbGrabarDatos.Visible = false;
                     txtValor.ReadOnly = true;
+
+                    groupBox1.Enabled = false;
+                    groupBox2.Enabled = false;
 
                     break;
 
@@ -515,6 +622,9 @@ namespace SisContador.Formularios
                     txtValor.ReadOnly = true;
                     tsbCuentas.Enabled = false;
 
+                    groupBox1.Enabled = false;
+                    groupBox2.Enabled = false;
+
                     break;
 
                 default:
@@ -528,6 +638,7 @@ namespace SisContador.Formularios
         {
             CrearColumnasDDGV();
             //PrecargarDGV();
+            TraerElCodigoDelaTransaccion();
         }
 
         private void Modificar()
@@ -582,15 +693,18 @@ namespace SisContador.Formularios
 
                     txtConcepto.Text = Fila["Concepto"].ToString();
                     txtNumeroDeTransaccion.Text = Fila["NumeroDeTransaccion"].ToString();
-                    dtpkFecha.Value = Convert.ToDateTime(Fila["Fecha"].ToString());
+                    //dtpkFecha.Value = Convert.ToDateTime(Fila["Fecha"].ToString());
+                    dtpkFecha.Value = Convert.ToDateTime(Fila["Fecha"]);
                     cmbTipoDeTransacción.SelectedValue = Convert.ToInt32(Fila["idTipoDeTransaccion"].ToString());
                     cmbEstado.Text = Fila["Estado"].ToString();
-                    txtValor.Text = Fila["Valor"].ToString();
+                    txtValor.Text = string.Format("{0:###,###,##0.00}", Convert.ToDecimal( Fila["Valor"].ToString()));
 
                     CrearColumnasyPoblarlas();
-
+                    
                     Calcular_Bebe();
                     Calcular_Haber();
+
+                    DiferenciaEntreElDebeYElHaber();
 
                     oRegistrosEN = null;
                     oRegistrosLN = null;
@@ -644,8 +758,8 @@ namespace SisContador.Formularios
                     txtIdentificador.Text = ValorLlavePrimariaEntidad.ToString();
 
                     txtConcepto.Text = Fila["Concepto"].ToString();
-                    txtNumeroDeTransaccion.Text = Fila["NumeroDeTransaccion"].ToString();
-                    dtpkFecha.Value = Convert.ToDateTime(Fila["Fecha"].ToString());
+                    txtNumeroDeTransaccion.Text = Fila["NumeroDeTransaccion"].ToString();                    
+                    dtpkFecha.Value = Convert.ToDateTime(Fila["Fecha"]);
                     cmbTipoDeTransacción.SelectedValue = Convert.ToInt32(Fila["idTipoDeTransaccion"].ToString());
                     cmbEstado.Text = Fila["Estado"].ToString();
                     txtValor.Text = Fila["Valor"].ToString();
@@ -654,6 +768,7 @@ namespace SisContador.Formularios
 
                     Calcular_Bebe();
                     Calcular_Haber();
+                    DiferenciaEntreElDebeYElHaber();
 
                     oRegistrosEN = null;
                     oRegistrosLN = null;
@@ -698,9 +813,8 @@ namespace SisContador.Formularios
             //txtId.Text = string.Empty;
             txtConcepto.Text = string.Empty;
             txtNumeroDeTransaccion.Text = String.Empty;
-            cmbEstado.SelectedIndex = -1;
-            cmbTipoDeTransacción.SelectedIndex = -1;
-            dtpkFecha.Value = System.DateTime.Now;
+            cmbEstado.SelectedIndex = 0;            
+            dtpkFecha.Value = System.DateTime.Now;            
 
         }
 
@@ -920,7 +1034,8 @@ namespace SisContador.Formularios
                 TransaccionDetalleTMPLN oRegistroLN = new TransaccionDetalleTMPLN();
 
                 oRegistroEN.oTransaccionesEN.idTransacciones = ValorLlavePrimariaEntidad;
-                oRegistroEN.OrderBy = " Order by idCuenta asc ";
+                //oRegistroEN.OrderBy = " Order by tt.idTransaccionDetalle, idCuenta asc ";
+                oRegistroEN.OrderBy = " Order by idTransaccionDetalle asc ";
 
                 if (oRegistroLN.ListadoPorIdentificadorDeLaTransaccion(oRegistroEN, Program.oDatosDeConexion))
                 {
@@ -956,8 +1071,8 @@ namespace SisContador.Formularios
                                 idTansaccionDetalle_Banco,
                                 Convert.ToInt32(row["NoCuenta"].ToString()),
                                 row["DescCuenta"].ToString(),
-                                string.Format("{0:###,##0.00}", row["Debe"].ToString()),
-                                string.Format("{0:###,##0.00}", row["Haber"].ToString()),
+                                string.Format("{0:###,###,##0.00}", Convert.ToDecimal( row["Debe"].ToString())),
+                                string.Format("{0:###,###,##0.00}", Convert.ToDecimal( row["Haber"].ToString())),
                                 row["RefBanco"].ToString(),
                                 row["ConceptoDeBanco"].ToString(),
                                 row["EsCuentaDeBanco"].ToString(),
@@ -996,8 +1111,8 @@ namespace SisContador.Formularios
                 this.dgvLista.MultiSelect = false;
                 this.dgvLista.RowHeadersVisible = true;
 
-                this.dgvLista.DefaultCellStyle.Font = new Font("Segoe UI", 8);
-                this.dgvLista.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 8);
+                this.dgvLista.DefaultCellStyle.Font = new Font("Segoe UI", 9);
+                this.dgvLista.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9);
                 this.dgvLista.DefaultCellStyle.SelectionBackColor = Color.LightSteelBlue;
                 this.dgvLista.BackgroundColor = System.Drawing.SystemColors.Window;
                 this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -1012,8 +1127,11 @@ namespace SisContador.Formularios
                 dgvLista.Columns["ConceptoDeBanco"].Visible = false;
                 dgvLista.Columns["RefBanco"].Visible = true;
 
-                dgvLista.Columns["Debe"].DefaultCellStyle.Format = "{0:C2}";
-                dgvLista.Columns["Haber"].DefaultCellStyle.Format = "{0:C2}";
+                dgvLista.Columns["Debe"].DefaultCellStyle.Format = "###,###,##0.00";
+                dgvLista.Columns["Haber"].DefaultCellStyle.Format = "###,###,##0.00";
+
+                dgvLista.Columns["Debe"].DefaultCellStyle.Font = new Font("Segoe UI", 10);
+                dgvLista.Columns["Haber"].DefaultCellStyle.Font = new Font("Segoe UI", 10);
 
                 this.dgvLista.RowHeadersWidth = 25;
 
@@ -1284,10 +1402,10 @@ namespace SisContador.Formularios
                     if(EsCuentaDeBanco > 0)
                     {
                         string Referencia = Fila.Cells["RefBanco"].Value.ToString();
-                        List<string> RDB = new List<string>(new string[] { "Nota de Crédito", "Nota de Débito", "Deposito" });
-                        /*RDB.Add("Nota de Crédito"); RDB.Add("Nota de Débito"); RDB.Add("Deposito");*/
+                        List<string> RDB = new List<string>(new string[] { "Nota de Crédito", "Nota de Débito", "Depósito" });
+                        /*RDB.Add("Nota de Crédito"); RDB.Add("Nota de Débito"); RDB.Add("Depósito");*/
 
-                        if(RDB.Contains(Referencia, StringComparer.OrdinalIgnoreCase) == false)
+                        if (RDB.Contains(Referencia, StringComparer.OrdinalIgnoreCase) == false)
                         {
                             NombreCampoId = "RefBanco";
                             NombreCampoNombre = "RefBanco";
@@ -1825,7 +1943,9 @@ namespace SisContador.Formularios
 
                         Calcular_Bebe();
                         Calcular_Haber();
-                        
+                        DiferenciaEntreElDebeYElHaber();
+
+
                     }
                     else
                     {
@@ -1835,6 +1955,7 @@ namespace SisContador.Formularios
 
                         Calcular_Bebe();
                         Calcular_Haber();
+                        DiferenciaEntreElDebeYElHaber();
 
                     }
 
@@ -1893,7 +2014,9 @@ namespace SisContador.Formularios
                 }
             }
 
-            dgvLista.Columns["Debe"].HeaderText = string.Format("Debe {0} ____________________ {0} {1:###,##0.00}", Environment.NewLine, Sumar);
+            dgvLista.Columns["Debe"].HeaderText = string.Format("Debe {0} ____________________ {0} {1:###,###,##0.00}", Environment.NewLine, Sumar);
+            //dgvLista.Rows[dgvLista.RowCount - 1].Cells["Debe"].Value = string.Format("{0:###,###,##0.00}", Sumar);
+            //tsbTotalDebitos.Text = string.Format("{0:###,###,##0.00}", Sumar);
             TotalDebe = Sumar;
 
         }
@@ -1916,8 +2039,49 @@ namespace SisContador.Formularios
                 }
             }
 
-            dgvLista.Columns["Haber"].HeaderText = string.Format("Haber {0} ____________________ {0} {1:###,##0.00}", Environment.NewLine, Sumar);
+            dgvLista.Columns["Haber"].HeaderText = string.Format("Haber {0} ____________________ {0} {1:###,###,##0.00}", Environment.NewLine, Sumar);
+            //tsbTotalCreditos.Text = string.Format("{0:###,###,##0.00}", Sumar);
+            //dgvLista.Rows[dgvLista.RowCount - 1].Cells["Haber"].Value = string.Format("{0:###,###,##0.00}", Sumar);
             TotalHaber = Sumar;
+
+        }
+
+        private void DiferenciaEntreElDebeYElHaber()
+        {
+
+            List<DataGridViewRow> rows = (from item in dgvLista.Rows.Cast<DataGridViewRow>()
+                                          let Ocupada = Convert.ToInt32(item.Cells["Ocupada"].Value)
+                                          where Ocupada == 1 && item.Visible == true
+                                          select item).ToList<DataGridViewRow>();
+
+            decimal SumarDebe = 0;
+
+            if (rows.Count > 0)
+            {
+                foreach (DataGridViewRow Item in rows)
+                {
+                    SumarDebe = SumarDebe + Convert.ToDecimal(Item.Cells["Debe"].Value);
+                }
+            }
+
+            List<DataGridViewRow> rows1 = (from item in dgvLista.Rows.Cast<DataGridViewRow>()
+                                          let Ocupada = Convert.ToInt32(item.Cells["Ocupada"].Value)
+                                          where Ocupada == 1 && item.Visible == true
+                                          select item).ToList<DataGridViewRow>();
+
+            decimal SumarHaber = 0;
+
+            if (rows1.Count > 0)
+            {
+                foreach (DataGridViewRow Item in rows1)
+                {
+                    SumarHaber = SumarHaber + Convert.ToDecimal(Item.Cells["Haber"].Value);
+                }
+            }
+
+            decimal Diferencia = SumarDebe - SumarHaber;
+
+            tsbDiferencia.Text = string.Format("{0:###,###,##0.00}", Diferencia);
 
         }
 
@@ -1927,7 +2091,6 @@ namespace SisContador.Formularios
             {
                 e.SuppressKeyPress = true;
                 RealizarSaltoCorrespondiente();
-
 
             } */           
         }
@@ -2000,12 +2163,14 @@ namespace SisContador.Formularios
                 if (dgvLista.Columns[e.ColumnIndex].Name.ToUpper() == "Haber".ToUpper())
                 {
                     Calcular_Haber();
+                    DiferenciaEntreElDebeYElHaber();
                     dgvLista.Rows[e.RowIndex].Cells["Actualizar"].Value = true;
                 }
 
                 if (dgvLista.Columns[e.ColumnIndex].Name.ToUpper() == "Debe".ToUpper())
                 {
                     Calcular_Bebe();
+                    DiferenciaEntreElDebeYElHaber();
                     dgvLista.Rows[e.RowIndex].Cells["Actualizar"].Value = true;
                 }
 
@@ -2467,6 +2632,34 @@ namespace SisContador.Formularios
             return valor;
         }
 
+        private string ExtraerCadenaDelaMascar(String TextMascara)
+        {
+            string valor = "";
+
+            string Cadena = TextMascara;
+            string[] ACadena = Cadena.Split('-');
+
+            foreach (string cad in ACadena)
+            {
+                string cad1 = cad.Replace("_", "").Trim();
+                if (string.IsNullOrEmpty(cad1) == false || cad1.Trim().Length > 0)
+                {
+                    if (string.IsNullOrEmpty(valor) || valor.Trim().Length == 0)
+                    {
+                        valor = cad1.Trim();
+                    }
+                    else
+                    {
+                        valor = string.Format("{0}-{1}", valor.Trim(), cad1.Trim());
+                    }
+
+                }
+
+            }
+
+            return valor;
+        }
+
         private string ExtraerCadenaDelaMascar(ref MaskedTextBox Mascara)
         {
             string valor = "";
@@ -2609,11 +2802,11 @@ namespace SisContador.Formularios
             if (ofrmVisor_1 == null || ofrmVisor_1.IsDisposed)
             {
                 ofrmVisor_1 = new frmVisor();
-
+                ofrmVisor_1.AplicarBorder = 0;
                 ofrmVisor_1.NombreReporte = "Transacciones - Imprimir comprobante";
                 TransaccionTMPEN oRegistroEN = new TransaccionTMPEN();
                 oRegistroEN.Where = string.Format(" AND t.idTransacciones = {0} ", idTransacciones);
-                oRegistroEN.OrderBy = " ";
+                oRegistroEN.OrderBy = "  ";
                 oRegistroEN.TituloDelReporte = " ";
                 ofrmVisor_1.Entidad = oRegistroEN;
 
@@ -2626,16 +2819,38 @@ namespace SisContador.Formularios
         private void frmTransaccionOperacionBack_Shown(object sender, EventArgs e)
         {
             ObtenerValoresDeConfiguracion();
+            aplicarSegunTipoDeTransaccion();
             LLenarComboListadoTipoDetransacciones();
-            LlamarMetodoSegunOperacion();
-            EstablecerTituloDeVentana();
             DeshabilitarControlesSegunOperacionesARealizar();
+            LlamarMetodoSegunOperacion();
+            EstablecerTituloDeVentana();            
             OcultarBarraDeProgreso();
 
             mskIdCuenta.Mask = ConfigurarMascaraDeEntradaString();
-            llenarCuentasLocalMente();
-            aplicarSegunTipoDeTransaccion();
+            llenarCuentasLocalMente();            
 
+        }
+
+        private void TraerElCodigoDelaTransaccion()
+        {
+            try
+            {
+
+                TransaccionTMPEN oRegistroEN = new TransaccionTMPEN();
+                TransaccionTMPLN oRegistroLN = new TransaccionTMPLN();
+
+                oRegistroEN.oTipoDeTransaccionEN.idTipoDeTransaccion = Convert.ToInt32(cmbTipoDeTransacción.SelectedValue);
+
+                if (oRegistroLN.TraerNumeroDeLaTransaccion(oRegistroEN, Program.oDatosDeConexion))
+                {
+                    DataRow Fila = oRegistroLN.TraerDatos().Rows[0];
+                    txtNumeroDeTransaccion.Text = Fila["NumeroDeLaTransaccion"].ToString();
+                }
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Codigo de la Transacción", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         /*private void ConfigurarMascaraDeEntradaDeDatos()
@@ -2645,6 +2860,28 @@ namespace SisContador.Formularios
 
         private void tsbCerrarVentan_Click(object sender, EventArgs e)
         {
+
+            if (OperacionARealizar.Trim().ToUpper() == "Modificar".ToUpper())
+            {
+                TransaccionTMPEN oRegistroEN = InformacionDelRegistro();
+                TransaccionTMPLN oRegistroLN = new TransaccionTMPLN();
+
+                decimal ValorMovimiento = Convert.ToDecimal(txtValor.Text);
+
+                if (ValorMovimiento == TotalDebe && ValorMovimiento == TotalHaber)
+                {
+                    oRegistroLN.GrabarDatos(oRegistroEN, Program.oDatosDeConexion);
+                    
+                    this.Cursor = Cursors.Default;
+                    
+                    oRegistroEN = null;
+                    oRegistroLN = null;
+
+                    this.Close();
+
+                }
+            }
+
             this.Close();
         }
 
@@ -2660,6 +2897,26 @@ namespace SisContador.Formularios
 
         private void frmTransaccionOperacionBack_FormClosing(object sender, FormClosingEventArgs e)
         {
+
+            if (OperacionARealizar.Trim().ToUpper() == "Modificar".ToUpper())
+            {
+                TransaccionTMPEN oRegistroEN = InformacionDelRegistro();
+                TransaccionTMPLN oRegistroLN = new TransaccionTMPLN();
+
+                decimal ValorMovimiento = Convert.ToDecimal(txtValor.Text);
+
+                if (ValorMovimiento == TotalDebe && ValorMovimiento == TotalHaber)
+                {
+                    oRegistroLN.GrabarDatos(oRegistroEN, Program.oDatosDeConexion);
+
+                    this.Cursor = Cursors.Default;
+
+                    oRegistroEN = null;
+                    oRegistroLN = null;
+
+                }
+            }
+
             GuardarValoresDeConfiguracion();
         }
 
@@ -2701,26 +2958,71 @@ namespace SisContador.Formularios
 
                         if (InsertarActualizarOEliminarDetalleDelaTransaccion())
                         {
+                            decimal ValorMovimiento = Convert.ToDecimal(txtValor.Text);
 
-                            EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Guardar");
-                            
-                            this.Cursor = Cursors.Default;
-
-                            if (CerrarVentana == true)
+                            if (ValorMovimiento == TotalDebe && ValorMovimiento == TotalHaber)
                             {
-                                this.Close();
-                            }                            
+                                oRegistroLN.GrabarDatos(oRegistroEN, Program.oDatosDeConexion);
 
+                                EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Grabar Datos");
+
+                                this.Cursor = Cursors.Default;
+
+                                /*if (CerrarVentana == true)
+                                {
+                                    this.Close();
+                                }else
+                                {
+                                    OperacionARealizar = "Consultar";
+                                    ObtenerValoresDeConfiguracion();
+                                    DeshabilitarControlesSegunOperacionesARealizar();
+                                    LlamarMetodoSegunOperacion();
+                                    EstablecerTituloDeVentana();                                    
+                                }*/
+
+                                oRegistroEN = null;
+                                oRegistroLN = null;
+
+                                this.Close();
+
+                            }
+                            else
+                            {
+
+                                EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Guardar");
+
+                                this.Cursor = Cursors.Default;
+
+                                if (CerrarVentana == true)
+                                {
+                                    this.Close();
+                                }else
+                                {
+                                    OperacionARealizar = "Modificar";
+                                    ObtenerValoresDeConfiguracion();
+                                    LlamarMetodoSegunOperacion();
+                                    EstablecerTituloDeVentana();
+                                    DeshabilitarControlesSegunOperacionesARealizar();
+
+                                    oRegistroEN = null;
+                                    oRegistroLN = null;
+                                }
+
+                            }
+
+                        }else
+                        {
+                            OperacionARealizar = "Modificar";
+                            ObtenerValoresDeConfiguracion();
+                            LlamarMetodoSegunOperacion();
+                            EstablecerTituloDeVentana();
+                            DeshabilitarControlesSegunOperacionesARealizar();
+
+                            oRegistroEN = null;
+                            oRegistroLN = null;
                         }
 
-                        OperacionARealizar = "Modificar";
-                        ObtenerValoresDeConfiguracion();
-                        LlamarMetodoSegunOperacion();
-                        EstablecerTituloDeVentana();
-                        DeshabilitarControlesSegunOperacionesARealizar();
-
-                        oRegistroEN = null;
-                        oRegistroLN = null;
+                       
 
                     }
                     else
@@ -2797,13 +3099,47 @@ namespace SisContador.Formularios
                         if (InsertarActualizarOEliminarDetalleDelaTransaccion())
                         {
 
-                            EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Actualizar");
-                                                        
-                            this.Cursor = Cursors.Default;
+                            decimal ValorMovimiento = Convert.ToDecimal(txtValor.Text);
 
-                            if (CerrarVentana == true)
+                            if (ValorMovimiento == TotalDebe && ValorMovimiento == TotalHaber)
                             {
+                                oRegistroLN.GrabarDatos(oRegistroEN, Program.oDatosDeConexion);
+
+                                EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Grabar Datos");
+
+                                this.Cursor = Cursors.Default;
+
+                                /*if (CerrarVentana == true)
+                                {
+                                    this.Close();
+                                }
+                                else
+                                {
+                                    OperacionARealizar = "Consultar";
+                                    ObtenerValoresDeConfiguracion();
+                                    DeshabilitarControlesSegunOperacionesARealizar();
+                                    LlamarMetodoSegunOperacion();
+                                    EstablecerTituloDeVentana();
+                                }*/
+
+                                oRegistroEN = null;
+                                oRegistroLN = null;
+
                                 this.Close();
+
+                            }
+                            else
+                            {
+
+                                EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Actualizar");
+
+                                this.Cursor = Cursors.Default;
+
+                                if (CerrarVentana == true)
+                                {
+                                    this.Close();
+                                }
+
                             }
 
                         }
@@ -2948,14 +3284,11 @@ namespace SisContador.Formularios
 
                         this.Cursor = Cursors.Default;
 
-                        if (CerrarVentana == true)
-                        {
-                            this.Close();
-                        }
-
                         oRegistroEN = null;
                         oRegistroLN = null;
 
+                       this.Close();
+                    
                     }
                     else
                     {
@@ -3042,6 +3375,12 @@ namespace SisContador.Formularios
                     dgvListarCuentas.Rows[0].Selected = true;
                 }
             }
+
+            if (e.KeyCode == Keys.F2)
+            {
+                BuscarCuentasAsociadasAlaCuenta();
+            }
+
         }
 
         private void llenarCuentasLocalMente()
@@ -3052,7 +3391,8 @@ namespace SisContador.Formularios
                 CuentaEN oRegistroEN = new CuentaEN();
                 CuentaLN oRegistroLN = new CuentaLN();
 
-                oRegistroEN.Where = " and EvaluarSiEsCuentaPrincipal(c.NoCuenta) = 0 ";
+                oRegistroEN.Where = @" and EvaluarSiEsCuentaPrincipal(c.NoCuenta) = 0 
+                or NoCuenta Not in (Select c1.CuentaMadre from cuenta as c1 where idCuenta <> (Select UtilidadOPerdidaDelEjercicio from configuracion ))";
                 oRegistroEN.OrderBy = " Order by idCuenta ASC ";
 
                 if (oRegistroLN.ListadoDetallado(oRegistroEN, Program.oDatosDeConexion))
@@ -3069,6 +3409,7 @@ namespace SisContador.Formularios
             {
                 MessageBox.Show(ex.Message, "Llenar Cuentas Localmente", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
         
         private void FormatearDGVCuentas()
@@ -3144,7 +3485,17 @@ namespace SisContador.Formularios
                             if(EsCuentaDeBanco > 0)
                             {
                                 groupBox2.Enabled = true;
+                                cmbReferencia.Enabled = true;
                                 cmbReferencia.Focus();
+                            }
+                            else if (ExtraerCadenaDelaMascar(ref mskIdCuenta).ToString().Contains("700"))
+                            {
+
+                                groupBox2.Enabled = true;
+                                cmbReferencia.Enabled = false;
+                                txtConceptoDeBanco.Focus();
+                                txtConceptoDeBanco.Clear();
+
                             }
                             else
                             {
@@ -3238,6 +3589,12 @@ namespace SisContador.Formularios
             {
                 SeleccionarElRegistro();
             }
+
+            if (e.KeyCode == Keys.F2)
+            {
+                BuscarCuentasAsociadasAlaCuentaApartirDelDGV();
+            }
+
         }
 
         private void SeleccionarElRegistro()
@@ -3363,11 +3720,11 @@ namespace SisContador.Formularios
 
                 case 3:
 
-                    cmbReferencia.Items.Add("Nota de Débito");
                     cmbReferencia.Items.Add("Depósito");
+                    cmbReferencia.Items.Add("Nota de Débito");                    
                     cmbReferencia.Items.Add("Nota de Crédito");
 
-                    cmbReferencia.SelectedIndex = 1;
+                    cmbReferencia.SelectedIndex = 0;
 
                     break;
 
@@ -3475,8 +3832,8 @@ namespace SisContador.Formularios
                 if (EsCuentaDeBanco > 0)
                 {
                     Referencia = cmbReferencia.Text.Trim();
-                    List<string> RDB = new List<string>(new string[] { "Nota de Crédito", "Nota de Débito", "Deposito" });
-                    /*RDB.Add("Nota de Crédito"); RDB.Add("Nota de Débito"); RDB.Add("Deposito");*/
+                    List<string> RDB = new List<string>(new string[] { "Nota de Crédito", "Nota de Débito", "Depósito" });
+                    /*RDB.Add("Nota de Crédito"); RDB.Add("Nota de Débito"); RDB.Add("Depósito");*/
 
                     if (RDB.Contains(Referencia, StringComparer.OrdinalIgnoreCase) == false)
                     {
@@ -3489,7 +3846,7 @@ namespace SisContador.Formularios
                             throw new ArgumentException("Debe Seleccionar un elemento de la lista o escribir el numero de referencia del Ck");
                         }
                         
-                        if (string.IsNullOrEmpty(txtConceptoDeBanco.ToString()) || txtConceptoDeBanco.ToString().Trim().Length <= 0)
+                        if (string.IsNullOrEmpty(txtConceptoDeBanco.Text) || txtConceptoDeBanco.Text.Trim().Length <= 0)
                         {
                             txtConceptoDeBanco.Focus();
                             throw new ArgumentException("La celda no puede quedar vacio se debe ingresar el concepto de la referencia bancario de Ck");
@@ -3498,16 +3855,27 @@ namespace SisContador.Formularios
                     }
                 }
 
+                if (ExtraerCadenaDelaMascar(ref mskIdCuenta).ToString().Contains("700"))
+                {
+                    Referencia = "";
+                    if (string.IsNullOrEmpty(txtConceptoDeBanco.Text) || txtConceptoDeBanco.Text.Trim().Length <= 0)
+                    {
+                        txtConceptoDeBanco.Focus();
+                        throw new ArgumentException(string.Format("Se debe ingresar un concepto para la cuenta: '{0}'", ExtraerCadenaDelaMascar(ref mskIdCuenta)));
+                    }
+                }
+
                 int IndexRows = Convert.ToInt32(txtIndexRegistro.Text);
                 if (IndexRows == -1)
                 {
-
-                    dgvLista.Rows.Add(0, ExtraerCadenaDelaMascar(ref mskIdCuenta), 0, 0, txtNoCuenta.Text.Trim(), txtDescCuenta.Text, txtDebe.Text.Trim(), txtHaber.Text.Trim(), Referencia, txtConceptoDeBanco.Text.Trim(), txtEsCuentaDeBanco.Text.Trim(), 1, true);
+                    
+                    dgvLista.Rows.Add(0, ExtraerCadenaDelaMascar(ref mskIdCuenta), 0, 0, txtNoCuenta.Text.Trim(), txtDescCuenta.Text, string.Format("{0:###,###,###,##0.00}", Convert.ToDecimal( txtDebe.Text.Trim())), string.Format("{0:###,###,###,##0.00}", Convert.ToDecimal( txtHaber.Text.Trim())), Referencia, txtConceptoDeBanco.Text.Trim(), txtEsCuentaDeBanco.Text.Trim(), 1, true);
 
                     dgvLista.Rows[dgvLista.Rows.Count - 1].Cells["Debe"].Tag = numero.ToString();
                     dgvLista.Rows[dgvLista.Rows.Count - 1].Cells["Haber"].Tag = numero.ToString();
 
-                }else if (IndexRows > -1)
+                }
+                else if (IndexRows > -1)
                 {
                     dgvLista.Rows[IndexRows].Cells["idTransaccionDetalle"].Value = txtidTransaccionDetalle.Text;
                     dgvLista.Rows[IndexRows].Cells["idTansaccionDetalle_Banco"].Value = txtidTansaccionDetalle_Banco.Text;
@@ -3528,9 +3896,13 @@ namespace SisContador.Formularios
 
                 Calcular_Bebe();
                 Calcular_Haber();
+                DiferenciaEntreElDebeYElHaber();
 
                 LimpiarControles();
-                
+
+                ActivarColumnasApartirDelBancoOCuentaEgresos();
+
+
             }
             catch(Exception ex)
             {
@@ -3578,7 +3950,16 @@ namespace SisContador.Formularios
                         if(EsCuentaDeBanco > 0)
                         {
                             groupBox2.Enabled = true;
+                            cmbReferencia.Enabled = true;
                             cmbReferencia.Focus();
+
+                        }else if (ExtraerCadenaDelaMascar(ref mskIdCuenta).ToString().Contains("700")){
+
+                            groupBox2.Enabled = true;                            
+                            cmbReferencia.Enabled = false;
+                            txtConceptoDeBanco.Focus();
+                            txtConceptoDeBanco.Clear();
+
                         }
                         else
                         {
@@ -3597,10 +3978,18 @@ namespace SisContador.Formularios
                     if (EsCuentaDeBanco > 0)
                     {
                         groupBox2.Enabled = true;
+                        cmbReferencia.Enabled = true;
                         cmbReferencia.Focus();
                     }
-                    else
+                    else if (ExtraerCadenaDelaMascar(ref mskIdCuenta).ToString().Contains("700"))
                     {
+                        groupBox2.Enabled = true;
+                        cmbReferencia.Enabled = false;
+                        txtConceptoDeBanco.Focus();
+                        txtConceptoDeBanco.Clear();
+
+                    }
+                    else{
                         decimal Debe = default(decimal);
                         decimal.TryParse(txtDebe.Text, out Debe);
                         txtDebe.Tag = Debe.ToString();
@@ -3656,8 +4045,8 @@ namespace SisContador.Formularios
             if (e.KeyCode == Keys.Enter)
             {
                 string Referencia = cmbReferencia.Text.Trim();
-                List<string> RDB = new List<string>(new string[] { "Nota de Crédito", "Nota de Débito", "Deposito" });
-                /*RDB.Add("Nota de Crédito"); RDB.Add("Nota de Débito"); RDB.Add("Deposito");*/
+                List<string> RDB = new List<string>(new string[] { "Nota de Crédito", "Nota de Débito", "Depósito" });
+                /*RDB.Add("Nota de Crédito"); RDB.Add("Nota de Débito"); RDB.Add("Depósito");*/
 
                 if (RDB.Contains(Referencia, StringComparer.OrdinalIgnoreCase) == false)
                 {
@@ -3688,8 +4077,8 @@ namespace SisContador.Formularios
                 if (e.KeyCode == Keys.Enter)
                 {
                     string Referencia = cmbReferencia.Text.Trim();
-                    List<string> RDB = new List<string>(new string[] { "Nota de Crédito", "Nota de Débito", "Deposito" });
-                    /*RDB.Add("Nota de Crédito"); RDB.Add("Nota de Débito"); RDB.Add("Deposito");*/
+                    List<string> RDB = new List<string>(new string[] { "Nota de Crédito", "Nota de Débito", "Depósito" });
+                    /*RDB.Add("Nota de Crédito"); RDB.Add("Nota de Débito"); RDB.Add("Depósito");*/
 
                     if (RDB.Contains(Referencia, StringComparer.OrdinalIgnoreCase) == false)
                     {
@@ -3752,6 +4141,8 @@ namespace SisContador.Formularios
                     mskIdCuenta.Text = Fila.Cells["idCuenta"].Value.ToString();
                     txtDebe.Text = string.Format("{0:###,###,###,###0.00}", Convert.ToDecimal(Fila.Cells["Debe"].Value.ToString()).ToString());
                     txtHaber.Text = string.Format("{0:###,###,###,###0.00}", Convert.ToDecimal(Fila.Cells["Haber"].Value.ToString()).ToString());
+                    txtDebe.Tag = Convert.ToDecimal(Fila.Cells["Debe"].Value.ToString());
+                    txtHaber.Tag = Convert.ToDecimal(Fila.Cells["Haber"].Value.ToString());
                     txtDescCuenta.Text = Fila.Cells["DescCuenta"].Value.ToString();
 
                     int esCuentaDeBanco = Convert.ToInt32(Fila.Cells["EsCuentaDeBanco"].Value.ToString());
@@ -3794,6 +4185,95 @@ namespace SisContador.Formularios
         {
             txtDebe.Text = "0.00";
             txtDebe.Tag = "0.00";
+        }
+
+        private Boolean EvaluarSiHayRegistroEnELDGV()
+        {
+            if(dgvLista.Rows.Count > 0)
+            {
+                return true;
+            }else
+            {
+                return false;
+            }
+        }
+
+        private void QuitarUltimoRegistro()
+        {
+            dgvLista.Rows.RemoveAt(dgvLista.Rows.Count - 1);
+        }
+
+        private void AgregarFilaAlfinalDGV()
+        {
+            dgvLista.Rows.Add(0, "", 0, 0, 0, "Total: ", string.Format("C$ {0:###,###,###,##0.00}", Convert.ToDecimal("0")), string.Format("C$ {0:###,###,###,##0.00}", Convert.ToDecimal("0")), "", "", 0, 0, true);
+            dgvLista.Rows[dgvLista.RowCount - 1].Cells["DescCuenta"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvLista.Rows[dgvLista.RowCount - 1].Cells["DescCuenta"].Style.Font = new Font("Segoe UI", 8, FontStyle.Bold);
+            dgvLista.Rows[dgvLista.RowCount - 1].Cells["Debe"].Style.Font = new Font("Segoe UI", 8, FontStyle.Bold);
+            dgvLista.Rows[dgvLista.RowCount - 1].Cells["Haber"].Style.Font = new Font("Segoe UI", 8, FontStyle.Bold);
+            dgvLista.Rows[dgvLista.RowCount - 1].Cells["Haber"].ReadOnly = true;
+            dgvLista.Rows[dgvLista.RowCount - 1].Cells["Debe"].ReadOnly = true;
+            dgvLista.Rows[dgvLista.RowCount - 1].Cells["Eliminar"].ReadOnly = true;
+        }
+
+        private void txtNumeroDeTransaccion_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down )
+            {
+                dtpkFecha.Focus();
+            }
+        }
+
+        private void dtpkFecha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txtConcepto.Focus();
+            }else if(e.KeyCode == Keys.Up)
+            {
+                txtNumeroDeTransaccion.Focus();
+            }
+        }
+
+        private void txtConcepto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                txtValor.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                dtpkFecha.Focus();
+            }
+        }
+
+        private void txtValor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+            {
+                mskIdCuenta.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                txtConcepto.Focus();
+            }
+        }
+
+        private void txtValor_Leave(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+
+            decimal numero = default(decimal);
+            bool bln = decimal.TryParse(tb.Text, out numero);
+
+            if ((!(bln)))
+            {
+                // No es un valor decimal válido; limpiamos el control.
+                tb.Clear();
+                return;
+            }
+
+            tb.Tag = numero.ToString();
+            tb.Text = string.Format("{0:###,###,###,##0.#0}", numero);
         }
     }
 }

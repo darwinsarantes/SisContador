@@ -124,6 +124,22 @@ namespace Logica
 
         }
 
+        public bool ListadoDeLosAñosEnPeriodosCerrasdos(PeriodoEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (oPeriodoAD.ListadoDeLosAñosEnPeriodosCerrasdos(oREgistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oPeriodoAD.Error;
+                return false;
+            }
+
+        }
+
         public bool ListadoParaReportes(PeriodoEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 

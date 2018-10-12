@@ -900,5 +900,10 @@ namespace SisContador.Formularios
                 LLenarListado();
             }
         }
+
+        private void tsbImprimir_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

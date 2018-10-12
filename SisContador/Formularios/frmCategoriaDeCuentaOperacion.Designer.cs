@@ -46,6 +46,7 @@
             this.tsbRecarRegistro = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
+            this.tsbAutorizarModificación = new System.Windows.Forms.ToolStripButton();
             this.chkCerrarVentana = new System.Windows.Forms.CheckBox();
             this.EP = new System.Windows.Forms.ErrorProvider(this.components);
             this.InformacionEntidadOperacion = new System.Windows.Forms.Label();
@@ -64,7 +65,7 @@
             this.panel1.Controls.Add(this.toolStrip1);
             this.panel1.Location = new System.Drawing.Point(12, 40);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(629, 220);
+            this.panel1.Size = new System.Drawing.Size(717, 220);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -81,7 +82,7 @@
             this.panel2.Controls.Add(this.txtIdentificador);
             this.panel2.Location = new System.Drawing.Point(13, 44);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(598, 158);
+            this.panel2.Size = new System.Drawing.Size(686, 158);
             this.panel2.TabIndex = 1;
             // 
             // label3
@@ -117,7 +118,7 @@
             this.cmbGrupoDeCuenta.FormattingEnabled = true;
             this.cmbGrupoDeCuenta.Location = new System.Drawing.Point(209, 38);
             this.cmbGrupoDeCuenta.Name = "cmbGrupoDeCuenta";
-            this.cmbGrupoDeCuenta.Size = new System.Drawing.Size(332, 21);
+            this.cmbGrupoDeCuenta.Size = new System.Drawing.Size(454, 21);
             this.cmbGrupoDeCuenta.TabIndex = 6;
             // 
             // txtDescCategoriaDeCuenta
@@ -125,7 +126,7 @@
             this.txtDescCategoriaDeCuenta.Location = new System.Drawing.Point(209, 65);
             this.txtDescCategoriaDeCuenta.Multiline = true;
             this.txtDescCategoriaDeCuenta.Name = "txtDescCategoriaDeCuenta";
-            this.txtDescCategoriaDeCuenta.Size = new System.Drawing.Size(332, 72);
+            this.txtDescCategoriaDeCuenta.Size = new System.Drawing.Size(454, 72);
             this.txtDescCategoriaDeCuenta.TabIndex = 3;
             // 
             // txtIdentificador
@@ -145,10 +146,11 @@
             this.tsbCerrarVentan,
             this.tsbRecarRegistro,
             this.toolStripSeparator1,
-            this.tsbImprimir});
+            this.tsbImprimir,
+            this.tsbAutorizarModificación});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(629, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(717, 31);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -233,6 +235,19 @@
             this.tsbImprimir.Name = "tsbImprimir";
             this.tsbImprimir.Size = new System.Drawing.Size(81, 28);
             this.tsbImprimir.Text = "Imprimir";
+            this.tsbImprimir.Visible = false;
+            this.tsbImprimir.Click += new System.EventHandler(this.tsbImprimir_Click);
+            // 
+            // tsbAutorizarModificación
+            // 
+            this.tsbAutorizarModificación.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbAutorizarModificación.Image = global::SisContador.Properties.Resources.checked16x16;
+            this.tsbAutorizarModificación.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAutorizarModificación.Name = "tsbAutorizarModificación";
+            this.tsbAutorizarModificación.Size = new System.Drawing.Size(148, 28);
+            this.tsbAutorizarModificación.Text = "Autorizar modificación";
+            this.tsbAutorizarModificación.ToolTipText = "Autorizar modificación de registros vinculados";
+            this.tsbAutorizarModificación.Click += new System.EventHandler(this.tsbAutorizarModificación_Click);
             // 
             // chkCerrarVentana
             // 
@@ -265,7 +280,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(653, 291);
+            this.ClientSize = new System.Drawing.Size(741, 291);
             this.Controls.Add(this.InformacionEntidadOperacion);
             this.Controls.Add(this.chkCerrarVentana);
             this.Controls.Add(this.panel1);
@@ -307,5 +322,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ErrorProvider EP;
         private System.Windows.Forms.Label InformacionEntidadOperacion;
+        private System.Windows.Forms.ToolStripButton tsbAutorizarModificación;
     }
 }

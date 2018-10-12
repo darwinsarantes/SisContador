@@ -3,6 +3,6 @@
   <Servidor>localhost</Servidor>
   <Usuario>STDataBase</Usuario>
   <Contraseña>101102</Contraseña>
-  <BaseDeDatos>SisContador</BaseDeDatos>
+  <BaseDeDatos>siscontador</BaseDeDatos>
   <PuertoDeConexionDelServidor>3306</PuertoDeConexionDelServidor>
 </DatosDeConexionEN>

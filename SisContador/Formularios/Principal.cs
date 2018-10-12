@@ -32,7 +32,12 @@ namespace SisContador.Formularios
         frmTransaccion oDiarios = null;
         frmPeriodo ofrmPeriodo = null;
         frmReportes ofrmReportes = null;
+        frmReportesHistorico ofrmReportesHistorico = null;
+        frmTasaDeCambio ofrmTasaDeCambio = null;
+        frmGraficos ofrmGraficos = null;
 
+        static string ETiempo = "";
+        
         public Principal()
         {
             InitializeComponent();
@@ -100,15 +105,20 @@ namespace SisContador.Formularios
                 ofrmEmpresa.BringToFront();
 
             this.Cursor = Cursors.Default;
+
         }
 
         private void Principal_Shown(object sender, EventArgs e)
-        {
-            tsFecha.Text = System.DateTime.Now.ToShortDateString().ToString();
-            tsbEtiqueta.Text = string.Format(" | {0} - {1}", Program.NombreSistema, Program.NombreEmpresa);
-            this.Text = string.Format("{0} | {1} | {2}", Program.NombreVersionSistema, Program.oLoginEN.Usuario, Program.oLoginEN.TipoDeCuenta);
+        {            
+            tsbEtiqueta.Text = string.Format(" {0}", Program.oConfiguracionEN.NombreDelSistema);
+            this.Text = string.Format("{0} | {1} | {2} | ip: {3}", Program.NombreVersionSistema, Program.oLoginEN.Usuario, Program.oLoginEN.TipoDeCuenta, Program.oLoginEN.NumeroIP);
+
+            ConfigurarHoraYFecha();
 
             CargarPrivilegiosDelUsuario();
+
+            tsMenu.Items["tsbGruposDeCuentas"].Select();          
+               
 
         }
 
@@ -138,7 +148,7 @@ namespace SisContador.Formularios
 
             try
             {
-                                
+
                 this.Cursor = Cursors.WaitCursor;
 
                 ModuloInterfazUsuariosEN oRegistroEN = new ModuloInterfazUsuariosEN();
@@ -148,58 +158,62 @@ namespace SisContador.Formularios
 
                 if (oRegistroLN.ListadoPrivilegiosDelUsuariosPorModulo(oRegistroEN, Program.oDatosDeConexion))
                 {
-                    
+
                     //PRIVILEGIOS A BARRA DE MENÚS
                     foreach (ToolStripMenuItem item in this.menuStrip.Items)
                     {
-                           
-                        if (item.Tag.ToString().Trim().Length > 0)
+                        if (item.Tag != null)
                         {
-                                
-                            //item.Enabled = oRegistroLN.VerificarSiTengoAcceso(item.Tag.ToString());
-                            if (item.DropDownItems.Count > 0)
+
+                            if (item.Tag.ToString().Trim().Length > 0)
                             {
-                                foreach (ToolStripItem Subitem in item.DropDownItems)
+
+                                //item.Enabled = oRegistroLN.VerificarSiTengoAcceso(item.Tag.ToString());
+                                if (item.DropDownItems.Count > 0)
                                 {
-                                    if (Subitem.GetType() == typeof(ToolStripMenuItem))
+                                    foreach (ToolStripItem Subitem in item.DropDownItems)
                                     {
-                                        if (Subitem.Tag != null)
+                                        if (Subitem.GetType() == typeof(ToolStripMenuItem))
                                         {
-                                            if (Subitem.Tag.ToString().Length > 0)
-                                            {                                                    
-                                                Subitem.Enabled = oRegistroLN.VerificarSiTengoAccesoDeInterfaz(Subitem.Tag.ToString());
+                                            if (Subitem.Tag != null)
+                                            {
+                                                if (Subitem.Tag.ToString().Length > 0)
+                                                {
+                                                    Subitem.Enabled = oRegistroLN.VerificarSiTengoAccesoDeInterfaz(Subitem.Tag.ToString());
+                                                }
                                             }
-                                        }
-                                        else
-                                        {
-                                            Subitem.Enabled = false;
+                                            else
+                                            {
+                                                Subitem.Enabled = false;
+                                            }
                                         }
                                     }
                                 }
                             }
+
                         }
-                        
+
                     }
 
                     foreach (ToolStripItem item in tsMenu.Items)
                     {
                         if (item.Tag != null)
-                        {                            
+                        {
                             if (item.GetType() == typeof(ToolStripButton))
                             {
                                 item.Enabled = oRegistroLN.VerificarSiTengoAccesoDeInterfaz(item.Tag.ToString());
                             }
                         }
-                        else{
+                        else {
                             item.Enabled = false;
                         }
                     }
-                    
+
 
                 }
                 else
                 {
-                    throw new ArgumentException(oRegistroLN.Error);                    
+                    throw new ArgumentException(oRegistroLN.Error);
                 }
 
 
@@ -314,7 +328,7 @@ namespace SisContador.Formularios
             this.Cursor = Cursors.Default;
 
         }
-        
+
         private void tsbMovimientos_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
@@ -434,6 +448,263 @@ namespace SisContador.Formularios
 
             this.Cursor = Cursors.Default;
 
+        }
+
+        private void ConfigurarHoraYFecha()
+        {
+            timer1.Interval = 1000;
+            timer1.Start();
+
+            timer2.Interval = 300000;
+            timer2.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            ETiempo = DateTime.Now.ToString("G");
+            //tsbHorayFecha.Text = string.Format("{0} {1}", DateTime.Now.ToLongDateString(),DateTime.Now.ToLongTimeString());
+            tsbHorayFecha.Text = ETiempo;
+        }
+
+        private void AplicarColorAFormularios()
+        {
+            try
+            {
+                this.BackColor = Properties.Settings.Default.MyColorSetting;
+
+                foreach (Form Items in Application.OpenForms.Cast<Form>())
+                {
+                    Items.BackColor = Properties.Settings.Default.MyColorSetting;
+                }
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Aplicar color a la ventanas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void AplicarColorAFormularios(Color oColor)
+        {
+            try
+            {
+                this.BackColor = oColor;
+
+                foreach (Form Items in Application.OpenForms.Cast<Form>())
+                {
+                    Items.ForeColor = oColor;
+                }
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Aplicar color a la ventanas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void colorDeLaVentanaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ColorDialog CDColor = new ColorDialog();
+
+                if (CDColor.ShowDialog() == DialogResult.OK)
+                {
+                    AplicarColorAFormularios(CDColor.Color);
+                }
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Aplicar color a la ventanas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void colorPorDefectoEnLaVentanaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                this.BackColor = Properties.Settings.Default.DefaultColor;
+
+                foreach (Form Items in Application.OpenForms.Cast<Form>())
+                {
+                    Items.BackColor = Properties.Settings.Default.DefaultColor;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Aplicar color a la ventanas por defecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmReportesHistorico == null || ofrmReportesHistorico.IsDisposed)
+            {
+                ofrmReportesHistorico = new frmReportesHistorico();
+                ofrmReportesHistorico.MdiParent = this;
+                ofrmReportesHistorico.Show();
+                ofrmReportesHistorico.StartPosition = FormStartPosition.CenterScreen;
+                ofrmReportesHistorico.WindowState = FormWindowState.Maximized;
+            }
+            else
+                ofrmReportesHistorico.BringToFront();
+
+            this.Cursor = Cursors.Default;
+
+        }
+
+        private void Principal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+
+                this.Cursor = Cursors.WaitCursor;
+                RespaldarBaseDeDatos();
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Cerrando la ventana", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+        
+        #region "Respaldo de la base de datos"
+
+        private void RespaldarBaseDeDatos()
+        {
+            try
+            {
+                CarpetaDeRespaldo();
+
+                //String NombreDelfichero = string.Format("{0}\\{1}_{2}.sql", Program.oConfiguracionEN.RutaRespaldos.Trim(), Program.oDatosDeConexion.BaseDeDatos.Trim().ToUpper(), System.DateTime.Now.ToString("yyyyMMdd_hms"));
+                String NombreDelfichero = string.Format("{0}\\{1}_{2}.sql", Program.oConfiguracionEN.RutaRespaldos.Trim(), Program.oDatosDeConexion.BaseDeDatos.Trim().ToUpper(), System.DateTime.Now.ToString("yyyyMMdd"));
+
+                ValidarSiExisteElFichero(NombreDelfichero);
+
+                System.Diagnostics.Process cmd = new System.Diagnostics.Process();
+                cmd.StartInfo.FileName = "cmd.exe";//string.Format(@"{0}mysqldump", Program.oConfiguracionEN.PathMysSQLDump);
+                cmd.StartInfo.RedirectStandardInput = true;
+                cmd.StartInfo.RedirectStandardOutput = true;
+                cmd.StartInfo.CreateNoWindow = true;
+                cmd.StartInfo.UseShellExecute = false;
+                cmd.Start();
+
+                cmd.StandardInput.WriteLine(@"c:");
+                cmd.StandardInput.Flush();
+                cmd.StandardInput.WriteLine(string.Format(@"cd {0}", Program.oConfiguracionEN.PathMysSQLDump.Trim()));
+                cmd.StandardInput.Flush();
+                cmd.StandardInput.WriteLine(string.Format("mysqldump -h{0} -P{1} -u{2} -p{3} --opt --routines --add-drop-database --databases {4} > {5}",
+                    Program.oDatosDeConexion.Servidor, Program.oDatosDeConexion.PuertoDeConexionDelServidor, Program.oDatosDeConexion.Usuario, Program.oDatosDeConexion.Contraseña,
+                    Program.oDatosDeConexion.BaseDeDatos, NombreDelfichero));
+                cmd.StandardInput.Flush();
+                cmd.StandardInput.Close();
+                cmd.Close();
+                cmd = null;
+
+                tsbEtiquetaDeRespaldo.Text = "Respaldo Realizado correctamente";
+                
+            }
+            catch (Exception ex)
+            {
+                string mensaje = string.Format("Se ha produccido un error al realizar la copia de seguridad: {0} {1}", Environment.NewLine, ex.Message);
+                MessageBox.Show(mensaje, "Respaldo de base datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CarpetaDeRespaldo()
+        {
+            try
+            {
+                if (!System.IO.Directory.Exists(Program.oConfiguracionEN.RutaRespaldos.Trim()))
+                {
+                    System.IO.Directory.CreateDirectory(Program.oConfiguracionEN.RutaRespaldos.Trim());
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Caperta de respaldo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void ValidarSiExisteElFichero(string Archivo)
+        {
+            try
+            {
+                if (System.IO.File.Exists(Archivo))
+                {
+                    System.IO.File.Delete(Archivo);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Validar si existe el FicheroDeRespaldo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+        }
+
+        #endregion
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            tsbEtiquetaDeRespaldo.Visible = true;
+            RespaldarBaseDeDatos();            
+            timer3.Interval = (( Program.oConfiguracionEN.TiempoDeRespaldo * 60) * 1000);
+            timer3.Start();
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            tsbEtiquetaDeRespaldo.Visible = false;
+        }
+
+        private void tsbTasaDeCambio_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmTasaDeCambio == null || ofrmTasaDeCambio.IsDisposed)
+            {
+                ofrmTasaDeCambio = new frmTasaDeCambio();
+                ofrmTasaDeCambio.MdiParent = this;
+                ofrmTasaDeCambio.Show();
+                ofrmTasaDeCambio.StartPosition = FormStartPosition.CenterScreen;
+                ofrmTasaDeCambio.WindowState = FormWindowState.Maximized;
+            }
+            else
+                ofrmTasaDeCambio.BringToFront();
+
+            this.Cursor = Cursors.Default;
+        }
+
+        private void graficosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmGraficos == null || ofrmGraficos.IsDisposed)
+            {
+                ofrmGraficos = new frmGraficos();
+                ofrmGraficos.MdiParent = this;
+                ofrmGraficos.Show();
+                ofrmGraficos.StartPosition = FormStartPosition.CenterScreen;
+                ofrmGraficos.WindowState = FormWindowState.Maximized;
+            }
+            else
+                ofrmGraficos.BringToFront();
+
+            this.Cursor = Cursors.Default;
         }
     }
 }

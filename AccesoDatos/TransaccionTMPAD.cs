@@ -42,7 +42,7 @@ namespace AccesoDatos
                 (NumeroDeTransaccion, Fecha, Concepto, Valor, idTipoDeTransaccion, Estado, 
                 IdUsuarioDeCreacion, FechaDeCreacion, IdUsuarioDeModificacion, FechaDeModificacion)
                 values
-                (IdentificadorDeLaTransaccionPorTipoDeTransaccion(@idTipoDeTransaccion), @Fecha, @Concepto, @Valor, @idTipoDeTransaccion, @Estado, 
+                (CrearNumeroDelaTransaccionPorTipo(@idTipoDeTransaccion), @Fecha, @Concepto, @Valor, @idTipoDeTransaccion, @Estado, 
                 @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp());
 
                 Select idTransacciones, NumeroDeTransaccion from transacciontmp where idTransacciones = last_insert_id();";
@@ -388,6 +388,61 @@ namespace AccesoDatos
 
         }
 
+        public bool TraerNumeroDeLaTransaccion(TransaccionTMPEN oRegistroEN, DatosDeConexionEN oDatos)
+        {
+
+            try
+            {
+
+                Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
+                Cnn.Open();
+
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn;
+                Comando.CommandType = CommandType.Text;
+
+                Consultas = string.Format(@" Select CrearNumeroDelaTransaccionPorTipo({0}) as 'NumeroDeLaTransaccion'; ", oRegistroEN.oTipoDeTransaccionEN.idTipoDeTransaccion);
+
+                Comando.CommandText = Consultas;
+
+                Adaptador = new MySqlDataAdapter();
+                DT = new DataTable();
+
+                Adaptador.SelectCommand = Comando;
+                Adaptador.Fill(DT);
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+
+                if (Cnn != null)
+                {
+
+                    if (Cnn.State == ConnectionState.Open)
+                    {
+
+                        Cnn.Close();
+
+                    }
+
+                }
+
+                Cnn = null;
+                Comando = null;
+                Adaptador = null;
+
+            }
+
+        }
+
         public bool Listado(TransaccionTMPEN oRegistroEN, DatosDeConexionEN oDatos)
         {
 
@@ -406,7 +461,7 @@ namespace AccesoDatos
                 'transacciontmp' as 'NombreTabla', 1 as 'RegistroTMP'
                 from transacciontmp as t
                 inner join TipoDeTransaccion tt on tt.idTipoDeTransaccion = t.idTipoDeTransaccion
-                where idTransacciones > 0
+                where idTransacciones > 0 
                 union
                 Select 
                 idTransacciones, t.idTipoDeTransaccion, t.NumeroDeTransaccion, tt.DesTipoDeTransaccion , t.Fecha, t.Concepto, t.Valor, t.Estado,
@@ -455,6 +510,73 @@ namespace AccesoDatos
 
         }
 
+        public bool ListadoDeMovimientoAlCierreDePeriodo(TransaccionTMPEN oRegistroEN, DatosDeConexionEN oDatos)
+        {
+
+            try
+            {
+
+                Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
+                Cnn.Open();
+
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn;
+                Comando.CommandType = CommandType.Text;
+
+                Consultas = string.Format(@"Select idTransacciones, idTipoDeTransaccion, NumeroDeTransaccion, DesTipoDeTransaccion, Fecha, Concepto, Valor, Estado,
+                NombreTabla, RegistroTMP from (
+                Select 
+                idTransacciones, t.idTipoDeTransaccion, t.NumeroDeTransaccion, tt.DesTipoDeTransaccion , t.Fecha, t.Concepto, t.Valor, t.Estado,
+                'transacciones' as 'NombreTabla', case when exists(select tmp.idTransacciones from transacciontmp as tmp) then 1 else 0 end as 'RegistroTMP',
+                cp.idCierreDePeriodo, p.idPeriodo
+                from transaccion_cierre as t
+                inner join TipoDeTransaccion tt on tt.idTipoDeTransaccion = t.idTipoDeTransaccion
+                inner join cierredeperiodo as cp on cp.idCierreDePeriodo = t.idCierreDePeriodo
+                inner join periodo as p on p.idPeriodo = cp.idPeriodo ) as T 
+                Where idTransacciones > 0  {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+
+                System.Diagnostics.Debug.Print(Consultas);
+
+                Comando.CommandText = Consultas;
+
+                Adaptador = new MySqlDataAdapter();
+                DT = new DataTable();
+
+                Adaptador.SelectCommand = Comando;
+                Adaptador.Fill(DT);
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+
+                if (Cnn != null)
+                {
+
+                    if (Cnn.State == ConnectionState.Open)
+                    {
+
+                        Cnn.Close();
+
+                    }
+
+                }
+
+                Cnn = null;
+                Comando = null;
+                Adaptador = null;
+
+            }
+
+        }
+
         public bool ListadoPorIdentificador(TransaccionTMPEN oRegistroEN, DatosDeConexionEN oDatos)
         {
 
@@ -477,7 +599,7 @@ namespace AccesoDatos
                 inner join TipoDeTransaccion tt on tt.idTipoDeTransaccion = t.idTipoDeTransaccion
                 Where t.idTransacciones = {0} 
 
-                union
+                union all
 
                 Select 
                 idTransacciones, t.idTipoDeTransaccion, t.NumeroDeTransaccion, tt.DesTipoDeTransaccion , t.Fecha, t.Concepto, t.Valor, t.Estado, 
@@ -654,6 +776,71 @@ namespace AccesoDatos
 
         }
 
+        public bool ListadoParaReportesParaMostrarELHistorico(TransaccionTMPEN oRegistroEN, DatosDeConexionEN oDatos)
+        {
+
+            try
+            {
+
+                Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
+                Cnn.Open();
+
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn;
+                Comando.CommandType = CommandType.Text;
+
+                Consultas = string.Format(@"Select idTransacciones, t.idTipoDeTransaccion, t.NumeroDeTransaccion, t.DesTipoDeTransaccion , t.Fecha, t.Concepto, t.Valor, t.Estado, 
+                t.IdUsuarioDeCreacion, t.FechaDeCreacion, t.IdUsuarioDeModificacion, t.FechaDeModificacion from (
+                Select 
+                idTransacciones, t.idTipoDeTransaccion, t.NumeroDeTransaccion, tt.DesTipoDeTransaccion , t.Fecha, t.Concepto, t.Valor, t.Estado, 
+                t.IdUsuarioDeCreacion, t.FechaDeCreacion, t.IdUsuarioDeModificacion, t.FechaDeModificacion, 
+                cp.idCierreDePeriodo, cp.idPeriodo
+                from transaccion_cierre as t
+                inner join TipoDeTransaccion tt on tt.idTipoDeTransaccion = t.idTipoDeTransaccion
+                inner join cierredeperiodo as cp on cp.idCierreDePeriodo = t.idCierreDePeriodo
+                inner join periodo as p on p.idPeriodo = cp.idPeriodo  ) as t 
+                Where idTransacciones > 0  {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+
+                Comando.CommandText = Consultas;
+
+                Adaptador = new MySqlDataAdapter();
+                DT = new DataTable();
+
+                Adaptador.SelectCommand = Comando;
+                Adaptador.Fill(DT);
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+
+                if (Cnn != null)
+                {
+
+                    if (Cnn.State == ConnectionState.Open)
+                    {
+
+                        Cnn.Close();
+
+                    }
+
+                }
+
+                Cnn = null;
+                Comando = null;
+                Adaptador = null;
+
+            }
+
+        }
+
         public bool EvaluarSiHayDatosEnLaTablaTMP(TransaccionTMPEN oRegistroEN, DatosDeConexionEN oDatos)
         {
 
@@ -702,6 +889,86 @@ namespace AccesoDatos
                     return false;
                 }
                 
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+
+                if (Cnn != null)
+                {
+
+                    if (Cnn.State == ConnectionState.Open)
+                    {
+
+                        Cnn.Close();
+
+                    }
+
+                }
+
+                Cnn = null;
+                Comando = null;
+                Adaptador = null;
+
+            }
+
+        }
+
+        public bool EvaluarSiHayDatosEnLaTablaTMP(TransaccionTMPEN oRegistroEN, DatosDeConexionEN oDatos, DateTime Fecha1, DateTime Fecha2)
+        {
+
+            try
+            {
+
+                Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
+                Cnn.Open();
+
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn;
+                Comando.CommandType = CommandType.Text;
+
+                Consultas = @"SELECT CASE WHEN EXISTS(SELECT idTransacciones FROM transacciontmp where Fecha between @Fecha1 and @Fecha2) THEN 1 ELSE 0 END AS 'RES' ";
+                Comando.CommandText = Consultas;
+
+                Comando.Parameters.Add(new MySqlParameter("@Fecha1", MySqlDbType.DateTime)).Value = Fecha1;
+                Comando.Parameters.Add(new MySqlParameter("@Fecha2", MySqlDbType.DateTime)).Value = Fecha2;
+
+                Adaptador = new MySqlDataAdapter();
+                DT = new DataTable();
+
+                Adaptador.SelectCommand = Comando;
+                Adaptador.Fill(DT);
+
+                if (Convert.ToInt32(DT.Rows[0].ItemArray[0].ToString()) == 1)
+                {
+
+                    Consultas = @"Select t.idTransacciones,t.idTipoDeTransaccion, t.NumeroDeTransaccion, t.Fecha, t.Concepto, t.Valor, t.Estado, tt.DesTipoDeTransaccion
+                    from transacciontmp as t 
+                    inner join TipoDeTransaccion as tt on tt.idTipoDeTransaccion = t.idTipoDeTransaccion ";
+
+                    Comando.CommandText = Consultas;
+                    Adaptador.SelectCommand = null;
+                    Adaptador.SelectCommand = Comando;
+
+                    DT.Clear();
+
+                    Adaptador.Fill(DT);
+                    DataRow Fila = DT.Rows[0];
+
+                    this.Error = string.Format(@"No se puede continuar por qué Existe un Movimiento - {0} en proceso ", Fila["DesTipoDeTransaccion"]);
+                    return true;
+
+                }
+                else
+                {
+                    return false;
+                }
+
             }
             catch (Exception ex)
             {

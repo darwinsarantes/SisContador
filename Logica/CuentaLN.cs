@@ -92,6 +92,22 @@ namespace Logica
 
         }
 
+        public bool ListadoDeMovimientosDelDiaPorCuenta(CuentaEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (oCuentaAD.ListadoDeMovimientosDelDiaPorCuenta(oREgistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oCuentaAD.Error;
+                return false;
+            }
+
+        }
+
         public bool ListadoDetallado(CuentaEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
@@ -129,6 +145,22 @@ namespace Logica
         {
 
             if (oCuentaAD.ListadoPorIdentificador(oREgistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oCuentaAD.Error;
+                return false;
+            }
+
+        }
+
+        public bool ListadoPorIdCuenta(CuentaEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (oCuentaAD.ListadoPorIdCuenta(oREgistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;

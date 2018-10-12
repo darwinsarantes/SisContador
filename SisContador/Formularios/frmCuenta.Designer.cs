@@ -57,10 +57,14 @@
             this.tsbImprimir = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsbCatalogoDeCuentas = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoDeCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbMostrarSaldos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbMostrarSaldoDetallado = new System.Windows.Forms.ToolStripMenuItem();
+            this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbNuevoRegistro = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbMarcarTodos = new System.Windows.Forms.ToolStripButton();
             this.tsbSeleccionarTodos = new System.Windows.Forms.ToolStripButton();
+            this.tsbAplicarBorde = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -282,6 +286,8 @@
             this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
             this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.imprimirToolStripMenuItem.Text = "Imprimir";
+            this.imprimirToolStripMenuItem.Visible = false;
+            this.imprimirToolStripMenuItem.Click += new System.EventHandler(this.imprimirToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -304,6 +310,7 @@
             this.tsMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.tsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbFiltrar,
+            this.tsbAplicarBorde,
             this.tsbFiltroAutomatico,
             this.tsbImprimir,
             this.tsbNuevoRegistro,
@@ -343,7 +350,10 @@
             this.tsbImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbImprimir.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbCatalogoDeCuentas,
-            this.listadoDeCuentasToolStripMenuItem});
+            this.listadoDeCuentasToolStripMenuItem,
+            this.tsbMostrarSaldos,
+            this.tsbMostrarSaldoDetallado,
+            this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem});
             this.tsbImprimir.Image = global::SisContador.Properties.Resources.printer24x24;
             this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbImprimir.Name = "tsbImprimir";
@@ -355,7 +365,7 @@
             this.tsbCatalogoDeCuentas.Image = global::SisContador.Properties.Resources.printer16x16;
             this.tsbCatalogoDeCuentas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbCatalogoDeCuentas.Name = "tsbCatalogoDeCuentas";
-            this.tsbCatalogoDeCuentas.Size = new System.Drawing.Size(182, 22);
+            this.tsbCatalogoDeCuentas.Size = new System.Drawing.Size(292, 22);
             this.tsbCatalogoDeCuentas.Text = "Catalogo de cuentas";
             this.tsbCatalogoDeCuentas.Click += new System.EventHandler(this.tsbCatalogoDeCuentas_Click);
             // 
@@ -365,9 +375,36 @@
             this.listadoDeCuentasToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.listadoDeCuentasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.listadoDeCuentasToolStripMenuItem.Name = "listadoDeCuentasToolStripMenuItem";
-            this.listadoDeCuentasToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.listadoDeCuentasToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
             this.listadoDeCuentasToolStripMenuItem.Text = "Listado de Cuentas";
             this.listadoDeCuentasToolStripMenuItem.Click += new System.EventHandler(this.listadoDeCuentasToolStripMenuItem_Click);
+            // 
+            // tsbMostrarSaldos
+            // 
+            this.tsbMostrarSaldos.Image = global::SisContador.Properties.Resources.printer16x16;
+            this.tsbMostrarSaldos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbMostrarSaldos.Name = "tsbMostrarSaldos";
+            this.tsbMostrarSaldos.Size = new System.Drawing.Size(292, 22);
+            this.tsbMostrarSaldos.Text = "Mostrar Saldos";
+            this.tsbMostrarSaldos.Click += new System.EventHandler(this.tsbMostrarSaldos_Click);
+            // 
+            // tsbMostrarSaldoDetallado
+            // 
+            this.tsbMostrarSaldoDetallado.Image = global::SisContador.Properties.Resources.printer16x16;
+            this.tsbMostrarSaldoDetallado.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbMostrarSaldoDetallado.Name = "tsbMostrarSaldoDetallado";
+            this.tsbMostrarSaldoDetallado.Size = new System.Drawing.Size(292, 22);
+            this.tsbMostrarSaldoDetallado.Text = "Mostrar Saldo detallado";
+            this.tsbMostrarSaldoDetallado.Click += new System.EventHandler(this.tsbMostrarSaldoDetallado_Click);
+            // 
+            // movimientosDeLaCuentaDuranteElMesToolStripMenuItem
+            // 
+            this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem.Image = global::SisContador.Properties.Resources.printer16x16;
+            this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem.Name = "movimientosDeLaCuentaDuranteElMesToolStripMenuItem";
+            this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem.Text = "Movimientos de la cuenta durante el mes";
+            this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem.Click += new System.EventHandler(this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem_Click);
             // 
             // tsbNuevoRegistro
             // 
@@ -404,6 +441,17 @@
             this.tsbSeleccionarTodos.Size = new System.Drawing.Size(87, 28);
             this.tsbSeleccionarTodos.Text = "Seleccionar";
             this.tsbSeleccionarTodos.Click += new System.EventHandler(this.tsbSeleccionarTodos_Click);
+            // 
+            // tsbAplicarBorde
+            // 
+            this.tsbAplicarBorde.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbAplicarBorde.Image = global::SisContador.Properties.Resources.checked16x16;
+            this.tsbAplicarBorde.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbAplicarBorde.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAplicarBorde.Name = "tsbAplicarBorde";
+            this.tsbAplicarBorde.Size = new System.Drawing.Size(98, 28);
+            this.tsbAplicarBorde.Text = "Aplicar borde";
+            this.tsbAplicarBorde.Click += new System.EventHandler(this.tsbAplicarBorde_Click);
             // 
             // frmCuenta
             // 
@@ -468,5 +516,9 @@
         private System.Windows.Forms.ToolStripDropDownButton tsbImprimir;
         private System.Windows.Forms.ToolStripMenuItem tsbCatalogoDeCuentas;
         private System.Windows.Forms.ToolStripMenuItem listadoDeCuentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsbMostrarSaldos;
+        private System.Windows.Forms.ToolStripMenuItem tsbMostrarSaldoDetallado;
+        private System.Windows.Forms.ToolStripMenuItem movimientosDeLaCuentaDuranteElMesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton tsbAplicarBorde;
     }
 }

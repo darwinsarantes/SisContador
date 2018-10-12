@@ -112,18 +112,16 @@ namespace AccesoDatos
 
             try
             {
-
-                Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
-                Cnn.Open();
-
+                
                 Comando = new MySqlCommand();
-                Comando.Connection = Cnn;
+                Comando.Connection = Cnn_Existente;
+                Comando.Transaction = Transaccion_Existente;
                 Comando.CommandType = CommandType.Text;
 
                 Consultas = @"insert into cierredeperiodo
-                (idPeriodo, idUsuarioDeCierre, FechaDeCierre, Descripcion, IdUsuarioDeCreacion, FechaDeCreacion, IdUsuarioDeModificacion, FechaDeModificacion)
+                (idPeriodo, idUsuarioDeCierre, FechaDeCierre, Descripcion, IdUsuarioDeCreacion, FechaDeCreacion, IdUsuarioDeModificacion, FechaDeModificacion, idTasaDeCambio)
                 values
-                (@idPeriodo, @idUsuarioDeCierre, @FechaDeCierre, @Descripcion, @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp());
+                (@idPeriodo, @idUsuarioDeCierre, @FechaDeCierre, @Descripcion, @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp(), @idTasaDeCambio);
 
                 Select last_insert_id() as 'ID';";
 
@@ -136,6 +134,7 @@ namespace AccesoDatos
 
                 Comando.Parameters.Add(new MySqlParameter("@IdUsuarioDeCreacion", MySqlDbType.Int32)).Value = oRegistroEN.oLoginEN.idUsuario;
                 Comando.Parameters.Add(new MySqlParameter("@IdUsuarioDeModificacion", MySqlDbType.Int32)).Value = oRegistroEN.oLoginEN.idUsuario;
+                Comando.Parameters.Add(new MySqlParameter("@idTasaDeCambio", MySqlDbType.Int32)).Value = oRegistroEN.oTasaDeCambioEN.idTasaDeCambio;
 
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();
@@ -186,14 +185,13 @@ namespace AccesoDatos
 
             try
             {
-
-                Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
-                Cnn.Open();
-
+                                
                 Comando = new MySqlCommand();
-                Comando.Connection = Cnn;
+                Comando.Connection = Cnn_Existente;
+                Comando.Transaction = Transaccion_Existente;
+
                 Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "CalcularSaldosAlCierreDelPeriodo";
+                Comando.CommandText = "AplicarCierreDelPeriodo";
 
                 Comando.Parameters.Add(new MySqlParameter("@idCierreDePeriodo_", MySqlDbType.Int32)).Value = oRegistroEN.idCierreDePeriodo;
                 Comando.Parameters.Add(new MySqlParameter("@IdUsuarioDeModificacion_", MySqlDbType.Int32)).Value = oRegistroEN.IdUsuarioDeModificacion;                
@@ -253,7 +251,15 @@ namespace AccesoDatos
             {
                 String mensaje = "";
 
-                if(Agregar(oRegistroEN, oDatos, ref Cnn, ref MysqlTransaccion) == false)
+                TasaDeCambioAD oTasaDeCambioAD = new TasaDeCambioAD();
+
+                if(oTasaDeCambioAD.Agregar(oRegistroEN.oTasaDeCambioEN, oDatos, ref Cnn, ref MysqlTransaccion) == false)
+                {
+                    mensaje = String.Format("Error : '{0}', producido al intentar guardar la tasa de cambio", oTasaDeCambioAD.Error);
+                    throw new System.ArgumentException(mensaje);
+                }
+
+                if (Agregar(oRegistroEN, oDatos, ref Cnn, ref MysqlTransaccion) == false)
                 {
                     mensaje = String.Format("Error : '{0}', producido al intentar guardar el cierre del periodo", this.Error);
                     throw new System.ArgumentException(mensaje);

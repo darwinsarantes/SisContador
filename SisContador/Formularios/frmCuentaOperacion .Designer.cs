@@ -33,6 +33,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtDescCuentaContenido = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.mskidCuenta = new System.Windows.Forms.MaskedTextBox();
             this.gpCuentaAsociada = new System.Windows.Forms.GroupBox();
             this.txtIdentificadorAsociado = new System.Windows.Forms.TextBox();
@@ -68,6 +70,7 @@
             this.tsbRecarRegistro = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
+            this.tsbAutorizarModificación = new System.Windows.Forms.ToolStripButton();
             this.chkCerrarVentana = new System.Windows.Forms.CheckBox();
             this.EP = new System.Windows.Forms.ErrorProvider(this.components);
             this.InformacionEntidadOperacion = new System.Windows.Forms.Label();
@@ -93,7 +96,7 @@
             this.panel1.Controls.Add(this.toolStrip1);
             this.panel1.Location = new System.Drawing.Point(12, 40);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1277, 444);
+            this.panel1.Size = new System.Drawing.Size(991, 444);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -105,7 +108,7 @@
             this.panel2.Controls.Add(this.flowLayoutPanel1);
             this.panel2.Location = new System.Drawing.Point(13, 44);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1246, 382);
+            this.panel2.Size = new System.Drawing.Size(960, 382);
             this.panel2.TabIndex = 1;
             // 
             // flowLayoutPanel1
@@ -118,11 +121,13 @@
             this.flowLayoutPanel1.Controls.Add(this.groupBox1);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 14);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1220, 352);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(934, 352);
             this.flowLayoutPanel1.TabIndex = 19;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtDescCuentaContenido);
+            this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.mskidCuenta);
             this.groupBox2.Controls.Add(this.gpCuentaAsociada);
             this.groupBox2.Controls.Add(this.label6);
@@ -140,9 +145,27 @@
             this.groupBox2.Controls.Add(this.txtIdentificador);
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(450, 343);
+            this.groupBox2.Size = new System.Drawing.Size(450, 439);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
+            // 
+            // txtDescCuentaContenido
+            // 
+            this.txtDescCuentaContenido.Location = new System.Drawing.Point(9, 220);
+            this.txtDescCuentaContenido.Multiline = true;
+            this.txtDescCuentaContenido.Name = "txtDescCuentaContenido";
+            this.txtDescCuentaContenido.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtDescCuentaContenido.Size = new System.Drawing.Size(406, 83);
+            this.txtDescCuentaContenido.TabIndex = 20;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 202);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(268, 13);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Descripción de la información que contendra la cuenta:";
             // 
             // mskidCuenta
             // 
@@ -159,9 +182,9 @@
             this.gpCuentaAsociada.Controls.Add(this.label8);
             this.gpCuentaAsociada.Controls.Add(this.txtCuentaAsociadaIdCuenta);
             this.gpCuentaAsociada.Controls.Add(this.label7);
-            this.gpCuentaAsociada.Location = new System.Drawing.Point(9, 209);
+            this.gpCuentaAsociada.Location = new System.Drawing.Point(9, 309);
             this.gpCuentaAsociada.Name = "gpCuentaAsociada";
-            this.gpCuentaAsociada.Size = new System.Drawing.Size(435, 121);
+            this.gpCuentaAsociada.Size = new System.Drawing.Size(415, 120);
             this.gpCuentaAsociada.TabIndex = 18;
             this.gpCuentaAsociada.TabStop = false;
             this.gpCuentaAsociada.Text = "La Cuenta es asociada:";
@@ -346,7 +369,7 @@
             this.groupBox1.Controls.Add(this.dgvLista);
             this.groupBox1.Location = new System.Drawing.Point(459, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(450, 265);
+            this.groupBox1.Size = new System.Drawing.Size(450, 190);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cuentas: ";
@@ -385,7 +408,7 @@
             this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLista.Location = new System.Drawing.Point(6, 44);
             this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(438, 215);
+            this.dgvLista.Size = new System.Drawing.Size(438, 140);
             this.dgvLista.TabIndex = 7;
             this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellContentClick);
             this.dgvLista.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvLista_CurrentCellDirtyStateChanged);
@@ -400,10 +423,11 @@
             this.tsbCerrarVentan,
             this.tsbRecarRegistro,
             this.toolStripSeparator1,
-            this.tsbImprimir});
+            this.tsbImprimir,
+            this.tsbAutorizarModificación});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1277, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(991, 31);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -489,6 +513,18 @@
             this.tsbImprimir.Size = new System.Drawing.Size(81, 28);
             this.tsbImprimir.Text = "Imprimir";
             this.tsbImprimir.ToolTipText = "Imprimir (Ctrl + P)";
+            this.tsbImprimir.Visible = false;
+            // 
+            // tsbAutorizarModificación
+            // 
+            this.tsbAutorizarModificación.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbAutorizarModificación.Image = global::SisContador.Properties.Resources.checked16x16;
+            this.tsbAutorizarModificación.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAutorizarModificación.Name = "tsbAutorizarModificación";
+            this.tsbAutorizarModificación.Size = new System.Drawing.Size(148, 28);
+            this.tsbAutorizarModificación.Text = "Autorizar modificación";
+            this.tsbAutorizarModificación.ToolTipText = "Autorizar modificación de registros vinculados";
+            this.tsbAutorizarModificación.Click += new System.EventHandler(this.tsbAutorizarModificación_Click);
             // 
             // chkCerrarVentana
             // 
@@ -521,7 +557,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1301, 515);
+            this.ClientSize = new System.Drawing.Size(1015, 515);
             this.Controls.Add(this.InformacionEntidadOperacion);
             this.Controls.Add(this.chkCerrarVentana);
             this.Controls.Add(this.panel1);
@@ -598,5 +634,8 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.MaskedTextBox mskidCuenta;
         private System.Windows.Forms.MaskedTextBox mskBuscarFiltro;
+        private System.Windows.Forms.ToolStripButton tsbAutorizarModificación;
+        private System.Windows.Forms.TextBox txtDescCuentaContenido;
+        private System.Windows.Forms.Label label9;
     }
 }

@@ -9,17 +9,6 @@ D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\Logica
 D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
 D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\Logica\obj\Debug\Logica.dll
 D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\Logica\obj\Debug\Logica.pdb
-F:\SisContador\Logica\bin\Debug\Logica.dll
-F:\SisContador\Logica\bin\Debug\Logica.pdb
-F:\SisContador\Logica\bin\Debug\AccesoDatos.dll
-F:\SisContador\Logica\bin\Debug\Entidad.dll
-F:\SisContador\Logica\bin\Debug\MySql.Data.dll
-F:\SisContador\Logica\bin\Debug\AccesoDatos.pdb
-F:\SisContador\Logica\bin\Debug\Entidad.pdb
-F:\SisContador\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
-F:\SisContador\Logica\obj\Debug\Logica.dll
-F:\SisContador\Logica\obj\Debug\Logica.pdb
-F:\SisContador\Logica\bin\Debug\MySql.Data.xml
 E:\SisContador\Logica\bin\Debug\Logica.dll
 E:\SisContador\Logica\bin\Debug\Logica.pdb
 E:\SisContador\Logica\bin\Debug\AccesoDatos.dll
@@ -31,3 +20,47 @@ E:\SisContador\Logica\bin\Debug\MySql.Data.xml
 E:\SisContador\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
 E:\SisContador\Logica\obj\Debug\Logica.dll
 E:\SisContador\Logica\obj\Debug\Logica.pdb
+H:\SisContador\Logica\bin\Debug\Logica.dll
+H:\SisContador\Logica\bin\Debug\Logica.pdb
+H:\SisContador\Logica\bin\Debug\AccesoDatos.dll
+H:\SisContador\Logica\bin\Debug\Entidad.dll
+H:\SisContador\Logica\bin\Debug\MySql.Data.dll
+H:\SisContador\Logica\bin\Debug\AccesoDatos.pdb
+H:\SisContador\Logica\bin\Debug\Entidad.pdb
+H:\SisContador\Logica\bin\Debug\MySql.Data.xml
+H:\SisContador\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+H:\SisContador\Logica\obj\Debug\Logica.dll
+H:\SisContador\Logica\obj\Debug\Logica.pdb
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\Logica\bin\Debug\Logica.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\Logica\bin\Debug\Logica.pdb
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\Logica\bin\Debug\AccesoDatos.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\Logica\bin\Debug\Entidad.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\Logica\bin\Debug\MySql.Data.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\Logica\bin\Debug\AccesoDatos.pdb
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\Logica\bin\Debug\Entidad.pdb
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\Logica\bin\Debug\MySql.Data.xml
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\Logica\obj\Debug\Logica.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\Logica\obj\Debug\Logica.pdb
+F:\SisContador\Logica\bin\Debug\Logica.dll
+F:\SisContador\Logica\bin\Debug\Logica.pdb
+F:\SisContador\Logica\bin\Debug\AccesoDatos.dll
+F:\SisContador\Logica\bin\Debug\Entidad.dll
+F:\SisContador\Logica\bin\Debug\MySql.Data.dll
+F:\SisContador\Logica\bin\Debug\AccesoDatos.pdb
+F:\SisContador\Logica\bin\Debug\Entidad.pdb
+F:\SisContador\Logica\bin\Debug\MySql.Data.xml
+F:\SisContador\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+F:\SisContador\Logica\obj\Debug\Logica.dll
+F:\SisContador\Logica\obj\Debug\Logica.pdb
+I:\SisContador\Logica\bin\Debug\Logica.dll
+I:\SisContador\Logica\bin\Debug\Logica.pdb
+I:\SisContador\Logica\bin\Debug\AccesoDatos.dll
+I:\SisContador\Logica\bin\Debug\Entidad.dll
+I:\SisContador\Logica\bin\Debug\MySql.Data.dll
+I:\SisContador\Logica\bin\Debug\AccesoDatos.pdb
+I:\SisContador\Logica\bin\Debug\Entidad.pdb
+I:\SisContador\Logica\bin\Debug\MySql.Data.xml
+I:\SisContador\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+I:\SisContador\Logica\obj\Debug\Logica.dll
+I:\SisContador\Logica\obj\Debug\Logica.pdb

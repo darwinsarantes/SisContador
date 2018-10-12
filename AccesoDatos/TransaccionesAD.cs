@@ -14,7 +14,7 @@ namespace AccesoDatos
         public string Error { set; get; }
         private MySqlConnection Cnn = null;
         private MySqlCommand Comando = null;
-        private MySqlDataAdapter Adaptador = null;
+        //private MySqlDataAdapter Adaptador = null;
         string Consultas;
         /*Definicion de variables publicas a la clase*/
         public DateTime Fecha_creacion { set; get; }
@@ -97,8 +97,7 @@ namespace AccesoDatos
                 }
 
                 Cnn = null;
-                Comando = null;
-                Adaptador = null;
+                Comando = null;              
 
             }
 
@@ -166,8 +165,7 @@ namespace AccesoDatos
                 }
 
                 Cnn = null;
-                Comando = null;
-                Adaptador = null;
+                Comando = null;               
 
             }
 

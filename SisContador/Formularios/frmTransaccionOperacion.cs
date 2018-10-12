@@ -238,11 +238,11 @@ namespace SisContador.Formularios
 
                 if (IdTipoDeTransaccion_ > 0)
                 {
-                    oRegistroEN.Where = string.Format(" and idTipoDeTransaccion = {0} ", IdTipoDeTransaccion_);
+                    oRegistroEN.Where = string.Format(" and idTipoDeTransaccion = {0} ", IdTipoDeTransaccion_ );
                 }
 
                 oRegistroEN.OrderBy = "";
-
+                
                 if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexion))
                 {
 
@@ -2524,7 +2524,7 @@ namespace SisContador.Formularios
             if (ofrmVisor_1 == null || ofrmVisor_1.IsDisposed)
             {
                 ofrmVisor_1 = new frmVisor();
-
+                ofrmVisor_1.AplicarBorder = 0;
                 ofrmVisor_1.NombreReporte = "Transacciones - Imprimir comprobante";
                 TransaccionTMPEN oRegistroEN = new TransaccionTMPEN();
                 oRegistroEN.Where = string.Format(" AND t.idTransacciones = {0} ", idTransacciones);

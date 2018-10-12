@@ -49,6 +49,8 @@
     <Compile Include="CuentaEN.cs" />
     <Compile Include="PeriodoEN.cs" />
     <Compile Include="CierreDePeriodoEN.cs" />
+    <Compile Include="ReportesEN.cs" />
+    <Compile Include="TasaDeCambioEN.cs" />
     <Compile Include="TansaccionDetalleTMPBancoEN.cs" />
     <Compile Include="TransaccionesEN.cs" />
     <Compile Include="TransaccionDetalleTMPEN.cs" />

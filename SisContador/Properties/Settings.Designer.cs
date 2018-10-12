@@ -178,5 +178,41 @@ namespace SisContador.Properties {
                 this["PeriodoVentanaDespuesDeOperacion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Control")]
+        public global::System.Drawing.Color MyColorSetting {
+            get {
+                return ((global::System.Drawing.Color)(this["MyColorSetting"]));
+            }
+            set {
+                this["MyColorSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Control")]
+        public global::System.Drawing.Color DefaultColor {
+            get {
+                return ((global::System.Drawing.Color)(this["DefaultColor"]));
+            }
+            set {
+                this["DefaultColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TasaDeCambioVentanaDespuesDeOperacion {
+            get {
+                return ((bool)(this["TasaDeCambioVentanaDespuesDeOperacion"]));
+            }
+            set {
+                this["TasaDeCambioVentanaDespuesDeOperacion"] = value;
+            }
+        }
     }
 }

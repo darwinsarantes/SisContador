@@ -62,107 +62,18 @@ D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\SisCon
 D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\SisContador\obj\Debug\SisContador.application
 D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\SisContador\obj\Debug\SisContador.exe
 D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\SisContador\obj\Debug\SisContador.pdb
-F:\SisContador\SisContador\bin\Debug\SisContador.exe.config
-F:\SisContador\SisContador\bin\Debug\SisContador.exe.manifest
-F:\SisContador\SisContador\bin\Debug\SisContador.application
-F:\SisContador\SisContador\bin\Debug\SisContador.exe
-F:\SisContador\SisContador\bin\Debug\SisContador.pdb
-F:\SisContador\SisContador\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
-F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportSource.dll
-F:\SisContador\SisContador\bin\Debug\CrystalDecisions.Shared.dll
-F:\SisContador\SisContador\bin\Debug\CrystalDecisions.Windows.Forms.dll
-F:\SisContador\SisContador\bin\Debug\Entidad.dll
-F:\SisContador\SisContador\bin\Debug\FlashControlV71.dll
-F:\SisContador\SisContador\bin\Debug\Logica.dll
-F:\SisContador\SisContador\bin\Debug\Microsoft.ReportViewer.WinForms.dll
-F:\SisContador\SisContador\bin\Debug\AccesoDatos.dll
-F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
-F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
-F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
-F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
-F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
-F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
-F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
-F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
-F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
-F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
-F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
-F:\SisContador\SisContador\bin\Debug\ShockwaveFlashObjects.dll
-F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
-F:\SisContador\SisContador\bin\Debug\stdole.dll
-F:\SisContador\SisContador\bin\Debug\Entidad.pdb
-F:\SisContador\SisContador\bin\Debug\Logica.pdb
-F:\SisContador\SisContador\bin\Debug\AccesoDatos.pdb
-F:\SisContador\SisContador\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
-F:\SisContador\SisContador\obj\Debug\SisContador.csprojResolveAssemblyReference.cache
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodo.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodoOperacion.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccionOperacion.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccion.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTipoDeTransaccionOperacion.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTipoDeTransaccion.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRol.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuentaOperacion.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuenta.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRolOperacion.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmUsuarioOperacion.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmUsuario.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmConfiguracion.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmEmpresa.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCategoriaDeCuenta.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGruposDeCuentas.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCategoriaDeCuentaOperacion.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGruposDeCuentasOperacion.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmLogin.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.frmLoginMySQL.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRespaldo.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRestaurar.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmSplash.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmVisor.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.Principal.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Properties.Resources.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.csproj.GenerateResource.Cache
-F:\SisContador\SisContador\obj\Debug\SisContador.exe.manifest
-F:\SisContador\SisContador\obj\Debug\SisContador.application
-F:\SisContador\SisContador\obj\Debug\SisContador.exe
-F:\SisContador\SisContador\obj\Debug\SisContador.pdb
-F:\SisContador\SisContador\bin\Debug\MySql.Data.xml
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmReportes.resources
-F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccionOperacionBack.resources
 E:\SisContador\SisContador\bin\Debug\SisContador.exe.config
 E:\SisContador\SisContador\bin\Debug\SisContador.exe.manifest
 E:\SisContador\SisContador\bin\Debug\SisContador.application
 E:\SisContador\SisContador\bin\Debug\SisContador.exe
 E:\SisContador\SisContador\bin\Debug\SisContador.pdb
-E:\SisContador\SisContador\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
-E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportSource.dll
-E:\SisContador\SisContador\bin\Debug\CrystalDecisions.Shared.dll
-E:\SisContador\SisContador\bin\Debug\CrystalDecisions.Windows.Forms.dll
 E:\SisContador\SisContador\bin\Debug\Entidad.dll
-E:\SisContador\SisContador\bin\Debug\FlashControlV71.dll
 E:\SisContador\SisContador\bin\Debug\Logica.dll
-E:\SisContador\SisContador\bin\Debug\Microsoft.ReportViewer.WinForms.dll
-E:\SisContador\SisContador\bin\Debug\MySql.Data.dll
 E:\SisContador\SisContador\bin\Debug\AccesoDatos.dll
-E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
-E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
-E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
-E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
-E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
-E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
-E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
-E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
-E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
-E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
-E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
-E:\SisContador\SisContador\bin\Debug\ShockwaveFlashObjects.dll
-E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
-E:\SisContador\SisContador\bin\Debug\stdole.dll
 E:\SisContador\SisContador\bin\Debug\Entidad.pdb
 E:\SisContador\SisContador\bin\Debug\Logica.pdb
 E:\SisContador\SisContador\bin\Debug\MySql.Data.xml
 E:\SisContador\SisContador\bin\Debug\AccesoDatos.pdb
-E:\SisContador\SisContador\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
 E:\SisContador\SisContador\obj\Debug\SisContador.csprojResolveAssemblyReference.cache
 E:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodo.resources
 E:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodoOperacion.resources
@@ -197,3 +108,526 @@ E:\SisContador\SisContador\obj\Debug\SisContador.exe.manifest
 E:\SisContador\SisContador\obj\Debug\SisContador.application
 E:\SisContador\SisContador\obj\Debug\SisContador.exe
 E:\SisContador\SisContador\obj\Debug\SisContador.pdb
+G:\SisContador\SisContador\bin\Debug\SisContador.exe.config
+G:\SisContador\SisContador\obj\Debug\SisContador.exe
+G:\SisContador\SisContador\obj\Debug\SisContador.pdb
+G:\SisContador\SisContador\bin\Debug\SisContador.exe.manifest
+G:\SisContador\SisContador\bin\Debug\SisContador.application
+G:\SisContador\SisContador\bin\Debug\SisContador.exe
+G:\SisContador\SisContador\bin\Debug\SisContador.pdb
+G:\SisContador\SisContador\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+G:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportSource.dll
+G:\SisContador\SisContador\bin\Debug\CrystalDecisions.Shared.dll
+G:\SisContador\SisContador\bin\Debug\CrystalDecisions.Windows.Forms.dll
+G:\SisContador\SisContador\bin\Debug\Entidad.dll
+G:\SisContador\SisContador\bin\Debug\FlashControlV71.dll
+G:\SisContador\SisContador\bin\Debug\Logica.dll
+G:\SisContador\SisContador\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+G:\SisContador\SisContador\bin\Debug\AccesoDatos.dll
+G:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+G:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+G:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+G:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+G:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+G:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+G:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+G:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+G:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+G:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+G:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+G:\SisContador\SisContador\bin\Debug\ShockwaveFlashObjects.dll
+G:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+G:\SisContador\SisContador\bin\Debug\stdole.dll
+G:\SisContador\SisContador\bin\Debug\Entidad.pdb
+G:\SisContador\SisContador\bin\Debug\Logica.pdb
+G:\SisContador\SisContador\bin\Debug\MySql.Data.xml
+G:\SisContador\SisContador\bin\Debug\AccesoDatos.pdb
+G:\SisContador\SisContador\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
+G:\SisContador\SisContador\obj\Debug\SisContador.csprojResolveAssemblyReference.cache
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodo.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodoOperacion.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmReportes.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccionOperacionBack.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccionOperacion.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccion.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTipoDeTransaccionOperacion.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTipoDeTransaccion.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRol.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuentaOperacion.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuenta.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRolOperacion.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmUsuarioOperacion.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmUsuario.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmConfiguracion.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmEmpresa.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCategoriaDeCuenta.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGruposDeCuentas.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCategoriaDeCuentaOperacion.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGruposDeCuentasOperacion.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmLogin.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.frmLoginMySQL.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRespaldo.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRestaurar.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmSplash.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmVisor.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Formularios.Principal.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.Properties.Resources.resources
+G:\SisContador\SisContador\obj\Debug\SisContador.csproj.GenerateResource.Cache
+G:\SisContador\SisContador\obj\Debug\SisContador.exe.manifest
+G:\SisContador\SisContador\obj\Debug\SisContador.application
+H:\SisContador\SisContador\bin\Debug\SisContador.exe.config
+H:\SisContador\SisContador\obj\Debug\SisContador.exe
+H:\SisContador\SisContador\obj\Debug\SisContador.pdb
+H:\SisContador\SisContador\bin\Debug\SisContador.exe.manifest
+H:\SisContador\SisContador\bin\Debug\SisContador.application
+H:\SisContador\SisContador\bin\Debug\SisContador.exe
+H:\SisContador\SisContador\bin\Debug\SisContador.pdb
+H:\SisContador\SisContador\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+H:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportSource.dll
+H:\SisContador\SisContador\bin\Debug\CrystalDecisions.Shared.dll
+H:\SisContador\SisContador\bin\Debug\CrystalDecisions.Windows.Forms.dll
+H:\SisContador\SisContador\bin\Debug\Entidad.dll
+H:\SisContador\SisContador\bin\Debug\FlashControlV71.dll
+H:\SisContador\SisContador\bin\Debug\Logica.dll
+H:\SisContador\SisContador\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+H:\SisContador\SisContador\bin\Debug\AccesoDatos.dll
+H:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+H:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+H:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+H:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+H:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+H:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+H:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+H:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+H:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+H:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+H:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+H:\SisContador\SisContador\bin\Debug\ShockwaveFlashObjects.dll
+H:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+H:\SisContador\SisContador\bin\Debug\stdole.dll
+H:\SisContador\SisContador\bin\Debug\Entidad.pdb
+H:\SisContador\SisContador\bin\Debug\Logica.pdb
+H:\SisContador\SisContador\bin\Debug\MySql.Data.xml
+H:\SisContador\SisContador\bin\Debug\AccesoDatos.pdb
+H:\SisContador\SisContador\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
+H:\SisContador\SisContador\obj\Debug\SisContador.csprojResolveAssemblyReference.cache
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodo.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodoOperacion.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmReportes.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccionOperacionBack.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccionOperacion.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccion.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTipoDeTransaccionOperacion.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTipoDeTransaccion.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRol.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuentaOperacion.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuenta.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRolOperacion.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmUsuarioOperacion.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmUsuario.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmConfiguracion.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmEmpresa.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCategoriaDeCuenta.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGruposDeCuentas.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCategoriaDeCuentaOperacion.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGruposDeCuentasOperacion.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmLogin.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.frmLoginMySQL.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRespaldo.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRestaurar.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmSplash.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmVisor.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.Principal.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Properties.Resources.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.csproj.GenerateResource.Cache
+H:\SisContador\SisContador\obj\Debug\SisContador.exe.manifest
+H:\SisContador\SisContador\obj\Debug\SisContador.application
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\SisContador.exe.config
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.exe
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.pdb
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\SisContador.exe.manifest
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\SisContador.application
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\SisContador.exe
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\SisContador.pdb
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportSource.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\CrystalDecisions.Shared.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\CrystalDecisions.Windows.Forms.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\Entidad.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\FlashControlV71.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\Logica.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\AccesoDatos.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\ShockwaveFlashObjects.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\stdole.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\Entidad.pdb
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\Logica.pdb
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\MySql.Data.xml
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\AccesoDatos.pdb
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.csprojResolveAssemblyReference.cache
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodo.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodoOperacion.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmReportes.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccionOperacionBack.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccionOperacion.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccion.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTipoDeTransaccionOperacion.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTipoDeTransaccion.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRol.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuentaOperacion.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuenta.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRolOperacion.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmUsuarioOperacion.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmUsuario.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmConfiguracion.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmEmpresa.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCategoriaDeCuenta.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGruposDeCuentas.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCategoriaDeCuentaOperacion.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGruposDeCuentasOperacion.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmLogin.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.frmLoginMySQL.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRespaldo.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRestaurar.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmSplash.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmVisor.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Formularios.Principal.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.Properties.Resources.resources
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.csproj.GenerateResource.Cache
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.exe.manifest
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.application
+E:\SisContador\SisContador\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportSource.dll
+E:\SisContador\SisContador\bin\Debug\CrystalDecisions.Shared.dll
+E:\SisContador\SisContador\bin\Debug\CrystalDecisions.Windows.Forms.dll
+E:\SisContador\SisContador\bin\Debug\FlashControlV71.dll
+E:\SisContador\SisContador\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+E:\SisContador\SisContador\bin\Debug\ShockwaveFlashObjects.dll
+E:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+E:\SisContador\SisContador\bin\Debug\stdole.dll
+E:\SisContador\SisContador\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\SisContador.exe.config
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.csproj.ResolveComReference.cache
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.exe
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.pdb
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\SisContador.exe.manifest
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\SisContador.application
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\SisContador.exe
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\SisContador.pdb
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportSource.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.Shared.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.Windows.Forms.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\Entidad.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\FlashControlV71.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\Logica.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\AccesoDatos.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\ShockwaveFlashObjects.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\stdole.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\Entidad.pdb
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\Logica.pdb
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\MySql.Data.xml
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\AccesoDatos.pdb
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.csprojResolveAssemblyReference.cache
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodo.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodoOperacion.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmReportes.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccionOperacionBack.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccionOperacion.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccion.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTipoDeTransaccionOperacion.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTipoDeTransaccion.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRol.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuentaOperacion.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuenta.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRolOperacion.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmUsuarioOperacion.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmUsuario.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmConfiguracion.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmEmpresa.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCategoriaDeCuenta.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGruposDeCuentas.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCategoriaDeCuentaOperacion.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGruposDeCuentasOperacion.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmLogin.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.frmLoginMySQL.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRespaldo.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRestaurar.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmSplash.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmVisor.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.Principal.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmReportesHistorico.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Properties.Resources.resources
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.csproj.GenerateResource.Cache
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.exe.manifest
+I:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.application
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\SisContador.exe.config
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.csproj.ResolveComReference.cache
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.exe
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.pdb
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\SisContador.exe.manifest
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\SisContador.application
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\SisContador.exe
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\SisContador.pdb
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportSource.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.Shared.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.Windows.Forms.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\Entidad.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\FlashControlV71.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\Logica.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\MySql.Data.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\AccesoDatos.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\ShockwaveFlashObjects.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\stdole.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\Entidad.pdb
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\Logica.pdb
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\MySql.Data.xml
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\AccesoDatos.pdb
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.csprojResolveAssemblyReference.cache
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodo.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodoOperacion.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmReportes.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccionOperacionBack.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccionOperacion.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccion.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTipoDeTransaccionOperacion.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTipoDeTransaccion.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRol.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuentaOperacion.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuenta.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRolOperacion.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmUsuarioOperacion.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmUsuario.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmConfiguracion.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmEmpresa.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCategoriaDeCuenta.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGruposDeCuentas.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCategoriaDeCuentaOperacion.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGruposDeCuentasOperacion.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmLogin.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.frmLoginMySQL.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRespaldo.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRestaurar.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmSplash.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmVisor.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.Principal.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmReportesHistorico.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.Properties.Resources.resources
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.csproj.GenerateResource.Cache
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.exe.manifest
+Z:\RESPALDO MEMORIA AZUL\SisContador\SisContador\obj\Debug\SisContador.application
+E:\SisContador\SisContador\obj\Debug\SisContador.csproj.ResolveComReference.cache
+E:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmInformacionDeLaCuenta.resources
+E:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmReportesHistorico.resources
+F:\SisContador\SisContador\bin\Debug\SisContador.exe.config
+F:\SisContador\SisContador\bin\Debug\SisContador.exe.manifest
+F:\SisContador\SisContador\bin\Debug\SisContador.application
+F:\SisContador\SisContador\bin\Debug\SisContador.exe
+F:\SisContador\SisContador\bin\Debug\SisContador.pdb
+F:\SisContador\SisContador\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportSource.dll
+F:\SisContador\SisContador\bin\Debug\CrystalDecisions.Shared.dll
+F:\SisContador\SisContador\bin\Debug\CrystalDecisions.Windows.Forms.dll
+F:\SisContador\SisContador\bin\Debug\Entidad.dll
+F:\SisContador\SisContador\bin\Debug\FlashControlV71.dll
+F:\SisContador\SisContador\bin\Debug\Logica.dll
+F:\SisContador\SisContador\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+F:\SisContador\SisContador\bin\Debug\MySql.Data.dll
+F:\SisContador\SisContador\bin\Debug\AccesoDatos.dll
+F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+F:\SisContador\SisContador\bin\Debug\ShockwaveFlashObjects.dll
+F:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+F:\SisContador\SisContador\bin\Debug\stdole.dll
+F:\SisContador\SisContador\bin\Debug\Entidad.pdb
+F:\SisContador\SisContador\bin\Debug\Logica.pdb
+F:\SisContador\SisContador\bin\Debug\MySql.Data.xml
+F:\SisContador\SisContador\bin\Debug\AccesoDatos.pdb
+F:\SisContador\SisContador\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
+F:\SisContador\SisContador\obj\Debug\SisContador.csprojResolveAssemblyReference.cache
+F:\SisContador\SisContador\obj\Debug\SisContador.csproj.ResolveComReference.cache
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmInformacionDeLaCuenta.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodo.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodoOperacion.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmReportes.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccionOperacionBack.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccionOperacion.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccion.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTipoDeTransaccionOperacion.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTipoDeTransaccion.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRol.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuentaOperacion.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuenta.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRolOperacion.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmUsuarioOperacion.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmUsuario.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmConfiguracion.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmEmpresa.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCategoriaDeCuenta.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGruposDeCuentas.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCategoriaDeCuentaOperacion.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGruposDeCuentasOperacion.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmLogin.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.frmLoginMySQL.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRespaldo.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRestaurar.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmSplash.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmVisor.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.Principal.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmReportesHistorico.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Properties.Resources.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.csproj.GenerateResource.Cache
+F:\SisContador\SisContador\obj\Debug\SisContador.exe.manifest
+F:\SisContador\SisContador\obj\Debug\SisContador.application
+F:\SisContador\SisContador\obj\Debug\SisContador.exe
+F:\SisContador\SisContador\obj\Debug\SisContador.pdb
+H:\SisContador\SisContador\obj\Debug\SisContador.csproj.ResolveComReference.cache
+H:\SisContador\SisContador\bin\Debug\MySql.Data.dll
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmInformacionDeLaCuenta.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmReportesHistorico.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTasaDeCambio.resources
+E:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTasaDeCambio.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGraficos.resources
+H:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTasaDeCambioOperacion.resources
+I:\SisContador\SisContador\bin\Debug\SisContador.exe.config
+I:\SisContador\SisContador\obj\Debug\SisContador.csproj.ResolveComReference.cache
+I:\SisContador\SisContador\obj\Debug\SisContador.exe
+I:\SisContador\SisContador\obj\Debug\SisContador.pdb
+I:\SisContador\SisContador\bin\Debug\SisContador.exe.manifest
+I:\SisContador\SisContador\bin\Debug\SisContador.application
+I:\SisContador\SisContador\bin\Debug\SisContador.exe
+I:\SisContador\SisContador\bin\Debug\SisContador.pdb
+I:\SisContador\SisContador\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+I:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportSource.dll
+I:\SisContador\SisContador\bin\Debug\CrystalDecisions.Shared.dll
+I:\SisContador\SisContador\bin\Debug\CrystalDecisions.Windows.Forms.dll
+I:\SisContador\SisContador\bin\Debug\Entidad.dll
+I:\SisContador\SisContador\bin\Debug\FlashControlV71.dll
+I:\SisContador\SisContador\bin\Debug\Logica.dll
+I:\SisContador\SisContador\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+I:\SisContador\SisContador\bin\Debug\MySql.Data.dll
+I:\SisContador\SisContador\bin\Debug\AccesoDatos.dll
+I:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+I:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+I:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+I:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+I:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+I:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+I:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+I:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+I:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+I:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+I:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+I:\SisContador\SisContador\bin\Debug\ShockwaveFlashObjects.dll
+I:\SisContador\SisContador\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+I:\SisContador\SisContador\bin\Debug\stdole.dll
+I:\SisContador\SisContador\bin\Debug\Entidad.pdb
+I:\SisContador\SisContador\bin\Debug\Logica.pdb
+I:\SisContador\SisContador\bin\Debug\MySql.Data.xml
+I:\SisContador\SisContador\bin\Debug\AccesoDatos.pdb
+I:\SisContador\SisContador\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
+I:\SisContador\SisContador\obj\Debug\SisContador.csprojResolveAssemblyReference.cache
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGraficos.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmInformacionDeLaCuenta.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodo.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmPeriodoOperacion.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmReportes.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTasaDeCambio.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTasaDeCambioOperacion.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccionOperacionBack.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccionOperacion.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTransaccion.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTipoDeTransaccionOperacion.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTipoDeTransaccion.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRol.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuentaOperacion.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuenta.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRolOperacion.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmUsuarioOperacion.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmUsuario.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmConfiguracion.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmEmpresa.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCategoriaDeCuenta.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGruposDeCuentas.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCategoriaDeCuentaOperacion.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGruposDeCuentasOperacion.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmLogin.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.frmLoginMySQL.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRespaldo.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmRestaurar.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmSplash.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmVisor.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.Principal.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmReportesHistorico.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.Properties.Resources.resources
+I:\SisContador\SisContador\obj\Debug\SisContador.csproj.GenerateResource.Cache
+I:\SisContador\SisContador\obj\Debug\SisContador.exe.manifest
+I:\SisContador\SisContador\obj\Debug\SisContador.application
+E:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGraficos.resources
+E:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTasaDeCambioOperacion.resources
+D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\SisContador.exe.config
+D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.csproj.ResolveComReference.cache
+D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.exe
+D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.pdb

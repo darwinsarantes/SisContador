@@ -66,6 +66,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbMarcarTodos = new System.Windows.Forms.ToolStripButton();
             this.tsbSeleccionarTodos = new System.Windows.Forms.ToolStripButton();
+            this.tsbAplicarBorde = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -299,14 +300,14 @@
             this.visualizarToolStripMenuItem,
             this.imprimirToolStripMenuItem});
             this.mcsMenu.Name = "mcsMenu";
-            this.mcsMenu.Size = new System.Drawing.Size(153, 164);
+            this.mcsMenu.Size = new System.Drawing.Size(127, 142);
             this.mcsMenu.Opened += new System.EventHandler(this.mcsMenu_Opened);
             // 
             // nuevoToolStripMenuItem
             // 
             this.nuevoToolStripMenuItem.Image = global::SisContador.Properties.Resources.New16x16;
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             this.nuevoToolStripMenuItem.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
             // 
@@ -314,7 +315,7 @@
             // 
             this.actualizarToolStripMenuItem.Image = global::SisContador.Properties.Resources.Edit16x16;
             this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
-            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.actualizarToolStripMenuItem.Text = "Actualizar";
             this.actualizarToolStripMenuItem.Click += new System.EventHandler(this.actualizarToolStripMenuItem_Click);
             // 
@@ -322,14 +323,14 @@
             // 
             this.eliminarToolStripMenuItem.Image = global::SisContador.Properties.Resources.Eliminar16x16;
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
             // tsbCerrar
             // 
             this.tsbCerrar.Name = "tsbCerrar";
-            this.tsbCerrar.Size = new System.Drawing.Size(152, 22);
+            this.tsbCerrar.Size = new System.Drawing.Size(126, 22);
             this.tsbCerrar.Tag = "Cerrar";
             this.tsbCerrar.Text = "Cerrar";
             this.tsbCerrar.Click += new System.EventHandler(this.tsbCerrar_Click);
@@ -337,13 +338,13 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(123, 6);
             // 
             // visualizarToolStripMenuItem
             // 
             this.visualizarToolStripMenuItem.Image = global::SisContador.Properties.Resources.view16x16;
             this.visualizarToolStripMenuItem.Name = "visualizarToolStripMenuItem";
-            this.visualizarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.visualizarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.visualizarToolStripMenuItem.Text = "Visualizar";
             this.visualizarToolStripMenuItem.Click += new System.EventHandler(this.visualizarToolStripMenuItem_Click);
             // 
@@ -351,7 +352,7 @@
             // 
             this.imprimirToolStripMenuItem.Image = global::SisContador.Properties.Resources.printer16x16;
             this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
-            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.imprimirToolStripMenuItem.Text = "Imprimir";
             // 
             // statusStrip1
@@ -375,6 +376,7 @@
             this.tsMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.tsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbFiltrar,
+            this.tsbAplicarBorde,
             this.tsbFiltroAutomatico,
             this.tsbImprimir,
             this.tsbNuevoRegistro,
@@ -417,6 +419,8 @@
             this.tsbImprimir.Name = "tsbImprimir";
             this.tsbImprimir.Size = new System.Drawing.Size(28, 28);
             this.tsbImprimir.Text = "Imprimir";
+            this.tsbImprimir.Visible = false;
+            this.tsbImprimir.Click += new System.EventHandler(this.tsbImprimir_Click);
             // 
             // tsbNuevoRegistro
             // 
@@ -455,6 +459,17 @@
             this.tsbSeleccionarTodos.Size = new System.Drawing.Size(23, 28);
             this.tsbSeleccionarTodos.Text = "toolStripButton2";
             this.tsbSeleccionarTodos.Click += new System.EventHandler(this.tsbSeleccionarTodos_Click);
+            // 
+            // tsbAplicarBorde
+            // 
+            this.tsbAplicarBorde.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbAplicarBorde.Image = global::SisContador.Properties.Resources.checked16x16;
+            this.tsbAplicarBorde.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbAplicarBorde.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAplicarBorde.Name = "tsbAplicarBorde";
+            this.tsbAplicarBorde.Size = new System.Drawing.Size(98, 28);
+            this.tsbAplicarBorde.Text = "Aplicar borde";
+            this.tsbAplicarBorde.Click += new System.EventHandler(this.tsbAplicarBorde_Click);
             // 
             // frmPeriodo
             // 
@@ -522,5 +537,6 @@
         private System.Windows.Forms.TextBox txtObservaciones;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.ToolStripMenuItem tsbCerrar;
+        private System.Windows.Forms.ToolStripButton tsbAplicarBorde;
     }
 }

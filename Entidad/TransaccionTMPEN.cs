@@ -27,6 +27,8 @@ namespace Entidad
         public string Where { set; get; }
         public string OrderBy { set; get; }
         public string TituloDelReporte { set; get; }
+        public string SubTituloDelReporte { set; get; }
+        public decimal TasaDeCambio { set; get; }
 
     }
 }

@@ -41,10 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ReportesAD.cs" />
     <Compile Include="ConfiguracionAD.cs" />
     <Compile Include="TansaccionDetalleTMPBancoAD.cs" />
     <Compile Include="PeriodoAD.cs" />
     <Compile Include="CierreDePeriodoAD.cs" />
+    <Compile Include="TasaDeCambioAD.cs" />
     <Compile Include="TransaccionDetalleTMPAD.cs" />
     <Compile Include="TransaccionTMPAD.cs" />
     <Compile Include="TipoDeTransaccionAD.cs" />

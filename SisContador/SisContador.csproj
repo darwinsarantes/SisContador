@@ -27,8 +27,7 @@
     <TargetCulture>es-NI</TargetCulture>
     <ProductName>SisContador</ProductName>
     <PublisherName>SisContador</PublisherName>
-    <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationRevision>29</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -71,7 +70,7 @@
     </Win32Resource>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>LogSistemas.ico</ApplicationIcon>
+    <ApplicationIcon>LogSistemas128Black.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -83,13 +82,23 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Funciones.dll</HintPath>
     </Reference>
+    <Reference Include="ImportacionesAExcel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ImportacionesAExcel.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="SaveImage_VB2008, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\SaveImage_VB2008.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -102,6 +111,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Formularios\FormatoDGV.cs" />
+    <Compile Include="Formularios\frmGraficos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmGraficos.Designer.cs">
+      <DependentUpon>frmGraficos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmInformacionDeLaCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmInformacionDeLaCuenta.Designer.cs">
+      <DependentUpon>frmInformacionDeLaCuenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmPeriodo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +140,18 @@
     </Compile>
     <Compile Include="Formularios\frmReportes.Designer.cs">
       <DependentUpon>frmReportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTasaDeCambio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTasaDeCambio.Designer.cs">
+      <DependentUpon>frmTasaDeCambio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTasaDeCambioOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTasaDeCambioOperacion.Designer.cs">
+      <DependentUpon>frmTasaDeCambioOperacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmTransaccionOperacionBack.cs">
       <SubType>Form</SubType>
@@ -264,6 +297,12 @@
     <Compile Include="Formularios\Principal.Designer.cs">
       <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmReportesHistorico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmReportesHistorico.Designer.cs">
+      <DependentUpon>frmReportesHistorico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -271,8 +310,74 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\rptListadoDeMovimientosDelMesPorCuenta.cs">
+      <DependentUpon>rptListadoDeMovimientosDelMesPorCuenta.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptRecapitulaciones.cs">
+      <DependentUpon>rptRecapitulaciones.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptImprimirTransaccionBack.cs">
+      <DependentUpon>rptImprimirTransaccionBack.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reportes\rptImprimirTransaccion.cs">
       <DependentUpon>rptImprimirTransaccion.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptLibroDeBanco.cs">
+      <DependentUpon>rptLibroDeBanco.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptAuxiliarDelMayor.cs">
+      <DependentUpon>rptAuxiliarDelMayor.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptBalanceGeneralDetallado.cs">
+      <DependentUpon>rptBalanceGeneralDetallado.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptBalanzaDeComprobacion.cs">
+      <DependentUpon>rptBalanzaDeComprobacion.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptTraerEstadoDeResultado.cs">
+      <DependentUpon>rptTraerEstadoDeResultado.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptTraerElSaldoActualDetalladoPorGrupo.cs">
+      <DependentUpon>rptTraerElSaldoActualDetalladoPorGrupo.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptTraerElSaldoActualDetallado.cs">
+      <DependentUpon>rptTraerElSaldoActualDetallado.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptTraerElSaldoActual.cs">
+      <DependentUpon>rptTraerElSaldoActual.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -295,6 +400,12 @@
       <DependentUpon>rptListaDeCuentas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="Formularios\frmGraficos.resx">
+      <DependentUpon>frmGraficos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmInformacionDeLaCuenta.resx">
+      <DependentUpon>frmInformacionDeLaCuenta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmPeriodo.resx">
       <DependentUpon>frmPeriodo.cs</DependentUpon>
     </EmbeddedResource>
@@ -303,6 +414,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmReportes.resx">
       <DependentUpon>frmReportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTasaDeCambio.resx">
+      <DependentUpon>frmTasaDeCambio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTasaDeCambioOperacion.resx">
+      <DependentUpon>frmTasaDeCambioOperacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmTransaccionOperacionBack.resx">
       <DependentUpon>frmTransaccionOperacionBack.cs</DependentUpon>
@@ -376,14 +493,61 @@
     <EmbeddedResource Include="Formularios\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmReportesHistorico.resx">
+      <DependentUpon>frmReportesHistorico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptListadoDeMovimientosDelMesPorCuenta.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptListadoDeMovimientosDelMesPorCuenta.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptRecapitulaciones.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptRecapitulaciones.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptImprimirTransaccionBack.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptImprimirTransaccionBack.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptImprimirTransaccion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptImprimirTransaccion.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptLibroDeBanco.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptLibroDeBanco.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptAuxiliarDelMayor.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAuxiliarDelMayor.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptBalanceGeneralDetallado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptBalanceGeneralDetallado.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptBalanzaDeComprobacion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptBalanzaDeComprobacion.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptTraerEstadoDeResultado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTraerEstadoDeResultado.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptTraerElSaldoActualDetalladoPorGrupo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTraerElSaldoActualDetalladoPorGrupo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptTraerElSaldoActualDetallado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTraerElSaldoActualDetallado.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptTraerElSaldoActual.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTraerElSaldoActual.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptListaDeCuentasCompleta.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -469,8 +633,13 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 y x64%29</ProductName>
       <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
@@ -617,9 +786,54 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LogSistemas.ico" />
+    <Content Include="LogSistemas128.ico" />
+    <Content Include="LogSistemas128Black.ico" />
     <Content Include="Origen XML\DataSet.xml">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Resources\if_chart_512543.png" />
+    <None Include="Resources\if_chart_512543 %284%29.png" />
+    <None Include="Resources\if_chart_512543 %283%29.png" />
+    <None Include="Resources\if_chart_512543 %282%29.png" />
+    <None Include="Resources\if_chart_512543 %281%29.png" />
+    <None Include="Resources\if_tools_1287509.png" />
+    <None Include="Resources\if_tools_1287509 %284%29.png" />
+    <None Include="Resources\if_tools_1287509 %283%29.png" />
+    <None Include="Resources\if_tools_1287509 %282%29.png" />
+    <None Include="Resources\if_tools_1287509 %281%29.png" />
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694.png" />
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %284%29.png" />
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %283%29.png" />
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %282%29.png" />
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %281%29.png" />
+    <None Include="Resources\if_Information_27854.png" />
+    <None Include="Resources\if_Information_27854 %283%29.png" />
+    <None Include="Resources\if_Information_27854 %282%29.png" />
+    <None Include="Resources\if_Information_27854 %281%29.png" />
+    <None Include="Resources\if_help-browser_118806.png" />
+    <None Include="Resources\if_help-browser_118806 %284%29.png" />
+    <None Include="Resources\if_help-browser_118806 %283%29.png" />
+    <None Include="Resources\if_help-browser_118806 %282%29.png" />
+    <None Include="Resources\if_help-browser_118806 %281%29.png" />
+    <None Include="Resources\if_keys_60186.png" />
+    <None Include="Resources\if_keys_60186 %283%29.png" />
+    <None Include="Resources\if_keys_60186 %282%29.png" />
+    <None Include="Resources\if_keys_60186 %281%29.png" />
+    <None Include="Resources\if_SEO_content_management_969251.png" />
+    <None Include="Resources\if_SEO_content_management_969251 %282%29.png" />
+    <None Include="Resources\if_SEO_content_management_969251 %281%29.png" />
+    <None Include="Resources\Egresos32.png" />
+    <None Include="Resources\Egresos24.png" />
+    <None Include="Resources\Egresos20.png" />
+    <None Include="Resources\CAJA400.png" />
+    <None Include="Resources\CAJA32.png" />
+    <None Include="Resources\CAJA24.png" />
+    <None Include="Resources\CAJA16.png" />
+    <None Include="Resources\CUENTAS400.png" />
+    <None Include="Resources\CUENTAS24.png" />
+    <None Include="Resources\CUENTAS20.png" />
+    <None Include="Resources\CUENTAS16.png" />
+    <None Include="Resources\CUENTAS.png" />
     <None Include="Resources\loginSisContador.png" />
     <None Include="Resources\server-connection %282%29.png" />
     <None Include="Resources\serverbasededatos32x32.png" />
@@ -648,6 +862,35 @@
     <None Include="Resources\leftarrow32x32.png" />
     <None Include="Resources\leftarrow24x24.png" />
     <None Include="Resources\leftarrow20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

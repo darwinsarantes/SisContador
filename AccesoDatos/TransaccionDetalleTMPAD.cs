@@ -531,7 +531,7 @@ namespace AccesoDatos
                 inner join cuenta as c on c.NoCuenta = tt.NoCuenta
                 where idTransaccionDetalle > 0 {0}
 
-                union
+                union all
 
                 Select 
                 idTransaccionDetalle, tt.NoCuenta, tt.idTransacciones, c.idCuenta,c.DescCuenta, tt.Debe, tt.Haber, 
@@ -543,6 +543,68 @@ namespace AccesoDatos
                 ) as T  {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
                 
+                Adaptador = new MySqlDataAdapter();
+                DT = new DataTable();
+
+                Adaptador.SelectCommand = Comando;
+                Adaptador.Fill(DT);
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+
+                if (Cnn != null)
+                {
+
+                    if (Cnn.State == ConnectionState.Open)
+                    {
+
+                        Cnn.Close();
+
+                    }
+
+                }
+
+                Cnn = null;
+                Comando = null;
+                Adaptador = null;
+
+            }
+
+        }
+
+        public bool ListadoParaReportesDesdeELHistorico(TransaccionDetalleTMPEN oRegistroEN, DatosDeConexionEN oDatos)
+        {
+
+            try
+            {
+
+                Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
+                Cnn.Open();
+
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn;
+                Comando.CommandType = CommandType.Text;
+
+                Consultas = string.Format(@"Select idTransaccionDetalle, NoCuenta, idTransacciones, idCuenta,DescCuenta, Debe, Haber, 
+                IdUsuarioDeCreacion, FechaDeCreacion, IdUsuarioDeModificacion, FechaDeModificacion from (
+                Select 
+                idTransaccionDetalle, tt.NoCuenta, tt.idTransacciones, c.idCuenta,c.DescCuenta, tt.Debe, tt.Haber, 
+                tt.IdUsuarioDeCreacion, tt.FechaDeCreacion, tt.IdUsuarioDeModificacion, tt.FechaDeModificacion
+                from transaccion_cierre_detalle as tt
+                inner join transaccion_cierre as t on t.idTransacciones = tt.idTransacciones
+                inner join cuenta as c on c.NoCuenta = tt.NoCuenta
+                ) as T where idTransaccionDetalle > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Comando.CommandText = Consultas;
+
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();
 

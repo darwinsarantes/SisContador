@@ -41,9 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfiguracionLN.cs" />
+    <Compile Include="ReportesLN.cs" />
     <Compile Include="TansaccionDetalle_BancoLN.cs" />
     <Compile Include="PeriodoLN.cs" />
     <Compile Include="CierreDePeriodoLN.cs" />
+    <Compile Include="TasaDeCambioLN.cs" />
     <Compile Include="TransaccionDetalleTMPLN.cs" />
     <Compile Include="TransaccionTMPLN.cs" />
     <Compile Include="TipoDeTransaccionLN.cs" />

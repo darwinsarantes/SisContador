@@ -27,6 +27,9 @@ namespace SisContador.Formularios
 
         private bool CerrarVentana = false;
 
+        private bool AplicarCambio = false;
+        private bool PermitirModificarRegistrosVinculados = false;
+
         private void frmCategoriaDeCuentaOperacion_Shown(object sender, EventArgs e)
         {
             ObtenerValoresDeConfiguracion();
@@ -34,8 +37,48 @@ namespace SisContador.Formularios
             LlamarMetodoSegunOperacion();
             EstablecerTituloDeVentana();
             DeshabilitarControlesSegunOperacionesARealizar();
-                        
+
+            CargarPrivilegiosDelUsuario();
+            ConfiguracionDePantalla();
+            
         }
+
+        private void ConfiguracionDePantalla()
+        {
+            try
+            {
+
+                int Alto = Screen.PrimaryScreen.Bounds.Height;
+                int Ancho = Screen.PrimaryScreen.Bounds.Width;
+
+                if (Ancho == 1024 && Alto == 768)
+                {
+                    tsbGuardar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+
+                    foreach (ToolStripItem item in toolStrip1.Items)
+                    {
+                        if (item.Name != null)
+                        {
+                            string Referencia = item.Name;
+                            List<string> RDB = new List<string>(new string[] { "tsbGuardar", "tsbActualizar", "tsbEliminar", "tsbLimpiarCampos", "tsbImprimir", "tsbRecarRegistro", "tsbCerrarVentan" });
+
+                            if (RDB.Contains(Referencia, StringComparer.OrdinalIgnoreCase) == true)
+                            {
+                                item.DisplayStyle = ToolStripItemDisplayStyle.Image;
+                            }
+
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Configuraciona de pantalla", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
 
         #region "Funciones"
 
@@ -119,18 +162,23 @@ namespace SisContador.Formularios
 
                 if (oRegistroLN.ListadoPrivilegiosDelUsuariosPorIntefaz(oRegistroEN, Program.oDatosDeConexion))
                 {
-                    
-                    tsbActualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Actualizar");
-
-                    if (tsbActualizar.Enabled == true) {
-
-                        DeshabilitarControlesSegunOperacionesARealizar();
-
-                    }
-                    else
+                    if (OperacionARealizar.Trim().ToUpper() == "MODIFICAR")
                     {
-                        MessageBox.Show("No tiene privilegio para modificar el registro, la ventana se cerrara", "Privilegios de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        this.Close();
+                        tsbActualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Actualizar");
+
+                        if (tsbActualizar.Enabled == true)
+                        {
+
+                            DeshabilitarControlesSegunOperacionesARealizar();
+                            PermitirModificarRegistrosVinculados = oRegistroLN.VerificarSiTengoAcceso("Permitir modificar registros vinculados");
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("No tiene privilegio para modificar el registro, la ventana se cerrara", "Privilegios de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            this.Close();
+                        }
+
                     }
                     
 
@@ -208,7 +256,8 @@ namespace SisContador.Formularios
                     txtIdentificador.ReadOnly = true;
                     txtDescCategoriaDeCuenta.Text = string.Empty;                    
                     cmbGrupoDeCuenta.SelectedIndex = -1;                    
-                   
+                    
+
                     break;
 
                 case "MODIFICAR":
@@ -219,7 +268,8 @@ namespace SisContador.Formularios
                     tsbRecarRegistro.Enabled = true;
 
                     txtIdentificador.ReadOnly = true;
-                                        
+                    tsbAutorizarModificación.Enabled = true;
+                    
                     break;
 
                 case "ELIMINAR":
@@ -521,9 +571,20 @@ namespace SisContador.Formularios
 
                     if (oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN, Program.oDatosDeConexion, "ACTUALIZAR"))
                     {
-                        this.Cursor = Cursors.Default;
-                        MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        return;
+                        if (PermitirModificarRegistrosVinculados == true && AplicarCambio == true)
+                        {
+                            if (MessageBox.Show(string.Format("¿Está seguro que desea guardar los cambios en el registro seleccionado ya que este se encuentra asociado a otras Entidades de manera interna? {0} {1}", System.Environment.NewLine, oRegistroLN.Error), "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) == System.Windows.Forms.DialogResult.No)
+                            {
+                                this.Cursor = Cursors.Default;
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            this.Cursor = Cursors.Default;
+                            return;
+                        }
                     }
 
                     if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexion, "ACTUALIZAR"))
@@ -643,6 +704,26 @@ namespace SisContador.Formularios
         private void tsbRecarRegistro_Click(object sender, EventArgs e)
         {
             LlenarCamposDesdeBaseDatosSegunID();
+        }
+
+        private void tsbAutorizarModificación_Click(object sender, EventArgs e)
+        {
+            tsbAutorizarModificación.Checked = !tsbAutorizarModificación.Checked;
+            AplicarCambio = tsbAutorizarModificación.Checked;
+
+            if (tsbAutorizarModificación.Checked == true)
+            {
+                tsbAutorizarModificación.Image = Properties.Resources.unchecked16x16;
+            }
+            else
+            {
+                tsbAutorizarModificación.Image = Properties.Resources.checked16x16;
+            }
+        }
+
+        private void tsbImprimir_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

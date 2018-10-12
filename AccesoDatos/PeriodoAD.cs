@@ -395,7 +395,7 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"Select idPeriodo, Codigo, Desde, Hasta, Nombre, Obsevaciones, Estado, 
+                Consultas = string.Format(@"Select idPeriodo, Codigo, SoloFecha( Desde) as 'Desde', SoloFecha(Hasta) as 'Hasta', Nombre, Obsevaciones, Estado, 
                 IdUsuarioDeCreacion, FechaDeCreacion, IdUsuarioDeModificacion, FechaDeModificacion
                 from periodo
                 Where idPeriodo > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
@@ -567,7 +567,9 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = @"Select count(idTransacciones) as 'TotalDeRegistros' from transacciones where Fecha between @Desde and @Hasta";
+                //Consultas = @"Select count(idTransacciones) as 'TotalDeRegistros' from transacciones where Fecha between @Desde and @Hasta";
+                //Consultas = @"Select count(idTransacciones) as 'TotalDeRegistros' from transacciones where SoloFecha( Fecha ) >= SoloFecha( @Desde ) and  SoloFecha(Fecha) <= SoloFecha( @Hasta ) ";
+                Consultas = @"Select count(idTransacciones) as 'TotalDeRegistros' from transacciones where SoloFecha( Fecha ) between SoloFecha( @Desde ) and SoloFecha( @Hasta )";
                 Comando.Parameters.Add(new MySqlParameter("@Desde", MySqlDbType.DateTime)).Value = oRegistroEN.Desde;
                 Comando.Parameters.Add(new MySqlParameter("@Hasta", MySqlDbType.DateTime)).Value = oRegistroEN.Hasta;
 
@@ -681,10 +683,64 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"Select idPeriodo, Codigo, Desde, Hasta, Nombre, Obsevaciones, Estado, 
-                IdUsuarioDeCreacion, FechaDeCreacion, IdUsuarioDeModificacion, FechaDeModificacion
+                Consultas = string.Format(@"Select idPeriodo, Codigo, Desde, Hasta, Nombre, Obsevaciones, Estado,
+                concat(Codigo, ' - ', Nombre) as 'PeriodoCerrado'                
                 from periodo
                 Where idPeriodo > 0 {0} {1} ; ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Comando.CommandText = Consultas;
+
+                Adaptador = new MySqlDataAdapter();
+                DT = new DataTable();
+
+                Adaptador.SelectCommand = Comando;
+                Adaptador.Fill(DT);
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+
+                if (Cnn != null)
+                {
+
+                    if (Cnn.State == ConnectionState.Open)
+                    {
+
+                        Cnn.Close();
+
+                    }
+
+                }
+
+                Cnn = null;
+                Comando = null;
+                Adaptador = null;
+
+            }
+
+        }
+
+        public bool ListadoDeLosAñosEnPeriodosCerrasdos(PeriodoEN oRegistroEN, DatosDeConexionEN oDatos)
+        {
+
+            try
+            {
+
+                Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
+                Cnn.Open();
+
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn;
+                Comando.CommandType = CommandType.Text;
+
+                Consultas = @"Select date_format(Hasta, '%Y') as 'Ano' from periodo where Estado = 'CERRADO' group by year(Hasta) order by Hasta desc; ";
                 Comando.CommandText = Consultas;
 
                 Adaptador = new MySqlDataAdapter();

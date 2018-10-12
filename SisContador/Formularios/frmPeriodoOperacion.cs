@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Entidad;
 using Logica;
 using Funciones;
+using System.Diagnostics;
+using System.IO;
 
 namespace SisContador.Formularios
 {
@@ -71,8 +73,10 @@ namespace SisContador.Formularios
                     if (oPeriodoLN.TraerDatos().Rows.Count > 0)
                     {
                         DataRow Fila = oPeriodoLN.TraerDatos().Rows[0];
-                        dtpDesde.Value = Convert.ToDateTime(Fila["Res"].ToString());
+                        DateTime FechaActual = Convert.ToDateTime(Fila["Res"].ToString());
 
+                        dtpDesde.Value = FechaActual.AddDays(1);
+                       
                         System.Globalization.DateTimeFormatInfo mfi = new System.Globalization.DateTimeFormatInfo();
 
                         txtNombre.Text = string.Format("Periodo de Cierre al Mes de: '{0}'", mfi.GetMonthName(dtpDesde.Value.Month));
@@ -101,8 +105,29 @@ namespace SisContador.Formularios
             try
             {
 
-                oPeriodoEN.Desde = dtpDesde.Value;
-                oPeriodoEN.Hasta = dtpHasta.Value;
+                DateTime Desde = new DateTime(dtpDesde.Value.Year, dtpDesde.Value.Month, dtpDesde.Value.Day);
+                DateTime Hasta = new DateTime(dtpHasta.Value.Year, dtpHasta.Value.Month, dtpHasta.Value.Day);
+
+                oPeriodoEN.Desde = Desde;
+                oPeriodoEN.Hasta = Hasta;
+
+                System.Globalization.DateTimeFormatInfo mfi = new System.Globalization.DateTimeFormatInfo();
+
+                if (Desde.Year == Hasta.Year && Desde.Month == Hasta.Month)
+                {
+                    txtNombre.Text = string.Format("Periodo de Cierre al Mes de: '{0}'", mfi.GetMonthName(dtpDesde.Value.Month));
+                }else if (Desde.Year == Hasta.Year && Desde.Month != Hasta.Month)
+                {
+                    txtNombre.Text = string.Format("Periodo de Cierre del Mes: '{0}', Hasta el mes: {1}", mfi.GetMonthName(dtpDesde.Value.Month), mfi.GetMonthName(dtpHasta.Value.Month));
+                }else if (Desde.Year != Hasta.Year && Desde.Month == Hasta.Month)
+                {
+                    txtNombre.Text = string.Format("Periodo de Cierre se aplicara Desde: '{0}-{2}', Hasta: '{1}-{3}'", mfi.GetMonthName(dtpDesde.Value.Month), mfi.GetMonthName(dtpHasta.Value.Month), dtpDesde.Value.Year, dtpHasta.Value.Year);
+                }else if (Desde.Year != Hasta.Year && Desde.Month != Hasta.Month)
+                {
+                    txtNombre.Text = string.Format("Periodo de Cierre se aplicara: '{0}-{2}', hasta: '{1}-{3}'", mfi.GetMonthName(dtpDesde.Value.Month), mfi.GetMonthName(dtpHasta.Value.Month), dtpDesde.Value.Year, dtpHasta.Value.Year);
+                }
+
+                txtObservacion.Text = string.Format("Periodo de Cierre al Mes de: '{0}', con rago de fecha: '{1}' -{2}", mfi.GetMonthName(dtpDesde.Value.Month), dtpDesde.Value.ToLongDateString(), dtpHasta.Value.ToLongDateString());
 
                 if (oPeriodoLN.EvaluarCuantosMovimientosCeranAfectadosPorElCierreDePeriodo(oPeriodoEN, Program.oDatosDeConexion))
                 {
@@ -110,12 +135,16 @@ namespace SisContador.Formularios
                     {
                         lbContar.Text = string.Format("Número ({0}) de registros incluidos en el periodo: '{1}' en el Rago de Fechas: {2} - {3} ", oPeriodoLN.TraerDatos().Rows[0]["TotalDeRegistros"].ToString(), txtNombre.Text, dtpDesde.Value.ToLongDateString(), dtpHasta.Value.ToLongDateString());
                     }
+                    else
+                    {
+                        lbContar.Text = string.Format("Número ({0}) de registros incluidos en el periodo: '{1}' en el Rago de Fechas: {2} - {3} ", 0, txtNombre.Text, dtpDesde.Value.ToLongDateString(), dtpHasta.Value.ToLongDateString());
+                    }
                 }
                 else
                 {
                     lbContar.Text = string.Format("Número ({0}) de registros incluidos en el periodo: '{1}' en el Rago de Fechas: {2} - {3} ", 0, txtNombre.Text, dtpDesde.Value.ToLongDateString(), dtpHasta.Value.ToLongDateString());
                 }
-
+                
             }
             catch (Exception ex)
             {
@@ -483,8 +512,8 @@ namespace SisContador.Formularios
                     txtNombre.Text = Fila["Nombre"].ToString();
                     txtObservacion.Text = Fila["Obsevaciones"].ToString();
                     cmbEstado.Text = Fila["Estado"].ToString();
-                    dtpDesde.Value = Convert.ToDateTime(Fila["Desde"].ToString());
-                    dtpHasta.Value = Convert.ToDateTime(Fila["Hasta"].ToString());
+                    dtpDesde.Value = Convert.ToDateTime(Fila["Desde"]);
+                    dtpHasta.Value = Convert.ToDateTime(Fila["Hasta"]);
 
                     oRegistrosEN = null;
                     oRegistrosLN = null;
@@ -582,7 +611,7 @@ namespace SisContador.Formularios
             {
                 DateTime FechaCierre = dtpFechaDeCierre.Value;
 
-                if (FechaCierre < Fecha2)
+                if (FechaCierre <= Fecha2)
                 {
                     EP.SetError(dtpFechaDeCierre, "La fecha de del cierre del perio no pude ser menos que la fecha de finalización del Periodo");
                     dtpFechaDeCierre.Focus();
@@ -593,6 +622,20 @@ namespace SisContador.Formularios
                 {
                     EP.SetError(txtDescripcion, "Este campo no puede estar vacío.");
                     txtDescripcion.Focus();
+                    return false;
+                }
+
+                if (txtCambioOficial.Text.Length == 0 || string.IsNullOrEmpty(txtCambioOficial.Text))
+                {
+                    EP.SetError(txtCambioOficial, "Este campo no puede estar vacío.");
+                    txtCambioOficial.Focus();
+                    return false;
+                }
+
+                if (Convert.ToDecimal(txtCambioOficial.Text) <= 0)
+                {
+                    EP.SetError(txtCambioOficial, "El valor ingresado no es válido");
+                    txtCambioOficial.Focus();
                     return false;
                 }
 
@@ -645,6 +688,21 @@ namespace SisContador.Formularios
             oRegistroEN.FechaDeCreacion = System.DateTime.Now;
             oRegistroEN.FechaDeModificacion = System.DateTime.Now;
 
+            if (Controles.IsNullOEmptyElControl(txtIdTasaDeCambio))
+            {
+                oRegistroEN.oTasaDeCambioEN.idTasaDeCambio = 0;
+            }else
+            {
+                oRegistroEN.oTasaDeCambioEN.idTasaDeCambio = Convert.ToInt32(txtIdTasaDeCambio.Text);
+            }
+            
+            oRegistroEN.oTasaDeCambioEN.Cambio = Convert.ToDecimal(txtCambioOficial.Text);
+            oRegistroEN.oTasaDeCambioEN.Fecha = dtpkFechaDeLaTasaDeCambio.Value;
+            oRegistroEN.oLoginEN = Program.oLoginEN;
+            oRegistroEN.IdUsuarioDeCreacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.IdUsuarioDeModificacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
+            oRegistroEN.FechaDeModificacion = System.DateTime.Now;
 
             return oRegistroEN;
             
@@ -666,10 +724,18 @@ namespace SisContador.Formularios
                         return;
                     }
 
+                    if (EvaluarSiHayRegistrosEnLaTablaTMP())
+                    {
+                        return;
+                    }
+
                     CierreDePeriodoEN oRegistroEN = InformacionSobreELCierreDePeriodo();
                     CierreDePeriodoLN oRegistroLN = new CierreDePeriodoLN();
 
-                    if(oRegistroLN.AgregarUtilizandoLaMismaConexion(oRegistroEN, Program.oDatosDeConexion))
+                    //realiaremos un backup dela base de datos...
+                    RespaldarBaseDeDatos();
+
+                    if (oRegistroLN.AgregarUtilizandoLaMismaConexion(oRegistroEN, Program.oDatosDeConexion))
                     {
                         EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "CERRAR");
 
@@ -689,6 +755,96 @@ namespace SisContador.Formularios
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Aplicar cierre de periodo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void RespaldarBaseDeDatos()
+        {
+            try
+            {
+                CarpetaDeRespaldo();
+
+                System.Globalization.DateTimeFormatInfo formatoFecha = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat;
+
+                String NombreDelfichero = string.Format("{0}\\{1}_{2}_CierreDelMesDe_{3}.sql", Program.oConfiguracionEN.RutaRespaldos, Program.oDatosDeConexion.BaseDeDatos.Trim().ToUpper(), System.DateTime.Now.ToString("yyyyMMdd_hms"), formatoFecha.GetMonthName(dtpHasta.Value.Month));
+                
+                Process cmd = new Process();
+                cmd.StartInfo.FileName = "cmd.exe";//string.Format(@"{0}mysqldump", Program.oConfiguracionEN.PathMysSQLDump);
+                cmd.StartInfo.RedirectStandardInput = true;
+                cmd.StartInfo.RedirectStandardOutput = true;
+                cmd.StartInfo.CreateNoWindow = true;
+                cmd.StartInfo.UseShellExecute = false;
+                cmd.Start();
+
+                cmd.StandardInput.WriteLine(@"c:");
+                cmd.StandardInput.Flush();
+                cmd.StandardInput.WriteLine(string.Format(@"cd {0}", Program.oConfiguracionEN.PathMysSQLDump.Trim()));
+                cmd.StandardInput.Flush();
+                cmd.StandardInput.WriteLine(string.Format("mysqldump -h{0} -P{1} -u{2} -p{3} --opt --routines --add-drop-database --databases {4} > {5}",
+                    Program.oDatosDeConexion.Servidor, Program.oDatosDeConexion.PuertoDeConexionDelServidor, Program.oDatosDeConexion.Usuario, Program.oDatosDeConexion.Contraseña,
+                    Program.oDatosDeConexion.BaseDeDatos, NombreDelfichero));
+                cmd.StandardInput.Flush();
+                cmd.StandardInput.Close();
+                cmd.Close();
+                cmd = null;
+                
+                tsblMensajes.Text = "Copia de seguridad realizada con éxito";
+                tsblMensajes.ForeColor = Color.Blue;
+                
+            }
+            catch (Exception ex)
+            {                
+                tsblMensajes.Text = string.Format("Se ha producido un error al realizar la copia de seguridad: {0} {1}", Environment.NewLine, ex.Message);
+                tsblMensajes.ForeColor = Color.Red;
+
+            }
+            finally
+            {
+                timer1.Interval = 5000;
+                timer1.Start();
+            }
+        }
+
+        private void CarpetaDeRespaldo()
+        {
+            try
+            {
+                if (!Directory.Exists(Program.oConfiguracionEN.RutaRespaldos))
+                {
+                    Directory.CreateDirectory(Program.oConfiguracionEN.RutaRespaldos);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Caperta de respaldo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        public bool EvaluarSiHayRegistrosEnLaTablaTMP()
+        {
+            try
+            {
+
+                TransaccionTMPEN oRegistroEN = new TransaccionTMPEN();
+                TransaccionTMPLN oRegistroLN = new TransaccionTMPLN();
+
+                if (oRegistroLN.EvaluarSiHayDatosEnLaTablaTMP(oRegistroEN, Program.oDatosDeConexion, dtpDesde.Value, dtpHasta.Value))
+                {
+                    throw new ArgumentException(oRegistroLN.Error);
+                }
+                else
+                {
+                    return false;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Evaluar si hay registro pendiente en proceso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
             }
         }
 
@@ -947,6 +1103,22 @@ namespace SisContador.Formularios
                 AplicarCierreDelPeriodo();
             }
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            tsblMensajes.Text = string.Empty;
+            timer1.Stop();
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCambioOficial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Numeros.EnterosYDecimales(e, txtCambioOficial, 4);
         }
     }
 }

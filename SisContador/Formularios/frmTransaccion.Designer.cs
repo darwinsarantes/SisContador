@@ -70,6 +70,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbMarcarTodos = new System.Windows.Forms.ToolStripButton();
             this.tsbSeleccionarTodos = new System.Windows.Forms.ToolStripButton();
+            this.tsbAplicarRangoDeFecha = new System.Windows.Forms.ToolStripButton();
+            this.tsbAplicarBorde = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -143,7 +145,7 @@
             this.cmbCategoriaDeLasCuentas.Location = new System.Drawing.Point(564, 84);
             this.cmbCategoriaDeLasCuentas.Name = "cmbCategoriaDeLasCuentas";
             this.cmbCategoriaDeLasCuentas.Size = new System.Drawing.Size(237, 21);
-            this.cmbCategoriaDeLasCuentas.TabIndex = 12;
+            this.cmbCategoriaDeLasCuentas.TabIndex = 14;
             this.cmbCategoriaDeLasCuentas.SelectionChangeCommitted += new System.EventHandler(this.cmbCategoriaDeLasCuentas_SelectionChangeCommitted);
             // 
             // chkCategoriaDeLasCuentas
@@ -151,7 +153,7 @@
             this.chkCategoriaDeLasCuentas.Location = new System.Drawing.Point(425, 82);
             this.chkCategoriaDeLasCuentas.Name = "chkCategoriaDeLasCuentas";
             this.chkCategoriaDeLasCuentas.Size = new System.Drawing.Size(137, 24);
-            this.chkCategoriaDeLasCuentas.TabIndex = 11;
+            this.chkCategoriaDeLasCuentas.TabIndex = 13;
             this.chkCategoriaDeLasCuentas.Text = "Categoria de Cuentas:";
             this.chkCategoriaDeLasCuentas.UseVisualStyleBackColor = true;
             // 
@@ -167,7 +169,7 @@
             this.cmbGrupoDeCuentas.Location = new System.Drawing.Point(564, 57);
             this.cmbGrupoDeCuentas.Name = "cmbGrupoDeCuentas";
             this.cmbGrupoDeCuentas.Size = new System.Drawing.Size(237, 21);
-            this.cmbGrupoDeCuentas.TabIndex = 10;
+            this.cmbGrupoDeCuentas.TabIndex = 12;
             this.cmbGrupoDeCuentas.SelectionChangeCommitted += new System.EventHandler(this.cmbGrupoDeCuentas_SelectionChangeCommitted);
             // 
             // chkGrupoDeCuentas
@@ -175,7 +177,7 @@
             this.chkGrupoDeCuentas.Location = new System.Drawing.Point(425, 55);
             this.chkGrupoDeCuentas.Name = "chkGrupoDeCuentas";
             this.chkGrupoDeCuentas.Size = new System.Drawing.Size(137, 24);
-            this.chkGrupoDeCuentas.TabIndex = 9;
+            this.chkGrupoDeCuentas.TabIndex = 11;
             this.chkGrupoDeCuentas.Text = "Grupo de Cuentas:";
             this.chkGrupoDeCuentas.UseVisualStyleBackColor = true;
             // 
@@ -184,7 +186,7 @@
             this.mskidCuenta.Location = new System.Drawing.Point(564, 110);
             this.mskidCuenta.Name = "mskidCuenta";
             this.mskidCuenta.Size = new System.Drawing.Size(237, 20);
-            this.mskidCuenta.TabIndex = 7;
+            this.mskidCuenta.TabIndex = 16;
             this.mskidCuenta.KeyUp += new System.Windows.Forms.KeyEventHandler(this.mskidCuenta_KeyUp);
             // 
             // chkIdCuenta
@@ -192,7 +194,7 @@
             this.chkIdCuenta.Location = new System.Drawing.Point(425, 108);
             this.chkIdCuenta.Name = "chkIdCuenta";
             this.chkIdCuenta.Size = new System.Drawing.Size(92, 24);
-            this.chkIdCuenta.TabIndex = 8;
+            this.chkIdCuenta.TabIndex = 15;
             this.chkIdCuenta.Text = "No. Cuenta:";
             this.chkIdCuenta.UseVisualStyleBackColor = true;
             // 
@@ -206,7 +208,7 @@
             this.cmbEstado.Location = new System.Drawing.Point(564, 31);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(237, 21);
-            this.cmbEstado.TabIndex = 6;
+            this.cmbEstado.TabIndex = 10;
             this.cmbEstado.SelectionChangeCommitted += new System.EventHandler(this.cmbEstado_SelectionChangeCommitted);
             // 
             // chkEstado
@@ -214,7 +216,7 @@
             this.chkEstado.Location = new System.Drawing.Point(425, 29);
             this.chkEstado.Name = "chkEstado";
             this.chkEstado.Size = new System.Drawing.Size(137, 24);
-            this.chkEstado.TabIndex = 5;
+            this.chkEstado.TabIndex = 9;
             this.chkEstado.Text = "Estado:";
             this.chkEstado.UseVisualStyleBackColor = true;
             // 
@@ -233,7 +235,7 @@
             this.dtpkFecha1.Location = new System.Drawing.Point(156, 57);
             this.dtpkFecha1.Name = "dtpkFecha1";
             this.dtpkFecha1.Size = new System.Drawing.Size(111, 20);
-            this.dtpkFecha1.TabIndex = 4;
+            this.dtpkFecha1.TabIndex = 3;
             this.dtpkFecha1.ValueChanged += new System.EventHandler(this.dtpkFecha1_ValueChanged);
             // 
             // chkFecha
@@ -241,7 +243,7 @@
             this.chkFecha.Location = new System.Drawing.Point(21, 55);
             this.chkFecha.Name = "chkFecha";
             this.chkFecha.Size = new System.Drawing.Size(118, 24);
-            this.chkFecha.TabIndex = 3;
+            this.chkFecha.TabIndex = 2;
             this.chkFecha.Text = "Fecha:";
             this.chkFecha.UseVisualStyleBackColor = true;
             // 
@@ -255,7 +257,7 @@
             this.cmbTipoDeTransaccion.Location = new System.Drawing.Point(156, 110);
             this.cmbTipoDeTransaccion.Name = "cmbTipoDeTransaccion";
             this.cmbTipoDeTransaccion.Size = new System.Drawing.Size(237, 21);
-            this.cmbTipoDeTransaccion.TabIndex = 2;
+            this.cmbTipoDeTransaccion.TabIndex = 8;
             this.cmbTipoDeTransaccion.SelectionChangeCommitted += new System.EventHandler(this.cmbDebito_SelectionChangeCommitted);
             // 
             // chkTipoDeTransaccion
@@ -263,7 +265,7 @@
             this.chkTipoDeTransaccion.Location = new System.Drawing.Point(21, 108);
             this.chkTipoDeTransaccion.Name = "chkTipoDeTransaccion";
             this.chkTipoDeTransaccion.Size = new System.Drawing.Size(137, 24);
-            this.chkTipoDeTransaccion.TabIndex = 0;
+            this.chkTipoDeTransaccion.TabIndex = 7;
             this.chkTipoDeTransaccion.Text = "Tipo de Transacción:";
             this.chkTipoDeTransaccion.UseVisualStyleBackColor = true;
             // 
@@ -272,7 +274,7 @@
             this.txtConcepto.Location = new System.Drawing.Point(156, 84);
             this.txtConcepto.Name = "txtConcepto";
             this.txtConcepto.Size = new System.Drawing.Size(237, 20);
-            this.txtConcepto.TabIndex = 1;
+            this.txtConcepto.TabIndex = 6;
             this.txtConcepto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtDescTransacciones_KeyUp);
             // 
             // chkConcepto
@@ -280,7 +282,7 @@
             this.chkConcepto.Location = new System.Drawing.Point(21, 82);
             this.chkConcepto.Name = "chkConcepto";
             this.chkConcepto.Size = new System.Drawing.Size(118, 24);
-            this.chkConcepto.TabIndex = 0;
+            this.chkConcepto.TabIndex = 5;
             this.chkConcepto.Text = "Concepto:";
             this.chkConcepto.UseVisualStyleBackColor = true;
             // 
@@ -415,16 +417,19 @@
             this.tsMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.tsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbFiltrar,
+            this.tsbAplicarBorde,
             this.tsbFiltroAutomatico,
             this.tsbImprimir,
             this.tsbNuevoRegistro,
             this.toolStripSeparator2,
             this.tsbMarcarTodos,
-            this.tsbSeleccionarTodos});
+            this.tsbSeleccionarTodos,
+            this.tsbAplicarRangoDeFecha});
             this.tsMenu.Location = new System.Drawing.Point(0, 0);
             this.tsMenu.Name = "tsMenu";
             this.tsMenu.Size = new System.Drawing.Size(933, 31);
-            this.tsMenu.TabIndex = 0;
+            this.tsMenu.TabIndex = 17;
+            this.tsMenu.TabStop = true;
             this.tsMenu.Text = "Filtrar";
             // 
             // tsbFiltrar
@@ -513,6 +518,29 @@
             this.tsbSeleccionarTodos.Text = "toolStripButton2";
             this.tsbSeleccionarTodos.Click += new System.EventHandler(this.tsbSeleccionarTodos_Click);
             // 
+            // tsbAplicarRangoDeFecha
+            // 
+            this.tsbAplicarRangoDeFecha.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbAplicarRangoDeFecha.Image = global::SisContador.Properties.Resources.checked16x16;
+            this.tsbAplicarRangoDeFecha.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbAplicarRangoDeFecha.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAplicarRangoDeFecha.Name = "tsbAplicarRangoDeFecha";
+            this.tsbAplicarRangoDeFecha.Size = new System.Drawing.Size(145, 28);
+            this.tsbAplicarRangoDeFecha.Text = "Aplicar Bloque de Mes";
+            this.tsbAplicarRangoDeFecha.ToolTipText = "Aplicar Bloque de Mes Desde inicio a fin de mes correspondiente";
+            this.tsbAplicarRangoDeFecha.Click += new System.EventHandler(this.tsbAplicarRangoDeFecha_Click);
+            // 
+            // tsbAplicarBorde
+            // 
+            this.tsbAplicarBorde.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbAplicarBorde.Image = global::SisContador.Properties.Resources.checked16x16;
+            this.tsbAplicarBorde.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbAplicarBorde.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAplicarBorde.Name = "tsbAplicarBorde";
+            this.tsbAplicarBorde.Size = new System.Drawing.Size(98, 28);
+            this.tsbAplicarBorde.Text = "Aplicar borde";
+            this.tsbAplicarBorde.Click += new System.EventHandler(this.tsbAplicarBorde_Click);
+            // 
             // frmTransaccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -583,5 +611,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmComprobantes;
         private System.Windows.Forms.ToolStripMenuItem comprobanteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmGrabarDatos;
+        private System.Windows.Forms.ToolStripButton tsbAplicarRangoDeFecha;
+        private System.Windows.Forms.ToolStripButton tsbAplicarBorde;
     }
 }

@@ -32,6 +32,7 @@
             this.lbaTiempoRestante = new System.Windows.Forms.Label();
             this.lbaVersion = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lbRespaldo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbaTiempoRestante
@@ -64,6 +65,15 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // lbRespaldo
+            // 
+            this.lbRespaldo.AutoSize = true;
+            this.lbRespaldo.BackColor = System.Drawing.Color.Transparent;
+            this.lbRespaldo.Location = new System.Drawing.Point(130, 333);
+            this.lbRespaldo.Name = "lbRespaldo";
+            this.lbRespaldo.Size = new System.Drawing.Size(0, 13);
+            this.lbRespaldo.TabIndex = 3;
+            // 
             // frmSplash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -71,6 +81,7 @@
             this.BackgroundImage = global::SisContador.Properties.Resources.Splash;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(703, 404);
+            this.Controls.Add(this.lbRespaldo);
             this.Controls.Add(this.lbaVersion);
             this.Controls.Add(this.lbaTiempoRestante);
             this.DoubleBuffered = true;
@@ -79,6 +90,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSplash";
             this.Load += new System.EventHandler(this.frmSplash_Load);
+            this.Shown += new System.EventHandler(this.frmSplash_Shown);
             this.DoubleClick += new System.EventHandler(this.frmSplash_DoubleClick);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmSplash_KeyUp);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmSplash_MouseMove);
@@ -92,5 +104,6 @@
         private System.Windows.Forms.Label lbaTiempoRestante;
         private System.Windows.Forms.Label lbaVersion;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lbRespaldo;
     }
 }

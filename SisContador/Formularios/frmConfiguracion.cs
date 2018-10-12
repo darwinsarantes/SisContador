@@ -45,6 +45,11 @@ namespace SisContador.Formularios
                     txtMysqlDump.Text = Fila["PathMysSQLDump"].ToString();
                     txtPathMySQL.Text = Fila["PathMySQL"].ToString();
                     txtCuentaPrincipalDeBanco.Text = Fila["CuentaPrincipalDeBanco"].ToString();
+                    txtNombreDelSistema.Text = Fila["NombreDelSistema"].ToString();
+                    txtUtilidadOPerdidaDelEjercicio.Text = Fila["UtilidadOPerdidaDelEjercicio"].ToString();
+                    txtTiempoDeRespaldo.Text = Fila["TiempoDeRespaldo"].ToString();
+                    txtCuentaQueSeVaOcultarNivel.Text = Fila["CuentaQueSeVaOcultarNivel"].ToString();
+                    cmbNivelDeLaCuentaAOcultar.Text = Fila["NivelDeLaCuentaAOcultar"].ToString();
 
                 }
 
@@ -77,6 +82,11 @@ namespace SisContador.Formularios
                     Program.oConfiguracionEN.PathMysSQLDump = Fila["PathMysSQLDump"].ToString();
                     Program.oConfiguracionEN.PathMySQL = Fila["PathMySQL"].ToString();
                     Program.oConfiguracionEN.CuentaPrincipalDeBanco = Fila["CuentaPrincipalDeBanco"].ToString();
+                    Program.oConfiguracionEN.NombreDelSistema = Fila["NombreDelSistema"].ToString();
+                    Program.oConfiguracionEN.UtilidadOPerdidaDelEjercicio = Fila["UtilidadOPerdidaDelEjercicio"].ToString();
+                    Program.oConfiguracionEN.TiempoDeRespaldo = Convert.ToInt32( Fila["TiempoDeRespaldo"].ToString());
+                    Program.oConfiguracionEN.NivelDeLaCuentaAOcultar = Convert.ToInt32(Fila["NivelDeLaCuentaAOcultar"].ToString());
+                    Program.oConfiguracionEN.CuentaQueSeVaOcultarNivel = Fila["CuentaQueSeVaOcultarNivel"].ToString();
 
                 }
 
@@ -102,8 +112,14 @@ namespace SisContador.Formularios
                 oRegistroEN.PathMysSQLDump = txtMysqlDump.Text.Trim();
                 oRegistroEN.PathMySQL = txtPathMySQL.Text.Trim();
                 oRegistroEN.CuentaPrincipalDeBanco = txtCuentaPrincipalDeBanco.Text;
+                oRegistroEN.NombreDelSistema = txtNombreDelSistema.Text;
+                oRegistroEN.UtilidadOPerdidaDelEjercicio = txtUtilidadOPerdidaDelEjercicio.Text.Trim();
+                oRegistroEN.TiempoDeRespaldo = Convert.ToInt32(txtTiempoDeRespaldo.Text);
                 oRegistroEN.oLoginEN = Program.oLoginEN;
-                
+                oRegistroEN.CuentaQueSeVaOcultarNivel = txtCuentaQueSeVaOcultarNivel.Text.Trim();
+                oRegistroEN.NivelDeLaCuentaAOcultar = Convert.ToInt32(cmbNivelDeLaCuentaAOcultar.Text);
+
+
                 return oRegistroEN;
             }
             catch (Exception ex)
@@ -148,6 +164,42 @@ namespace SisContador.Formularios
                 return true;
             }
 
+            if (txtUtilidadOPerdidaDelEjercicio.Text.Trim().Length < 3)
+            {
+                errorProvider1.SetError(txtUtilidadOPerdidaDelEjercicio, "Se debe de completar los 3 digitos de la cuenta principal");
+                txtUtilidadOPerdidaDelEjercicio.Focus();
+                return true;
+            }
+
+            if (Controles.IsNullOEmptyElControl(txtTiempoDeRespaldo))
+            {
+                errorProvider1.SetError(txtTiempoDeRespaldo, "ESTE CAMPO NO PUEDE QUEDAR VACIO");
+                txtTiempoDeRespaldo.Focus();
+                return true;
+            }
+
+            if(Convert.ToInt32(txtTiempoDeRespaldo.Text) <= 0)
+            {
+                errorProvider1.SetError(txtTiempoDeRespaldo, "NO SE ACEPTAN VALORES NEGATIVOS/0");
+                txtTiempoDeRespaldo.Focus();
+                return true;
+            }
+
+            if (cmbNivelDeLaCuentaAOcultar.SelectedIndex >= 0 && Controles.IsNullOEmptyElControl(txtCuentaQueSeVaOcultarNivel))
+            {
+                errorProvider1.SetError(txtCuentaQueSeVaOcultarNivel, "SE DEBE DE INGRESAR EL NUMERO DE CUENTA");
+                txtCuentaQueSeVaOcultarNivel.Focus();
+                return true;
+            }
+
+            if (cmbNivelDeLaCuentaAOcultar.SelectedIndex < 0 && Controles.IsNullOEmptyElControl(txtCuentaQueSeVaOcultarNivel) == false){
+
+                errorProvider1.SetError(cmbNivelDeLaCuentaAOcultar, "SE DEBE DE SELECCIONAR EL NIVEL PARA LA CUENTA");
+                cmbNivelDeLaCuentaAOcultar.Focus();
+                return true;
+
+            }
+
             return false;
         }
 
@@ -190,6 +242,31 @@ namespace SisContador.Formularios
         {
             TraerInformacionDelRegistro();
             CargarInformacionDeLaConfiguracion();
+
+            int NivelDelaCuenta = Convert.ToInt32(txtNivelesDeLaCuentas.Text);
+            if (NivelDelaCuenta > 0)
+            {
+                cmbNivelDeLaCuentaAOcultar.Items.Clear();
+                for (int i = 1; i <= NivelDelaCuenta; i++)
+                {
+                    cmbNivelDeLaCuentaAOcultar.Items.Add(i.ToString());
+                }
+               
+                if (Program.oConfiguracionEN.NivelDeLaCuentaAOcultar > 0)
+                {                   
+                    cmbNivelDeLaCuentaAOcultar.Text = Program.oConfiguracionEN.NivelDeLaCuentaAOcultar.ToString();
+                }
+                else
+                {
+                    cmbNivelDeLaCuentaAOcultar.SelectedIndex = -1;
+                }
+
+                
+            }else
+            {
+                cmbNivelDeLaCuentaAOcultar.Items.Clear();
+            }
+
         }
 
         private void cmdBuscarRuta_Click(object sender, EventArgs e)
@@ -249,6 +326,38 @@ namespace SisContador.Formularios
         }
 
         private void txtCuentaPrincipalDeBanco_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)) //Al pulsar teclas como Borrar y eso.
+            {
+                e.Handled = false; //Se acepta (todo OK)
+            }
+            else //Para todo lo demas
+            {
+                e.Handled = true; //No se acepta (si pulsas cualquier otra cosa pues no se envia)
+            }
+        }
+
+        private void txtUtilidadOPerdidaDelEjercicio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)) //Al pulsar teclas como Borrar y eso.
+            {
+                e.Handled = false; //Se acepta (todo OK)
+            }
+            else //Para todo lo demas
+            {
+                e.Handled = true; //No se acepta (si pulsas cualquier otra cosa pues no se envia)
+            }
+        }
+
+        private void txtTiempoDeRespaldo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Char.IsNumber(e.KeyChar))
             {

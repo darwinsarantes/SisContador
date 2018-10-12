@@ -21,6 +21,8 @@ namespace Entidad
         public DateTime FechaDeModificacion { set; get; }
         public int NoCuenta { set; get; }
 
+        public string DescCuentaContenido { set; get; }
+
         public LoginEN oLoginEN = new LoginEN();
 
         public CategoriaDeCuentaEN oCategoriaDeCuentaEN = new CategoriaDeCuentaEN();
@@ -30,6 +32,8 @@ namespace Entidad
         public string Where { set; get; }
         public string OrderBy { set; get; }
         public string TituloDelReporte { set; get; }
+        public string SubTituloDelReporte { set; get; }
+        public decimal TasaDeCambio { set; get; }
 
         public int EsCuentaDeBanco { set; get; }
 

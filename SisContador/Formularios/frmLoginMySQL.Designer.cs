@@ -56,7 +56,7 @@
             this.txtUsuario.Location = new System.Drawing.Point(245, 65);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(360, 29);
-            this.txtUsuario.TabIndex = 1;
+            this.txtUsuario.TabIndex = 2;
             // 
             // txtContraseña
             // 
@@ -65,7 +65,7 @@
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.PasswordChar = '*';
             this.txtContraseña.Size = new System.Drawing.Size(360, 29);
-            this.txtContraseña.TabIndex = 1;
+            this.txtContraseña.TabIndex = 3;
             // 
             // txtBaseDeDatos
             // 
@@ -73,14 +73,14 @@
             this.txtBaseDeDatos.Location = new System.Drawing.Point(245, 145);
             this.txtBaseDeDatos.Name = "txtBaseDeDatos";
             this.txtBaseDeDatos.Size = new System.Drawing.Size(360, 29);
-            this.txtBaseDeDatos.TabIndex = 1;
+            this.txtBaseDeDatos.TabIndex = 4;
             // 
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(424, 256);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(144, 23);
-            this.btnCancelar.TabIndex = 2;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -90,7 +90,7 @@
             this.btnTestDeConexion.Location = new System.Drawing.Point(208, 256);
             this.btnTestDeConexion.Name = "btnTestDeConexion";
             this.btnTestDeConexion.Size = new System.Drawing.Size(135, 23);
-            this.btnTestDeConexion.TabIndex = 2;
+            this.btnTestDeConexion.TabIndex = 6;
             this.btnTestDeConexion.Text = "Test de conexión";
             this.btnTestDeConexion.UseVisualStyleBackColor = true;
             this.btnTestDeConexion.Click += new System.EventHandler(this.btnTestDeConexion_Click);
@@ -149,7 +149,7 @@
             this.txtPuertoDeServidor.Location = new System.Drawing.Point(245, 180);
             this.txtPuertoDeServidor.Name = "txtPuertoDeServidor";
             this.txtPuertoDeServidor.Size = new System.Drawing.Size(360, 29);
-            this.txtPuertoDeServidor.TabIndex = 4;
+            this.txtPuertoDeServidor.TabIndex = 5;
             // 
             // label5
             // 

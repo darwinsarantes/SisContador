@@ -363,6 +363,7 @@
             this.tsbImprimir.Name = "tsbImprimir";
             this.tsbImprimir.Size = new System.Drawing.Size(28, 28);
             this.tsbImprimir.Text = "Imprimir";
+            this.tsbImprimir.Visible = false;
             // 
             // tsbNuevoRegistro
             // 

@@ -506,6 +506,69 @@ namespace AccesoDatos
 
         }
 
+        public bool ListadoParaReportesDesdeElHistorico(TansaccionDetalleTMPBancoEN oRegistroEN, DatosDeConexionEN oDatos)
+        {
+
+            try
+            {
+
+                Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
+                Cnn.Open();
+
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn;
+                Comando.CommandType = CommandType.Text;
+
+                Consultas = string.Format(@"Select idTansaccionDetalle_Banco,idTransaccionDetalle, idTransacciones, NoCuenta, idCuenta, DescCuenta, 
+                ReferenciaBanco, DescBanco, Debe, Haber from (
+                SELECT 
+                idTansaccionDetalle_Banco, tdb.idTransaccionDetalle, tt.idTransacciones, c.NoCuenta, c.idCuenta, c.DescCuenta, 
+                tdb.ReferenciaBanco, tdb.DescBanco, tdb.Debe, tdb.Haber
+                FROM transacciondetallealcierredebanco AS tdb
+                inner join transaccion_cierre_detalle as tt on tt.idTransaccionDetalle = tdb.idTransaccionDetalle
+                inner join transaccion_cierre as t on t.idTransacciones = tt.idTransacciones
+                inner join cuenta as c on c.NoCuenta = tt.NoCuenta
+                ) as T Where idTansaccionDetalle_Banco > 0 {0}  {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Comando.CommandText = Consultas;
+
+                Adaptador = new MySqlDataAdapter();
+                DT = new DataTable();
+
+                Adaptador.SelectCommand = Comando;
+                Adaptador.Fill(DT);
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+
+                if (Cnn != null)
+                {
+
+                    if (Cnn.State == ConnectionState.Open)
+                    {
+
+                        Cnn.Close();
+
+                    }
+
+                }
+
+                Cnn = null;
+                Comando = null;
+                Adaptador = null;
+
+            }
+
+        }
+
         #endregion
 
         #region "Funciones de Validación"

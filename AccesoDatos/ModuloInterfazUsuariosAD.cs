@@ -386,8 +386,9 @@ namespace AccesoDatos
 
                 Comando.CommandText = Consultas;
 
-                Adaptador = new MySqlDataAdapter();
+                Adaptador = new MySqlDataAdapter();                
                 DT = new DataTable();
+                DT.Clear();
 
                 Adaptador.SelectCommand = Comando;
                 Adaptador.Fill(DT);

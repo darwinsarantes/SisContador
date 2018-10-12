@@ -191,9 +191,9 @@ namespace SisContador.Formularios
             try
             {
                 Process miProceso;
-                miProceso = new Process();
+                miProceso = new Process();                
                 //Es necesario que el fichero mysql.exe esté en el PATH del sistema
-                miProceso.StartInfo.FileName = string.Format(@"{0}mysql", Program.oConfiguracionEN.PathMySQL); ;
+                miProceso.StartInfo.FileName = string.Format(@"{0}\\mysql", Program.oConfiguracionEN.PathMySQL); ;
                 miProceso.StartInfo.Arguments = string.Format("-u{0} -p{1} -h{2} {3}", Program.oDatosDeConexion.Usuario, Program.oDatosDeConexion.Contraseña, Program.oDatosDeConexion.Servidor, Program.oDatosDeConexion.BaseDeDatos); ;
                 miProceso.StartInfo.RedirectStandardInput = true;
                 miProceso.StartInfo.UseShellExecute = false;
@@ -209,7 +209,7 @@ namespace SisContador.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Se ha producido un error. Mensaje: " + exc.Message);
+                MessageBox.Show(string.Format("Se ha producido un error. Mensaje: {0} {1} No se puede Respaldar el Fichero: {1} {2}", exc.Message, Environment.NewLine, path_fichero_mysqldump));
             }
         }
 

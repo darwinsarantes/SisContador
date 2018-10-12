@@ -26,7 +26,126 @@ namespace SisContador.Formularios
             this.ValorEncontrado = true;
             
             switch (Columna)
-            {
+            {//Help
+                case "SaldoAlDia":
+                    this.Descripcion = "Saldo actual del mes";
+                    this.Tamano = 120;
+                    this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                    this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                    this.SoloLectura = true;
+                    break;
+
+                case "MovimientosDelDia":
+                    this.Descripcion = "Movimientos del Mes";
+                    this.Tamano = 120;
+                    this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                    this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                    this.SoloLectura = true;
+                    break;
+
+                case "Help":
+                    this.Descripcion = " ";
+                    this.Tamano = 50;
+                    this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                    this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleLeft;
+                    this.SoloLectura = true;
+                    break;
+
+                case "DescripcionDelMovimiento":
+                    this.Descripcion = "Descripción del Movimientos de las cuentas";
+                    this.Tamano = 300;
+                    this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                    this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleLeft;
+                    this.SoloLectura = true;
+                    break;
+
+                case "Trans":
+                    this.Descripcion = "Trans";
+                    this.Tamano = 100;
+                    this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                    this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                    this.SoloLectura = true;
+                    break;
+
+                case "Haber":
+                    this.Descripcion = "Haber";
+                    this.Tamano = 100;
+                    this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                    this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                    this.SoloLectura = true;
+                    break;
+
+                case "Debe":
+                    this.Descripcion = "Debe";
+                    this.Tamano = 100;
+                    this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                    this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                    this.SoloLectura = true;
+                    break;
+
+                case "HaberTMP":
+                    this.Descripcion = "Créditos";
+                    this.Tamano = 100;
+                    this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                    this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;                    
+                    this.SoloLectura = true;
+                    break;
+
+                case "DebeTMP":
+                    this.Descripcion = "Débitos";
+                    this.Tamano = 100;
+                    this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                    this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;                    
+                    this.SoloLectura = true;
+                    break;
+
+                case "SaldoAlUltimoCierre":
+                    this.Descripcion = "Saldo anterior";
+                    this.Tamano = 100;
+                    this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                    this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;                    
+                    this.SoloLectura = true;
+                    break;
+                    
+                case "SaldoActual":
+                    this.Descripcion = "Saldo actual";
+                    this.Tamano = 100;
+                    this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                    this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;                    
+                    this.SoloLectura = true;
+                    break;
+
+                case "SaldoFinal":
+                    this.Descripcion = "Saldo Final";
+                    this.Tamano = 100;
+                    this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                    this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;                    
+                    this.SoloLectura = true;
+                    break;
+
+                case "TotalCredito":
+                    this.Descripcion = "Total Créditos";
+                    this.Tamano = 100;
+                    this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                    this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                    this.SoloLectura = true;
+                    break;
+
+                case "TotalDebitos":
+                    this.Descripcion = "Total Débitos";
+                    this.Tamano = 100;
+                    this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                    this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;                    
+                    this.SoloLectura = true;
+                    break;
+
+                case "SaldoActualDelCB":
+                    this.Descripcion = "Saldo actual";
+                    this.Tamano = 100;
+                    this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                    this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;                    
+                    this.SoloLectura = true;
+                    break;
 
                 case "Obsevaciones":
                     this.Descripcion = "Obsevaciones";
@@ -388,7 +507,7 @@ namespace SisContador.Formularios
                     this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
                     this.SoloLectura = false;
                     break;
-
+                                    
                 default: this.ValorEncontrado = false; break;
 
             }
@@ -403,7 +522,7 @@ namespace SisContador.Formularios
             switch (Tabla)
             {//idTransaccionDetalle, NoCuenta, c.idCuenta,c.DescCuenta, Debe, Haber,
                 case "TransaccionesDetalle":
-
+                    
                     this.ValorEncontrado = true;
 
                     switch (Columna)
@@ -546,7 +665,7 @@ namespace SisContador.Formularios
                             this.Descripcion = "Período";
                             this.Tamano = 300;
                             this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
-                            this.Alineacion = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
                             this.SoloLectura = true;
 
                             break;
@@ -659,7 +778,45 @@ namespace SisContador.Formularios
                     }
 
                     break;
-                
+
+                case "TasaDeCambio":
+
+                    this.ValorEncontrado = true;
+
+                    switch (Columna)
+                    {
+                        case "Cambio":
+                            this.Descripcion = "Cambio";
+                            this.Tamano = 130;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+
+                            break;
+
+                        case "FechaDelCambio":
+                            this.Descripcion = "Fecha del Cambio Oficial";
+                            this.Tamano = 130;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+
+                            break;
+                            
+                        case "idTasaDeCambio":
+                            this.Descripcion = "ID";
+                            this.Tamano = 50;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+
+                            break;
+
+                        default: this.ValorEncontrado = false; break;
+                    }
+
+                    break;
+
                 default: this.ValorEncontrado = false; break;
 
             }

@@ -22,9 +22,7 @@ namespace SisContador.Formularios
         #region "Funciones"
 
         private void TraerInformacion() {
-
             txtRutaRespaldos.Text = Program.oConfiguracionEN.RutaRespaldos;
-
         }
 
         private void copia_de_seguridad()
@@ -117,7 +115,12 @@ namespace SisContador.Formularios
         {
             try
             {
+                CarpetaDeRespaldo();
+
+                //String NombreDelfichero = string.Format("{0}\\{1}_{2}.sql", txtRutaRespaldos.Text.Trim(), Program.oDatosDeConexion.BaseDeDatos.Trim().ToUpper(), System.DateTime.Now.ToString("yyyyMMdd_hms"));
                 String NombreDelfichero = string.Format("{0}\\{1}_{2}.sql", txtRutaRespaldos.Text.Trim(), Program.oDatosDeConexion.BaseDeDatos.Trim().ToUpper(), System.DateTime.Now.ToString("yyyyMMdd_hms"));
+
+                //ValidarSiExisteElFichero(NombreDelfichero);
 
                 Process cmd = new Process();
                 cmd.StartInfo.FileName = "cmd.exe";//string.Format(@"{0}mysqldump", Program.oConfiguracionEN.PathMysSQLDump);
@@ -137,7 +140,7 @@ namespace SisContador.Formularios
                 cmd.StandardInput.Flush();
                 cmd.StandardInput.Close();
                 cmd.Close();
-                cmd.WaitForExit();
+                cmd = null;
 
                 MessageBox.Show("Copia de seguridad realizada con éxito", "Respaldo de base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -146,6 +149,40 @@ namespace SisContador.Formularios
             {
                 MessageBox.Show(string.Format("Se ha producido un error al realizar la copia de seguridad: {0} {1}", Environment.NewLine, ex.Message), "Realizar copia se seguiridad de la base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void CarpetaDeRespaldo()
+        {
+            try
+            {
+                if (!Directory.Exists(txtRutaRespaldos.Text.Trim()))
+                {
+                    Directory.CreateDirectory(txtRutaRespaldos.Text.Trim());
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Caperta de respaldo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               
+            }
+        }
+
+        private void ValidarSiExisteElFichero(string Archivo)
+        {
+            try
+            {
+                if (File.Exists(Archivo))
+                {
+                    File.Delete(Archivo);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Validar si existe el FicheroDeRespaldo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
         }
 
         #endregion

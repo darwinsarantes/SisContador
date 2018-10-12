@@ -6,19 +6,26 @@ using System.Windows.Forms;
 using Entidad;
 using SisContador.Formularios;
 
+using System.Drawing;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
+//using System.Deployment.Application;
+
 namespace SisContador
 {
     static class Program
     {
 
         public static bool Iniciar = false;
-        public static string NombreSistema = "Sistema de Cantibilidad";
+        public static string NombreSistema = " ";//"Sistema Contable";
         public static string NombreEmpresa = "Gasolinera shell <<Esquipullas>>";
         public static string EntidadIngSistemas = "Servicios TRIGERS";
-        public static string VersionSistema = "1.0";
-        public static string NombreVersionSistema = NombreSistema + " " + VersionSistema;
+        public static string VersionSistema = Version();
+        public static string NombreVersionSistema = NombreSistema + VersionSistema;
         public static DatosDeConexionEN oDatosDeConexion = null;
         public static LoginEN oLoginEN = null;
+        public static string Errores;
         public static ConfiguracionEN oConfiguracionEN = new ConfiguracionEN();
 
         /// <summary>
@@ -40,9 +47,51 @@ namespace SisContador
 
             if (Iniciar == true)
             {
-                Application.Run(new Principal());
+                
+Application.Run(new Principal());
             }
         }
-               
+
+        public static bool Exportar_Logo_Para_Excel(PictureBox pbxImagen)
+        {
+            try
+            {
+                if (!Directory.Exists(Application.StartupPath + "/Logos"))
+                {
+                    Directory.CreateDirectory(Application.StartupPath + "/Logos");
+                }
+
+                string Ruta;
+                Ruta = Application.StartupPath + "/Logos/Logo_Empresa.png";
+
+                Image image = pbxImagen.Image;
+                image.Save(Ruta, System.Drawing.Imaging.ImageFormat.Png);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Errores = ex.Message;
+                return false;
+            }
+        }
+
+        public static string Version()
+        {
+            string sversion = "";
+            if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
+            {
+                sversion = string.Format("Versión: {0}.{1}.{2}.{3}" , System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion.Major,
+                    System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion.Minor,
+                    System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion.Build,
+                    System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion.Revision);
+            }else
+            {
+                sversion = string.Format(" Versión: {0}", Application.ProductVersion.ToString());
+            }
+
+            return sversion;
+
+        }
+
     }
 }

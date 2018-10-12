@@ -39,11 +39,11 @@ namespace AccesoDatos
                 Consultas = @"insert into cuenta
                 (idCuenta, DescCuenta, SaldoCuenta, NivelCuenta, CuentaMadre, 
                 IdUsuarioDeCreacion, FechaDeCreacion, IdUsuarioDeModificacion, FechaDeModificacion, 
-                idCategoriaDeCuenta, idTipoDeCuenta, NoCuenta)
+                idCategoriaDeCuenta, idTipoDeCuenta, DescCuentaContenido, NoCuenta)
                 values
                 (@idCuenta, @DescCuenta, @SaldoCuenta, @NivelCuenta, @CuentaMadre, 
                 @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp(), 
-                @idCategoriaDeCuenta, @idTipoDeCuenta, IdentificadorDeLaCuenta());
+                @idCategoriaDeCuenta, @idTipoDeCuenta, @DescCuentaContenido, IdentificadorDeLaCuenta());
 
                 Select max(NoCuenta) as 'ID' from cuenta;";
 
@@ -58,6 +58,7 @@ namespace AccesoDatos
                 Comando.Parameters.Add(new MySqlParameter("@IdUsuarioDeModificacion", MySqlDbType.Int32)).Value = oRegistroEN.oLoginEN.idUsuario;
                 Comando.Parameters.Add(new MySqlParameter("@idCategoriaDeCuenta", MySqlDbType.Int32)).Value = oRegistroEN.oCategoriaDeCuentaEN.idCategoriaDeCuenta;
                 Comando.Parameters.Add(new MySqlParameter("@idTipoDeCuenta", MySqlDbType.Int32)).Value = oRegistroEN.oTipoDeCuentaEN.idTipoDeCuenta;
+                Comando.Parameters.Add(new MySqlParameter("@DescCuentaContenido", MySqlDbType.VarChar, oRegistroEN.DescCuentaContenido.Trim().Length)).Value = oRegistroEN.DescCuentaContenido.Trim();
 
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();
@@ -125,7 +126,8 @@ namespace AccesoDatos
                 Consultas = @"update cuenta set
 	                idCuenta = @idCuenta, DescCuenta = @DescCuenta, SaldoCuenta = @SaldoCuenta, NivelCuenta = @NivelCuenta, CuentaMadre = @CuentaMadre, 
 	                IdUsuarioDeModificacion = @IdUsuarioDeModificacion, FechaDeModificacion = current_timestamp(), 
-	                idCategoriaDeCuenta = @idCategoriaDeCuenta, idTipoDeCuenta = @idTipoDeCuenta
+	                idCategoriaDeCuenta = @idCategoriaDeCuenta, idTipoDeCuenta = @idTipoDeCuenta,
+                    DescCuentaContenido = @DescCuentaContenido
                 where  NoCuenta = @NoCuenta;";
 
                 Comando.CommandText = Consultas;
@@ -139,6 +141,7 @@ namespace AccesoDatos
                 Comando.Parameters.Add(new MySqlParameter("@IdUsuarioDeModificacion", MySqlDbType.Int32)).Value = oRegistroEN.oLoginEN.idUsuario;
                 Comando.Parameters.Add(new MySqlParameter("@idCategoriaDeCuenta", MySqlDbType.Int32)).Value = oRegistroEN.oCategoriaDeCuentaEN.idCategoriaDeCuenta;
                 Comando.Parameters.Add(new MySqlParameter("@idTipoDeCuenta", MySqlDbType.Int32)).Value = oRegistroEN.oTipoDeCuentaEN.idTipoDeCuenta;
+                Comando.Parameters.Add(new MySqlParameter("@DescCuentaContenido", MySqlDbType.VarChar, oRegistroEN.DescCuentaContenido.Trim().Length)).Value = oRegistroEN.DescCuentaContenido.Trim();
 
                 Comando.ExecuteNonQuery();
                 
@@ -266,9 +269,10 @@ namespace AccesoDatos
 
                 Consultas = string.Format(@"Select 
                 c.idCategoriaDeCuenta, c.idTipoDeCuenta, gc.idGrupoDeCuentas,c.NoCuenta,c.idCuenta, 
-                c.DescCuenta,cc.DescCategoriaDeCuenta,gc.DescGrupoDeCuentas, c.SaldoCuenta, c.NivelCuenta, c.CuentaMadre, 
+                c.DescCuenta,c.SaldoCuenta, MovimientosDelDiaPorCuenta(NoCuenta) as 'MovimientosDelDia', TrearSaldoActualConMovimientosDelDia(NoCuenta) as 'SaldoAlDia',cc.DescCategoriaDeCuenta,gc.DescGrupoDeCuentas, c.NivelCuenta, c.CuentaMadre, 
                 c.IdUsuarioDeCreacion, c.FechaDeCreacion, c.IdUsuarioDeModificacion, 
-                c.FechaDeModificacion, tc.DescTipoDeCuenta, EvaLuarSiEsCuentaDeBanco(c.NoCuenta) as 'EsCuentaDeBanco'
+                c.FechaDeModificacion, tc.DescTipoDeCuenta, EvaLuarSiEsCuentaDeBanco(c.NoCuenta) as 'EsCuentaDeBanco',
+                c.DescCuentaContenido
                 from cuenta as c
                 inner join categoriadecuenta as cc on cc.idCategoriaDeCuenta = c.idCategoriaDeCuenta
                 inner join tipodecuenta as tc on tc.idTipoDeCuenta = c.idTipoDeCuenta
@@ -332,7 +336,7 @@ namespace AccesoDatos
                 Consultas = string.Format(@"Select 
                 c.idCategoriaDeCuenta, c.idTipoDeCuenta, gc.idGrupoDeCuentas,c.NoCuenta,c.idCuenta, 
                 c.DescCuenta,cc.DescCategoriaDeCuenta,gc.DescGrupoDeCuentas, c.SaldoCuenta, c.NivelCuenta, 
-                c.CuentaMadre, tc.DescTipoDeCuenta, gc.Debitos, gc.Creditos 
+                c.CuentaMadre, tc.DescTipoDeCuenta, gc.Debitos, gc.Creditos, c.DescCuentaContenido 
                 from cuenta as c
                 inner join categoriadecuenta as cc on cc.idCategoriaDeCuenta = c.idCategoriaDeCuenta
                 inner join tipodecuenta as tc on tc.idTipoDeCuenta = c.idTipoDeCuenta
@@ -397,7 +401,8 @@ namespace AccesoDatos
                 c.idCategoriaDeCuenta, c.idTipoDeCuenta, gc.idGrupoDeCuentas,c.NoCuenta,c.idCuenta, 
                 c.DescCuenta,cc.DescCategoriaDeCuenta,gc.DescGrupoDeCuentas, c.SaldoCuenta, c.NivelCuenta, c.CuentaMadre, 
                 c.IdUsuarioDeCreacion, c.FechaDeCreacion, c.IdUsuarioDeModificacion, 
-                c.FechaDeModificacion, tc.DescTipoDeCuenta, EvaLuarSiEsCuentaDeBanco(c.NoCuenta) as 'EsCuentaDeBanco'
+                c.FechaDeModificacion, tc.DescTipoDeCuenta, EvaLuarSiEsCuentaDeBanco(c.NoCuenta) as 'EsCuentaDeBanco',
+                c.DescCuentaContenido
                 from cuenta as c
                 inner join categoriadecuenta as cc on cc.idCategoriaDeCuenta = c.idCategoriaDeCuenta
                 inner join tipodecuenta as tc on tc.idTipoDeCuenta = c.idTipoDeCuenta
@@ -461,7 +466,7 @@ namespace AccesoDatos
                 c.idCategoriaDeCuenta, c.idTipoDeCuenta, gc.idGrupoDeCuentas,c.NoCuenta,c.idCuenta, 
                 c.DescCuenta,cc.DescCategoriaDeCuenta,gc.DescGrupoDeCuentas, c.SaldoCuenta, c.NivelCuenta, c.CuentaMadre, 
                 c.IdUsuarioDeCreacion, c.FechaDeCreacion, c.IdUsuarioDeModificacion, 
-                c.FechaDeModificacion, tc.DescTipoDeCuenta
+                c.FechaDeModificacion, tc.DescTipoDeCuenta, c.DescCuentaContenido
                 from cuenta as c
                 inner join categoriadecuenta as cc on cc.idCategoriaDeCuenta = c.idCategoriaDeCuenta
                 inner join tipodecuenta as tc on tc.idTipoDeCuenta = c.idTipoDeCuenta
@@ -524,12 +529,74 @@ namespace AccesoDatos
                 Consultas = string.Format(@"Select 
                 c.idCategoriaDeCuenta, c.idTipoDeCuenta, gc.idGrupoDeCuentas,c.NoCuenta,c.idCuenta, c.DescCuenta,cc.DescCategoriaDeCuenta,gc.DescGrupoDeCuentas, c.SaldoCuenta, c.NivelCuenta, c.CuentaMadre, 
                 c.IdUsuarioDeCreacion, c.FechaDeCreacion, c.IdUsuarioDeModificacion, 
-                c.FechaDeModificacion
+                c.FechaDeModificacion, c.DescCuentaContenido
                 from cuenta as c
                 inner join categoriadecuenta as cc on cc.idCategoriaDeCuenta = c.idCategoriaDeCuenta
                 inner join tipodecuenta tc on tc.idTipoDeCuenta = c.idTipoDeCuenta
                 inner join grupodecuentas as gc on gc.idGrupoDeCuentas = cc.idGrupoDeCuentas
                 where NoCuenta = {0} ", oRegistroEN.NoCuenta);
+                Comando.CommandText = Consultas;
+
+                Adaptador = new MySqlDataAdapter();
+                DT = new DataTable();
+
+                Adaptador.SelectCommand = Comando;
+                Adaptador.Fill(DT);
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+
+                if (Cnn != null)
+                {
+
+                    if (Cnn.State == ConnectionState.Open)
+                    {
+
+                        Cnn.Close();
+
+                    }
+
+                }
+
+                Cnn = null;
+                Comando = null;
+                Adaptador = null;
+
+            }
+
+        }
+
+        public bool ListadoPorIdCuenta(CuentaEN oRegistroEN, DatosDeConexionEN oDatos)
+        {
+
+            try
+            {
+
+                Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
+                Cnn.Open();
+
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn;
+                Comando.CommandType = CommandType.Text;
+
+                Consultas = string.Format(@"Select 
+                c.idCategoriaDeCuenta, c.idTipoDeCuenta, gc.idGrupoDeCuentas,c.NoCuenta,c.idCuenta, c.DescCuenta,cc.DescCategoriaDeCuenta,gc.DescGrupoDeCuentas, c.SaldoCuenta, c.NivelCuenta, c.CuentaMadre, 
+                c.IdUsuarioDeCreacion, c.FechaDeCreacion, c.IdUsuarioDeModificacion, 
+                c.FechaDeModificacion, c.DescCuentaContenido
+                from cuenta as c
+                inner join categoriadecuenta as cc on cc.idCategoriaDeCuenta = c.idCategoriaDeCuenta
+                inner join tipodecuenta tc on tc.idTipoDeCuenta = c.idTipoDeCuenta
+                inner join grupodecuentas as gc on gc.idGrupoDeCuentas = cc.idGrupoDeCuentas
+                where idCuenta = '{0}' ", oRegistroEN.idCuenta);
                 Comando.CommandText = Consultas;
 
                 Adaptador = new MySqlDataAdapter();
@@ -586,7 +653,7 @@ namespace AccesoDatos
                 Consultas = string.Format(@"Select 
 	                c.NoCuenta,c.idCuenta, c.DescCuenta, c.SaldoCuenta, c.NivelCuenta, c.CuentaMadre, 
                     c.IdUsuarioDeCreacion, c.FechaDeCreacion, c.IdUsuarioDeModificacion, 
-                    c.FechaDeModificacion, c.idCategoriaDeCuenta, c.idTipoDeCuenta
+                    c.FechaDeModificacion, c.idCategoriaDeCuenta, c.idTipoDeCuenta,c.DescCuentaContenido
                 from cuenta as c
                 inner join categoriadecuenta as cc on cc.idCategoriaDeCuenta = c.idCategoriaDeCuenta
                 inner join tipodecuenta tc on tc.idTipoDeCuenta = c.idTipoDeCuenta
@@ -648,12 +715,69 @@ namespace AccesoDatos
                 c.idCategoriaDeCuenta, c.idTipoDeCuenta, gc.idGrupoDeCuentas,c.NoCuenta,c.idCuenta, 
                 c.DescCuenta,cc.DescCategoriaDeCuenta,gc.DescGrupoDeCuentas, c.SaldoCuenta, c.NivelCuenta, c.CuentaMadre, 
                 c.IdUsuarioDeCreacion, c.FechaDeCreacion, c.IdUsuarioDeModificacion, 
-                c.FechaDeModificacion, tc.DescTipoDeCuenta
+                c.FechaDeModificacion, tc.DescTipoDeCuenta, c.DescCuentaContenido
                 from cuenta as c
                 inner join categoriadecuenta as cc on cc.idCategoriaDeCuenta = c.idCategoriaDeCuenta
                 inner join tipodecuenta as tc on tc.idTipoDeCuenta = c.idTipoDeCuenta
                 inner join grupodecuentas as gc on gc.idGrupoDeCuentas = cc.idGrupoDeCuentas
                 where NoCuenta > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Comando.CommandText = Consultas;
+
+                Adaptador = new MySqlDataAdapter();
+                DT = new DataTable();
+
+                Adaptador.SelectCommand = Comando;
+                Adaptador.Fill(DT);
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+
+                if (Cnn != null)
+                {
+
+                    if (Cnn.State == ConnectionState.Open)
+                    {
+
+                        Cnn.Close();
+
+                    }
+
+                }
+
+                Cnn = null;
+                Comando = null;
+                Adaptador = null;
+
+            }
+
+        }
+
+        public bool ListadoDeMovimientosDelDiaPorCuenta(CuentaEN oRegistroEN, DatosDeConexionEN oDatos)
+        {
+
+            try
+            {
+
+                Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
+                Cnn.Open();
+
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn;
+                Comando.CommandType = CommandType.Text;
+
+                Consultas = string.Format(@"Select t.NumeroDeTransaccion,t.Fecha, td.Debe, td.Haber,c.idCuenta, c.DescCuenta, c.NoCuenta from transacciones as t
+                inner join transacciondetalle  as td on td.idTransacciones = t.idTransacciones
+                inner join cuenta as c on c.NoCuenta = td.NoCuenta
+                where td.NoCuenta > 0 {0} Order by t.Fecha, t.NumeroDeTransaccion ", oRegistroEN.Where);
                 Comando.CommandText = Consultas;
 
                 Adaptador = new MySqlDataAdapter();
@@ -910,7 +1034,7 @@ namespace AccesoDatos
 
                     case "ACTUALIZAR":
 
-                        Consultas = @"SELECT CASE WHEN EXISTS(SELECT idCuenta FROM Cuenta WHERE upper(idCuenta) = upper(@idCuenta) and upper(trim(DescCuenta)) = upper(@DescCuenta) and idCategoriaDeCuenta = @idCategoriaDeCuenta and NoCuenta <> @DescCuenta) THEN 1 ELSE 0 END AS 'RES'";
+                        Consultas = @"SELECT CASE WHEN EXISTS(SELECT idCuenta FROM Cuenta WHERE upper(idCuenta) = upper(@idCuenta) and upper(trim(DescCuenta)) = upper(@DescCuenta) and idCategoriaDeCuenta = @idCategoriaDeCuenta and NoCuenta <> @NoCuenta) THEN 1 ELSE 0 END AS 'RES'";
                         Comando.Parameters.Add(new MySqlParameter("@idCuenta", MySqlDbType.VarChar, oRegistroEN.idCuenta.Trim().Length)).Value = oRegistroEN.idCuenta.Trim();
                         Comando.Parameters.Add(new MySqlParameter("@DescCuenta", MySqlDbType.VarChar, oRegistroEN.DescCuenta.Trim().Length)).Value = oRegistroEN.DescCuenta.Trim();
                         Comando.Parameters.Add(new MySqlParameter("@idCategoriaDeCuenta", MySqlDbType.Int32)).Value = oRegistroEN.oCategoriaDeCuentaEN.idCategoriaDeCuenta;
@@ -1150,8 +1274,8 @@ namespace AccesoDatos
 
         private string InformacionDelRegistro(CuentaEN oRegistroEN) {
 
-            string Cadena = @"idCuenta: {0}, DescCuenta: {1}, SaldoCuenta: {2}, NivelCuenta: {3}, CuentaMadre: {4}, IdUsuarioDeCreacion: {5}, FechaDeCreacion: {6}, IdUsuarioDeModificacion: {7}, FechaDeModificacion: {8}, idCategoriaDeCuenta: {9}, idTipoDeCuenta: {10}, NoCuenta: {11}";
-            Cadena = string.Format(Cadena, oRegistroEN.idCuenta,oRegistroEN.DescCuenta, oRegistroEN.SaldoCuenta, oRegistroEN.NivelCuenta, oRegistroEN.CuentaMadre, oRegistroEN.IdUsuarioDeCreacion, oRegistroEN.FechaDeCreacion, oRegistroEN.IdUsuarioDeModificacion, oRegistroEN.FechaDeModificacion, oRegistroEN.oCategoriaDeCuentaEN.idCategoriaDeCuenta, oRegistroEN.oTipoDeCuentaEN.idTipoDeCuenta, oRegistroEN.NoCuenta);
+            string Cadena = @"idCuenta: {0}, DescCuenta: {1}, SaldoCuenta: {2}, NivelCuenta: {3}, CuentaMadre: {4}, IdUsuarioDeCreacion: {5}, FechaDeCreacion: {6}, IdUsuarioDeModificacion: {7}, FechaDeModificacion: {8}, idCategoriaDeCuenta: {9}, idTipoDeCuenta: {10}, NoCuenta: {11}, DescCuentaContenido: {12}";
+            Cadena = string.Format(Cadena, oRegistroEN.idCuenta,oRegistroEN.DescCuenta, oRegistroEN.SaldoCuenta, oRegistroEN.NivelCuenta, oRegistroEN.CuentaMadre, oRegistroEN.IdUsuarioDeCreacion, oRegistroEN.FechaDeCreacion, oRegistroEN.IdUsuarioDeModificacion, oRegistroEN.FechaDeModificacion, oRegistroEN.oCategoriaDeCuentaEN.idCategoriaDeCuenta, oRegistroEN.oTipoDeCuentaEN.idTipoDeCuenta, oRegistroEN.NoCuenta, oRegistroEN.DescCuentaContenido);
             Cadena = Cadena.Replace(",", Environment.NewLine);
             return Cadena;            
 

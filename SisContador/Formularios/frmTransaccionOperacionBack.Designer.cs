@@ -47,6 +47,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.txtIndexRegistro = new System.Windows.Forms.TextBox();
             this.dgvListarCuentas = new System.Windows.Forms.DataGridView();
             this.txtOcupada = new System.Windows.Forms.TextBox();
             this.txtEsCuentaDeBanco = new System.Windows.Forms.TextBox();
@@ -68,15 +69,16 @@
             this.txtDescCuenta = new System.Windows.Forms.TextBox();
             this.txtDebe = new System.Windows.Forms.TextBox();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
+            this.tsbLimpiarControlesGB = new System.Windows.Forms.ToolStripButton();
             this.tsbCuentas = new System.Windows.Forms.ToolStripButton();
             this.cmdMostarOcultarDatosPanelIzquierdo = new System.Windows.Forms.ToolStripButton();
             this.tsbAgregarAlDataGrid = new System.Windows.Forms.ToolStripButton();
+            this.tsbModificarRegistros = new System.Windows.Forms.ToolStripButton();
             this.dgvLista = new System.Windows.Forms.DataGridView();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lbaBarradeprogreso = new System.Windows.Forms.ToolStripStatusLabel();
-            this.Barradeprogreso = new System.Windows.Forms.ToolStripProgressBar();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.tstTotalRegistros = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsbDiferencia = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbGuardar = new System.Windows.Forms.ToolStripButton();
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
@@ -87,12 +89,12 @@
             this.tsbRecarRegistro = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lbaBarradeprogreso = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Barradeprogreso = new System.Windows.Forms.ToolStripProgressBar();
             this.chkCerrarVentana = new System.Windows.Forms.CheckBox();
             this.EP = new System.Windows.Forms.ErrorProvider(this.components);
             this.InformacionEntidadOperacion = new System.Windows.Forms.Label();
-            this.tsbModificarRegistros = new System.Windows.Forms.ToolStripButton();
-            this.txtIndexRegistro = new System.Windows.Forms.TextBox();
-            this.tsbLimpiarControlesGB = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -108,9 +110,9 @@
             this.groupBox1.SuspendLayout();
             this.tsMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
-            this.statusStrip1.SuspendLayout();
             this.statusStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EP)).BeginInit();
             this.SuspendLayout();
             // 
@@ -171,15 +173,18 @@
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(136, 351);
+            this.txtValor.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValor.Location = new System.Drawing.Point(136, 332);
             this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(196, 20);
-            this.txtValor.TabIndex = 16;
+            this.txtValor.Size = new System.Drawing.Size(196, 39);
+            this.txtValor.TabIndex = 5;
+            this.txtValor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtValor_KeyDown);
+            this.txtValor.Leave += new System.EventHandler(this.txtValor_Leave);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(18, 354);
+            this.label7.Location = new System.Drawing.Point(18, 345);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(34, 13);
             this.label7.TabIndex = 17;
@@ -190,14 +195,16 @@
             this.txtNumeroDeTransaccion.Location = new System.Drawing.Point(136, 14);
             this.txtNumeroDeTransaccion.Name = "txtNumeroDeTransaccion";
             this.txtNumeroDeTransaccion.Size = new System.Drawing.Size(196, 20);
-            this.txtNumeroDeTransaccion.TabIndex = 3;
+            this.txtNumeroDeTransaccion.TabIndex = 1;
+            this.txtNumeroDeTransaccion.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNumeroDeTransaccion_KeyDown);
             // 
             // dtpkFecha
             // 
             this.dtpkFecha.Location = new System.Drawing.Point(136, 40);
             this.dtpkFecha.Name = "dtpkFecha";
             this.dtpkFecha.Size = new System.Drawing.Size(196, 20);
-            this.dtpkFecha.TabIndex = 15;
+            this.dtpkFecha.TabIndex = 2;
+            this.dtpkFecha.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpkFecha_KeyDown);
             // 
             // txtIdentificador
             // 
@@ -226,7 +233,7 @@
             this.cmbTipoDeTransacción.Location = new System.Drawing.Point(136, 66);
             this.cmbTipoDeTransacción.Name = "cmbTipoDeTransacción";
             this.cmbTipoDeTransacción.Size = new System.Drawing.Size(196, 21);
-            this.cmbTipoDeTransacción.TabIndex = 6;
+            this.cmbTipoDeTransacción.TabIndex = 3;
             // 
             // label5
             // 
@@ -247,16 +254,17 @@
             this.cmbEstado.Location = new System.Drawing.Point(136, 379);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(196, 21);
-            this.cmbEstado.TabIndex = 5;
+            this.cmbEstado.TabIndex = 6;
             // 
             // txtConcepto
             // 
-            this.txtConcepto.Location = new System.Drawing.Point(136, 93);
+            this.txtConcepto.Location = new System.Drawing.Point(21, 119);
             this.txtConcepto.Multiline = true;
             this.txtConcepto.Name = "txtConcepto";
             this.txtConcepto.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtConcepto.Size = new System.Drawing.Size(196, 252);
-            this.txtConcepto.TabIndex = 11;
+            this.txtConcepto.Size = new System.Drawing.Size(311, 203);
+            this.txtConcepto.TabIndex = 4;
+            this.txtConcepto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtConcepto_KeyDown);
             // 
             // label4
             // 
@@ -320,11 +328,19 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tsMenu);
             this.splitContainer2.Panel2.Controls.Add(this.dgvLista);
-            this.splitContainer2.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer2.Panel2.Controls.Add(this.statusStrip2);
             this.splitContainer2.Size = new System.Drawing.Size(772, 413);
             this.splitContainer2.SplitterDistance = 155;
             this.splitContainer2.TabIndex = 7;
+            // 
+            // txtIndexRegistro
+            // 
+            this.txtIndexRegistro.Location = new System.Drawing.Point(554, 126);
+            this.txtIndexRegistro.Name = "txtIndexRegistro";
+            this.txtIndexRegistro.Size = new System.Drawing.Size(29, 20);
+            this.txtIndexRegistro.TabIndex = 29;
+            this.txtIndexRegistro.Text = "-1";
+            this.txtIndexRegistro.Visible = false;
             // 
             // dgvListarCuentas
             // 
@@ -391,7 +407,7 @@
             this.groupBox2.Controls.Add(this.cmbReferencia);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Enabled = false;
-            this.groupBox2.Location = new System.Drawing.Point(0, 60);
+            this.groupBox2.Location = new System.Drawing.Point(0, 68);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(772, 60);
             this.groupBox2.TabIndex = 27;
@@ -447,7 +463,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(772, 60);
+            this.groupBox1.Size = new System.Drawing.Size(772, 68);
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información de la Cuenta:";
@@ -463,10 +479,11 @@
             // 
             // mskIdCuenta
             // 
+            this.mskIdCuenta.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mskIdCuenta.Location = new System.Drawing.Point(8, 33);
             this.mskIdCuenta.Name = "mskIdCuenta";
-            this.mskIdCuenta.Size = new System.Drawing.Size(113, 20);
-            this.mskIdCuenta.TabIndex = 0;
+            this.mskIdCuenta.Size = new System.Drawing.Size(113, 26);
+            this.mskIdCuenta.TabIndex = 7;
             this.mskIdCuenta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mskIdCuenta_KeyDown);
             this.mskIdCuenta.KeyUp += new System.Windows.Forms.KeyEventHandler(this.mskIdCuenta_KeyUp);
             // 
@@ -490,9 +507,10 @@
             // 
             // txtHaber
             // 
+            this.txtHaber.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHaber.Location = new System.Drawing.Point(636, 33);
             this.txtHaber.Name = "txtHaber";
-            this.txtHaber.Size = new System.Drawing.Size(108, 20);
+            this.txtHaber.Size = new System.Drawing.Size(108, 26);
             this.txtHaber.TabIndex = 23;
             this.txtHaber.Text = "0.00";
             this.txtHaber.Enter += new System.EventHandler(this.txtHaber_Enter);
@@ -513,16 +531,18 @@
             // txtDescCuenta
             // 
             this.txtDescCuenta.Location = new System.Drawing.Point(121, 33);
+            this.txtDescCuenta.Multiline = true;
             this.txtDescCuenta.Name = "txtDescCuenta";
             this.txtDescCuenta.ReadOnly = true;
-            this.txtDescCuenta.Size = new System.Drawing.Size(407, 20);
+            this.txtDescCuenta.Size = new System.Drawing.Size(407, 26);
             this.txtDescCuenta.TabIndex = 22;
             // 
             // txtDebe
             // 
+            this.txtDebe.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDebe.Location = new System.Drawing.Point(528, 33);
             this.txtDebe.Name = "txtDebe";
-            this.txtDebe.Size = new System.Drawing.Size(108, 20);
+            this.txtDebe.Size = new System.Drawing.Size(108, 26);
             this.txtDebe.TabIndex = 17;
             this.txtDebe.Text = "0.00";
             this.txtDebe.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -542,28 +562,43 @@
             this.tsbModificarRegistros});
             this.tsMenu.Location = new System.Drawing.Point(0, 0);
             this.tsMenu.Name = "tsMenu";
-            this.tsMenu.Size = new System.Drawing.Size(772, 25);
-            this.tsMenu.TabIndex = 0;
+            this.tsMenu.Size = new System.Drawing.Size(772, 39);
+            this.tsMenu.TabIndex = 8;
+            this.tsMenu.TabStop = true;
             this.tsMenu.Text = "toolStrip2";
+            // 
+            // tsbLimpiarControlesGB
+            // 
+            this.tsbLimpiarControlesGB.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbLimpiarControlesGB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbLimpiarControlesGB.Image = global::SisContador.Properties.Resources.clear24x24;
+            this.tsbLimpiarControlesGB.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbLimpiarControlesGB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbLimpiarControlesGB.Name = "tsbLimpiarControlesGB";
+            this.tsbLimpiarControlesGB.Size = new System.Drawing.Size(28, 36);
+            this.tsbLimpiarControlesGB.Text = "Limpiar información de la cuenta";
+            this.tsbLimpiarControlesGB.Click += new System.EventHandler(this.tsbLimpiarControlesGB_Click);
             // 
             // tsbCuentas
             // 
             this.tsbCuentas.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tsbCuentas.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbCuentas.Image = global::SisContador.Properties.Resources.view16x16;
+            this.tsbCuentas.Image = global::SisContador.Properties.Resources.view22x22;
+            this.tsbCuentas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbCuentas.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCuentas.Name = "tsbCuentas";
-            this.tsbCuentas.Size = new System.Drawing.Size(23, 22);
+            this.tsbCuentas.Size = new System.Drawing.Size(28, 36);
             this.tsbCuentas.Text = "Buscar Cuentas";
             this.tsbCuentas.Click += new System.EventHandler(this.tsbCuentas_Click);
             // 
             // cmdMostarOcultarDatosPanelIzquierdo
             // 
             this.cmdMostarOcultarDatosPanelIzquierdo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.cmdMostarOcultarDatosPanelIzquierdo.Image = global::SisContador.Properties.Resources.leftarrows16x16;
+            this.cmdMostarOcultarDatosPanelIzquierdo.Image = global::SisContador.Properties.Resources.leftarrow32x32;
+            this.cmdMostarOcultarDatosPanelIzquierdo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.cmdMostarOcultarDatosPanelIzquierdo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.cmdMostarOcultarDatosPanelIzquierdo.Name = "cmdMostarOcultarDatosPanelIzquierdo";
-            this.cmdMostarOcultarDatosPanelIzquierdo.Size = new System.Drawing.Size(23, 22);
+            this.cmdMostarOcultarDatosPanelIzquierdo.Size = new System.Drawing.Size(36, 36);
             this.cmdMostarOcultarDatosPanelIzquierdo.Tag = "OCULTAR";
             this.cmdMostarOcultarDatosPanelIzquierdo.Text = "Ocultar Panel";
             this.cmdMostarOcultarDatosPanelIzquierdo.Click += new System.EventHandler(this.tsbOcultarPanelIzquierdo_Click);
@@ -572,12 +607,25 @@
             // 
             this.tsbAgregarAlDataGrid.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tsbAgregarAlDataGrid.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbAgregarAlDataGrid.Image = global::SisContador.Properties.Resources.Save16x16;
+            this.tsbAgregarAlDataGrid.Image = global::SisContador.Properties.Resources.Save24x24;
+            this.tsbAgregarAlDataGrid.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbAgregarAlDataGrid.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAgregarAlDataGrid.Name = "tsbAgregarAlDataGrid";
-            this.tsbAgregarAlDataGrid.Size = new System.Drawing.Size(23, 22);
+            this.tsbAgregarAlDataGrid.Size = new System.Drawing.Size(28, 36);
             this.tsbAgregarAlDataGrid.Text = "Agregar Cuenta";
             this.tsbAgregarAlDataGrid.Click += new System.EventHandler(this.tsbAgregarAlDataGrid_Click);
+            // 
+            // tsbModificarRegistros
+            // 
+            this.tsbModificarRegistros.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbModificarRegistros.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbModificarRegistros.Image = global::SisContador.Properties.Resources.Edit24x24;
+            this.tsbModificarRegistros.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbModificarRegistros.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbModificarRegistros.Name = "tsbModificarRegistros";
+            this.tsbModificarRegistros.Size = new System.Drawing.Size(28, 36);
+            this.tsbModificarRegistros.Text = "Modificar Registro";
+            this.tsbModificarRegistros.Click += new System.EventHandler(this.tsbModificarRegistros_Click);
             // 
             // dgvLista
             // 
@@ -587,9 +635,9 @@
             this.dgvLista.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLista.Location = new System.Drawing.Point(3, 28);
+            this.dgvLista.Location = new System.Drawing.Point(3, 42);
             this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(766, 200);
+            this.dgvLista.Size = new System.Drawing.Size(766, 186);
             this.dgvLista.TabIndex = 3;
             this.dgvLista.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvLista_CellBeginEdit);
             this.dgvLista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellClick);
@@ -605,45 +653,38 @@
             this.dgvLista.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvLista_KeyDown);
             this.dgvLista.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvLista_KeyUp);
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lbaBarradeprogreso,
-            this.Barradeprogreso});
-            this.statusStrip1.Location = new System.Drawing.Point(615, 233);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(157, 22);
-            this.statusStrip1.TabIndex = 5;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // lbaBarradeprogreso
-            // 
-            this.lbaBarradeprogreso.Name = "lbaBarradeprogreso";
-            this.lbaBarradeprogreso.Size = new System.Drawing.Size(38, 17);
-            this.lbaBarradeprogreso.Text = "0 de 0";
-            // 
-            // Barradeprogreso
-            // 
-            this.Barradeprogreso.Name = "Barradeprogreso";
-            this.Barradeprogreso.Size = new System.Drawing.Size(100, 16);
-            // 
             // statusStrip2
             // 
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tstTotalRegistros});
-            this.statusStrip2.Location = new System.Drawing.Point(0, 232);
+            this.tstTotalRegistros,
+            this.toolStripStatusLabel1,
+            this.tsbDiferencia});
+            this.statusStrip2.Location = new System.Drawing.Point(0, 228);
             this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(772, 22);
+            this.statusStrip2.Size = new System.Drawing.Size(772, 26);
             this.statusStrip2.TabIndex = 6;
             this.statusStrip2.Text = "statusStrip2";
             // 
             // tstTotalRegistros
             // 
             this.tstTotalRegistros.Name = "tstTotalRegistros";
-            this.tstTotalRegistros.Size = new System.Drawing.Size(102, 17);
+            this.tstTotalRegistros.Size = new System.Drawing.Size(102, 21);
             this.tstTotalRegistros.Text = "No de registros:  0";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(589, 21);
+            this.toolStripStatusLabel1.Text = "                                                                                 " +
+    "                                                     Deferencia Entre el Debe - " +
+    "Haber:  ";
+            // 
+            // tsbDiferencia
+            // 
+            this.tsbDiferencia.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbDiferencia.Name = "tsbDiferencia";
+            this.tsbDiferencia.Size = new System.Drawing.Size(41, 21);
+            this.tsbDiferencia.Text = "0.00";
             // 
             // toolStrip1
             // 
@@ -661,6 +702,7 @@
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1175, 31);
             this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.TabStop = true;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // tsbGuardar
@@ -756,6 +798,30 @@
             this.tsbImprimir.Text = "Imprimir";
             this.tsbImprimir.Click += new System.EventHandler(this.tsbImprimir_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lbaBarradeprogreso,
+            this.Barradeprogreso});
+            this.statusStrip1.Location = new System.Drawing.Point(1030, 520);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(157, 22);
+            this.statusStrip1.TabIndex = 5;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lbaBarradeprogreso
+            // 
+            this.lbaBarradeprogreso.Name = "lbaBarradeprogreso";
+            this.lbaBarradeprogreso.Size = new System.Drawing.Size(38, 17);
+            this.lbaBarradeprogreso.Text = "0 de 0";
+            // 
+            // Barradeprogreso
+            // 
+            this.Barradeprogreso.Name = "Barradeprogreso";
+            this.Barradeprogreso.Size = new System.Drawing.Size(100, 16);
+            // 
             // chkCerrarVentana
             // 
             this.chkCerrarVentana.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -782,37 +848,6 @@
             this.InformacionEntidadOperacion.Size = new System.Drawing.Size(0, 16);
             this.InformacionEntidadOperacion.TabIndex = 3;
             // 
-            // tsbModificarRegistros
-            // 
-            this.tsbModificarRegistros.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbModificarRegistros.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbModificarRegistros.Image = global::SisContador.Properties.Resources.Edit16x16;
-            this.tsbModificarRegistros.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbModificarRegistros.Name = "tsbModificarRegistros";
-            this.tsbModificarRegistros.Size = new System.Drawing.Size(23, 22);
-            this.tsbModificarRegistros.Text = "Modificar Registro";
-            this.tsbModificarRegistros.Click += new System.EventHandler(this.tsbModificarRegistros_Click);
-            // 
-            // txtIndexRegistro
-            // 
-            this.txtIndexRegistro.Location = new System.Drawing.Point(554, 126);
-            this.txtIndexRegistro.Name = "txtIndexRegistro";
-            this.txtIndexRegistro.Size = new System.Drawing.Size(29, 20);
-            this.txtIndexRegistro.TabIndex = 29;
-            this.txtIndexRegistro.Text = "-1";
-            this.txtIndexRegistro.Visible = false;
-            // 
-            // tsbLimpiarControlesGB
-            // 
-            this.tsbLimpiarControlesGB.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbLimpiarControlesGB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbLimpiarControlesGB.Image = global::SisContador.Properties.Resources.clear16x16;
-            this.tsbLimpiarControlesGB.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbLimpiarControlesGB.Name = "tsbLimpiarControlesGB";
-            this.tsbLimpiarControlesGB.Size = new System.Drawing.Size(23, 22);
-            this.tsbLimpiarControlesGB.Text = "Limpiar información de la cuenta";
-            this.tsbLimpiarControlesGB.Click += new System.EventHandler(this.tsbLimpiarControlesGB_Click);
-            // 
             // frmTransaccionOperacionBack
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -821,6 +856,7 @@
             this.ClientSize = new System.Drawing.Size(1199, 546);
             this.Controls.Add(this.InformacionEntidadOperacion);
             this.Controls.Add(this.chkCerrarVentana);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
             this.Name = "frmTransaccionOperacionBack";
             this.Text = "frmTransaccionOperacionBack";
@@ -848,12 +884,12 @@
             this.tsMenu.ResumeLayout(false);
             this.tsMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.statusStrip2.ResumeLayout(false);
             this.statusStrip2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -926,5 +962,7 @@
         private System.Windows.Forms.ToolStripButton tsbModificarRegistros;
         private System.Windows.Forms.TextBox txtIndexRegistro;
         private System.Windows.Forms.ToolStripButton tsbLimpiarControlesGB;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel tsbDiferencia;
     }
 }

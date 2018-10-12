@@ -20,7 +20,8 @@ namespace Entidad
         public LoginEN oLoginEN = new LoginEN();
         public PeriodoEN oPeriodoEN = new PeriodoEN();
         public UsuarioEN oUsuarioDeCierre = new UsuarioEN();
-
+        public TasaDeCambioEN oTasaDeCambioEN = new TasaDeCambioEN();
+        
         public string Where { set; get; }
         public string OrderBy { set; get; }
         public string TituloDelReporte { set; get; }

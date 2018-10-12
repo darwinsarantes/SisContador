@@ -519,6 +519,8 @@ namespace SisContador.Formularios
                     tsbImprimir.Enabled = oRegistroLN.VerificarSiTengoAcceso("Imprimir");
                     tsbNuevoRegistro.Enabled = oRegistroLN.VerificarSiTengoAcceso("Nuevo");
 
+                    EvaluarRegistros();
+
                 }
                 else
                 {
@@ -540,6 +542,32 @@ namespace SisContador.Formularios
             finally
             {
                 this.Cursor = Cursors.Default;
+            }
+
+        }
+        
+        private void EvaluarRegistros()
+        {
+            if (dgvLista.Rows.Count > 0)
+            {
+                if (dgvLista.SelectedRows != null)
+                {
+                    DataGridViewRow Fila = dgvLista.SelectedRows[0];
+                    string Estado = Fila.Cells["Estado"].Value.ToString();
+                    
+                    if (Estado.ToUpper() == "CERRADO")
+                    {
+                        actualizarToolStripMenuItem.Enabled = false;
+                        eliminarToolStripMenuItem.Enabled = false;
+                        tsbCerrar.Enabled = false;
+                    }else
+                    {
+                        actualizarToolStripMenuItem.Enabled = true;
+                        eliminarToolStripMenuItem.Enabled = true;
+                        tsbCerrar.Enabled = true;
+                    }
+
+                }
             }
 
         }
@@ -894,7 +922,65 @@ namespace SisContador.Formularios
         private void tsbCerrar_Click(object sender, EventArgs e)
         {
             AsignarLlavePrimaria();
+            if (EvaluarSiHayRegistrosEnLaTablaTMP())
+            {
+                return;
+            }
             MostrarFormularioParaOperacion("Cerrar");
+        }
+
+        public bool EvaluarSiHayRegistrosEnLaTablaTMP()
+        {
+            try
+            {
+
+                if(dgvLista.Rows.Count == 0)
+                {
+                    MessageBox.Show("Se debe seleccionar un elementos en la lista de registros");
+                    return true;
+                }
+
+                TransaccionTMPEN oRegistroEN = new TransaccionTMPEN();
+                TransaccionTMPLN oRegistroLN = new TransaccionTMPLN();
+
+                DateTime Desde = Convert.ToDateTime( dgvLista.CurrentRow.Cells["Desde"].Value);
+                DateTime Hasta = Convert.ToDateTime(dgvLista.CurrentRow.Cells["Hasta"].Value);
+
+                if (oRegistroLN.EvaluarSiHayDatosEnLaTablaTMP(oRegistroEN, Program.oDatosDeConexion, Desde, Hasta))
+                {
+                    throw new ArgumentException(oRegistroLN.Error);
+                }
+                else
+                {
+                    return false;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Evaluar si hay registro pendiente en proceso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
+        }
+
+        private void tsbAplicarBorde_Click(object sender, EventArgs e)
+        {
+            tsbAplicarBorde.Checked = !tsbAplicarBorde.Checked;
+
+            if (tsbAplicarBorde.Checked == true)
+            {
+                tsbAplicarBorde.Image = Properties.Resources.unchecked16x16;
+            }
+            else
+            {
+                tsbAplicarBorde.Image = Properties.Resources.checked16x16;
+            }
+        }
+
+        private void tsbImprimir_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

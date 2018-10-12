@@ -156,6 +156,22 @@ namespace Logica
 
         }
 
+        public bool ListadoParaReportesDesdeELHistorico(TransaccionDetalleTMPEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (oTransaccionDetalleAD.ListadoParaReportesDesdeELHistorico(oREgistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oTransaccionDetalleAD.Error;
+                return false;
+            }
+
+        }
+
         public bool ValidarRegistroDuplicado(TransaccionDetalleTMPEN oREgistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
         {
 

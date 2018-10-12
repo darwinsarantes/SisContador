@@ -494,7 +494,7 @@ namespace AccesoDatos
 
                     case "ACTUALIZAR":
 
-                        Consultas = @"SELECT CASE WHEN EXISTS(SELECT idCategoriaDeCuenta FROM CategoriaDeCuenta WHERE upper(trim(DescCategoriaDeCuenta)) = upper(@DescCategoriaDeCuenta) and idGrupoDeCuentas = @idGrupoDeCuentas <> @idCategoriaDeCuenta) THEN 1 ELSE 0 END AS 'RES'";
+                        Consultas = @"SELECT CASE WHEN EXISTS(SELECT idCategoriaDeCuenta FROM CategoriaDeCuenta WHERE upper(trim(DescCategoriaDeCuenta)) = upper(@DescCategoriaDeCuenta) and idGrupoDeCuentas = @idGrupoDeCuentas and idCategoriaDeCuenta <> @idCategoriaDeCuenta) THEN 1 ELSE 0 END AS 'RES'";
                         Comando.Parameters.Add(new MySqlParameter("@DescCategoriaDeCuenta", MySqlDbType.VarChar, oRegistroEN.DescCategoriaDeCuenta.Trim().Length)).Value = oRegistroEN.DescCategoriaDeCuenta.Trim();
                         Comando.Parameters.Add(new MySqlParameter("@idGrupoDeCuentas", MySqlDbType.Int32)).Value = oRegistroEN.oGrupoDeCuentasEN.idGrupoDeCuentas;
                         Comando.Parameters.Add(new MySqlParameter("@idCategoriaDeCuenta", MySqlDbType.Int32)).Value = oRegistroEN.idCategoriaDeCuenta;

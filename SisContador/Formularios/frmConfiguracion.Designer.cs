@@ -32,6 +32,10 @@
             this.tsBarraHarramientas = new System.Windows.Forms.ToolStrip();
             this.cmdGuardar = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtNombreDelSistema = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtPathMySQL = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,6 +45,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtTiempoDeRespaldo = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtUtilidadOPerdidaDelEjercicio = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtCuentaPrincipalDeBanco = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtNivelesDeLaCuentas = new System.Windows.Forms.TextBox();
@@ -54,12 +62,19 @@
             this.txtRutaExportacionArchivosExcel = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cmbNivelDeLaCuentaAOcultar = new System.Windows.Forms.ComboBox();
+            this.txtCuentaQueSeVaOcultarNivel = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.tsBarraHarramientas.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tsBarraHarramientas
@@ -91,14 +106,55 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Location = new System.Drawing.Point(12, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(727, 329);
+            this.groupBox1.Size = new System.Drawing.Size(727, 479);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Controls.Add(this.txtNombreDelSistema);
+            this.groupBox5.Controls.Add(this.textBox4);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox5.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.groupBox5.Location = new System.Drawing.Point(3, 386);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(721, 67);
+            this.groupBox5.TabIndex = 27;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Información del Sistema";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label7.Location = new System.Drawing.Point(5, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(136, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Nombre interno del Sistema";
+            // 
+            // txtNombreDelSistema
+            // 
+            this.txtNombreDelSistema.Location = new System.Drawing.Point(7, 32);
+            this.txtNombreDelSistema.Name = "txtNombreDelSistema";
+            this.txtNombreDelSistema.ReadOnly = true;
+            this.txtNombreDelSistema.Size = new System.Drawing.Size(670, 20);
+            this.txtNombreDelSistema.TabIndex = 16;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(8, 32);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(33, 20);
+            this.textBox4.TabIndex = 16;
+            this.textBox4.Visible = false;
             // 
             // groupBox4
             // 
@@ -111,7 +167,7 @@
             this.groupBox4.Controls.Add(this.textBox3);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox4.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.groupBox4.Location = new System.Drawing.Point(3, 205);
+            this.groupBox4.Location = new System.Drawing.Point(3, 275);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(721, 111);
             this.groupBox4.TabIndex = 26;
@@ -182,6 +238,11 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.groupBox6);
+            this.groupBox3.Controls.Add(this.txtTiempoDeRespaldo);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.txtUtilidadOPerdidaDelEjercicio);
+            this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.txtCuentaPrincipalDeBanco);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.txtNivelesDeLaCuentas);
@@ -190,14 +251,52 @@
             this.groupBox3.ForeColor = System.Drawing.SystemColors.Highlight;
             this.groupBox3.Location = new System.Drawing.Point(3, 127);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(721, 78);
+            this.groupBox3.Size = new System.Drawing.Size(721, 148);
             this.groupBox3.TabIndex = 25;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Información de la cuenta:";
             // 
+            // txtTiempoDeRespaldo
+            // 
+            this.txtTiempoDeRespaldo.Location = new System.Drawing.Point(209, 93);
+            this.txtTiempoDeRespaldo.MaxLength = 3;
+            this.txtTiempoDeRespaldo.Name = "txtTiempoDeRespaldo";
+            this.txtTiempoDeRespaldo.Size = new System.Drawing.Size(100, 20);
+            this.txtTiempoDeRespaldo.TabIndex = 25;
+            this.txtTiempoDeRespaldo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTiempoDeRespaldo_KeyPress);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label9.Location = new System.Drawing.Point(11, 95);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(184, 13);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "Tiempo de respaldo de la base datos:";
+            // 
+            // txtUtilidadOPerdidaDelEjercicio
+            // 
+            this.txtUtilidadOPerdidaDelEjercicio.Location = new System.Drawing.Point(209, 67);
+            this.txtUtilidadOPerdidaDelEjercicio.MaxLength = 3;
+            this.txtUtilidadOPerdidaDelEjercicio.Name = "txtUtilidadOPerdidaDelEjercicio";
+            this.txtUtilidadOPerdidaDelEjercicio.Size = new System.Drawing.Size(100, 20);
+            this.txtUtilidadOPerdidaDelEjercicio.TabIndex = 23;
+            this.txtUtilidadOPerdidaDelEjercicio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUtilidadOPerdidaDelEjercicio_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label8.Location = new System.Drawing.Point(11, 69);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(194, 13);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Cuenta - Utilidad o perdida del ejercicio:";
+            // 
             // txtCuentaPrincipalDeBanco
             // 
-            this.txtCuentaPrincipalDeBanco.Location = new System.Drawing.Point(180, 41);
+            this.txtCuentaPrincipalDeBanco.Location = new System.Drawing.Point(209, 41);
             this.txtCuentaPrincipalDeBanco.MaxLength = 3;
             this.txtCuentaPrincipalDeBanco.Name = "txtCuentaPrincipalDeBanco";
             this.txtCuentaPrincipalDeBanco.Size = new System.Drawing.Size(100, 20);
@@ -216,7 +315,7 @@
             // 
             // txtNivelesDeLaCuentas
             // 
-            this.txtNivelesDeLaCuentas.Location = new System.Drawing.Point(180, 16);
+            this.txtNivelesDeLaCuentas.Location = new System.Drawing.Point(209, 16);
             this.txtNivelesDeLaCuentas.Name = "txtNivelesDeLaCuentas";
             this.txtNivelesDeLaCuentas.Size = new System.Drawing.Size(100, 20);
             this.txtNivelesDeLaCuentas.TabIndex = 19;
@@ -317,11 +416,61 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.txtCuentaQueSeVaOcultarNivel);
+            this.groupBox6.Controls.Add(this.label11);
+            this.groupBox6.Controls.Add(this.cmbNivelDeLaCuentaAOcultar);
+            this.groupBox6.Controls.Add(this.label10);
+            this.groupBox6.Location = new System.Drawing.Point(342, 10);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(373, 77);
+            this.groupBox6.TabIndex = 26;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Asociar el nivel de la cuenta que no quiere mostrar";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label10.Location = new System.Drawing.Point(6, 24);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(94, 13);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Nivel de la Cuenta";
+            // 
+            // cmbNivelDeLaCuentaAOcultar
+            // 
+            this.cmbNivelDeLaCuentaAOcultar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbNivelDeLaCuentaAOcultar.FormattingEnabled = true;
+            this.cmbNivelDeLaCuentaAOcultar.Location = new System.Drawing.Point(118, 21);
+            this.cmbNivelDeLaCuentaAOcultar.Name = "cmbNivelDeLaCuentaAOcultar";
+            this.cmbNivelDeLaCuentaAOcultar.Size = new System.Drawing.Size(76, 21);
+            this.cmbNivelDeLaCuentaAOcultar.TabIndex = 23;
+            // 
+            // txtCuentaQueSeVaOcultarNivel
+            // 
+            this.txtCuentaQueSeVaOcultarNivel.Location = new System.Drawing.Point(118, 46);
+            this.txtCuentaQueSeVaOcultarNivel.MaxLength = 3;
+            this.txtCuentaQueSeVaOcultarNivel.Name = "txtCuentaQueSeVaOcultarNivel";
+            this.txtCuentaQueSeVaOcultarNivel.Size = new System.Drawing.Size(76, 20);
+            this.txtCuentaQueSeVaOcultarNivel.TabIndex = 25;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label11.Location = new System.Drawing.Point(6, 49);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(99, 13);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "Número de Cuenta:";
+            // 
             // frmConfiguracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 371);
+            this.ClientSize = new System.Drawing.Size(751, 521);
             this.Controls.Add(this.tsBarraHarramientas);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmConfiguracion";
@@ -330,6 +479,8 @@
             this.tsBarraHarramientas.ResumeLayout(false);
             this.tsBarraHarramientas.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -337,6 +488,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -369,5 +522,18 @@
         private System.Windows.Forms.TextBox txtCuentaPrincipalDeBanco;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtNombreDelSistema;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtUtilidadOPerdidaDelEjercicio;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtTiempoDeRespaldo;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TextBox txtCuentaQueSeVaOcultarNivel;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cmbNivelDeLaCuentaAOcultar;
+        private System.Windows.Forms.Label label10;
     }
 }

@@ -262,10 +262,12 @@ namespace AccesoDatos
                 Comando.CommandText = Consultas;
                 
                 Adaptador = new MySqlDataAdapter();
-                DT = new DataTable();
+                DT = new DataTable();               
 
                 Adaptador.SelectCommand = Comando;
                 Adaptador.Fill(DT);
+
+                LlenarCamposEnEntidad(oRegistroEN);
 
                 return true;
 
@@ -297,6 +299,15 @@ namespace AccesoDatos
 
             }
 
+        }
+
+        private void LlenarCamposEnEntidad(EmpresaEN oEmpresaEN)
+        {
+            oEmpresaEN.Nombre = DT.Rows[0].ItemArray[1].ToString();
+            oEmpresaEN.Direccion = DT.Rows[0].ItemArray[2].ToString();
+            oEmpresaEN.Telefonos = DT.Rows[0].ItemArray[3].ToString();
+            oEmpresaEN.NRuc = DT.Rows[0].ItemArray[4].ToString();
+            oEmpresaEN.oLogo = DT.Rows[0].ItemArray[5];            
         }
 
         public bool ListadoPorIdentificador(EmpresaEN oRegistroEN, DatosDeConexionEN oDatos)

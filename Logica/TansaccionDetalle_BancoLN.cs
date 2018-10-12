@@ -140,6 +140,22 @@ namespace Logica
 
         }
 
+        public bool ListadoParaReportesDesdeElHistorico(TansaccionDetalleTMPBancoEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (oTansaccionDetalle_BancoAD.ListadoParaReportesDesdeElHistorico(oREgistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oTansaccionDetalle_BancoAD.Error;
+                return false;
+            }
+
+        }
+
         public bool ValidarRegistroDuplicado(TansaccionDetalleTMPBancoEN oREgistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
         {
 

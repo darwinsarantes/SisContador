@@ -208,6 +208,7 @@
             this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
             this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.imprimirToolStripMenuItem.Text = "Imprimir";
+            this.imprimirToolStripMenuItem.Click += new System.EventHandler(this.imprimirToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -272,6 +273,7 @@
             this.tsbImprimir.Name = "tsbImprimir";
             this.tsbImprimir.Size = new System.Drawing.Size(28, 28);
             this.tsbImprimir.Text = "Imprimir";
+            this.tsbImprimir.Visible = false;
             // 
             // tsbNuevoRegistro
             // 

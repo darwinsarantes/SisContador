@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPeriodoOperacion));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -49,6 +50,14 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dtpkFechaDeLaTasaDeCambio = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtCambioOficial = new System.Windows.Forms.TextBox();
+            this.txtIdTasaDeCambio = new System.Windows.Forms.TextBox();
             this.gbCerrarPeriodo = new System.Windows.Forms.GroupBox();
             this.dtpFechaDeCierre = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
@@ -67,14 +76,19 @@
             this.chkCerrarVentana = new System.Windows.Forms.CheckBox();
             this.EP = new System.Windows.Forms.ErrorProvider(this.components);
             this.InformacionEntidadOperacion = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tsblMensajes = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.gbCerrarPeriodo.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EP)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -86,7 +100,7 @@
             this.panel1.Controls.Add(this.toolStrip1);
             this.panel1.Location = new System.Drawing.Point(12, 40);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(809, 416);
+            this.panel1.Size = new System.Drawing.Size(809, 421);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -98,7 +112,7 @@
             this.panel2.Controls.Add(this.tabControl1);
             this.panel2.Location = new System.Drawing.Point(13, 44);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(778, 354);
+            this.panel2.Size = new System.Drawing.Size(778, 359);
             this.panel2.TabIndex = 1;
             // 
             // tabControl1
@@ -111,7 +125,7 @@
             this.tabControl1.Location = new System.Drawing.Point(3, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(772, 338);
+            this.tabControl1.Size = new System.Drawing.Size(772, 343);
             this.tabControl1.TabIndex = 9;
             // 
             // tabPage1
@@ -134,7 +148,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(764, 312);
+            this.tabPage1.Size = new System.Drawing.Size(764, 317);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Período";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -276,14 +290,91 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.gbCerrarPeriodo);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(764, 312);
+            this.tabPage2.Size = new System.Drawing.Size(764, 317);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Cierre de Período";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.dtpkFechaDeLaTasaDeCambio);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.txtCambioOficial);
+            this.groupBox1.Controls.Add(this.txtIdTasaDeCambio);
+            this.groupBox1.Location = new System.Drawing.Point(415, 10);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(336, 274);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Información de la tasa de cambio:";
+            // 
+            // label13
+            // 
+            this.label13.Location = new System.Drawing.Point(17, 77);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(296, 138);
+            this.label13.TabIndex = 17;
+            this.label13.Text = resources.GetString("label13.Text");
+            this.label13.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(17, 51);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(86, 13);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Tasa de cambio:";
+            // 
+            // dtpkFechaDeLaTasaDeCambio
+            // 
+            this.dtpkFechaDeLaTasaDeCambio.Location = new System.Drawing.Point(113, 47);
+            this.dtpkFechaDeLaTasaDeCambio.Name = "dtpkFechaDeLaTasaDeCambio";
+            this.dtpkFechaDeLaTasaDeCambio.Size = new System.Drawing.Size(200, 20);
+            this.dtpkFechaDeLaTasaDeCambio.TabIndex = 15;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(17, 22);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(75, 13);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "Cambio oficial:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(17, 22);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(65, 13);
+            this.label12.TabIndex = 13;
+            this.label12.Text = "Identificador";
+            this.label12.Visible = false;
+            // 
+            // txtCambioOficial
+            // 
+            this.txtCambioOficial.Location = new System.Drawing.Point(113, 19);
+            this.txtCambioOficial.Name = "txtCambioOficial";
+            this.txtCambioOficial.Size = new System.Drawing.Size(118, 20);
+            this.txtCambioOficial.TabIndex = 11;
+            this.txtCambioOficial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCambioOficial_KeyPress);
+            // 
+            // txtIdTasaDeCambio
+            // 
+            this.txtIdTasaDeCambio.Location = new System.Drawing.Point(113, 19);
+            this.txtIdTasaDeCambio.Name = "txtIdTasaDeCambio";
+            this.txtIdTasaDeCambio.Size = new System.Drawing.Size(118, 20);
+            this.txtIdTasaDeCambio.TabIndex = 12;
+            this.txtIdTasaDeCambio.Visible = false;
             // 
             // gbCerrarPeriodo
             // 
@@ -317,11 +408,11 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(123, 45);
+            this.txtDescripcion.Location = new System.Drawing.Point(17, 61);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtDescripcion.Size = new System.Drawing.Size(251, 220);
+            this.txtDescripcion.Size = new System.Drawing.Size(357, 212);
             this.txtDescripcion.TabIndex = 8;
             // 
             // label9
@@ -442,12 +533,13 @@
             this.tsbImprimir.Name = "tsbImprimir";
             this.tsbImprimir.Size = new System.Drawing.Size(81, 28);
             this.tsbImprimir.Text = "Imprimir";
+            this.tsbImprimir.Visible = false;
             // 
             // chkCerrarVentana
             // 
             this.chkCerrarVentana.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkCerrarVentana.AutoSize = true;
-            this.chkCerrarVentana.Location = new System.Drawing.Point(12, 459);
+            this.chkCerrarVentana.Location = new System.Drawing.Point(12, 466);
             this.chkCerrarVentana.Name = "chkCerrarVentana";
             this.chkCerrarVentana.Size = new System.Drawing.Size(204, 17);
             this.chkCerrarVentana.TabIndex = 1;
@@ -469,12 +561,33 @@
             this.InformacionEntidadOperacion.Size = new System.Drawing.Size(0, 16);
             this.InformacionEntidadOperacion.TabIndex = 3;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsblMensajes});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 484);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(833, 22);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tsblMensajes
+            // 
+            this.tsblMensajes.Name = "tsblMensajes";
+            this.tsblMensajes.Size = new System.Drawing.Size(0, 17);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 5000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // frmPeriodoOperacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(833, 487);
+            this.ClientSize = new System.Drawing.Size(833, 506);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.InformacionEntidadOperacion);
             this.Controls.Add(this.chkCerrarVentana);
             this.Controls.Add(this.panel1);
@@ -489,11 +602,15 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.gbCerrarPeriodo.ResumeLayout(false);
             this.gbCerrarPeriodo.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EP)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -539,5 +656,16 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ToolStripButton tsbAplicarCierre;
         private System.Windows.Forms.Label lbContar;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel tsblMensajes;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DateTimePicker dtpkFechaDeLaTasaDeCambio;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtCambioOficial;
+        private System.Windows.Forms.TextBox txtIdTasaDeCambio;
     }
 }

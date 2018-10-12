@@ -30,7 +30,10 @@ namespace SisContador.Formularios
         private int NivelCuenta;
         
         private int idTipoDeCuenta;
-               
+
+        private bool AplicarCambio = false;
+        private bool PermitirModificarRegistrosVinculados = false;
+
         private void frmCuentaOperacion_Shown(object sender, EventArgs e)
         {
             ObtenerValoresDeConfiguracion();
@@ -40,7 +43,46 @@ namespace SisContador.Formularios
             LlamarMetodoSegunOperacion();
             EstablecerTituloDeVentana();
             DeshabilitarControlesSegunOperacionesARealizar();
-                        
+
+            ConfiguracionDePantalla();
+            CargarPrivilegiosDelUsuario();
+
+        }
+
+        private void ConfiguracionDePantalla()
+        {
+            try
+            {
+
+                int Alto = Screen.PrimaryScreen.Bounds.Height;
+                int Ancho = Screen.PrimaryScreen.Bounds.Width;
+
+                if (Ancho == 1024 && Alto == 768)
+                {
+                    tsbGuardar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+
+                    foreach (ToolStripItem item in toolStrip1.Items)
+                    {
+                        if (item.Name != null)
+                        {
+                            string Referencia = item.Name;
+                            List<string> RDB = new List<string>(new string[] { "tsbGuardar", "tsbActualizar", "tsbEliminar", "tsbLimpiarCampos", "tsbImprimir", "tsbRecarRegistro", "tsbCerrarVentan" });
+
+                            if (RDB.Contains(Referencia, StringComparer.OrdinalIgnoreCase) == true)
+                            {
+                                item.DisplayStyle = ToolStripItemDisplayStyle.Image;
+                            }
+
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Configuraciona de pantalla", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         #region "Funciones"
@@ -166,20 +208,25 @@ namespace SisContador.Formularios
 
                 if (oRegistroLN.ListadoPrivilegiosDelUsuariosPorIntefaz(oRegistroEN, Program.oDatosDeConexion))
                 {
-                    
-                    tsbActualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Actualizar");
-
-                    if (tsbActualizar.Enabled == true) {
-
-                        DeshabilitarControlesSegunOperacionesARealizar();
-
-                    }
-                    else
+                    if (OperacionARealizar.Trim().ToUpper() == "MODIFICAR")
                     {
-                        MessageBox.Show("No tiene privilegio para modificar el registro, la ventana se cerrara", "Privilegios de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        this.Close();
+
+                        tsbActualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Actualizar");
+
+                        if (tsbActualizar.Enabled == true)
+                        {
+
+                            DeshabilitarControlesSegunOperacionesARealizar();
+                            PermitirModificarRegistrosVinculados = oRegistroLN.VerificarSiTengoAcceso("Permitir modificar registros vinculados");
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("No tiene privilegio para modificar el registro, la ventana se cerrara", "Privilegios de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            this.Close();
+                        }
+
                     }
-                    
 
                 }
                 else
@@ -399,6 +446,7 @@ namespace SisContador.Formularios
                     txtIdentificadorAsociado.Text = Fila["CuentaMadre"].ToString();
                     idTipoDeCuenta = Convert.ToInt32(Fila["idTipoDeCuenta"].ToString());
                     txtSaldo.Text = string.Format("{0:###,###.0#}", Fila["SaldoCuenta"].ToString());
+                    txtDescCuentaContenido.Text = Fila["DescCuentaContenido"].ToString();
 
                     //Traer informacion sobre la cuenta a la que esta asociada el registro.....
                     TraerInformacionDeLaCuentaAsociada();
@@ -864,6 +912,7 @@ namespace SisContador.Formularios
             oRegistroEN.CuentaMadre =  Controles.IsNullOEmptyElControl(txtIdentificadorAsociado) == false ? txtIdentificadorAsociado.Text.Trim() : "0" ; //obtener si tiene una dependencia...
             oRegistroEN.oCategoriaDeCuentaEN.idCategoriaDeCuenta = Convert.ToInt32(cmbCategoriaDeLaCuenta.SelectedValue);
             oRegistroEN.oCategoriaDeCuentaEN.DescCategoriaDeCuenta = cmbCategoriaDeLaCuenta.Text.Trim();
+            oRegistroEN.DescCuentaContenido = txtDescCuentaContenido.Text.Trim();
 
             //partes generales.            
             oRegistroEN.oLoginEN = Program.oLoginEN;
@@ -1087,32 +1136,76 @@ namespace SisContador.Formularios
 
                     if (oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN, Program.oDatosDeConexion, "ACTUALIZAR"))
                     {
-                        this.Cursor = Cursors.Default;
-                        MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        return;
+                        if (PermitirModificarRegistrosVinculados == true && AplicarCambio == true)
+                        {
+                            if (MessageBox.Show(string.Format("¿Está seguro que desea guardar los cambios en el registro seleccionado ya que este se encuentra asociado a otras Entidades de manera interna? {0} {1}", System.Environment.NewLine, oRegistroLN.Error), "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) == System.Windows.Forms.DialogResult.No)
+                            {
+                                this.Cursor = Cursors.Default;
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            this.Cursor = Cursors.Default;
+                            return;
+                        }
                     }
 
                     if (oRegistroLN.ValidarRegistroDuplicadoPorElIdentificadorDeLaCuenta(oRegistroEN, Program.oDatosDeConexion, "ACTUALIZAR"))
                     {
-                        this.Cursor = Cursors.Default;
-                        MessageBox.Show(oRegistroLN.Error, "Actualizar la información", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        if (PermitirModificarRegistrosVinculados == true && AplicarCambio == true)
+                        {
+                            if (MessageBox.Show(string.Format("¿Está seguro que desea guardar los cambios en el registro seleccionado ya que este se encuentra asociado a otras Entidades de manera interna? {0} {1}", System.Environment.NewLine, oRegistroLN.Error), "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) == System.Windows.Forms.DialogResult.No)
+                            {
+                                this.Cursor = Cursors.Default;
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            this.Cursor = Cursors.Default;
+                            return;
+                        }
 
                     }
 
                     if (oRegistroLN.ValidarRegistroDuplicadoPorDescripcionDeLaCuenta(oRegistroEN, Program.oDatosDeConexion, "ACTUALIZAR"))
                     {
-                        this.Cursor = Cursors.Default;
-                        MessageBox.Show(oRegistroLN.Error, "Actualizar la información", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        if (PermitirModificarRegistrosVinculados == true && AplicarCambio == true)
+                        {
+                            if (MessageBox.Show(string.Format("¿Está seguro que desea guardar los cambios en el registro seleccionado ya que este se encuentra asociado a otras Entidades de manera interna? {0} {1}", System.Environment.NewLine, oRegistroLN.Error), "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) == System.Windows.Forms.DialogResult.No)
+                            {
+                                this.Cursor = Cursors.Default;
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            this.Cursor = Cursors.Default;
+                            return;
+                        }
 
                     }
 
                     if (oRegistroLN.ValidarRegistroDuplicadoPorCategoria(oRegistroEN, Program.oDatosDeConexion, "ACTUALIZAR"))
                     {
-                        this.Cursor = Cursors.Default;
-                        MessageBox.Show(oRegistroLN.Error, "Actualizar la información", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        if (PermitirModificarRegistrosVinculados == true && AplicarCambio == true)
+                        {
+                            if (MessageBox.Show(string.Format("¿Está seguro que desea guardar los cambios en el registro seleccionado ya que este se encuentra asociado a otras Entidades de manera interna? {0} {1}", System.Environment.NewLine, oRegistroLN.Error), "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) == System.Windows.Forms.DialogResult.No)
+                            {
+                                this.Cursor = Cursors.Default;
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            this.Cursor = Cursors.Default;
+                            return;
+                        }
 
                     }
 
@@ -1416,6 +1509,21 @@ namespace SisContador.Formularios
                 this.Close();
             }
 
+        }
+
+        private void tsbAutorizarModificación_Click(object sender, EventArgs e)
+        {
+            tsbAutorizarModificación.Checked = !tsbAutorizarModificación.Checked;
+            AplicarCambio = tsbAutorizarModificación.Checked;
+
+            if (tsbAutorizarModificación.Checked == true)
+            {
+                tsbAutorizarModificación.Image = Properties.Resources.unchecked16x16;
+            }
+            else
+            {
+                tsbAutorizarModificación.Image = Properties.Resources.checked16x16;
+            }
         }
     }
 }

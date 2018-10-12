@@ -27,6 +27,11 @@ namespace SisContador.Formularios
         private int IndiceSeleccionado;
         private frmVisor ofrmVisor = null;
         private frmVisor ofrmVisor_1 = null;
+        private frmVisor ofrmVisor_2 = null;
+        private frmVisor ofrmVisor_3 = null;
+        private frmVisor ofrmVisor_4 = null;
+
+        frmCuentaOperacion ofrmCuentaOperacion = null;
 
         #region "Funciones del programador"
 
@@ -349,6 +354,7 @@ namespace SisContador.Formularios
 
         private DataTable AgregarColumnaSeleccionar(DataTable Datos)
         {
+            
             DataColumn Seleccionar = new DataColumn("Seleccionar", Type.GetType("System.Boolean"));
             Seleccionar.Caption = " ";
             Seleccionar.DefaultValue = false;
@@ -358,7 +364,75 @@ namespace SisContador.Formularios
 
             return Datos;
         }
-        
+
+        private DataTable AgregarColumnaDeInterrogacion(DataTable Datos)
+        {
+            try
+            {
+                
+                if(VerificarQueSeHayaIngresadoUnaDescripcion(Datos) == true)
+                {
+                    DataColumn Seleccionar = new DataColumn("Help", Type.GetType("System.Byte[]"));
+                    Seleccionar.Caption = " ";//Imagenes.ProcesarImagenToByte((Bitmap)(pbxImagen.Image));
+                    Seleccionar.DefaultValue = Funciones.Imagenes.ProcesarImagenToByte((Bitmap)( SisContador.Properties.Resources.if_help_browser_118806));
+                    Datos.Columns.Add(Seleccionar);
+
+                    if (Datos.Columns.Contains("Seleccionar")){                      
+                        Seleccionar.SetOrdinal(1);                        
+                    }else{
+                        Seleccionar.SetOrdinal(0);
+                    }
+
+                    return Datos;
+
+                }
+                else
+                {
+                    return Datos;
+                }
+
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Agregar columna de interrogación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return Datos;
+            }
+        }
+
+        private bool VerificarQueSeHayaIngresadoUnaDescripcion(DataTable DT)
+        {
+            bool Verificar = false;
+            
+            DataTable DTCopy = new DataTable();
+
+            try
+            {
+                if (DT.Rows.Count > 0)
+                {
+                    DTCopy = DT.AsEnumerable().Where(r => r.Field<string>("DescCuentaContenido").Trim().Length > 0).CopyToDataTable();
+
+                    if (DTCopy.Rows.Count > 0)
+                    {
+                        Verificar = true;
+                    }
+                    else
+                    {
+                        Verificar = false;
+                    }
+
+                }
+
+                return Verificar;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Evaluar si la fila en el DGV no esta Oculta", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                return false;
+            }
+
+        }
+
         private string WhereDinamico() {
 
             string Where = "";
@@ -455,17 +529,27 @@ namespace SisContador.Formularios
                 if (oRegistrosLN.Listado(oRegistrosEN, Program.oDatosDeConexion)) {
 
                     dgvLista.Columns.Clear();
-                    System.Diagnostics.Debug.Print(oRegistrosLN.TraerDatos().Rows.Count.ToString());
+                    dgvLista.DataSource = null;
+                    
+                    DataTable RegistrosDT = new DataTable();
 
                     if (ActivarFiltros == true)
                     {
-                        dgvLista.DataSource = AgregarColumnaSeleccionar(oRegistrosLN.TraerDatos());
+                        RegistrosDT = AgregarColumnaSeleccionar(oRegistrosLN.TraerDatos()).Copy();
                     }
                     else {
-                        dgvLista.DataSource = oRegistrosLN.TraerDatos();
+                        RegistrosDT = oRegistrosLN.TraerDatos().Copy();
                     }
 
-                    FormatearDGV();                   
+                    //RegistrosDT = DTRegistros;//AgregarColumnaDeInterrogacion(DTRegistros);
+
+                    dgvLista.DataSource = RegistrosDT;//AgregarColumnaDeInterrogacion(RegistrosDT);
+
+                    FormatearDGV();
+                    dgvLista.Columns["SaldoCuenta"].DefaultCellStyle.Format = "###,###,##0.00";
+                    dgvLista.Columns["MovimientosDelDia"].DefaultCellStyle.Format = "###,###,##0.00";
+                    dgvLista.Columns["SaldoAlDia"].DefaultCellStyle.Format = "###,###,##0.00";
+
                     this.dgvLista.ClearSelection();
 
                     tsbNoRegistros.Text = "No. Registros: " + oRegistrosLN.TotalRegistros().ToString();
@@ -513,7 +597,7 @@ namespace SisContador.Formularios
                 this.dgvLista.BackgroundColor = System.Drawing.SystemColors.Window;
                 this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
                 
-                string OcultarColumnas = "NoCuenta,CuentaMadre,NivelCuenta,DescGrupoDeCuentas,DescTipoDeCuenta,idTipoDeCuenta,idGrupoDeCuentas,idCategoriaDeCuenta,IdUsuarioDeCreacion,FechaDeCreacion,IdUsuarioDeModificacion,FechaDeModificacion,EsCuentaDeBanco";
+                string OcultarColumnas = "DescCuentaContenido,NoCuenta,CuentaMadre,NivelCuenta,DescGrupoDeCuentas,DescTipoDeCuenta,idTipoDeCuenta,idGrupoDeCuentas,idCategoriaDeCuenta,IdUsuarioDeCreacion,FechaDeCreacion,IdUsuarioDeModificacion,FechaDeModificacion,EsCuentaDeBanco";
                 OcultarColumnasEnElDGV(OcultarColumnas);
 
                 FormatearColumnasDelDGV();
@@ -641,14 +725,20 @@ namespace SisContador.Formularios
 
         private void MostrarFormularioParaOperacion(string OperacionesARealizar)
         {
-
-            frmCuentaOperacion ofrmCuentaOperacion = new frmCuentaOperacion();
-            ofrmCuentaOperacion.OperacionARealizar = OperacionesARealizar;
-            ofrmCuentaOperacion.NOMBRE_ENTIDAD_PRIVILEGIO = NOMBRE_ENTIDAD_PRIVILEGIO;
-            ofrmCuentaOperacion.NombreEntidad = NOMBRE_ENTIDAD;
-            ofrmCuentaOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
-            ofrmCuentaOperacion.MdiParent = this.ParentForm;
-            ofrmCuentaOperacion.Show();
+            if (ofrmCuentaOperacion == null || ofrmCuentaOperacion.IsDisposed)
+            {
+                ofrmCuentaOperacion = new frmCuentaOperacion();
+                ofrmCuentaOperacion.OperacionARealizar = OperacionesARealizar;
+                ofrmCuentaOperacion.NOMBRE_ENTIDAD_PRIVILEGIO = NOMBRE_ENTIDAD_PRIVILEGIO;
+                ofrmCuentaOperacion.NombreEntidad = NOMBRE_ENTIDAD;
+                ofrmCuentaOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
+                ofrmCuentaOperacion.MdiParent = this.ParentForm;
+                ofrmCuentaOperacion.Show();
+            }else
+            {
+                MessageBox.Show("Actualmente la ventana se encuentra abierta y esta realizandose una operación de '"+ofrmCuentaOperacion.OperacionARealizar+"'", "Privilegios de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ofrmCuentaOperacion.BringToFront();
+            }
 
         }
 
@@ -1159,7 +1249,7 @@ namespace SisContador.Formularios
                 if (ofrmVisor == null || ofrmVisor.IsDisposed)
                 {
                     ofrmVisor = new frmVisor();
-
+                    ofrmVisor.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
                     ofrmVisor.NombreReporte = "Cuentas - Catalogo";
                     CuentaEN oRegistroEN = new CuentaEN();
                     oRegistroEN.Where = WhereDinamico();
@@ -1189,6 +1279,7 @@ namespace SisContador.Formularios
                     ofrmVisor_1 = new frmVisor();
 
                     ofrmVisor_1.NombreReporte = "Cuentas - Listado completo";
+                    ofrmVisor_1.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
                     CuentaEN oRegistroEN = new CuentaEN();
                     oRegistroEN.Where = WhereDinamico();
                     oRegistroEN.OrderBy = " Order by c.idCuenta asc  ";
@@ -1206,6 +1297,124 @@ namespace SisContador.Formularios
             {
                 MessageBox.Show(ex.Message, "Imprimir listado de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void tsbMostrarSaldos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ofrmVisor_2 == null || ofrmVisor_2.IsDisposed)
+                {
+                    ofrmVisor_2 = new frmVisor();
+
+                    ofrmVisor_2.NombreReporte = "Cuentas - Traer Saldos";
+                    ofrmVisor_2.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                    ReportesEN oRegistroEN = new ReportesEN();
+                    oRegistroEN.Where = WhereDinamico();
+                    oRegistroEN.OrderBy = " Order by idCuenta asc  ";
+                    oRegistroEN.TituloDelReporte = TituloDinamico();
+                    ofrmVisor_2.Entidad = oRegistroEN;
+
+                    ofrmVisor_2.MdiParent = this.ParentForm;
+                    ofrmVisor_2.Show();
+                }
+                else
+                    ofrmVisor_2.BringToFront();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Imprimir listado de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void tsbMostrarSaldoDetallado_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ofrmVisor_3 == null || ofrmVisor_3.IsDisposed)
+                {
+                    ofrmVisor_3 = new frmVisor();
+
+                    ofrmVisor_3.NombreReporte = "Cuentas - Traer Saldos Detallado";
+                    ofrmVisor_3.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                    ReportesEN oRegistroEN = new ReportesEN();
+                    oRegistroEN.Where = WhereDinamico();
+                    oRegistroEN.OrderBy = " Order by idCuenta asc  ";
+                    oRegistroEN.TituloDelReporte = TituloDinamico();
+                    ofrmVisor_3.Entidad = oRegistroEN;
+
+                    ofrmVisor_3.MdiParent = this.ParentForm;
+                    ofrmVisor_3.Show();
+                }
+                else
+                    ofrmVisor_3.BringToFront();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Imprimir listado de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void movimientosDeLaCuentaDuranteElMesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvLista.RowCount <= 0)
+                {
+                    throw new ArgumentException("No se encontraron registro dentro de la lista de información");
+                }
+
+                if (dgvLista.SelectedRows == null)
+                {
+                    throw new ArgumentException("Se debe seleccionar un registro de la lista de información");
+                }
+
+                if (ofrmVisor_4 == null || ofrmVisor_4.IsDisposed)
+                {
+                    ofrmVisor_4 = new frmVisor();
+                    ofrmVisor_4.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+
+                    int NoCuenta = Convert.ToInt32(dgvLista.CurrentRow.Cells["NoCuenta"].Value.ToString());
+
+                    ofrmVisor_4.NombreReporte = "Cuentas - Movimientos del Mes";
+                    CuentaEN oRegistroEN = new CuentaEN();
+                    oRegistroEN.Where = string.Format(" and td.NoCuenta = {0}", NoCuenta);
+                    oRegistroEN.OrderBy = " Order by idCuenta asc  ";
+                    oRegistroEN.TituloDelReporte = "MOVIMIENTOS DEL MES POR CUENTA";
+                    ofrmVisor_4.Entidad = oRegistroEN;
+
+                    ofrmVisor_4.MdiParent = this.ParentForm;
+                    ofrmVisor_4.Show();
+                }
+                else
+                    ofrmVisor_4.BringToFront();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Imprimir movimientos del mes de la cuenta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void tsbAplicarBorde_Click(object sender, EventArgs e)
+        {
+            tsbAplicarBorde.Checked = !tsbAplicarBorde.Checked;
+
+            if (tsbAplicarBorde.Checked == true)
+            {
+                tsbAplicarBorde.Image = Properties.Resources.unchecked16x16;
+            }
+            else
+            {
+                tsbAplicarBorde.Image = Properties.Resources.checked16x16;
+            }
+        }
+
+        private void imprimirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

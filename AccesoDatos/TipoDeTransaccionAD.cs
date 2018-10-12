@@ -370,6 +370,8 @@ namespace AccesoDatos
                 from TipoDeTransaccion where idTipoDeTransaccion > 0 {0} {1} ; ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
+                System.Diagnostics.Debug.Print("Consultas de Tipo de transaccion: " + Consultas);
+
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();
 
