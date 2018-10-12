@@ -1,0 +1,33 @@
+D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\Logica\bin\Debug\Logica.dll
+D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\Logica\bin\Debug\Logica.pdb
+D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\Logica\bin\Debug\AccesoDatos.dll
+D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\Logica\bin\Debug\Entidad.dll
+D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\Logica\bin\Debug\MySql.Data.dll
+D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\Logica\bin\Debug\AccesoDatos.pdb
+D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\Logica\bin\Debug\Entidad.pdb
+D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\Logica\bin\Debug\MySql.Data.xml
+D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\Logica\obj\Debug\Logica.dll
+D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\Logica\obj\Debug\Logica.pdb
+F:\SisContador\Logica\bin\Debug\Logica.dll
+F:\SisContador\Logica\bin\Debug\Logica.pdb
+F:\SisContador\Logica\bin\Debug\AccesoDatos.dll
+F:\SisContador\Logica\bin\Debug\Entidad.dll
+F:\SisContador\Logica\bin\Debug\MySql.Data.dll
+F:\SisContador\Logica\bin\Debug\AccesoDatos.pdb
+F:\SisContador\Logica\bin\Debug\Entidad.pdb
+F:\SisContador\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+F:\SisContador\Logica\obj\Debug\Logica.dll
+F:\SisContador\Logica\obj\Debug\Logica.pdb
+F:\SisContador\Logica\bin\Debug\MySql.Data.xml
+E:\SisContador\Logica\bin\Debug\Logica.dll
+E:\SisContador\Logica\bin\Debug\Logica.pdb
+E:\SisContador\Logica\bin\Debug\AccesoDatos.dll
+E:\SisContador\Logica\bin\Debug\Entidad.dll
+E:\SisContador\Logica\bin\Debug\MySql.Data.dll
+E:\SisContador\Logica\bin\Debug\AccesoDatos.pdb
+E:\SisContador\Logica\bin\Debug\Entidad.pdb
+E:\SisContador\Logica\bin\Debug\MySql.Data.xml
+E:\SisContador\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+E:\SisContador\Logica\obj\Debug\Logica.dll
+E:\SisContador\Logica\obj\Debug\Logica.pdb

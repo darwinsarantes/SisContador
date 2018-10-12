@@ -1,0 +1,120 @@
+﻿<DSReportes>
+  <xs:schema id="OrigenXML" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+    <xs:element name="DataSetReportes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+
+          <xs:element name="ListadoEmpresa">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="IdEmpresa" type="xs:decimal" minOccurs="0" />
+                <xs:element name="Nombre" type="xs:string" minOccurs="0" />
+                <xs:element name="Direccion" type="xs:string" minOccurs="0" />
+                <xs:element name="Telefonos" type="xs:string" minOccurs="0" />
+                <xs:element name="NRuc" type="xs:string" minOccurs="0" />
+                <xs:element name="Logo" type="xs:hexBinary" minOccurs="0" />                
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+
+          <xs:element name="ListadoDeCuentas">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="DescTipoDeCuenta" type="xs:string" minOccurs="0" />
+                <xs:element name="CuentaMadre" type="xs:string" minOccurs="0" />
+                <xs:element name="NivelCuenta" type="xs:decimal" minOccurs="0" />
+                <xs:element name="SaldoCuenta" type="xs:decimal" minOccurs="0" />
+                <xs:element name="DescGrupoDeCuentas" type="xs:string" minOccurs="0" />
+                <xs:element name="DescCategoriaDeCuenta" type="xs:string" minOccurs="0" />
+                <xs:element name="DescCuenta" type="xs:string" minOccurs="0" />
+                <xs:element name="idCuenta" type="xs:string" minOccurs="0" />
+                <xs:element name="NoCuenta" type="xs:decimal" minOccurs="0" />
+                <xs:element name="idTipoDeCuenta" type="xs:decimal" minOccurs="0" />
+                <xs:element name="idGrupoDeCuentas" type="xs:decimal" minOccurs="0" />
+                <xs:element name="idCategoriaDeCuenta" type="xs:decimal" minOccurs="0" />
+                
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          
+          <xs:element name="ListadoCompletoDeLasCuentas">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Creditos" type="xs:string" minOccurs="0" />
+                <xs:element name="Debitos" type="xs:string" minOccurs="0" />
+                <xs:element name="DescTipoDeCuenta" type="xs:string" minOccurs="0" />
+                <xs:element name="CuentaMadre" type="xs:string" minOccurs="0" />
+                <xs:element name="NivelCuenta" type="xs:decimal" minOccurs="0" />
+                <xs:element name="SaldoCuenta" type="xs:decimal" minOccurs="0" />
+                <xs:element name="DescGrupoDeCuentas" type="xs:string" minOccurs="0" />
+                <xs:element name="DescCategoriaDeCuenta" type="xs:string" minOccurs="0" />
+                <xs:element name="DescCuenta" type="xs:string" minOccurs="0" />
+                <xs:element name="idCuenta" type="xs:string" minOccurs="0" />
+                <xs:element name="NoCuenta" type="xs:decimal" minOccurs="0" />
+                <xs:element name="idTipoDeCuenta" type="xs:decimal" minOccurs="0" />
+                <xs:element name="idGrupoDeCuentas" type="xs:decimal" minOccurs="0" />
+                <xs:element name="idCategoriaDeCuenta" type="xs:decimal" minOccurs="0" />                
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          
+          <xs:element name="ListadoDeTransancciones">
+            <xs:complexType>
+              <xs:sequence>
+                
+                <xs:element name="Estado" type="xs:string" minOccurs="0" />
+                <xs:element name="Valor" type="xs:decimal" minOccurs="0" />
+                <xs:element name="Concepto" type="xs:string" minOccurs="0" />
+                <xs:element name="Fecha" type="xs:date" minOccurs="0" />
+                <xs:element name="DesTipoDeTransaccion" type="xs:string" minOccurs="0" />
+                <xs:element name="NumeroDeTransaccion" type="xs:string" minOccurs="0" />
+                <xs:element name="idTipoDeTransaccion" type="xs:decimal" minOccurs="0" />
+                <xs:element name="idTransacciones" type="xs:decimal" minOccurs="0" />
+
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          
+          <xs:element name="ListadoDeTransanccionesDetalle">
+            <xs:complexType>
+              <xs:sequence>
+
+                <xs:element name="Haber" type="xs:decimal" minOccurs="0" />
+                <xs:element name="Debe" type="xs:decimal" minOccurs="0" />
+                <xs:element name="DescCuenta" type="xs:string" minOccurs="0" />                
+                <xs:element name="idCuenta" type="xs:string" minOccurs="0" />
+                <xs:element name="idTransacciones" type="xs:decimal" minOccurs="0" />
+                <xs:element name="NoCuenta" type="xs:decimal" minOccurs="0" />
+                <xs:element name="idTransaccionDetalle" type="xs:decimal" minOccurs="0" />
+
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+
+          <xs:element name="ListadoDeTransanccionesDetalleBanco">
+            <xs:complexType>
+              <xs:sequence>
+
+                <xs:element name="Haber" type="xs:decimal" minOccurs="0" />
+                <xs:element name="Debe" type="xs:decimal" minOccurs="0" />
+                <xs:element name="DescBanco" type="xs:string" minOccurs="0" />
+                <xs:element name="ReferenciaBanco" type="xs:string" minOccurs="0" />
+                <xs:element name="DescCuenta" type="xs:string" minOccurs="0" />
+                <xs:element name="idCuenta" type="xs:string" minOccurs="0" />
+                <xs:element name="NoCuenta" type="xs:decimal" minOccurs="0" />
+                <xs:element name="idTransacciones" type="xs:decimal" minOccurs="0" />
+                <xs:element name="idTransaccionDetalle" type="xs:decimal" minOccurs="0" />
+                <xs:element name="idTansaccionDetalle_Banco" type="xs:decimal" minOccurs="0" />
+
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+
+</DSReportes>
+

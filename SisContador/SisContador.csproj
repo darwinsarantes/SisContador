@@ -1,0 +1,660 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{491F0255-E78A-4A12-BEB1-BFD988EA8426}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SisContador</RootNamespace>
+    <AssemblyName>SisContador</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>E:\Publicaciones\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>http://192.168.1.6/siscontador/Publicaciones/</UpdateUrl>
+    <TargetCulture>es-NI</TargetCulture>
+    <ProductName>SisContador</ProductName>
+    <PublisherName>SisContador</PublisherName>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>964265BA4E02E0EC6C0274A74BDAF26FC02FB2F9</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SisContador_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>LogSistemas.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Funciones, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Funciones.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Formularios\FormatoDGV.cs" />
+    <Compile Include="Formularios\frmPeriodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmPeriodo.Designer.cs">
+      <DependentUpon>frmPeriodo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmPeriodoOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmPeriodoOperacion.Designer.cs">
+      <DependentUpon>frmPeriodoOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmReportes.Designer.cs">
+      <DependentUpon>frmReportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTransaccionOperacionBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTransaccionOperacionBack.Designer.cs">
+      <DependentUpon>frmTransaccionOperacionBack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTransaccionOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTransaccionOperacion.Designer.cs">
+      <DependentUpon>frmTransaccionOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTransaccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTransaccion.Designer.cs">
+      <DependentUpon>frmTransaccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTipoDeTransaccionOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTipoDeTransaccionOperacion.Designer.cs">
+      <DependentUpon>frmTipoDeTransaccionOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTipoDeTransaccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTipoDeTransaccion.Designer.cs">
+      <DependentUpon>frmTipoDeTransaccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmRol.Designer.cs">
+      <DependentUpon>frmRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCuentaOperacion .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCuentaOperacion .Designer.cs">
+      <DependentUpon>frmCuentaOperacion .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCuenta.Designer.cs">
+      <DependentUpon>frmCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmRolOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmRolOperacion.Designer.cs">
+      <DependentUpon>frmRolOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmUsuarioOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmUsuarioOperacion.Designer.cs">
+      <DependentUpon>frmUsuarioOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmUsuario.Designer.cs">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmConfiguracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmConfiguracion.Designer.cs">
+      <DependentUpon>frmConfiguracion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmEmpresa.Designer.cs">
+      <DependentUpon>frmEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCategoriaDeCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCategoriaDeCuenta.Designer.cs">
+      <DependentUpon>frmCategoriaDeCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmGruposDeCuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmGruposDeCuentas.Designer.cs">
+      <DependentUpon>frmGruposDeCuentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCategoriaDeCuentaOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCategoriaDeCuentaOperacion.Designer.cs">
+      <DependentUpon>frmCategoriaDeCuentaOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmGruposDeCuentasOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmGruposDeCuentasOperacion.Designer.cs">
+      <DependentUpon>frmGruposDeCuentasOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmLoginMySQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmLoginMySQL.Designer.cs">
+      <DependentUpon>frmLoginMySQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmRespaldo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmRespaldo.Designer.cs">
+      <DependentUpon>frmRespaldo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmRestaurar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmRestaurar.Designer.cs">
+      <DependentUpon>frmRestaurar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmSplash.Designer.cs">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmVisor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmVisor.Designer.cs">
+      <DependentUpon>frmVisor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\rptImprimirTransaccion.cs">
+      <DependentUpon>rptImprimirTransaccion.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptListaDeCuentasCompleta.cs">
+      <DependentUpon>rptListaDeCuentasCompleta.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptListadoDeTransancciones.cs">
+      <DependentUpon>rptListadoDeTransancciones.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\rptListaDeCuentas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptListaDeCuentas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="Formularios\frmPeriodo.resx">
+      <DependentUpon>frmPeriodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmPeriodoOperacion.resx">
+      <DependentUpon>frmPeriodoOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmReportes.resx">
+      <DependentUpon>frmReportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTransaccionOperacionBack.resx">
+      <DependentUpon>frmTransaccionOperacionBack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTransaccionOperacion.resx">
+      <DependentUpon>frmTransaccionOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTransaccion.resx">
+      <DependentUpon>frmTransaccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTipoDeTransaccionOperacion.resx">
+      <DependentUpon>frmTipoDeTransaccionOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTipoDeTransaccion.resx">
+      <DependentUpon>frmTipoDeTransaccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmRol.resx">
+      <DependentUpon>frmRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCuentaOperacion .resx">
+      <DependentUpon>frmCuentaOperacion .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCuenta.resx">
+      <DependentUpon>frmCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmRolOperacion.resx">
+      <DependentUpon>frmRolOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmUsuarioOperacion.resx">
+      <DependentUpon>frmUsuarioOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmUsuario.resx">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmConfiguracion.resx">
+      <DependentUpon>frmConfiguracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmEmpresa.resx">
+      <DependentUpon>frmEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCategoriaDeCuenta.resx">
+      <DependentUpon>frmCategoriaDeCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmGruposDeCuentas.resx">
+      <DependentUpon>frmGruposDeCuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCategoriaDeCuentaOperacion.resx">
+      <DependentUpon>frmCategoriaDeCuentaOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmGruposDeCuentasOperacion.resx">
+      <DependentUpon>frmGruposDeCuentasOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmLoginMySQL.resx">
+      <DependentUpon>frmLoginMySQL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmRespaldo.resx">
+      <DependentUpon>frmRespaldo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmRestaurar.resx">
+      <DependentUpon>frmRestaurar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmSplash.resx">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmVisor.resx">
+      <DependentUpon>frmVisor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptImprimirTransaccion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptImprimirTransaccion.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptListaDeCuentasCompleta.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptListaDeCuentasCompleta.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptListadoDeTransancciones.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptListadoDeTransancciones.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptListaDeCuentas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptListaDeCuentas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="SisContador_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidad\Entidad.csproj">
+      <Project>{32a1374a-bf03-40a7-b796-b69d72860443}</Project>
+      <Name>Entidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logica\Logica.csproj">
+      <Project>{d4eec964-a451-4f65-8dff-3e100a43185a}</Project>
+      <Name>Logica</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="log4net">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.Common">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.DataVisualization">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.ProcessingObjectModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="SAP.CrystalReports14.NET.2.0">
+      <Visible>False</Visible>
+      <ProductName>SAP Crystal Reports Runtime Engine for .NET Framework</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checked16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checked20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checked24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unchecked16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unchecked20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unchecked24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filtrar16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filtrar22x22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filtrar24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new22x22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer22x22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eliminar16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eliminar24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevo16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevo20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevo24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh132x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view22x22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\viw20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ajustes16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reanudar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LogSistemas.ico" />
+    <Content Include="Origen XML\DataSet.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Resources\loginSisContador.png" />
+    <None Include="Resources\server-connection %282%29.png" />
+    <None Include="Resources\serverbasededatos32x32.png" />
+    <None Include="Resources\database-key %282%29.png" />
+    <None Include="Resources\database %282%29.png" />
+    <None Include="Resources\server-connection %281%29.png" />
+    <None Include="Resources\server base de datos.png" />
+    <None Include="Resources\database-key %281%29.png" />
+    <None Include="Resources\database %281%29.png" />
+    <None Include="Resources\server-connection.png" />
+    <None Include="Resources\serverbasedatos16x16.png" />
+    <None Include="Resources\database-key.png" />
+    <None Include="Resources\database.png" />
+    <None Include="Resources\reanudar %281%29.png" />
+    <None Include="Resources\carnet-de-identidad32x32.png" />
+    <None Include="Resources\carnet-de-identidad24x24.png" />
+    <None Include="Resources\carnet-de-identidad16x16.png" />
+    <None Include="Resources\Catalogo32x32.png" />
+    <None Include="Resources\Catalogo24x24.png" />
+    <None Include="Resources\Catalgo16x16.png" />
+    <None Include="Resources\rigtharrow32x32.png" />
+    <None Include="Resources\rigtharrow24x24.png" />
+    <None Include="Resources\rigtharrow20x20.png" />
+    <None Include="Resources\rigtharrow16x16.png" />
+    <None Include="Resources\leftarrows16x16.png" />
+    <None Include="Resources\leftarrow32x32.png" />
+    <None Include="Resources\leftarrow24x24.png" />
+    <None Include="Resources\leftarrow20x20.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
