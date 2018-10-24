@@ -53,6 +53,7 @@
             this.tsbNoRegistros = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
             this.tsbFiltrar = new System.Windows.Forms.ToolStripButton();
+            this.tsbAplicarBorde = new System.Windows.Forms.ToolStripButton();
             this.tsbFiltroAutomatico = new System.Windows.Forms.ToolStripButton();
             this.tsbImprimir = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsbCatalogoDeCuentas = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,7 +65,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbMarcarTodos = new System.Windows.Forms.ToolStripButton();
             this.tsbSeleccionarTodos = new System.Windows.Forms.ToolStripButton();
-            this.tsbAplicarBorde = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -334,6 +334,17 @@
             this.tsbFiltrar.ToolTipText = "Filtrar (F5)";
             this.tsbFiltrar.Click += new System.EventHandler(this.tsbFiltrar_Click);
             // 
+            // tsbAplicarBorde
+            // 
+            this.tsbAplicarBorde.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbAplicarBorde.Image = global::SisContador.Properties.Resources.checked16x16;
+            this.tsbAplicarBorde.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbAplicarBorde.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAplicarBorde.Name = "tsbAplicarBorde";
+            this.tsbAplicarBorde.Size = new System.Drawing.Size(98, 28);
+            this.tsbAplicarBorde.Text = "Aplicar borde";
+            this.tsbAplicarBorde.Click += new System.EventHandler(this.tsbAplicarBorde_Click);
+            // 
             // tsbFiltroAutomatico
             // 
             this.tsbFiltroAutomatico.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -349,10 +360,10 @@
             // 
             this.tsbImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbImprimir.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbCatalogoDeCuentas,
             this.listadoDeCuentasToolStripMenuItem,
             this.tsbMostrarSaldos,
             this.tsbMostrarSaldoDetallado,
+            this.tsbCatalogoDeCuentas,
             this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem});
             this.tsbImprimir.Image = global::SisContador.Properties.Resources.printer24x24;
             this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -366,7 +377,7 @@
             this.tsbCatalogoDeCuentas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbCatalogoDeCuentas.Name = "tsbCatalogoDeCuentas";
             this.tsbCatalogoDeCuentas.Size = new System.Drawing.Size(292, 22);
-            this.tsbCatalogoDeCuentas.Text = "Catalogo de cuentas";
+            this.tsbCatalogoDeCuentas.Text = "Movimientos diarios de las cuentas";
             this.tsbCatalogoDeCuentas.Click += new System.EventHandler(this.tsbCatalogoDeCuentas_Click);
             // 
             // listadoDeCuentasToolStripMenuItem
@@ -441,17 +452,6 @@
             this.tsbSeleccionarTodos.Size = new System.Drawing.Size(87, 28);
             this.tsbSeleccionarTodos.Text = "Seleccionar";
             this.tsbSeleccionarTodos.Click += new System.EventHandler(this.tsbSeleccionarTodos_Click);
-            // 
-            // tsbAplicarBorde
-            // 
-            this.tsbAplicarBorde.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbAplicarBorde.Image = global::SisContador.Properties.Resources.checked16x16;
-            this.tsbAplicarBorde.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbAplicarBorde.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAplicarBorde.Name = "tsbAplicarBorde";
-            this.tsbAplicarBorde.Size = new System.Drawing.Size(98, 28);
-            this.tsbAplicarBorde.Text = "Aplicar borde";
-            this.tsbAplicarBorde.Click += new System.EventHandler(this.tsbAplicarBorde_Click);
             // 
             // frmCuenta
             // 

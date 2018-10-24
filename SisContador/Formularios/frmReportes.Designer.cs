@@ -66,10 +66,10 @@
             this.tsbSearch = new System.Windows.Forms.ToolStripButton();
             this.tsbPrinter = new System.Windows.Forms.ToolStripButton();
             this.tsbEtiquetaTasa = new System.Windows.Forms.ToolStripLabel();
-            this.cmdExportarAExcel = new System.Windows.Forms.ToolStripButton();
-            this.tsbVerEnDolares = new System.Windows.Forms.ToolStripButton();
-            this.tsbTasaDeCambio = new System.Windows.Forms.ToolStripLabel();
             this.tsbAplicarBorde = new System.Windows.Forms.ToolStripButton();
+            this.tsbVerEnDolares = new System.Windows.Forms.ToolStripButton();
+            this.cmdExportarAExcel = new System.Windows.Forms.ToolStripButton();
+            this.tsbTasaDeCambio = new System.Windows.Forms.ToolStripLabel();
             this.dgvListar = new System.Windows.Forms.DataGridView();
             this.ssBarraDeEstado = new System.Windows.Forms.StatusStrip();
             this.lblCantidadRegistros = new System.Windows.Forms.ToolStripStatusLabel();
@@ -506,16 +506,15 @@
             this.tsbEtiquetaTasa.Text = "Cambio Oficial:";
             this.tsbEtiquetaTasa.Visible = false;
             // 
-            // cmdExportarAExcel
+            // tsbAplicarBorde
             // 
-            this.cmdExportarAExcel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.cmdExportarAExcel.Image = global::SisContador.Properties.Resources.if_logo_brand_brands_logos_excel_2993694__1_;
-            this.cmdExportarAExcel.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.cmdExportarAExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cmdExportarAExcel.Name = "cmdExportarAExcel";
-            this.cmdExportarAExcel.Size = new System.Drawing.Size(115, 24);
-            this.cmdExportarAExcel.Text = "Importar a excel";
-            this.cmdExportarAExcel.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.tsbAplicarBorde.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbAplicarBorde.Image = global::SisContador.Properties.Resources.checked20x20;
+            this.tsbAplicarBorde.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAplicarBorde.Name = "tsbAplicarBorde";
+            this.tsbAplicarBorde.Size = new System.Drawing.Size(100, 28);
+            this.tsbAplicarBorde.Text = "Ocultar borde";
+            this.tsbAplicarBorde.Click += new System.EventHandler(this.tsbAplicarBorde_Click);
             // 
             // tsbVerEnDolares
             // 
@@ -524,26 +523,27 @@
             this.tsbVerEnDolares.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbVerEnDolares.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbVerEnDolares.Name = "tsbVerEnDolares";
-            this.tsbVerEnDolares.Size = new System.Drawing.Size(100, 20);
+            this.tsbVerEnDolares.Size = new System.Drawing.Size(100, 28);
             this.tsbVerEnDolares.Text = "Ver en dolares";
             this.tsbVerEnDolares.Click += new System.EventHandler(this.tsbVerEnDolares_Click);
+            // 
+            // cmdExportarAExcel
+            // 
+            this.cmdExportarAExcel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.cmdExportarAExcel.Image = global::SisContador.Properties.Resources.if_logo_brand_brands_logos_excel_2993694__1_;
+            this.cmdExportarAExcel.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.cmdExportarAExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.cmdExportarAExcel.Name = "cmdExportarAExcel";
+            this.cmdExportarAExcel.Size = new System.Drawing.Size(115, 28);
+            this.cmdExportarAExcel.Text = "Importar a excel";
+            this.cmdExportarAExcel.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // tsbTasaDeCambio
             // 
             this.tsbTasaDeCambio.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsbTasaDeCambio.Name = "tsbTasaDeCambio";
-            this.tsbTasaDeCambio.Size = new System.Drawing.Size(0, 0);
+            this.tsbTasaDeCambio.Size = new System.Drawing.Size(0, 28);
             this.tsbTasaDeCambio.Visible = false;
-            // 
-            // tsbAplicarBorde
-            // 
-            this.tsbAplicarBorde.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbAplicarBorde.Image = global::SisContador.Properties.Resources.checked20x20;
-            this.tsbAplicarBorde.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAplicarBorde.Name = "tsbAplicarBorde";
-            this.tsbAplicarBorde.Size = new System.Drawing.Size(98, 28);
-            this.tsbAplicarBorde.Text = "Aplicar borde";
-            this.tsbAplicarBorde.Click += new System.EventHandler(this.tsbAplicarBorde_Click);
             // 
             // dgvListar
             // 

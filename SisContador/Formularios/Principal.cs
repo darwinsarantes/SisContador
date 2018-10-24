@@ -490,12 +490,23 @@ namespace SisContador.Formularios
             {
                 this.BackColor = oColor;
 
+               /* System.Reflection.Assembly asm = System.Reflection.Assembly.GetExecutingAssembly();
+
+                List<Form> formList = asm.GetTypes()
+                                            .Where(x => x.IsSubclassOf(typeof(Form)))
+                                            .Select(x => (Form)Activator.CreateInstance(x))
+                                            .ToList();*/
+
                 foreach (Form Items in Application.OpenForms.Cast<Form>())
-                {
-                    Items.ForeColor = oColor;
+                {                    
+                    Items.BackColor = oColor;
                 }
 
-            }catch(Exception ex)
+                Properties.Settings.Default.MyColorSetting = oColor;
+                Properties.Settings.Default.Save();
+
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Aplicar color a la ventanas", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -531,6 +542,10 @@ namespace SisContador.Formularios
                 {
                     Items.BackColor = Properties.Settings.Default.DefaultColor;
                 }
+
+                this.BackColor = Properties.Settings.Default.DefaultColor;
+                Properties.Settings.Default.MyColorSetting = Properties.Settings.Default.DefaultColor;
+                Properties.Settings.Default.Save();
 
             }
             catch (Exception ex)

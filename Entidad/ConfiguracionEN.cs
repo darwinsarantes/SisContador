@@ -20,6 +20,8 @@ namespace Entidad
         public int NivelDeLaCuentaAOcultar { set; get; }
         public string CuentaQueSeVaOcultarNivel { set; get; }
         public int TiempoDeRespaldo { set; get; }
+        public string CuentaQueSeVaAMostrar { set; get; }
+        public int NivelDelaCuentaQueSeVaAMostrar { set; get; }
 
         public string NombreDelSistema { set; get; }
 

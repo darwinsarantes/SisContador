@@ -48,11 +48,11 @@ namespace AccesoDatos
                 Consultas = @"insert into configuracion
                 (RutaRespaldos, RutaRespaldosDeExcel,NivelesDeLaCuenta,PathMysSQLDump,PathMySQL, 
                 CuentaPrincipalDeBanco, NombreDelSistema,UtilidadOPerdidaDelEjercicio, TiempoDeRespaldo,
-                NivelDeLaCuentaAOcultar,CuentaQueSeVaOcultarNivel)
+                NivelDeLaCuentaAOcultar,CuentaQueSeVaOcultarNivel,NivelDelaCuentaQueSeVaAMostrar, CuentaQueSeVaAMostrar)
                 values
                 (@RutaRespaldos, @RutaRespaldosDeExcel,@NivelesDeLaCuenta, @PathMysSQLDump, 
                 @PathMySQL, @CuentaPrincipalDeBanco, @NombreDelSistema, @UtilidadOPerdidaDelEjercicio, 
-                @TiempoDeRespaldo, @NivelDeLaCuentaAOcultar,@CuentaQueSeVaOcultarNivel);
+                @TiempoDeRespaldo, @NivelDeLaCuentaAOcultar,@CuentaQueSeVaOcultarNivel,@NivelDelaCuentaQueSeVaAMostrar, @CuentaQueSeVaAMostrar);
 
                 Select last_insert_id() as 'ID';";
 
@@ -69,6 +69,8 @@ namespace AccesoDatos
                 Comando.Parameters.Add(new MySqlParameter("@TiempoDeRespaldo", MySqlDbType.Int32)).Value = oRegistroEN.TiempoDeRespaldo;
                 Comando.Parameters.Add(new MySqlParameter("@NivelDeLaCuentaAOcultar", MySqlDbType.Int32)).Value = oRegistroEN.NivelDeLaCuentaAOcultar;
                 Comando.Parameters.Add(new MySqlParameter("@CuentaQueSeVaOcultarNivel", MySqlDbType.VarChar, oRegistroEN.CuentaQueSeVaOcultarNivel.Trim().Length)).Value = oRegistroEN.CuentaQueSeVaOcultarNivel.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@NivelDelaCuentaQueSeVaAMostrar", MySqlDbType.Int32)).Value = oRegistroEN.NivelDelaCuentaQueSeVaAMostrar;
+                Comando.Parameters.Add(new MySqlParameter("@CuentaQueSeVaAMostrar", MySqlDbType.VarChar, oRegistroEN.CuentaQueSeVaAMostrar.Trim().Length)).Value = oRegistroEN.CuentaQueSeVaAMostrar.Trim();
 
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();
@@ -136,7 +138,9 @@ namespace AccesoDatos
                     UtilidadOPerdidaDelEjercicio = @UtilidadOPerdidaDelEjercicio,
                     TiempoDeRespaldo = @TiempoDeRespaldo,
                     NivelDeLaCuentaAOcultar = @NivelDeLaCuentaAOcultar,
-                    CuentaQueSeVaOcultarNivel = @CuentaQueSeVaOcultarNivel 
+                    CuentaQueSeVaOcultarNivel = @CuentaQueSeVaOcultarNivel,
+                    NivelDelaCuentaQueSeVaAMostrar = @NivelDelaCuentaQueSeVaAMostrar, 
+                    CuentaQueSeVaAMostrar = @CuentaQueSeVaAMostrar
 
                 WHERE IdConfiguracion = @IdConfiguracion;";
 
@@ -154,6 +158,8 @@ namespace AccesoDatos
                 Comando.Parameters.Add(new MySqlParameter("@TiempoDeRespaldo", MySqlDbType.Int32)).Value = oRegistroEN.TiempoDeRespaldo;
                 Comando.Parameters.Add(new MySqlParameter("@NivelDeLaCuentaAOcultar", MySqlDbType.Int32)).Value = oRegistroEN.NivelDeLaCuentaAOcultar;
                 Comando.Parameters.Add(new MySqlParameter("@CuentaQueSeVaOcultarNivel", MySqlDbType.VarChar, oRegistroEN.CuentaQueSeVaOcultarNivel.Trim().Length)).Value = oRegistroEN.CuentaQueSeVaOcultarNivel.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@NivelDelaCuentaQueSeVaAMostrar", MySqlDbType.Int32)).Value = oRegistroEN.NivelDelaCuentaQueSeVaAMostrar;
+                Comando.Parameters.Add(new MySqlParameter("@CuentaQueSeVaAMostrar", MySqlDbType.VarChar, oRegistroEN.CuentaQueSeVaAMostrar.Trim().Length)).Value = oRegistroEN.CuentaQueSeVaAMostrar.Trim();
 
                 Comando.ExecuteNonQuery();
                 
@@ -270,7 +276,7 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"Select IdConfiguracion, RutaRespaldos, RutaRespaldosDeExcel,NivelesDeLaCuenta,PathMysSQLDump,PathMySQL,CuentaPrincipalDeBanco, NombreDelSistema, UtilidadOPerdidaDelEjercicio,TiempoDeRespaldo,NivelDeLaCuentaAOcultar,CuentaQueSeVaOcultarNivel from configuracion where IdConfiguracion > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select IdConfiguracion, RutaRespaldos, RutaRespaldosDeExcel,NivelesDeLaCuenta,PathMysSQLDump,PathMySQL,CuentaPrincipalDeBanco, NombreDelSistema, UtilidadOPerdidaDelEjercicio,TiempoDeRespaldo,NivelDeLaCuentaAOcultar,CuentaQueSeVaOcultarNivel,NivelDelaCuentaQueSeVaAMostrar, CuentaQueSeVaAMostrar from configuracion where IdConfiguracion > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
                 
                 Adaptador = new MySqlDataAdapter();
@@ -324,7 +330,7 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"Select IdConfiguracion, RutaRespaldos, RutaRespaldosDeExcel,NivelesDeLaCuenta,PathMysSQLDump,PathMySQL,CuentaPrincipalDeBanco,NombreDelSistema,UtilidadOPerdidaDelEjercicio,TiempoDeRespaldo,NivelDeLaCuentaAOcultar,CuentaQueSeVaOcultarNivel from configuracion where IdConfiguracion = {0} ", oRegistroEN.IdConfiguracion);
+                Consultas = string.Format(@"Select IdConfiguracion, RutaRespaldos, RutaRespaldosDeExcel,NivelesDeLaCuenta,PathMysSQLDump,PathMySQL,CuentaPrincipalDeBanco,NombreDelSistema,UtilidadOPerdidaDelEjercicio,TiempoDeRespaldo,NivelDeLaCuentaAOcultar,CuentaQueSeVaOcultarNivel,NivelDelaCuentaQueSeVaAMostrar, CuentaQueSeVaAMostrar from configuracion where IdConfiguracion = {0} ", oRegistroEN.IdConfiguracion);
                 Comando.CommandText = Consultas;
 
                 Adaptador = new MySqlDataAdapter();
@@ -378,7 +384,7 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"Select IdConfiguracion, RutaRespaldos, RutaRespaldosDeExcel,NivelesDeLaCuenta,PathMysSQLDump,PathMySQL,CuentaPrincipalDeBanco,NombreDelSistema,UtilidadOPerdidaDelEjercicio, TiempoDeRespaldo,NivelDeLaCuentaAOcultar,CuentaQueSeVaOcultarNivel from configuracion where IdConfiguracion > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select IdConfiguracion, RutaRespaldos, RutaRespaldosDeExcel,NivelesDeLaCuenta,PathMysSQLDump,PathMySQL,CuentaPrincipalDeBanco,NombreDelSistema,UtilidadOPerdidaDelEjercicio, TiempoDeRespaldo,NivelDeLaCuentaAOcultar,CuentaQueSeVaOcultarNivel,NivelDelaCuentaQueSeVaAMostrar, CuentaQueSeVaAMostrar from configuracion where IdConfiguracion > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 Adaptador = new MySqlDataAdapter();
@@ -432,7 +438,7 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"Select IdConfiguracion, RutaRespaldos, RutaRespaldosDeExcel,NivelesDeLaCuenta,PathMysSQLDump,PathMySQL,CuentaPrincipalDeBanco,NombreDelSistema,UtilidadOPerdidaDelEjercicio, TiempoDeRespaldo,NivelDeLaCuentaAOcultar,CuentaQueSeVaOcultarNivel from configuracion where IdConfiguracion > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select IdConfiguracion, RutaRespaldos, RutaRespaldosDeExcel,NivelesDeLaCuenta,PathMysSQLDump,PathMySQL,CuentaPrincipalDeBanco,NombreDelSistema,UtilidadOPerdidaDelEjercicio, TiempoDeRespaldo,NivelDeLaCuentaAOcultar,CuentaQueSeVaOcultarNivel,NivelDelaCuentaQueSeVaAMostrar, CuentaQueSeVaAMostrar from configuracion where IdConfiguracion > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 Adaptador = new MySqlDataAdapter();
@@ -479,8 +485,8 @@ namespace AccesoDatos
 
         private string InformacionDelRegistro(ConfiguracionEN oRegistroEN) {
 
-            string Cadena = @"IdConfiguracion: {0}, RutaRespaldos: {1}, RutaRespaldosDeExcel: {2}, NivelesDeLaCuenta: {3}, PathMysSQLDump: {4}, PathMySQL: {5}, CuentaPrincipalDeBanco: {6}, NombreDelSistema: {7}, UtilidadOPerdidaDelEjercicio: {8},NivelDeLaCuentaAOcultar: {9},CuentaQueSeVaOcultarNivel,{10}";
-            Cadena = string.Format(Cadena, oRegistroEN.IdConfiguracion, oRegistroEN.RutaRespaldos, oRegistroEN.RutaRespaldosDeExcel, oRegistroEN.NivelesDeLaCuenta, oRegistroEN.PathMysSQLDump, oRegistroEN.PathMySQL, oRegistroEN.CuentaPrincipalDeBanco, oRegistroEN.NombreDelSistema, oRegistroEN.UtilidadOPerdidaDelEjercicio, oRegistroEN.NivelDeLaCuentaAOcultar, oRegistroEN.CuentaQueSeVaOcultarNivel);
+            string Cadena = @"IdConfiguracion: {0}, RutaRespaldos: {1}, RutaRespaldosDeExcel: {2}, NivelesDeLaCuenta: {3}, PathMysSQLDump: {4}, PathMySQL: {5}, CuentaPrincipalDeBanco: {6}, NombreDelSistema: {7}, UtilidadOPerdidaDelEjercicio: {8},NivelDeLaCuentaAOcultar: {9},CuentaQueSeVaOcultarNivel,{10},NivelDelaCuentaQueSeVaAMostrar: {11}, CuentaQueSeVaAMostrar: {12}";
+            Cadena = string.Format(Cadena, oRegistroEN.IdConfiguracion, oRegistroEN.RutaRespaldos, oRegistroEN.RutaRespaldosDeExcel, oRegistroEN.NivelesDeLaCuenta, oRegistroEN.PathMysSQLDump, oRegistroEN.PathMySQL, oRegistroEN.CuentaPrincipalDeBanco, oRegistroEN.NombreDelSistema, oRegistroEN.UtilidadOPerdidaDelEjercicio, oRegistroEN.NivelDeLaCuentaAOcultar, oRegistroEN.CuentaQueSeVaOcultarNivel, oRegistroEN.NivelDelaCuentaQueSeVaAMostrar, oRegistroEN.CuentaQueSeVaAMostrar);
             Cadena = Cadena.Replace(",", Environment.NewLine);
             return Cadena;            
 

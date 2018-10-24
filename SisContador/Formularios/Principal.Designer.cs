@@ -32,11 +32,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.tsmGeneral = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tiposDeCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbTasaDeCambio = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmHerramientas = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmRespaldarBaseDeDatos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmRestaurar = new System.Windows.Forms.ToolStripMenuItem();
+            this.graficosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuracionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuraciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.informaciónDeLaEmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmAyuda = new System.Windows.Forms.ToolStripMenuItem();
+            this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventanaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorDeLaVentanaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorPorDefectoEnLaVentanaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,35 +54,26 @@
             this.tsbEtiquetaDeRespaldo = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tsMenu = new System.Windows.Forms.ToolStrip();
+            this.tsbGruposDeCuentas = new System.Windows.Forms.ToolStripButton();
+            this.tsbCategoriaDeCuenta = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbTipoDeTransaccion = new System.Windows.Forms.ToolStripButton();
+            this.tsbMovimientos = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbEgresos = new System.Windows.Forms.ToolStripButton();
+            this.tsbIngresos = new System.Windows.Forms.ToolStripButton();
+            this.tsbDiarios = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbPeriodo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsbHorayFecha = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.tsbGruposDeCuentas = new System.Windows.Forms.ToolStripButton();
-            this.tsbCategoriaDeCuenta = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.tsbTipoDeTransaccion = new System.Windows.Forms.ToolStripButton();
-            this.tsbMovimientos = new System.Windows.Forms.ToolStripButton();
-            this.tsbEgresos = new System.Windows.Forms.ToolStripButton();
-            this.tsbIngresos = new System.Windows.Forms.ToolStripButton();
-            this.tsbDiarios = new System.Windows.Forms.ToolStripButton();
-            this.tsbPeriodo = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tiposDeCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmRespaldarBaseDeDatos = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmRestaurar = new System.Windows.Forms.ToolStripMenuItem();
-            this.graficosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configuraciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.informaciónDeLaEmpresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.tsMenu.SuspendLayout();
@@ -108,6 +108,24 @@
             this.tsmGeneral.Text = "Generales";
             this.tsmGeneral.ToolTipText = "Opciones generales";
             // 
+            // usuariosToolStripMenuItem
+            // 
+            this.usuariosToolStripMenuItem.Image = global::SisContador.Properties.Resources.if_keys_60186;
+            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.usuariosToolStripMenuItem.Tag = "Usuario";
+            this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
+            // 
+            // tiposDeCuentasToolStripMenuItem
+            // 
+            this.tiposDeCuentasToolStripMenuItem.Image = global::SisContador.Properties.Resources.ajustes16x16;
+            this.tiposDeCuentasToolStripMenuItem.Name = "tiposDeCuentasToolStripMenuItem";
+            this.tiposDeCuentasToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.tiposDeCuentasToolStripMenuItem.Tag = "Rol";
+            this.tiposDeCuentasToolStripMenuItem.Text = "Tipos de Cuentas";
+            this.tiposDeCuentasToolStripMenuItem.Click += new System.EventHandler(this.tiposDeCuentasToolStripMenuItem_Click);
+            // 
             // tsbTasaDeCambio
             // 
             this.tsbTasaDeCambio.Name = "tsbTasaDeCambio";
@@ -127,6 +145,36 @@
             this.tsmHerramientas.Tag = "Herramientas";
             this.tsmHerramientas.Text = "&Herramientas";
             // 
+            // tsmRespaldarBaseDeDatos
+            // 
+            this.tsmRespaldarBaseDeDatos.Image = global::SisContador.Properties.Resources.server_base_de_datos;
+            this.tsmRespaldarBaseDeDatos.Name = "tsmRespaldarBaseDeDatos";
+            this.tsmRespaldarBaseDeDatos.Size = new System.Drawing.Size(204, 26);
+            this.tsmRespaldarBaseDeDatos.Tag = "Respaldar";
+            this.tsmRespaldarBaseDeDatos.Text = "&Respaldar Base de datos";
+            this.tsmRespaldarBaseDeDatos.ToolTipText = "Respaldar base de datos";
+            this.tsmRespaldarBaseDeDatos.Click += new System.EventHandler(this.tsmRespaldarBaseDeDatos_Click);
+            // 
+            // tsmRestaurar
+            // 
+            this.tsmRestaurar.Image = global::SisContador.Properties.Resources.serverbasededatos32x32;
+            this.tsmRestaurar.Name = "tsmRestaurar";
+            this.tsmRestaurar.Size = new System.Drawing.Size(204, 26);
+            this.tsmRestaurar.Tag = "Restaurar";
+            this.tsmRestaurar.Text = "Restaurar Base de Datos";
+            this.tsmRestaurar.ToolTipText = "Restaurar base de datos";
+            this.tsmRestaurar.Click += new System.EventHandler(this.tsmRestaurar_Click);
+            // 
+            // graficosToolStripMenuItem
+            // 
+            this.graficosToolStripMenuItem.Image = global::SisContador.Properties.Resources.if_chart_512543__1_;
+            this.graficosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.graficosToolStripMenuItem.Name = "graficosToolStripMenuItem";
+            this.graficosToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
+            this.graficosToolStripMenuItem.Tag = "Graficos";
+            this.graficosToolStripMenuItem.Text = "Graficos";
+            this.graficosToolStripMenuItem.Click += new System.EventHandler(this.graficosToolStripMenuItem_Click);
+            // 
             // configuracionesToolStripMenuItem
             // 
             this.configuracionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -136,6 +184,24 @@
             this.configuracionesToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
             this.configuracionesToolStripMenuItem.Tag = "Configuraciones";
             this.configuracionesToolStripMenuItem.Text = "Configuraciones";
+            // 
+            // configuraciToolStripMenuItem
+            // 
+            this.configuraciToolStripMenuItem.Image = global::SisContador.Properties.Resources.ajustes16x16;
+            this.configuraciToolStripMenuItem.Name = "configuraciToolStripMenuItem";
+            this.configuraciToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.configuraciToolStripMenuItem.Tag = "Configuracion";
+            this.configuraciToolStripMenuItem.Text = "Configuracion generales";
+            this.configuraciToolStripMenuItem.Click += new System.EventHandler(this.configuraciToolStripMenuItem_Click);
+            // 
+            // informaciónDeLaEmpresaToolStripMenuItem
+            // 
+            this.informaciónDeLaEmpresaToolStripMenuItem.Image = global::SisContador.Properties.Resources.ajustes16x16;
+            this.informaciónDeLaEmpresaToolStripMenuItem.Name = "informaciónDeLaEmpresaToolStripMenuItem";
+            this.informaciónDeLaEmpresaToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.informaciónDeLaEmpresaToolStripMenuItem.Tag = "Empresa";
+            this.informaciónDeLaEmpresaToolStripMenuItem.Text = "Información de la empresa";
+            this.informaciónDeLaEmpresaToolStripMenuItem.Click += new System.EventHandler(this.informaciónDeLaEmpresaToolStripMenuItem_Click);
             // 
             // tsmAyuda
             // 
@@ -148,10 +214,27 @@
             this.tsmAyuda.Tag = "Ayuda";
             this.tsmAyuda.Text = "Ayuda";
             // 
+            // contentsToolStripMenuItem
+            // 
+            this.contentsToolStripMenuItem.Image = global::SisContador.Properties.Resources.if_help_browser_118806;
+            this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
+            this.contentsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
+            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.contentsToolStripMenuItem.Tag = "Ayuda";
+            this.contentsToolStripMenuItem.Text = "&Contents";
+            // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(165, 6);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Image = global::SisContador.Properties.Resources.if_Information_27854;
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.aboutToolStripMenuItem.Tag = "Acercade";
+            this.aboutToolStripMenuItem.Text = "&Acerca de...";
             // 
             // ventanaToolStripMenuItem
             // 
@@ -161,7 +244,6 @@
             this.ventanaToolStripMenuItem.Name = "ventanaToolStripMenuItem";
             this.ventanaToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.ventanaToolStripMenuItem.Text = "Ventana";
-            this.ventanaToolStripMenuItem.Visible = false;
             // 
             // colorDeLaVentanaToolStripMenuItem
             // 
@@ -227,59 +309,6 @@
             this.tsMenu.TabStop = true;
             this.tsMenu.Text = "toolStrip1";
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(156, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(156, 6);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(156, 6);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(156, 6);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.statusStrip1.AutoSize = false;
-            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbHorayFecha});
-            this.statusStrip1.Location = new System.Drawing.Point(638, 527);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(187, 22);
-            this.statusStrip1.TabIndex = 6;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // tsbHorayFecha
-            // 
-            this.tsbHorayFecha.Name = "tsbHorayFecha";
-            this.tsbHorayFecha.Size = new System.Drawing.Size(118, 17);
-            this.tsbHorayFecha.Text = "toolStripStatusLabel1";
-            this.tsbHorayFecha.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // timer2
-            // 
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // timer3
-            // 
-            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
-            // 
             // tsbGruposDeCuentas
             // 
             this.tsbGruposDeCuentas.Image = global::SisContador.Properties.Resources.if_SEO_content_management_969251__1_;
@@ -319,6 +348,11 @@
             this.toolStripButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(156, 6);
+            // 
             // tsbTipoDeTransaccion
             // 
             this.tsbTipoDeTransaccion.Image = global::SisContador.Properties.Resources.if_SEO_content_management_969251__1_;
@@ -343,6 +377,11 @@
             this.tsbMovimientos.Text = "Movimientos Contables";
             this.tsbMovimientos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tsbMovimientos.Click += new System.EventHandler(this.tsbMovimientos_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(156, 6);
             // 
             // tsbEgresos
             // 
@@ -381,6 +420,11 @@
             this.tsbDiarios.Text = "Contabilizar - Diario";
             this.tsbDiarios.Click += new System.EventHandler(this.tsbDiarios_Click);
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(156, 6);
+            // 
             // tsbPeriodo
             // 
             this.tsbPeriodo.Image = global::SisContador.Properties.Resources.if_SEO_content_management_969251__1_;
@@ -392,6 +436,11 @@
             this.tsbPeriodo.Tag = "Periodo";
             this.tsbPeriodo.Text = "Periodo de Cierre";
             this.tsbPeriodo.Click += new System.EventHandler(this.tsbPeriodo_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(156, 6);
             // 
             // toolStripButton1
             // 
@@ -417,88 +466,38 @@
             this.toolStripButton3.Text = "Reportes historico";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
-            // usuariosToolStripMenuItem
+            // statusStrip1
             // 
-            this.usuariosToolStripMenuItem.Image = global::SisContador.Properties.Resources.if_keys_60186;
-            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.usuariosToolStripMenuItem.Tag = "Usuario";
-            this.usuariosToolStripMenuItem.Text = "Usuarios";
-            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
+            this.statusStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.statusStrip1.AutoSize = false;
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbHorayFecha});
+            this.statusStrip1.Location = new System.Drawing.Point(638, 527);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(187, 22);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // tiposDeCuentasToolStripMenuItem
+            // tsbHorayFecha
             // 
-            this.tiposDeCuentasToolStripMenuItem.Image = global::SisContador.Properties.Resources.ajustes16x16;
-            this.tiposDeCuentasToolStripMenuItem.Name = "tiposDeCuentasToolStripMenuItem";
-            this.tiposDeCuentasToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.tiposDeCuentasToolStripMenuItem.Tag = "Rol";
-            this.tiposDeCuentasToolStripMenuItem.Text = "Tipos de Cuentas";
-            this.tiposDeCuentasToolStripMenuItem.Click += new System.EventHandler(this.tiposDeCuentasToolStripMenuItem_Click);
+            this.tsbHorayFecha.Name = "tsbHorayFecha";
+            this.tsbHorayFecha.Size = new System.Drawing.Size(118, 17);
+            this.tsbHorayFecha.Text = "toolStripStatusLabel1";
+            this.tsbHorayFecha.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // tsmRespaldarBaseDeDatos
+            // timer1
             // 
-            this.tsmRespaldarBaseDeDatos.Image = global::SisContador.Properties.Resources.server_base_de_datos;
-            this.tsmRespaldarBaseDeDatos.Name = "tsmRespaldarBaseDeDatos";
-            this.tsmRespaldarBaseDeDatos.Size = new System.Drawing.Size(204, 26);
-            this.tsmRespaldarBaseDeDatos.Tag = "Respaldar";
-            this.tsmRespaldarBaseDeDatos.Text = "&Respaldar Base de datos";
-            this.tsmRespaldarBaseDeDatos.ToolTipText = "Respaldar base de datos";
-            this.tsmRespaldarBaseDeDatos.Click += new System.EventHandler(this.tsmRespaldarBaseDeDatos_Click);
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // tsmRestaurar
+            // timer2
             // 
-            this.tsmRestaurar.Image = global::SisContador.Properties.Resources.serverbasededatos32x32;
-            this.tsmRestaurar.Name = "tsmRestaurar";
-            this.tsmRestaurar.Size = new System.Drawing.Size(204, 26);
-            this.tsmRestaurar.Tag = "Restaurar";
-            this.tsmRestaurar.Text = "Restaurar Base de Datos";
-            this.tsmRestaurar.ToolTipText = "Restaurar base de datos";
-            this.tsmRestaurar.Click += new System.EventHandler(this.tsmRestaurar_Click);
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // graficosToolStripMenuItem
+            // timer3
             // 
-            this.graficosToolStripMenuItem.Image = global::SisContador.Properties.Resources.if_chart_512543__1_;
-            this.graficosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.graficosToolStripMenuItem.Name = "graficosToolStripMenuItem";
-            this.graficosToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
-            this.graficosToolStripMenuItem.Tag = "Graficos";
-            this.graficosToolStripMenuItem.Text = "Graficos";
-            this.graficosToolStripMenuItem.Click += new System.EventHandler(this.graficosToolStripMenuItem_Click);
-            // 
-            // configuraciToolStripMenuItem
-            // 
-            this.configuraciToolStripMenuItem.Image = global::SisContador.Properties.Resources.ajustes16x16;
-            this.configuraciToolStripMenuItem.Name = "configuraciToolStripMenuItem";
-            this.configuraciToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.configuraciToolStripMenuItem.Tag = "Configuracion";
-            this.configuraciToolStripMenuItem.Text = "Configuracion generales";
-            this.configuraciToolStripMenuItem.Click += new System.EventHandler(this.configuraciToolStripMenuItem_Click);
-            // 
-            // informaciónDeLaEmpresaToolStripMenuItem
-            // 
-            this.informaciónDeLaEmpresaToolStripMenuItem.Image = global::SisContador.Properties.Resources.ajustes16x16;
-            this.informaciónDeLaEmpresaToolStripMenuItem.Name = "informaciónDeLaEmpresaToolStripMenuItem";
-            this.informaciónDeLaEmpresaToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.informaciónDeLaEmpresaToolStripMenuItem.Tag = "Empresa";
-            this.informaciónDeLaEmpresaToolStripMenuItem.Text = "Información de la empresa";
-            this.informaciónDeLaEmpresaToolStripMenuItem.Click += new System.EventHandler(this.informaciónDeLaEmpresaToolStripMenuItem_Click);
-            // 
-            // contentsToolStripMenuItem
-            // 
-            this.contentsToolStripMenuItem.Image = global::SisContador.Properties.Resources.if_help_browser_118806;
-            this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-            this.contentsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
-            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.contentsToolStripMenuItem.Tag = "Ayuda";
-            this.contentsToolStripMenuItem.Text = "&Contents";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Image = global::SisContador.Properties.Resources.if_Information_27854;
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.aboutToolStripMenuItem.Tag = "Acercade";
-            this.aboutToolStripMenuItem.Text = "&Acerca de...";
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // Principal
             // 

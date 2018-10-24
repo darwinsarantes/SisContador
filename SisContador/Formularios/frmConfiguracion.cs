@@ -50,6 +50,8 @@ namespace SisContador.Formularios
                     txtTiempoDeRespaldo.Text = Fila["TiempoDeRespaldo"].ToString();
                     txtCuentaQueSeVaOcultarNivel.Text = Fila["CuentaQueSeVaOcultarNivel"].ToString();
                     cmbNivelDeLaCuentaAOcultar.Text = Fila["NivelDeLaCuentaAOcultar"].ToString();
+                    txtCuentaQueSeVaAMostrar.Text = Fila["CuentaQueSeVaAMostrar"].ToString();
+                    cmbNivelDelaCuentaQueSeVaAMostrar.Text = Fila["NivelDelaCuentaQueSeVaAMostrar"].ToString();
 
                 }
 
@@ -87,6 +89,8 @@ namespace SisContador.Formularios
                     Program.oConfiguracionEN.TiempoDeRespaldo = Convert.ToInt32( Fila["TiempoDeRespaldo"].ToString());
                     Program.oConfiguracionEN.NivelDeLaCuentaAOcultar = Convert.ToInt32(Fila["NivelDeLaCuentaAOcultar"].ToString());
                     Program.oConfiguracionEN.CuentaQueSeVaOcultarNivel = Fila["CuentaQueSeVaOcultarNivel"].ToString();
+                    Program.oConfiguracionEN.CuentaQueSeVaAMostrar = Fila["CuentaQueSeVaAMostrar"].ToString();
+                    Program.oConfiguracionEN.NivelDelaCuentaQueSeVaAMostrar = Convert.ToInt32(Fila["NivelDelaCuentaQueSeVaAMostrar"].ToString());
 
                 }
 
@@ -118,6 +122,8 @@ namespace SisContador.Formularios
                 oRegistroEN.oLoginEN = Program.oLoginEN;
                 oRegistroEN.CuentaQueSeVaOcultarNivel = txtCuentaQueSeVaOcultarNivel.Text.Trim();
                 oRegistroEN.NivelDeLaCuentaAOcultar = Convert.ToInt32(cmbNivelDeLaCuentaAOcultar.Text);
+                oRegistroEN.CuentaQueSeVaAMostrar = txtCuentaQueSeVaAMostrar.Text.Trim();
+                oRegistroEN.NivelDelaCuentaQueSeVaAMostrar = Convert.ToInt32(cmbNivelDelaCuentaQueSeVaAMostrar.Text);
 
 
                 return oRegistroEN;
@@ -261,10 +267,26 @@ namespace SisContador.Formularios
                     cmbNivelDeLaCuentaAOcultar.SelectedIndex = -1;
                 }
 
+                cmbNivelDelaCuentaQueSeVaAMostrar.Items.Clear();
+                for (int i = 1; i <= NivelDelaCuenta; i++)
+                {
+                    cmbNivelDelaCuentaQueSeVaAMostrar.Items.Add(i.ToString());
+                }
+
+                if (Program.oConfiguracionEN.NivelDelaCuentaQueSeVaAMostrar > 0)
+                {
+                    cmbNivelDelaCuentaQueSeVaAMostrar.Text = Program.oConfiguracionEN.NivelDelaCuentaQueSeVaAMostrar.ToString();
+                }
+                else
+                {
+                    cmbNivelDelaCuentaQueSeVaAMostrar.SelectedIndex = -1;
+                }
                 
-            }else
+            }
+            else
             {
                 cmbNivelDeLaCuentaAOcultar.Items.Clear();
+                cmbNivelDelaCuentaQueSeVaAMostrar.Items.Clear();
             }
 
         }

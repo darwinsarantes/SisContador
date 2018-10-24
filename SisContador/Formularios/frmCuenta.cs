@@ -761,7 +761,9 @@ namespace SisContador.Formularios
 
             ValidarNivelesParaLasCuentas();
 
-            mskidCuenta.Focus();           
+            mskidCuenta.Focus();
+
+            this.BackColor = Properties.Settings.Default.MyColorSetting;  
 
         }
 

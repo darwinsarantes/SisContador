@@ -47,7 +47,12 @@ namespace SisContador.Formularios
                     Program.oConfiguracionEN.CuentaPrincipalDeBanco = Fila["CuentaPrincipalDeBanco"].ToString();
                     Program.oConfiguracionEN.NombreDelSistema = Fila["NombreDelSistema"].ToString();
                     Program.oConfiguracionEN.UtilidadOPerdidaDelEjercicio = Fila["UtilidadOPerdidaDelEjercicio"].ToString();
-                    Program.oConfiguracionEN.TiempoDeRespaldo = Convert.ToInt32(Fila["TiempoDeRespaldo"].ToString());
+                    Program.oConfiguracionEN.TiempoDeRespaldo = Convert.ToInt32(Fila["TiempoDeRespaldo"].ToString());                    
+                    Program.oConfiguracionEN.NivelDeLaCuentaAOcultar = Convert.ToInt32(Fila["NivelDeLaCuentaAOcultar"].ToString());
+                    Program.oConfiguracionEN.CuentaQueSeVaOcultarNivel = Fila["CuentaQueSeVaOcultarNivel"].ToString();
+                    Program.oConfiguracionEN.CuentaQueSeVaAMostrar = Fila["CuentaQueSeVaAMostrar"].ToString();
+                    Program.oConfiguracionEN.NivelDelaCuentaQueSeVaAMostrar = Convert.ToInt32(Fila["NivelDelaCuentaQueSeVaAMostrar"].ToString());
+
 
                 }
 

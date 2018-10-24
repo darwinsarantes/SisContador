@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbPeriodAños = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvPeriodosCerrados = new System.Windows.Forms.DataGridView();
             this.txtBuscarPeriodo = new System.Windows.Forms.TextBox();
@@ -83,8 +85,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lbaBarradeprogreso = new System.Windows.Forms.ToolStripStatusLabel();
             this.Barradeprogreso = new System.Windows.Forms.ToolStripProgressBar();
-            this.cmbPeriodAños = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -134,6 +134,25 @@
             this.splitContainer1.Size = new System.Drawing.Size(1291, 526);
             this.splitContainer1.SplitterDistance = 453;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(357, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Periodos - Años ";
+            // 
+            // cmbPeriodAños
+            // 
+            this.cmbPeriodAños.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPeriodAños.FormattingEnabled = true;
+            this.cmbPeriodAños.Location = new System.Drawing.Point(360, 29);
+            this.cmbPeriodAños.Name = "cmbPeriodAños";
+            this.cmbPeriodAños.Size = new System.Drawing.Size(81, 21);
+            this.cmbPeriodAños.TabIndex = 18;
+            this.cmbPeriodAños.SelectionChangeCommitted += new System.EventHandler(this.cmbPeriodAños_SelectionChangeCommitted);
             // 
             // label3
             // 
@@ -559,8 +578,8 @@
             this.tsbAplicarBorde.Image = global::SisContador.Properties.Resources.checked20x20;
             this.tsbAplicarBorde.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAplicarBorde.Name = "tsbAplicarBorde";
-            this.tsbAplicarBorde.Size = new System.Drawing.Size(98, 28);
-            this.tsbAplicarBorde.Text = "Aplicar borde";
+            this.tsbAplicarBorde.Size = new System.Drawing.Size(100, 28);
+            this.tsbAplicarBorde.Text = "Ocultar Borde";
             this.tsbAplicarBorde.Click += new System.EventHandler(this.tsbAplicarBorde_Click);
             // 
             // tsbVerEnDolares
@@ -672,25 +691,6 @@
             // 
             this.Barradeprogreso.Name = "Barradeprogreso";
             this.Barradeprogreso.Size = new System.Drawing.Size(100, 16);
-            // 
-            // cmbPeriodAños
-            // 
-            this.cmbPeriodAños.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPeriodAños.FormattingEnabled = true;
-            this.cmbPeriodAños.Location = new System.Drawing.Point(360, 29);
-            this.cmbPeriodAños.Name = "cmbPeriodAños";
-            this.cmbPeriodAños.Size = new System.Drawing.Size(81, 21);
-            this.cmbPeriodAños.TabIndex = 18;
-            this.cmbPeriodAños.SelectionChangeCommitted += new System.EventHandler(this.cmbPeriodAños_SelectionChangeCommitted);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(357, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 13);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Periodos - Años ";
             // 
             // frmReportesHistorico
             // 

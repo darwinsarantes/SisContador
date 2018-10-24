@@ -717,7 +717,7 @@ namespace SisContador.Formularios
                     RPT = new rptTraerEstadoDeResultado();
                     AgregarTablaEmpresaADataSet();
                     RPT.SetDataSource(AgregarTablaADataSet(oRegistroLN.TraerDatos(), "TraerElSaldoActualCompleta"));
-                    LlenarParametros(new string[,] { { "NombreDelSistema", Program.oConfiguracionEN.NombreDelSistema }, { "TituloDelReporte", "ESTADO DE RESULTADO ACUMULATIVO" }, { "SubTituloDeReporte", oRegistroEN.TituloDelReporte }, { "AplicarBorde", this.AplicarBorder.ToString() } });
+                    LlenarParametros(new string[,] { { "NombreDelSistema", Program.oConfiguracionEN.NombreDelSistema }, { "TituloDelReporte", "ESTADO DE RESULTADO ACUMULADO" }, { "SubTituloDeReporte", oRegistroEN.TituloDelReporte }, { "AplicarBorde", this.AplicarBorder.ToString() } });
                     this.Text = string.Format("Estado de Resultado al {0}", DateTime.Now.ToShortDateString());
                     crvVista.ReportSource = RPT;
 
@@ -725,7 +725,7 @@ namespace SisContador.Formularios
                 else
                 {
                     this.Cursor = Cursors.Default;
-                    MessageBox.Show(oRegistroLN.Error, "Estado de resultado acumulativo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(oRegistroLN.Error, "Estado de resultado ACUMULADO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 oRegistroLN = null;
@@ -765,7 +765,7 @@ namespace SisContador.Formularios
                 else
                 {
                     this.Cursor = Cursors.Default;
-                    MessageBox.Show(oRegistroLN.Error, "Estado de resultado acumulativo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(oRegistroLN.Error, "Estado de resultado ACUMULADO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 oRegistroLN = null;
@@ -793,7 +793,7 @@ namespace SisContador.Formularios
                     RPT = new rptTraerEstadoDeResultado();
                     AgregarTablaEmpresaADataSet();
                     RPT.SetDataSource(AgregarTablaADataSet(oRegistroLN.TraerDatos(), "TraerElSaldoActualCompleta"));
-                    LlenarParametros(new string[,] { { "NombreDelSistema", Program.oConfiguracionEN.NombreDelSistema }, { "TituloDelReporte", "ESTADO DE RESULTADO ACUMULATIVO" }, { "SubTituloDeReporte", oRegistroEN.TituloDelReporte }, { "AplicarBorde", this.AplicarBorder.ToString() } });
+                    LlenarParametros(new string[,] { { "NombreDelSistema", Program.oConfiguracionEN.NombreDelSistema }, { "TituloDelReporte", "ESTADO DE RESULTADO ACUMULADO" }, { "SubTituloDeReporte", oRegistroEN.TituloDelReporte }, { "AplicarBorde", this.AplicarBorder.ToString() } });
                     this.Text = string.Format("Estado de Resultado al {0}", oRegistroEN.FechaFinal.ToShortDateString());
                     crvVista.ReportSource = RPT;
 
@@ -801,7 +801,7 @@ namespace SisContador.Formularios
                 else
                 {
                     this.Cursor = Cursors.Default;
-                    MessageBox.Show(oRegistroLN.Error, "Estado de resultado acumulativo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(oRegistroLN.Error, "Estado de resultado ACUMULADO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 oRegistroLN = null;
@@ -840,7 +840,7 @@ namespace SisContador.Formularios
                 else
                 {
                     this.Cursor = Cursors.Default;
-                    MessageBox.Show(oRegistroLN.Error, "Estado de resultado acumulativo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(oRegistroLN.Error, "Estado de resultado ACUMULADO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 oRegistroLN = null;
@@ -1092,13 +1092,10 @@ namespace SisContador.Formularios
 
                 if (oRegistroLN.CalCularBalanzaDeComprobacionParaElHistorico(oRegistroEN, Program.oDatosDeConexion))
                 {
-                    string Columnas = "SaldoCuenta,SaldoAlUltimoCierre,DebeTMP,HaberTMP,SaldoActual,UitilidadBruta";
-                    DataTable oDatosTabla = FormatearADolares(oRegistroLN.TraerDatos(), Columnas, oRegistroEN.TasaDeCambio);
-                    
                     RPT = new rptBalanzaDeComprobacion();
                     AgregarTablaEmpresaADataSet();
-                    RPT.SetDataSource(AgregarTablaADataSet(oDatosTabla, "BalanzaDeComprobacion"));
-                    LlenarParametros(new string[,] { { "NombreDelSistema", Program.oConfiguracionEN.NombreDelSistema }, { "TituloDelReporte", oRegistroEN.TituloDelReporte }, { "SubTituloDeReporte", oRegistroEN.SubTituloDelReporte }, { "AplicarBorde", this.AplicarBorder.ToString() } });
+                    RPT.SetDataSource(AgregarTablaADataSet(oRegistroLN.TraerDatos(), "BalanzaDeComprobacion"));
+                    LlenarParametros(new string[,] { { "NombreDelSistema", Program.oConfiguracionEN.NombreDelSistema }, { "TituloDelReporte", "BALANZA DE COMPROBACIÓN" }, { "SubTituloDeReporte", oRegistroEN.TituloDelReporte }, { "AplicarBorde", this.AplicarBorder.ToString() } });
                     this.Text = string.Format("Balanza de Comprobación al {0}", oRegistroEN.FechaFinal.ToShortDateString());
                     crvVista.ReportSource = RPT;
 
@@ -1132,10 +1129,13 @@ namespace SisContador.Formularios
                 if (oRegistroLN.CalCularBalanzaDeComprobacionParaElHistorico(oRegistroEN, Program.oDatosDeConexion))
                 {
 
+                    string Columnas = "SaldoCuenta,SaldoAlUltimoCierre,DebeTMP,HaberTMP,SaldoActual,UitilidadBruta";
+                    DataTable oDatosTabla = FormatearADolares(oRegistroLN.TraerDatos(), Columnas, oRegistroEN.TasaDeCambio);
+
                     RPT = new rptBalanzaDeComprobacion();
                     AgregarTablaEmpresaADataSet();
-                    RPT.SetDataSource(AgregarTablaADataSet(oRegistroLN.TraerDatos(), "BalanzaDeComprobacion"));
-                    LlenarParametros(new string[,] { { "NombreDelSistema", Program.oConfiguracionEN.NombreDelSistema }, { "TituloDelReporte", "BALANZA DE COMPROBACIÓN" }, { "SubTituloDeReporte", oRegistroEN.TituloDelReporte }, { "AplicarBorde", this.AplicarBorder.ToString() } });
+                    RPT.SetDataSource(AgregarTablaADataSet(oDatosTabla, "BalanzaDeComprobacion"));
+                    LlenarParametros(new string[,] { { "NombreDelSistema", Program.oConfiguracionEN.NombreDelSistema }, { "TituloDelReporte", oRegistroEN.TituloDelReporte }, { "SubTituloDeReporte", oRegistroEN.SubTituloDelReporte }, { "AplicarBorde", this.AplicarBorder.ToString() } });
                     this.Text = string.Format("Balanza de Comprobación al {0}", oRegistroEN.FechaFinal.ToShortDateString());
                     crvVista.ReportSource = RPT;
 
@@ -1873,7 +1873,7 @@ namespace SisContador.Formularios
                 foreach (DataRow Fila in oDatosTabla.Rows)
                 {
                     decimal ValorSobreLaColumna = Convert.ToDecimal(Fila[NombreDeLaColumna]);
-                    if (ValorSobreLaColumna > 0)
+                    if (ValorSobreLaColumna > 0 && TasaDeCambio > 0)
                     {
                         ValorSobreLaColumna = ValorSobreLaColumna / TasaDeCambio;
                         Fila[NombreDeLaColumna] = ValorSobreLaColumna;
