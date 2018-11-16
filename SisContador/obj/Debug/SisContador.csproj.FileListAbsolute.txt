@@ -627,6 +627,11 @@ I:\SisContador\SisContador\obj\Debug\SisContador.exe.manifest
 I:\SisContador\SisContador\obj\Debug\SisContador.application
 E:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGraficos.resources
 E:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTasaDeCambioOperacion.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmGraficos.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTasaDeCambio.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmTasaDeCambioOperacion.resources
+F:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuentaOtrasConfiguraciones.resources
+E:\SisContador\SisContador\obj\Debug\SisContador.Formularios.frmCuentaOtrasConfiguraciones.resources
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\SisContador\SisContador\bin\Debug\SisContador.exe.config
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.csproj.ResolveComReference.cache
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\SisContador\SisContador\obj\Debug\SisContador.exe

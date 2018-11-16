@@ -1,6 +1,6 @@
 ﻿namespace SisContador.Formularios
 {
-    partial class frmCuenta
+    partial class frmCuentaOtrasConfiguraciones
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.mskidCuenta = new System.Windows.Forms.MaskedTextBox();
@@ -42,37 +41,17 @@
             this.txtIdentificador = new System.Windows.Forms.TextBox();
             this.chkIdentificador = new System.Windows.Forms.CheckBox();
             this.dgvLista = new System.Windows.Forms.DataGridView();
-            this.mcsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.actualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.visualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.imprimirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsbNoRegistros = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
             this.tsbFiltrar = new System.Windows.Forms.ToolStripButton();
-            this.tsbAplicarBorde = new System.Windows.Forms.ToolStripButton();
-            this.tsbFiltroAutomatico = new System.Windows.Forms.ToolStripButton();
-            this.tsbImprimir = new System.Windows.Forms.ToolStripDropDownButton();
-            this.listadoDeCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbMostrarSaldos = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbMostrarSaldoDetallado = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbCatalogoDeCuentas = new System.Windows.Forms.ToolStripMenuItem();
-            this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbNuevoRegistro = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbMarcarTodos = new System.Windows.Forms.ToolStripButton();
-            this.tsbSeleccionarTodos = new System.Windows.Forms.ToolStripButton();
-            this.tsmCatalogoDeCuentas = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
-            this.mcsMenu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tsMenu.SuspendLayout();
             this.SuspendLayout();
@@ -219,7 +198,6 @@
             this.dgvLista.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLista.ContextMenuStrip = this.mcsMenu;
             this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLista.Location = new System.Drawing.Point(0, 31);
             this.dgvLista.Name = "dgvLista";
@@ -230,65 +208,6 @@
             this.dgvLista.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvLista_CurrentCellDirtyStateChanged);
             this.dgvLista.DoubleClick += new System.EventHandler(this.dgvLista_DoubleClick);
             this.dgvLista.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvLista_MouseDown);
-            // 
-            // mcsMenu
-            // 
-            this.mcsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nuevoToolStripMenuItem,
-            this.actualizarToolStripMenuItem,
-            this.eliminarToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.visualizarToolStripMenuItem,
-            this.imprimirToolStripMenuItem});
-            this.mcsMenu.Name = "mcsMenu";
-            this.mcsMenu.Size = new System.Drawing.Size(127, 120);
-            this.mcsMenu.Opened += new System.EventHandler(this.mcsMenu_Opened);
-            // 
-            // nuevoToolStripMenuItem
-            // 
-            this.nuevoToolStripMenuItem.Image = global::SisContador.Properties.Resources.New16x16;
-            this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.nuevoToolStripMenuItem.Text = "Nuevo";
-            this.nuevoToolStripMenuItem.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
-            // 
-            // actualizarToolStripMenuItem
-            // 
-            this.actualizarToolStripMenuItem.Image = global::SisContador.Properties.Resources.Edit16x16;
-            this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
-            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.actualizarToolStripMenuItem.Text = "Actualizar";
-            this.actualizarToolStripMenuItem.Click += new System.EventHandler(this.actualizarToolStripMenuItem_Click);
-            // 
-            // eliminarToolStripMenuItem
-            // 
-            this.eliminarToolStripMenuItem.Image = global::SisContador.Properties.Resources.Eliminar16x16;
-            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.eliminarToolStripMenuItem.Text = "Eliminar";
-            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(123, 6);
-            // 
-            // visualizarToolStripMenuItem
-            // 
-            this.visualizarToolStripMenuItem.Image = global::SisContador.Properties.Resources.view16x16;
-            this.visualizarToolStripMenuItem.Name = "visualizarToolStripMenuItem";
-            this.visualizarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.visualizarToolStripMenuItem.Text = "Visualizar";
-            this.visualizarToolStripMenuItem.Click += new System.EventHandler(this.visualizarToolStripMenuItem_Click);
-            // 
-            // imprimirToolStripMenuItem
-            // 
-            this.imprimirToolStripMenuItem.Image = global::SisContador.Properties.Resources.printer16x16;
-            this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
-            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.imprimirToolStripMenuItem.Text = "Imprimir";
-            this.imprimirToolStripMenuItem.Visible = false;
-            this.imprimirToolStripMenuItem.Click += new System.EventHandler(this.imprimirToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -311,13 +230,7 @@
             this.tsMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.tsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbFiltrar,
-            this.tsbAplicarBorde,
-            this.tsbFiltroAutomatico,
-            this.tsbImprimir,
-            this.tsbNuevoRegistro,
-            this.toolStripSeparator2,
-            this.tsbMarcarTodos,
-            this.tsbSeleccionarTodos});
+            this.tsbMarcarTodos});
             this.tsMenu.Location = new System.Drawing.Point(0, 0);
             this.tsMenu.Name = "tsMenu";
             this.tsMenu.Size = new System.Drawing.Size(926, 31);
@@ -327,114 +240,13 @@
             // tsbFiltrar
             // 
             this.tsbFiltrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbFiltrar.Image = global::SisContador.Properties.Resources.filtrar24x24;
+            this.tsbFiltrar.Image = global::SisContador.Properties.Resources.Save24x24;
             this.tsbFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbFiltrar.Name = "tsbFiltrar";
             this.tsbFiltrar.Size = new System.Drawing.Size(28, 28);
             this.tsbFiltrar.Text = "Filtrar";
             this.tsbFiltrar.ToolTipText = "Filtrar (F5)";
             this.tsbFiltrar.Click += new System.EventHandler(this.tsbFiltrar_Click);
-            // 
-            // tsbAplicarBorde
-            // 
-            this.tsbAplicarBorde.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbAplicarBorde.Image = global::SisContador.Properties.Resources.checked16x16;
-            this.tsbAplicarBorde.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbAplicarBorde.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAplicarBorde.Name = "tsbAplicarBorde";
-            this.tsbAplicarBorde.Size = new System.Drawing.Size(98, 28);
-            this.tsbAplicarBorde.Text = "Aplicar borde";
-            this.tsbAplicarBorde.Click += new System.EventHandler(this.tsbAplicarBorde_Click);
-            // 
-            // tsbFiltroAutomatico
-            // 
-            this.tsbFiltroAutomatico.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbFiltroAutomatico.Image = global::SisContador.Properties.Resources.checked16x16;
-            this.tsbFiltroAutomatico.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbFiltroAutomatico.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbFiltroAutomatico.Name = "tsbFiltroAutomatico";
-            this.tsbFiltroAutomatico.Size = new System.Drawing.Size(120, 28);
-            this.tsbFiltroAutomatico.Text = "Filtro Automatico";
-            this.tsbFiltroAutomatico.Click += new System.EventHandler(this.tsbFiltroAutomatico_Click);
-            // 
-            // tsbImprimir
-            // 
-            this.tsbImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbImprimir.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.listadoDeCuentasToolStripMenuItem,
-            this.tsbMostrarSaldos,
-            this.tsbMostrarSaldoDetallado,
-            this.tsbCatalogoDeCuentas,
-            this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem,
-            this.tsmCatalogoDeCuentas});
-            this.tsbImprimir.Image = global::SisContador.Properties.Resources.printer24x24;
-            this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbImprimir.Name = "tsbImprimir";
-            this.tsbImprimir.Size = new System.Drawing.Size(37, 28);
-            this.tsbImprimir.Text = "Imprimir";
-            this.tsbImprimir.Click += new System.EventHandler(this.tsbImprimir_Click);
-            // 
-            // listadoDeCuentasToolStripMenuItem
-            // 
-            this.listadoDeCuentasToolStripMenuItem.Image = global::SisContador.Properties.Resources.printer16x16;
-            this.listadoDeCuentasToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.listadoDeCuentasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.listadoDeCuentasToolStripMenuItem.Name = "listadoDeCuentasToolStripMenuItem";
-            this.listadoDeCuentasToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
-            this.listadoDeCuentasToolStripMenuItem.Text = "Listado de Cuentas";
-            this.listadoDeCuentasToolStripMenuItem.Click += new System.EventHandler(this.listadoDeCuentasToolStripMenuItem_Click);
-            // 
-            // tsbMostrarSaldos
-            // 
-            this.tsbMostrarSaldos.Image = global::SisContador.Properties.Resources.printer16x16;
-            this.tsbMostrarSaldos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbMostrarSaldos.Name = "tsbMostrarSaldos";
-            this.tsbMostrarSaldos.Size = new System.Drawing.Size(292, 22);
-            this.tsbMostrarSaldos.Text = "Mostrar Saldos";
-            this.tsbMostrarSaldos.Click += new System.EventHandler(this.tsbMostrarSaldos_Click);
-            // 
-            // tsbMostrarSaldoDetallado
-            // 
-            this.tsbMostrarSaldoDetallado.Image = global::SisContador.Properties.Resources.printer16x16;
-            this.tsbMostrarSaldoDetallado.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbMostrarSaldoDetallado.Name = "tsbMostrarSaldoDetallado";
-            this.tsbMostrarSaldoDetallado.Size = new System.Drawing.Size(292, 22);
-            this.tsbMostrarSaldoDetallado.Text = "Mostrar Saldo detallado";
-            this.tsbMostrarSaldoDetallado.Click += new System.EventHandler(this.tsbMostrarSaldoDetallado_Click);
-            // 
-            // tsbCatalogoDeCuentas
-            // 
-            this.tsbCatalogoDeCuentas.Image = global::SisContador.Properties.Resources.printer16x16;
-            this.tsbCatalogoDeCuentas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbCatalogoDeCuentas.Name = "tsbCatalogoDeCuentas";
-            this.tsbCatalogoDeCuentas.Size = new System.Drawing.Size(292, 22);
-            this.tsbCatalogoDeCuentas.Text = "Movimientos diarios de las cuentas";
-            this.tsbCatalogoDeCuentas.Click += new System.EventHandler(this.tsbCatalogoDeCuentas_Click);
-            // 
-            // movimientosDeLaCuentaDuranteElMesToolStripMenuItem
-            // 
-            this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem.Image = global::SisContador.Properties.Resources.printer16x16;
-            this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem.Name = "movimientosDeLaCuentaDuranteElMesToolStripMenuItem";
-            this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
-            this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem.Text = "Movimientos de la cuenta durante el mes";
-            this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem.Click += new System.EventHandler(this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem_Click);
-            // 
-            // tsbNuevoRegistro
-            // 
-            this.tsbNuevoRegistro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNuevoRegistro.Image = global::SisContador.Properties.Resources.new24x24;
-            this.tsbNuevoRegistro.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNuevoRegistro.Name = "tsbNuevoRegistro";
-            this.tsbNuevoRegistro.Size = new System.Drawing.Size(28, 28);
-            this.tsbNuevoRegistro.Text = "Nuevo Registro";
-            this.tsbNuevoRegistro.ToolTipText = "Nuevo Registro (F2)";
-            this.tsbNuevoRegistro.Click += new System.EventHandler(this.tsbNuevoRegistro_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
             // 
             // tsbMarcarTodos
             // 
@@ -446,37 +258,18 @@
             this.tsbMarcarTodos.Text = "Marca todos";
             this.tsbMarcarTodos.Click += new System.EventHandler(this.tsbMarcarTodos_Click);
             // 
-            // tsbSeleccionarTodos
-            // 
-            this.tsbSeleccionarTodos.Image = global::SisContador.Properties.Resources.checked16x16;
-            this.tsbSeleccionarTodos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbSeleccionarTodos.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSeleccionarTodos.Name = "tsbSeleccionarTodos";
-            this.tsbSeleccionarTodos.Size = new System.Drawing.Size(87, 28);
-            this.tsbSeleccionarTodos.Text = "Seleccionar";
-            this.tsbSeleccionarTodos.Click += new System.EventHandler(this.tsbSeleccionarTodos_Click);
-            // 
-            // tsmCatalogoDeCuentas
-            // 
-            this.tsmCatalogoDeCuentas.Image = global::SisContador.Properties.Resources.printer16x16;
-            this.tsmCatalogoDeCuentas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmCatalogoDeCuentas.Name = "tsmCatalogoDeCuentas";
-            this.tsmCatalogoDeCuentas.Size = new System.Drawing.Size(292, 22);
-            this.tsmCatalogoDeCuentas.Text = "Catalogo de cuentas";
-            this.tsmCatalogoDeCuentas.Click += new System.EventHandler(this.tsmCatalogoDeCuentas_Click);
-            // 
-            // frmCuenta
+            // frmCuentaOtrasConfiguraciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 533);
             this.Controls.Add(this.splitContainer1);
             this.KeyPreview = true;
-            this.Name = "frmCuenta";
+            this.Name = "frmCuentaOtrasConfiguraciones";
             this.Text = "Grupos de cuentas";
-            this.Load += new System.EventHandler(this.frmCuenta_Load);
-            this.Shown += new System.EventHandler(this.frmCuenta_Shown);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmCuenta_KeyUp);
+            this.Load += new System.EventHandler(this.frmCuentaOtrasConfiguraciones_Load);
+            this.Shown += new System.EventHandler(this.frmCuentaOtrasConfiguraciones_Shown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmCuentaOtrasConfiguraciones_KeyUp);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
@@ -485,7 +278,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
-            this.mcsMenu.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.tsMenu.ResumeLayout(false);
@@ -502,7 +294,6 @@
         private System.Windows.Forms.ToolStripStatusLabel tsbNoRegistros;
         private System.Windows.Forms.ToolStrip tsMenu;
         private System.Windows.Forms.ToolStripButton tsbFiltrar;
-        private System.Windows.Forms.ToolStripButton tsbFiltroAutomatico;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmbGruposDeCuentas;
         private System.Windows.Forms.CheckBox chkGrupoDeCuentas;
@@ -510,28 +301,10 @@
         private System.Windows.Forms.CheckBox chkDescCuenta;
         private System.Windows.Forms.TextBox txtIdentificador;
         private System.Windows.Forms.CheckBox chkIdentificador;
-        private System.Windows.Forms.ToolStripButton tsbNuevoRegistro;
-        private System.Windows.Forms.ContextMenuStrip mcsMenu;
-        private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem actualizarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem visualizarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem imprimirToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsbMarcarTodos;
-        private System.Windows.Forms.ToolStripButton tsbSeleccionarTodos;
         private System.Windows.Forms.ComboBox cmbCategoriaDeCuentas;
         private System.Windows.Forms.CheckBox chkCategoriaDeCuentas;
         private System.Windows.Forms.CheckBox chkIdCuenta;
         private System.Windows.Forms.MaskedTextBox mskidCuenta;
-        private System.Windows.Forms.ToolStripDropDownButton tsbImprimir;
-        private System.Windows.Forms.ToolStripMenuItem tsbCatalogoDeCuentas;
-        private System.Windows.Forms.ToolStripMenuItem listadoDeCuentasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tsbMostrarSaldos;
-        private System.Windows.Forms.ToolStripMenuItem tsbMostrarSaldoDetallado;
-        private System.Windows.Forms.ToolStripMenuItem movimientosDeLaCuentaDuranteElMesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton tsbAplicarBorde;
-        private System.Windows.Forms.ToolStripMenuItem tsmCatalogoDeCuentas;
     }
 }

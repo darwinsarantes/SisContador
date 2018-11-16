@@ -52,6 +52,7 @@
     <Compile Include="ReportesEN.cs" />
     <Compile Include="TasaDeCambioEN.cs" />
     <Compile Include="TansaccionDetalleTMPBancoEN.cs" />
+    <Compile Include="OtrasConfiguracionDeLaCuentaEN.cs" />
     <Compile Include="TransaccionesEN.cs" />
     <Compile Include="TransaccionDetalleTMPEN.cs" />
     <Compile Include="TransaccionTMPEN.cs" />

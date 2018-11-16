@@ -46,6 +46,7 @@
     <Compile Include="PeriodoLN.cs" />
     <Compile Include="CierreDePeriodoLN.cs" />
     <Compile Include="TasaDeCambioLN.cs" />
+    <Compile Include="OtrasConfiguracionDeLaCuentaLN.cs" />
     <Compile Include="TransaccionDetalleTMPLN.cs" />
     <Compile Include="TransaccionTMPLN.cs" />
     <Compile Include="TipoDeTransaccionLN.cs" />

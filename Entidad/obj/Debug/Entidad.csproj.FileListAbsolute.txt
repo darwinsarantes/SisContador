@@ -27,3 +27,4 @@ I:\SisContador\Entidad\bin\Debug\Entidad.pdb
 I:\SisContador\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
 I:\SisContador\Entidad\obj\Debug\Entidad.dll
 I:\SisContador\Entidad\obj\Debug\Entidad.pdb
+F:\SisContador\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache

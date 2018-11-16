@@ -721,5 +721,10 @@ namespace SisContador.Formularios
 
             this.Cursor = Cursors.Default;
         }
+
+        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

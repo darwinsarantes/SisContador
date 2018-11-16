@@ -47,6 +47,7 @@
     <Compile Include="PeriodoAD.cs" />
     <Compile Include="CierreDePeriodoAD.cs" />
     <Compile Include="TasaDeCambioAD.cs" />
+    <Compile Include="OtrasConfiguracionDeLaCuentaAD.cs" />
     <Compile Include="TransaccionDetalleTMPAD.cs" />
     <Compile Include="TransaccionTMPAD.cs" />
     <Compile Include="TipoDeTransaccionAD.cs" />

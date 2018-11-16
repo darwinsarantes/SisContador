@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>I:\Publicaciones\</PublishUrl>
+    <PublishUrl>F:\Publicaciones\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -27,7 +27,7 @@
     <TargetCulture>es-NI</TargetCulture>
     <ProductName>SisContador</ProductName>
     <PublisherName>SisContador</PublisherName>
-    <ApplicationRevision>33</ApplicationRevision>
+    <ApplicationRevision>36</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -111,6 +111,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Formularios\FormatoDGV.cs" />
+    <Compile Include="Formularios\frmCuentaOtrasConfiguraciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCuentaOtrasConfiguraciones.Designer.cs">
+      <DependentUpon>frmCuentaOtrasConfiguraciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmGraficos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -400,6 +406,9 @@
       <DependentUpon>rptListaDeCuentas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="Formularios\frmCuentaOtrasConfiguraciones.resx">
+      <DependentUpon>frmCuentaOtrasConfiguraciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmGraficos.resx">
       <DependentUpon>frmGraficos.cs</DependentUpon>
     </EmbeddedResource>

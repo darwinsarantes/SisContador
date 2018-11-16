@@ -94,6 +94,7 @@
             this.menuStrip.TabIndex = 0;
             this.menuStrip.TabStop = true;
             this.menuStrip.Text = "MenuStrip";
+            this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
             // 
             // tsmGeneral
             // 
@@ -244,6 +245,7 @@
             this.ventanaToolStripMenuItem.Name = "ventanaToolStripMenuItem";
             this.ventanaToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.ventanaToolStripMenuItem.Text = "Ventana";
+            this.ventanaToolStripMenuItem.Visible = false;
             // 
             // colorDeLaVentanaToolStripMenuItem
             // 

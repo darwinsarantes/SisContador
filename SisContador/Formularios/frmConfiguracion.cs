@@ -21,6 +21,8 @@ namespace SisContador.Formularios
         }
 
         int IdConfiguracion = 1;
+        frmCuentaOtrasConfiguraciones ofrmCuentaOtrasConfiguraciones = null;
+
 
         #region "Funciones"
 
@@ -393,6 +395,59 @@ namespace SisContador.Formularios
             {
                 e.Handled = true; //No se acepta (si pulsas cualquier otra cosa pues no se envia)
             }
+        }
+
+        private void mostrarCuentasEnElReporteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmCuentaOtrasConfiguraciones == null || ofrmCuentaOtrasConfiguraciones.IsDisposed)
+            {
+                ofrmCuentaOtrasConfiguraciones = new frmCuentaOtrasConfiguraciones();
+                //ofrmCuentaOtrasConfiguraciones.MdiParent = this.MdiParent;                
+                ofrmCuentaOtrasConfiguraciones.StartPosition = FormStartPosition.CenterScreen;
+                ofrmCuentaOtrasConfiguraciones.WindowState = FormWindowState.Normal;
+                ofrmCuentaOtrasConfiguraciones.ActivarFiltros = true;
+                ofrmCuentaOtrasConfiguraciones.VariosRegistros = true;
+                ofrmCuentaOtrasConfiguraciones.TituloVentana = "Mostrar cuentas en el reporte";
+                ofrmCuentaOtrasConfiguraciones.TituloParaGroupoBox = "Filtro para Mostrar cuentas que van hacer agregadas al reporte";
+                ofrmCuentaOtrasConfiguraciones.idTiposDeConfiguracion = 1;
+                ofrmCuentaOtrasConfiguraciones.ShowDialog();
+                ofrmCuentaOtrasConfiguraciones = null;
+
+            }
+            else
+                ofrmCuentaOtrasConfiguraciones.BringToFront();
+
+            this.Cursor = Cursors.Default;
+
+        }
+
+        private void noMostrarCuentasEnElReoprteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmCuentaOtrasConfiguraciones == null || ofrmCuentaOtrasConfiguraciones.IsDisposed)
+            {
+                ofrmCuentaOtrasConfiguraciones = new frmCuentaOtrasConfiguraciones();
+                //ofrmCuentaOtrasConfiguraciones.MdiParent = this.MdiParent;                
+                ofrmCuentaOtrasConfiguraciones.StartPosition = FormStartPosition.CenterScreen;
+                ofrmCuentaOtrasConfiguraciones.WindowState = FormWindowState.Normal;
+                ofrmCuentaOtrasConfiguraciones.ActivarFiltros = true;
+                ofrmCuentaOtrasConfiguraciones.VariosRegistros = true;
+                ofrmCuentaOtrasConfiguraciones.TituloVentana = "No Mostrar cuentas en el reporte";
+                ofrmCuentaOtrasConfiguraciones.TituloParaGroupoBox = "Filtro para No Mostrar cuentas que van hacer agregadas al reporte";
+                ofrmCuentaOtrasConfiguraciones.idTiposDeConfiguracion = 2;
+                ofrmCuentaOtrasConfiguraciones.ShowDialog();
+                ofrmCuentaOtrasConfiguraciones = null;
+
+            }
+            else
+                ofrmCuentaOtrasConfiguraciones.BringToFront();
+
+            this.Cursor = Cursors.Default;
         }
     }
 }

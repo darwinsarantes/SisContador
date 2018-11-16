@@ -31,6 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.tsBarraHarramientas = new System.Windows.Forms.ToolStrip();
             this.cmdGuardar = new System.Windows.Forms.ToolStripButton();
+            this.tsbOtrasConfiguraciones = new System.Windows.Forms.ToolStripDropDownButton();
+            this.mostrarCuentasEnElReporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.noMostrarCuentasEnElReoprteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cuentasParaElTotalDeVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cuentasParaElTotalDeCostoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -45,6 +50,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.txtCuentaQueSeVaAMostrar = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cmbNivelDelaCuentaQueSeVaAMostrar = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.txtCuentaQueSeVaOcultarNivel = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -67,20 +77,16 @@
             this.txtRutaExportacionArchivosExcel = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.txtCuentaQueSeVaAMostrar = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.cmbNivelDelaCuentaQueSeVaAMostrar = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.tsBarraHarramientas.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // tsBarraHarramientas
@@ -88,7 +94,8 @@
             this.tsBarraHarramientas.BackColor = System.Drawing.Color.Transparent;
             this.tsBarraHarramientas.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsBarraHarramientas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmdGuardar});
+            this.cmdGuardar,
+            this.tsbOtrasConfiguraciones});
             this.tsBarraHarramientas.Location = new System.Drawing.Point(0, 0);
             this.tsBarraHarramientas.Name = "tsBarraHarramientas";
             this.tsBarraHarramientas.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -106,6 +113,47 @@
             this.cmdGuardar.Tag = "Guardar configuración";
             this.cmdGuardar.Text = "Guardar Datos";
             this.cmdGuardar.Click += new System.EventHandler(this.cmdGuardar_Click);
+            // 
+            // tsbOtrasConfiguraciones
+            // 
+            this.tsbOtrasConfiguraciones.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbOtrasConfiguraciones.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbOtrasConfiguraciones.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mostrarCuentasEnElReporteToolStripMenuItem,
+            this.noMostrarCuentasEnElReoprteToolStripMenuItem,
+            this.cuentasParaElTotalDeVentaToolStripMenuItem,
+            this.cuentasParaElTotalDeCostoToolStripMenuItem});
+            this.tsbOtrasConfiguraciones.Image = global::SisContador.Properties.Resources.ajustes16x16;
+            this.tsbOtrasConfiguraciones.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbOtrasConfiguraciones.Name = "tsbOtrasConfiguraciones";
+            this.tsbOtrasConfiguraciones.Size = new System.Drawing.Size(29, 28);
+            this.tsbOtrasConfiguraciones.Text = "Mas Configuraciones";
+            // 
+            // mostrarCuentasEnElReporteToolStripMenuItem
+            // 
+            this.mostrarCuentasEnElReporteToolStripMenuItem.Name = "mostrarCuentasEnElReporteToolStripMenuItem";
+            this.mostrarCuentasEnElReporteToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.mostrarCuentasEnElReporteToolStripMenuItem.Text = "Mostrar cuentas en el reporte";
+            this.mostrarCuentasEnElReporteToolStripMenuItem.Click += new System.EventHandler(this.mostrarCuentasEnElReporteToolStripMenuItem_Click);
+            // 
+            // noMostrarCuentasEnElReoprteToolStripMenuItem
+            // 
+            this.noMostrarCuentasEnElReoprteToolStripMenuItem.Name = "noMostrarCuentasEnElReoprteToolStripMenuItem";
+            this.noMostrarCuentasEnElReoprteToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.noMostrarCuentasEnElReoprteToolStripMenuItem.Text = "No Mostrar cuentas en el reoprte";
+            this.noMostrarCuentasEnElReoprteToolStripMenuItem.Click += new System.EventHandler(this.noMostrarCuentasEnElReoprteToolStripMenuItem_Click);
+            // 
+            // cuentasParaElTotalDeVentaToolStripMenuItem
+            // 
+            this.cuentasParaElTotalDeVentaToolStripMenuItem.Name = "cuentasParaElTotalDeVentaToolStripMenuItem";
+            this.cuentasParaElTotalDeVentaToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.cuentasParaElTotalDeVentaToolStripMenuItem.Text = "Cuentas para el total de venta";
+            // 
+            // cuentasParaElTotalDeCostoToolStripMenuItem
+            // 
+            this.cuentasParaElTotalDeCostoToolStripMenuItem.Name = "cuentasParaElTotalDeCostoToolStripMenuItem";
+            this.cuentasParaElTotalDeCostoToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.cuentasParaElTotalDeCostoToolStripMenuItem.Text = "Cuentas para el total de costo";
             // 
             // groupBox1
             // 
@@ -262,6 +310,56 @@
             this.groupBox3.TabIndex = 25;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Información de la cuenta:";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.txtCuentaQueSeVaAMostrar);
+            this.groupBox7.Controls.Add(this.label12);
+            this.groupBox7.Controls.Add(this.cmbNivelDelaCuentaQueSeVaAMostrar);
+            this.groupBox7.Controls.Add(this.label13);
+            this.groupBox7.Location = new System.Drawing.Point(552, 10);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(204, 103);
+            this.groupBox7.TabIndex = 26;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Nivel de la cuenta que mostraremos";
+            // 
+            // txtCuentaQueSeVaAMostrar
+            // 
+            this.txtCuentaQueSeVaAMostrar.Location = new System.Drawing.Point(118, 60);
+            this.txtCuentaQueSeVaAMostrar.MaxLength = 3;
+            this.txtCuentaQueSeVaAMostrar.Name = "txtCuentaQueSeVaAMostrar";
+            this.txtCuentaQueSeVaAMostrar.Size = new System.Drawing.Size(76, 20);
+            this.txtCuentaQueSeVaAMostrar.TabIndex = 25;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label12.Location = new System.Drawing.Point(6, 63);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(99, 13);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "Número de Cuenta:";
+            // 
+            // cmbNivelDelaCuentaQueSeVaAMostrar
+            // 
+            this.cmbNivelDelaCuentaQueSeVaAMostrar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbNivelDelaCuentaQueSeVaAMostrar.FormattingEnabled = true;
+            this.cmbNivelDelaCuentaQueSeVaAMostrar.Location = new System.Drawing.Point(118, 35);
+            this.cmbNivelDelaCuentaQueSeVaAMostrar.Name = "cmbNivelDelaCuentaQueSeVaAMostrar";
+            this.cmbNivelDelaCuentaQueSeVaAMostrar.Size = new System.Drawing.Size(76, 21);
+            this.cmbNivelDelaCuentaQueSeVaAMostrar.TabIndex = 23;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label13.Location = new System.Drawing.Point(6, 38);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(94, 13);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "Nivel de la Cuenta";
             // 
             // groupBox6
             // 
@@ -473,55 +571,15 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // groupBox7
+            // toolStripButton1
             // 
-            this.groupBox7.Controls.Add(this.txtCuentaQueSeVaAMostrar);
-            this.groupBox7.Controls.Add(this.label12);
-            this.groupBox7.Controls.Add(this.cmbNivelDelaCuentaQueSeVaAMostrar);
-            this.groupBox7.Controls.Add(this.label13);
-            this.groupBox7.Location = new System.Drawing.Point(552, 10);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(204, 103);
-            this.groupBox7.TabIndex = 26;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Nivel de la cuenta que mostraremos";
-            // 
-            // txtCuentaQueSeVaAMostrar
-            // 
-            this.txtCuentaQueSeVaAMostrar.Location = new System.Drawing.Point(118, 60);
-            this.txtCuentaQueSeVaAMostrar.MaxLength = 3;
-            this.txtCuentaQueSeVaAMostrar.Name = "txtCuentaQueSeVaAMostrar";
-            this.txtCuentaQueSeVaAMostrar.Size = new System.Drawing.Size(76, 20);
-            this.txtCuentaQueSeVaAMostrar.TabIndex = 25;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label12.Location = new System.Drawing.Point(6, 63);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(99, 13);
-            this.label12.TabIndex = 24;
-            this.label12.Text = "Número de Cuenta:";
-            // 
-            // cmbNivelDelaCuentaQueSeVaAMostrar
-            // 
-            this.cmbNivelDelaCuentaQueSeVaAMostrar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbNivelDelaCuentaQueSeVaAMostrar.FormattingEnabled = true;
-            this.cmbNivelDelaCuentaQueSeVaAMostrar.Location = new System.Drawing.Point(118, 35);
-            this.cmbNivelDelaCuentaQueSeVaAMostrar.Name = "cmbNivelDelaCuentaQueSeVaAMostrar";
-            this.cmbNivelDelaCuentaQueSeVaAMostrar.Size = new System.Drawing.Size(76, 21);
-            this.cmbNivelDelaCuentaQueSeVaAMostrar.TabIndex = 23;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label13.Location = new System.Drawing.Point(6, 38);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(94, 13);
-            this.label13.TabIndex = 22;
-            this.label13.Text = "Nivel de la Cuenta";
+            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::SisContador.Properties.Resources.ajustes16x16;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 28);
+            this.toolStripButton1.Text = "toolStripButton1";
             // 
             // frmConfiguracion
             // 
@@ -542,13 +600,13 @@
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -599,5 +657,11 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cmbNivelDelaCuentaQueSeVaAMostrar;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ToolStripDropDownButton tsbOtrasConfiguraciones;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripMenuItem mostrarCuentasEnElReporteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem noMostrarCuentasEnElReoprteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cuentasParaElTotalDeVentaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cuentasParaElTotalDeCostoToolStripMenuItem;
     }
 }

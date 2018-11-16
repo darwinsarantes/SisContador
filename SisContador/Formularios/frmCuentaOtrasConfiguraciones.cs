@@ -13,33 +13,28 @@ using Funciones;
 
 namespace SisContador.Formularios
 {
-    public partial class frmCuenta : Form
+    public partial class frmCuentaOtrasConfiguraciones : Form
     {
-        public frmCuenta()
+        public frmCuentaOtrasConfiguraciones()
         {
             InitializeComponent();
         }
 
         private string NOMBRE_ENTIDAD_PRIVILEGIO = "Cuentas";
         private string NOMBRE_ENTIDAD = "Administrar y categorizar las cuentas contables";
-        private string NOMBRE_LLAVE_PRIMARIA = "NoCuenta";
+        private string NOMBRE_LLAVE_PRIMARIA = "idOtrasConfiguracionDeLaCuenta";
         private int ValorLlavePrimariaEntidad;
         private int IndiceSeleccionado;
-        private frmVisor ofrmVisor = null;
-        private frmVisor ofrmVisor_1 = null;
-        private frmVisor ofrmVisor_2 = null;
-        private frmVisor ofrmVisor_3 = null;
-        private frmVisor ofrmVisor_4 = null;
-        private frmVisor oImprimirCatalogo = null;
-
-        frmCuentaOperacion ofrmCuentaOperacion = null;
-
+        private BindingSource BD = null; 
+        
         #region "Funciones del programador"
 
         public bool ActivarFiltros { set; get; }
         public bool VariosRegistros { set; get; }
         public string TituloVentana { set; get; }
-        public CuentaEN[] oCuenta = new CuentaEN[0];
+        public string TituloParaGroupoBox { set; get; }
+        public int idTiposDeConfiguracion { set; get; }
+        public OtrasConfiguracionDeLaCuentaEN[] oOtrasConfiguracionDeLaCuenta = new OtrasConfiguracionDeLaCuentaEN[0];
 
         public string Columnas { set; get; }
 
@@ -84,14 +79,10 @@ namespace SisContador.Formularios
             if (ActivarFiltros == false)
             {
                 
-                tsbFiltrar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-                tsbNuevoRegistro.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-                tsbImprimir.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+                tsbFiltrar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;                
                 tsbMarcarTodos.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-                tsbSeleccionarTodos.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-
                 tsbMarcarTodos.Visible = false;
-                tsbSeleccionarTodos.Visible = false;
+                
 
                 VariosRegistros = false;
 
@@ -110,14 +101,9 @@ namespace SisContador.Formularios
                 if (ActivarFiltros == true)
                 {
 
-                    tsbFiltrar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-                    tsbNuevoRegistro.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-                    tsbImprimir.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+                    tsbFiltrar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;                   
                     tsbMarcarTodos.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-                    tsbSeleccionarTodos.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-
-                    tsbSeleccionarTodos.Visible = true;
-
+                    
                     if (VariosRegistros == false)
                     {
                         tsbMarcarTodos.Visible = false;
@@ -128,20 +114,10 @@ namespace SisContador.Formularios
                     }
 
                     this.Text = TituloVentana;
-
-                    if (tsbNuevoRegistro.Enabled == true)
-                    {
-                        tsbNuevoRegistro.Visible = Activar_btn_Nuevo;
-                    }
-                    if (tsbImprimir.Visible == true)
-                        tsbImprimir.Visible = Activar_btn_imprimir;
-
-                    mcsMenu.Enabled = Activar_MenuContextual;
+                    groupBox1.Text = TituloParaGroupoBox;
+                    
                     AgregrarColumnasAlDTRegistros();
-
-                    tsbFiltroAutomatico.Checked = false;
-                    tsbFiltroAutomatico.Image = Properties.Resources.unchecked16x16;
-
+                    
                 }
             }
         }
@@ -277,7 +253,7 @@ namespace SisContador.Formularios
         {
             if (Columnas == null) return;
 
-            if (oCuenta.Length > 0)
+            if (oOtrasConfiguracionDeLaCuenta.Length > 0)
             {
                 //DataTable DTClass = ConvertirClassADT();
                 DataTable DTClass = TraerInformacionDDGV();
@@ -327,9 +303,9 @@ namespace SisContador.Formularios
         {
             DataTable DTClass = new DataTable();
 
-            System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(oCuenta.GetType());
+            System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(oOtrasConfiguracionDeLaCuenta.GetType());
             System.IO.StringWriter sw = new System.IO.StringWriter();
-            serializer.Serialize(sw, oCuenta);
+            serializer.Serialize(sw, oOtrasConfiguracionDeLaCuenta);
 
             DataSet ds = new DataSet(NOMBRE_ENTIDAD_PRIVILEGIO);
             System.IO.StringReader reader = new System.IO.StringReader(sw.ToString());
@@ -436,7 +412,7 @@ namespace SisContador.Formularios
 
         private string WhereDinamico() {
 
-            string Where = "";
+            string Where = " NoCuenta > 0 ";
 
             if (Controles.IsNullOEmptyElControl(chkIdentificador) == false && Controles.IsNullOEmptyElControl(txtIdentificador) == false) {
                 Where += string.Format(" and c.NoCuenta like '%{0}%' ", txtIdentificador.Text.Trim());
@@ -444,22 +420,22 @@ namespace SisContador.Formularios
 
             if (Controles.IsNullOEmptyElControl(chkIdCuenta) == false && SeDigitoEnLaMascara())
             {
-                Where += string.Format(" and c.idCuenta like '%{0}%' ", ExtraerCadenaDelaMascar());
+                Where += string.Format(" and idCuenta like '%{0}%' ", ExtraerCadenaDelaMascar());
             }
 
             if (Controles.IsNullOEmptyElControl(chkDescCuenta) == false && Controles.IsNullOEmptyElControl(txtDescCuenta) == false)
             {
-                Where += string.Format(" and c.DescCuenta like '%{0}%' ", txtDescCuenta.Text.Trim());
+                Where += string.Format(" and DescCuenta like '%{0}%' ", txtDescCuenta.Text.Trim());
             }
 
             if (Controles.IsNullOEmptyElControl(chkGrupoDeCuentas) == false && Controles.IsNullOEmptyElControl(cmbGruposDeCuentas) == false)
             {
-                Where += string.Format(" and cc.idGrupoDeCuentas = '{0}' ", cmbGruposDeCuentas.SelectedValue);
+                Where += string.Format(" and idGrupoDeCuentas = {0} ", cmbGruposDeCuentas.SelectedValue);
             }
 
             if (Controles.IsNullOEmptyElControl(chkCategoriaDeCuentas) == false && Controles.IsNullOEmptyElControl(cmbCategoriaDeCuentas) == false)
             {
-                Where += string.Format(" and c.idCategoriaDeCuenta = '{0}' ", cmbCategoriaDeCuentas.SelectedValue);
+                Where += string.Format(" and idCategoriaDeCuenta = {0} ", cmbCategoriaDeCuentas.SelectedValue);
             }
 
             if (AgregarAlWhere != null)
@@ -473,47 +449,7 @@ namespace SisContador.Formularios
             return Where;
 
         }
-
-        private string TituloDinamico()
-        {
-            
-            string Titulo = "";
-
-            if (Controles.IsNullOEmptyElControl(chkIdentificador) == false && Controles.IsNullOEmptyElControl(txtIdentificador) == false)
-            {
-                Titulo += string.Format(" c.NoCuenta: '{0}', ", txtIdentificador.Text.Trim());
-            }
-
-            if (Controles.IsNullOEmptyElControl(chkIdCuenta) == false && mskidCuenta.TextLength > 0)
-            {
-                Titulo += string.Format(" c.idCuenta: '{0}', ", mskidCuenta.Text.Trim());
-            }
-
-            if (Controles.IsNullOEmptyElControl(chkDescCuenta) == false && Controles.IsNullOEmptyElControl(txtDescCuenta) == false)
-            {
-                Titulo += string.Format(" Descripción: '{0}', ", txtDescCuenta.Text.Trim());
-            }
-
-            if (Controles.IsNullOEmptyElControl(chkGrupoDeCuentas) == false && Controles.IsNullOEmptyElControl(cmbGruposDeCuentas) == false)
-            {
-                Titulo += string.Format(" Grupo de cuenta: '{0}', ", cmbGruposDeCuentas.Text);
-            }
-
-            if (Controles.IsNullOEmptyElControl(chkCategoriaDeCuentas) == false && Controles.IsNullOEmptyElControl(cmbCategoriaDeCuentas) == false)
-            {
-                Titulo += string.Format(" Categoria de la cuenta: '{0}', ", cmbGruposDeCuentas.Text);
-            }
-            
-            if (Titulo.Length > 0)
-            {
-                Titulo = Titulo.Substring(0, Titulo.Length - 2);
-            }
-
-            return Titulo;
-                        
-
-        }
-
+        
         private void LLenarListado() {
 
             try
@@ -521,13 +457,14 @@ namespace SisContador.Formularios
 
                 this.Cursor = Cursors.WaitCursor;
 
-                CuentaEN oRegistrosEN = new CuentaEN();
-                CuentaLN oRegistrosLN = new CuentaLN();
+                OtrasConfiguracionDeLaCuentaEN oRegistrosEN = new OtrasConfiguracionDeLaCuentaEN();
+                OtrasConfiguracionDeLaCuentaLN oRegistrosLN = new OtrasConfiguracionDeLaCuentaLN();
 
-                oRegistrosEN.Where = WhereDinamico();
+                oRegistrosEN.Where = "";
+                oRegistrosEN.idTiposDeConfiguracion = idTiposDeConfiguracion;
                 oRegistrosEN.OrderBy = " Order by c.idCuenta asc";
 
-                if (oRegistrosLN.Listado(oRegistrosEN, Program.oDatosDeConexion)) {
+                if (oRegistrosLN.ListadoDeCuentasAsociadasAConfiguracion(oRegistrosEN, Program.oDatosDeConexion)) {
 
                     dgvLista.Columns.Clear();
                     dgvLista.DataSource = null;
@@ -543,17 +480,18 @@ namespace SisContador.Formularios
                     }
 
                     //RegistrosDT = DTRegistros;//AgregarColumnaDeInterrogacion(DTRegistros);
+                    BD = new BindingSource();
+                    BD.DataSource = RegistrosDT;
 
-                    dgvLista.DataSource = RegistrosDT;//AgregarColumnaDeInterrogacion(RegistrosDT);
+                    dgvLista.DataSource = BD;//AgregarColumnaDeInterrogacion(RegistrosDT);
 
-                    FormatearDGV();
-                    dgvLista.Columns["SaldoCuenta"].DefaultCellStyle.Format = "###,###,##0.00";
-                    dgvLista.Columns["MovimientosDelDia"].DefaultCellStyle.Format = "###,###,##0.00";
-                    dgvLista.Columns["SaldoAlDia"].DefaultCellStyle.Format = "###,###,##0.00";
+                    FormatearDGV();                   
 
                     this.dgvLista.ClearSelection();
 
                     tsbNoRegistros.Text = "No. Registros: " + oRegistrosLN.TotalRegistros().ToString();
+
+                    dgvLista.Columns["Seleccionar"].HeaderText = "Marcar";
                     
                 }
                 else
@@ -598,7 +536,7 @@ namespace SisContador.Formularios
                 this.dgvLista.BackgroundColor = System.Drawing.SystemColors.Window;
                 this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
                 
-                string OcultarColumnas = "DescCuentaContenido,NoCuenta,CuentaMadre,NivelCuenta,DescGrupoDeCuentas,DescTipoDeCuenta,idTipoDeCuenta,idGrupoDeCuentas,idCategoriaDeCuenta,IdUsuarioDeCreacion,FechaDeCreacion,IdUsuarioDeModificacion,FechaDeModificacion,EsCuentaDeBanco";
+                string OcultarColumnas = "idCategoriaDeCuenta, idGrupoDeCuentas,idOtrasConfiguracionDeLaCuenta, idConfiguracion,NoCuenta, idTiposDeConfiguracion,,TipoDeConfiguracion, idUsuarioDeCreacion, FechaDeCreacion,idUsuarioModificacion,FechaDeModificacion";
                 OcultarColumnasEnElDGV(OcultarColumnas);
 
                 FormatearColumnasDelDGV();
@@ -652,7 +590,7 @@ namespace SisContador.Formularios
                             FormatoDGV oFormato = new FormatoDGV(c1.Name.Trim());
                             if (oFormato.ValorEncontrado == false)
                             {
-                                oFormato = new FormatoDGV(c1.Name.Trim(), "Cuenta");
+                                oFormato = new FormatoDGV(c1.Name.Trim(), "OtrasConfiguracionDeLaCuenta");
                             }
 
                             if (oFormato != null)
@@ -670,79 +608,6 @@ namespace SisContador.Formularios
             }
         }
 
-        private void CargarPrivilegiosDelUsuario(){
-
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
-
-                ModuloInterfazUsuariosEN oRegistroEN = new ModuloInterfazUsuariosEN();
-                ModuloInterfazUsuariosLN oRegistroLN = new ModuloInterfazUsuariosLN();
-
-                oRegistroEN.oUsuarioEN.idUsuario = Program.oLoginEN.idUsuario;
-                oRegistroEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre = NOMBRE_ENTIDAD_PRIVILEGIO;
-
-                if (oRegistroLN.ListadoPrivilegiosDelUsuariosPorIntefaz(oRegistroEN, Program.oDatosDeConexion))
-                {
-
-                    foreach (ToolStripItem item in mcsMenu.Items)
-                    {
-                        if (item.Tag != null)
-                        {
-                            if (item.GetType() == typeof(ToolStripMenuItem))
-                            {
-                                item.Enabled = oRegistroLN.VerificarSiTengoAcceso(item.Tag.ToString());
-                            }
-                        }
-                    }
-
-                    tsbImprimir.Enabled = oRegistroLN.VerificarSiTengoAcceso("Imprimir");
-                    tsbNuevoRegistro.Enabled = oRegistroLN.VerificarSiTengoAcceso("Nuevo");
-
-                }
-                else
-                {
-
-                    mcsMenu.Enabled = false;
-                    tsbImprimir.Enabled = false;
-                    tsbNuevoRegistro.Enabled = false;
-                    throw new ArgumentException(oRegistroLN.Error);
-
-                }
-
-                oRegistroEN = null;
-                oRegistroLN = null;
-
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Privilegios de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
-
-        }
-
-        private void MostrarFormularioParaOperacion(string OperacionesARealizar)
-        {
-            if (ofrmCuentaOperacion == null || ofrmCuentaOperacion.IsDisposed)
-            {
-                ofrmCuentaOperacion = new frmCuentaOperacion();
-                ofrmCuentaOperacion.OperacionARealizar = OperacionesARealizar;
-                ofrmCuentaOperacion.NOMBRE_ENTIDAD_PRIVILEGIO = NOMBRE_ENTIDAD_PRIVILEGIO;
-                ofrmCuentaOperacion.NombreEntidad = NOMBRE_ENTIDAD;
-                ofrmCuentaOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
-                ofrmCuentaOperacion.MdiParent = this.ParentForm;
-                ofrmCuentaOperacion.Show();
-            }else
-            {
-                MessageBox.Show("Actualmente la ventana se encuentra abierta y esta realizandose una operación de '"+ofrmCuentaOperacion.OperacionARealizar+"'", "Privilegios de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ofrmCuentaOperacion.BringToFront();
-            }
-
-        }
-
         private void AsignarLlavePrimaria()
         {
             this.ValorLlavePrimariaEntidad = Convert.ToInt32(this.dgvLista.Rows[this.IndiceSeleccionado].Cells[this.NOMBRE_LLAVE_PRIMARIA].Value);
@@ -750,27 +615,26 @@ namespace SisContador.Formularios
 
         #endregion
 
-        private void frmCuenta_Shown(object sender, EventArgs e)
+        private void frmCuentaOtrasConfiguraciones_Shown(object sender, EventArgs e)
         {
-            dgvLista.ContextMenuStrip = mcsMenu;
-            ConfigurarMascarDeEntrada();
-            CargarPrivilegiosDelUsuario();
+            
+            ConfigurarMascarDeEntrada();            
             LLenarGrupoDeCuentas();
             LLenarCategoriasParaLasCuentas();
-            ActivarFiltrosDelaBusqueda();
-            tsbFiltroAutomatico_Click(null, null);
-
+            ActivarFiltrosDelaBusqueda();            
             ValidarNivelesParaLasCuentas();
 
             mskidCuenta.Focus();
 
-            this.BackColor = Properties.Settings.Default.MyColorSetting;  
+            this.BackColor = Properties.Settings.Default.MyColorSetting;
+            
+            LLenarListado();
 
         }
 
         private void tsbFiltrar_Click(object sender, EventArgs e)
         {
-            LLenarListado();
+            
         }
 
         private void tsbSeleccionarTodos_Click(object sender, EventArgs e)
@@ -778,16 +642,7 @@ namespace SisContador.Formularios
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                tsbSeleccionarTodos.Checked = !tsbMarcarTodos.Checked;
-                if (tsbSeleccionarTodos.Checked == true)
-                {
-                    tsbSeleccionarTodos.Image = Properties.Resources.unchecked16x16;
-                }
-                else
-                {
-                    tsbSeleccionarTodos.Image = Properties.Resources.checked16x16;
-                }
-
+                
                 int a = 0;
                 this.Cursor = Cursors.WaitCursor;
                 if (dgvLista.Rows.Count > 0)
@@ -798,18 +653,16 @@ namespace SisContador.Formularios
                         {
                             
                             a++;
-                            Array.Resize(ref oCuenta, a);
-                            
-                            oCuenta[a - 1] = new CuentaEN();
-                            oCuenta[a - 1].idCuenta = Fila.Cells["idCuenta"].Value.ToString();
-                            oCuenta[a - 1].NoCuenta = Convert.ToInt32(Fila.Cells["NoCuenta"].Value.ToString());
-                            oCuenta[a - 1].DescCuenta = Fila.Cells["DescCuenta"].Value.ToString();
-                            oCuenta[a - 1].SaldoCuenta = Convert.ToDecimal( Fila.Cells["SaldoCuenta"].Value.ToString());
-                            oCuenta[a - 1].oCategoriaDeCuentaEN.idCategoriaDeCuenta = Convert.ToInt32(Fila.Cells["idCategoriaDeCuenta"].Value.ToString());
-                            oCuenta[a - 1].oCategoriaDeCuentaEN.DescCategoriaDeCuenta = Fila.Cells["DescCategoriaDeCuenta"].Value.ToString();
-                            oCuenta[a - 1].oTipoDeCuentaEN.idTipoDeCuenta = Convert.ToInt32(Fila.Cells["idTipoDeCuenta"].Value.ToString());
-                            oCuenta[a - 1].oTipoDeCuentaEN.DescTipoDeCuenta = Fila.Cells["DescTipoDeCuenta"].Value.ToString();
-                            oCuenta[a - 1].EsCuentaDeBanco = Convert.ToInt32( Fila.Cells["EsCuentaDeBanco"].Value.ToString());
+                            Array.Resize(ref oOtrasConfiguracionDeLaCuenta, a);
+
+                            oOtrasConfiguracionDeLaCuenta[a - 1] = new OtrasConfiguracionDeLaCuentaEN();
+                            oOtrasConfiguracionDeLaCuenta[a - 1].idOtrasConfiguracionDeLaCuenta = Convert.ToInt32( Fila.Cells["idOtrasConfiguracionDeLaCuenta"].Value.ToString());
+                            oOtrasConfiguracionDeLaCuenta[a - 1].NoCuenta = Convert.ToInt32(Fila.Cells["NoCuenta"].Value.ToString());
+                            oOtrasConfiguracionDeLaCuenta[a - 1].idCuenta = Fila.Cells["idCuenta"].Value.ToString();
+                            oOtrasConfiguracionDeLaCuenta[a - 1].idConfiguracion = Convert.ToInt32( Fila.Cells["idConfiguracion"].Value.ToString());
+                            oOtrasConfiguracionDeLaCuenta[a - 1].idTiposDeConfiguracion = Convert.ToInt32(Fila.Cells["idTiposDeConfiguracion"].Value.ToString());
+                            oOtrasConfiguracionDeLaCuenta[a - 1].NivelCuenta = Convert.ToInt32(Fila.Cells["NivelCuenta"].Value.ToString());
+
 
                         }
                     }
@@ -871,18 +724,15 @@ namespace SisContador.Formularios
                     if (Convert.ToBoolean(Fila.Cells["Seleccionar"].Value) == true)
                     {
                         a++;
-                        Array.Resize(ref oCuenta, a);
+                        Array.Resize(ref oOtrasConfiguracionDeLaCuenta, a);
 
-                        oCuenta[a - 1] = new CuentaEN();
-                        oCuenta[a - 1].idCuenta = Fila.Cells["idCuenta"].Value.ToString();
-                        oCuenta[a - 1].NoCuenta = Convert.ToInt32(Fila.Cells["NoCuenta"].Value.ToString());
-                        oCuenta[a - 1].DescCuenta = Fila.Cells["DescCuenta"].Value.ToString();
-                        oCuenta[a - 1].SaldoCuenta = Convert.ToDecimal(Fila.Cells["SaldoCuenta"].Value.ToString());
-                        oCuenta[a - 1].oCategoriaDeCuentaEN.idCategoriaDeCuenta = Convert.ToInt32(Fila.Cells["idCategoriaDeCuenta"].Value.ToString());
-                        oCuenta[a - 1].oCategoriaDeCuentaEN.DescCategoriaDeCuenta = Fila.Cells["DescCategoriaDeCuenta"].Value.ToString();
-                        oCuenta[a - 1].oTipoDeCuentaEN.idTipoDeCuenta = Convert.ToInt32(Fila.Cells["idTipoDeCuenta"].Value.ToString());
-                        oCuenta[a - 1].oTipoDeCuentaEN.DescTipoDeCuenta = Fila.Cells["DescTipoDeCuenta"].Value.ToString();
-                        oCuenta[a - 1].EsCuentaDeBanco = Convert.ToInt32(Fila.Cells["EsCuentaDeBanco"].Value.ToString());
+                        oOtrasConfiguracionDeLaCuenta[a - 1] = new OtrasConfiguracionDeLaCuentaEN();
+                        oOtrasConfiguracionDeLaCuenta[a - 1].idOtrasConfiguracionDeLaCuenta = Convert.ToInt32(Fila.Cells["idOtrasConfiguracionDeLaCuenta"].Value.ToString());
+                        oOtrasConfiguracionDeLaCuenta[a - 1].NoCuenta = Convert.ToInt32(Fila.Cells["NoCuenta"].Value.ToString());
+                        oOtrasConfiguracionDeLaCuenta[a - 1].idCuenta = Fila.Cells["idCuenta"].Value.ToString();
+                        oOtrasConfiguracionDeLaCuenta[a - 1].idConfiguracion = Convert.ToInt32(Fila.Cells["idConfiguracion"].Value.ToString());
+                        oOtrasConfiguracionDeLaCuenta[a - 1].idTiposDeConfiguracion = Convert.ToInt32(Fila.Cells["idTiposDeConfiguracion"].Value.ToString());
+                        oOtrasConfiguracionDeLaCuenta[a - 1].NivelCuenta = Convert.ToInt32(Fila.Cells["NivelCuenta"].Value.ToString());
 
                     }
                 }
@@ -921,15 +771,19 @@ namespace SisContador.Formularios
                 {
                     tsbMarcarTodos.Image = Properties.Resources.checked16x16;
                 }
-
+                
                 foreach (DataGridViewRow Fila in dgvLista.Rows)
                 {
-                    Fila.Cells["Seleccionar"].Value = true;
+                    
                     //Si se llamo a la interfaz para seleccionar un solo registro, despues de marcar el primero, llamamos al que desmarca y terminamos
                     if (VariosRegistros == false)
                     {
+                        Fila.Cells["Seleccionar"].Value = true;
                         DesmarcarFilas(Fila.Index);
                         return;
+                    }else
+                    {
+                        Fila.Cells["Seleccionar"].Value = tsbMarcarTodos.Checked;
                     }
                 }
 
@@ -943,59 +797,14 @@ namespace SisContador.Formularios
             }
         }
 
-        private void frmCuenta_KeyUp(object sender, KeyEventArgs e)
+        private void frmCuentaOtrasConfiguraciones_KeyUp(object sender, KeyEventArgs e)
         {
-            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F2) && nuevoToolStripMenuItem.Enabled == true)
-            {
-                nuevoToolStripMenuItem_Click(null, null);
-            }
-
-            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F3) && actualizarToolStripMenuItem.Enabled == true)
-            {
-                if (dgvLista.SelectedRows.Count > 0)
-                {
-                    IndiceSeleccionado = dgvLista.CurrentRow.Index;
-                    actualizarToolStripMenuItem_Click(null, null);
-                }
-                else
-                {
-                    MessageBox.Show("Se debe de seleccionar un registro de la lista", "Actualizar Registro ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-            }
-
-            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F4) && eliminarToolStripMenuItem.Enabled == true)
-            {
-                if (dgvLista.SelectedRows.Count > 0)
-                {
-                    IndiceSeleccionado = dgvLista.CurrentRow.Index;
-                    eliminarToolStripMenuItem_Click(null, null);
-                }
-                else
-                {
-                    MessageBox.Show("Se debe de seleccionar un registro de la lista", "Eliminar Registro ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-            }
-
+         
             if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F5))
             {
                 tsbFiltrar_Click(null, null);
             }
-
-            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F6) && visualizarToolStripMenuItem.Enabled == true && dgvLista.SelectedRows.Count > 0)
-            {
-                if (dgvLista.SelectedRows.Count > 0)
-                {
-                    IndiceSeleccionado = dgvLista.CurrentRow.Index;
-                    visualizarToolStripMenuItem_Click(null, null);
-                }
-                else
-                {
-                    MessageBox.Show("Se debe de seleccionar un registro de la lista", "Consultar Registro ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-
+            
             if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F12))
             {
                 if(dgvLista.RowCount > 0)
@@ -1009,46 +818,7 @@ namespace SisContador.Formularios
 
 
         }
-
-        private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MostrarFormularioParaOperacion("Nuevo");
-        }
-
-        private void actualizarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AsignarLlavePrimaria();
-            MostrarFormularioParaOperacion("Modificar");
-        }
-
-        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AsignarLlavePrimaria();
-            MostrarFormularioParaOperacion("Eliminar");
-        }
-
-        private void visualizarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AsignarLlavePrimaria();
-            MostrarFormularioParaOperacion("Consultar");
-        }
-
-        private void mcsMenu_Opened(object sender, EventArgs e)
-        {
-            if (dgvLista.DataSource == null || dgvLista.Rows.Count <= 0 || dgvLista.SelectedRows.Count <= 0)
-            {
-                eliminarToolStripMenuItem.Enabled = false;
-                actualizarToolStripMenuItem.Enabled = false;
-                visualizarToolStripMenuItem.Enabled = false;
-                imprimirToolStripMenuItem.Enabled = false;                
-            }
-            else
-            {
-                CargarPrivilegiosDelUsuario();
-
-            }
-        }
-
+        
         private void txtIdentificador_KeyUp(object sender, KeyEventArgs e)
         {
             if (Controles.IsNullOEmptyElControl(txtIdentificador))
@@ -1056,11 +826,7 @@ namespace SisContador.Formularios
                 chkIdentificador.CheckState = CheckState.Unchecked;
             }
             else { chkIdentificador.CheckState = CheckState.Checked; }
-
-            if (chkIdentificador.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
-            {                
-                LLenarListado();
-            }
+            
         }
 
         private void txtDescCuenta_KeyUp(object sender, KeyEventArgs e)
@@ -1071,31 +837,10 @@ namespace SisContador.Formularios
             }
             else { chkDescCuenta.CheckState = CheckState.Checked; }
 
-            if (chkDescCuenta.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
-            {
-                LLenarListado();
-            }
-        }
-                           
+            AplicarBindingSource();
 
-        private void tsbNuevoRegistro_Click(object sender, EventArgs e)
-        {
-            MostrarFormularioParaOperacion("Nuevo");
         }
-
-        private void tsbFiltroAutomatico_Click(object sender, EventArgs e)
-        {
-            tsbFiltroAutomatico.Checked = !tsbFiltroAutomatico.Checked;            
-            if (tsbFiltroAutomatico.Checked == true)
-            {
-                tsbFiltroAutomatico.Image = Properties.Resources.unchecked16x16;
-            }
-            else {
-                tsbFiltroAutomatico.Image = Properties.Resources.checked16x16;
-            }
-            
-        }
-
+       
         private void cmbGruposDeCuentas_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (Controles.IsNullOEmptyElControl(cmbGruposDeCuentas))
@@ -1104,10 +849,7 @@ namespace SisContador.Formularios
             }
             else { chkGrupoDeCuentas.CheckState = CheckState.Checked; LLenarCategoriasParaLasCuentas(); }
 
-            if (chkGrupoDeCuentas.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
-            {
-                LLenarListado();
-            }           
+            AplicarBindingSource();
 
         }
 
@@ -1119,10 +861,8 @@ namespace SisContador.Formularios
             }
             else { chkCategoriaDeCuentas.CheckState = CheckState.Checked; }
 
-            if (chkCategoriaDeCuentas.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
-            {
-                LLenarListado();
-            }
+            AplicarBindingSource();
+
         }
 
         private void chkGrupoDeCuentas_CheckedChanged(object sender, EventArgs e)
@@ -1130,10 +870,7 @@ namespace SisContador.Formularios
             if (chkGrupoDeCuentas.CheckState == CheckState.Unchecked)
             {
                 LLenarCategoriasParaLasCuentas();
-                if (tsbFiltroAutomatico.CheckState == CheckState.Checked)
-                {
-                    LLenarListado();
-                }
+                
             }
         }
 
@@ -1142,13 +879,11 @@ namespace SisContador.Formularios
             if (chkCategoriaDeCuentas.CheckState == CheckState.Unchecked )
             {
 
-                if (tsbFiltroAutomatico.CheckState == CheckState.Checked) {
-                    LLenarListado();
-                }
+               
             }
         }
 
-        private void frmCuenta_Load(object sender, EventArgs e)
+        private void frmCuentaOtrasConfiguraciones_Load(object sender, EventArgs e)
         {
             
         }
@@ -1180,17 +915,21 @@ namespace SisContador.Formularios
             if (SeDigitoEnLaMascara())
             {
                 chkIdCuenta.CheckState = CheckState.Checked;
+
             }
             else
             {
                 chkIdCuenta.CheckState = CheckState.Unchecked;
             }
 
-            if(chkIdCuenta.CheckState == CheckState.Checked && tsbFiltroAutomatico.Checked == true)
-            {
-                LLenarListado();
-            }
-           
+            AplicarBindingSource();
+
+        }
+
+        private void AplicarBindingSource()
+        {
+            string Where = WhereDinamico();
+            BD.Filter = Where;
         }
 
         private bool SeDigitoEnLaMascara()
@@ -1244,215 +983,6 @@ namespace SisContador.Formularios
             
             return valor;
         }
-        
-        private void tsbCatalogoDeCuentas_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (ofrmVisor == null || ofrmVisor.IsDisposed)
-                {
-                    ofrmVisor = new frmVisor();
-                    ofrmVisor.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
-                    ofrmVisor.NombreReporte = "Cuentas - Catalogo";
-                    CuentaEN oRegistroEN = new CuentaEN();
-                    oRegistroEN.Where = WhereDinamico();
-                    oRegistroEN.OrderBy = " Order by c.idCuenta asc  ";
-                    oRegistroEN.TituloDelReporte = TituloDinamico();
-                    ofrmVisor.Entidad = oRegistroEN;
-
-                    ofrmVisor.MdiParent = this.ParentForm;
-                    ofrmVisor.Show();
-                }
-                else
-                    ofrmVisor.BringToFront();
-
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Imprimir catálogo de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void listadoDeCuentasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (ofrmVisor_1 == null || ofrmVisor_1.IsDisposed)
-                {
-                    ofrmVisor_1 = new frmVisor();
-
-                    ofrmVisor_1.NombreReporte = "Cuentas - Listado completo";
-                    ofrmVisor_1.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
-                    CuentaEN oRegistroEN = new CuentaEN();
-                    oRegistroEN.Where = WhereDinamico();
-                    oRegistroEN.OrderBy = " Order by c.idCuenta asc  ";
-                    oRegistroEN.TituloDelReporte = TituloDinamico();
-                    ofrmVisor_1.Entidad = oRegistroEN;
-
-                    ofrmVisor_1.MdiParent = this.ParentForm;
-                    ofrmVisor_1.Show();
-                }
-                else
-                    ofrmVisor_1.BringToFront();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Imprimir listado de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void tsbMostrarSaldos_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (ofrmVisor_2 == null || ofrmVisor_2.IsDisposed)
-                {
-                    ofrmVisor_2 = new frmVisor();
-
-                    ofrmVisor_2.NombreReporte = "Cuentas - Traer Saldos";
-                    ofrmVisor_2.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
-                    ReportesEN oRegistroEN = new ReportesEN();
-                    oRegistroEN.Where = WhereDinamico();
-                    oRegistroEN.OrderBy = " Order by idCuenta asc  ";
-                    oRegistroEN.TituloDelReporte = TituloDinamico();
-                    ofrmVisor_2.Entidad = oRegistroEN;
-
-                    ofrmVisor_2.MdiParent = this.ParentForm;
-                    ofrmVisor_2.Show();
-                }
-                else
-                    ofrmVisor_2.BringToFront();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Imprimir listado de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void tsbMostrarSaldoDetallado_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (ofrmVisor_3 == null || ofrmVisor_3.IsDisposed)
-                {
-                    ofrmVisor_3 = new frmVisor();
-
-                    ofrmVisor_3.NombreReporte = "Cuentas - Traer Saldos Detallado";
-                    ofrmVisor_3.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
-                    ReportesEN oRegistroEN = new ReportesEN();
-                    oRegistroEN.Where = WhereDinamico();
-                    oRegistroEN.OrderBy = " Order by idCuenta asc  ";
-                    oRegistroEN.TituloDelReporte = TituloDinamico();
-                    ofrmVisor_3.Entidad = oRegistroEN;
-
-                    ofrmVisor_3.MdiParent = this.ParentForm;
-                    ofrmVisor_3.Show();
-                }
-                else
-                    ofrmVisor_3.BringToFront();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Imprimir listado de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void movimientosDeLaCuentaDuranteElMesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dgvLista.RowCount <= 0)
-                {
-                    throw new ArgumentException("No se encontraron registro dentro de la lista de información");
-                }
-
-                if (dgvLista.SelectedRows == null)
-                {
-                    throw new ArgumentException("Se debe seleccionar un registro de la lista de información");
-                }
-
-                if (ofrmVisor_4 == null || ofrmVisor_4.IsDisposed)
-                {
-                    ofrmVisor_4 = new frmVisor();
-                    ofrmVisor_4.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
-
-                    int NoCuenta = Convert.ToInt32(dgvLista.CurrentRow.Cells["NoCuenta"].Value.ToString());
-
-                    ofrmVisor_4.NombreReporte = "Cuentas - Movimientos del Mes";
-                    CuentaEN oRegistroEN = new CuentaEN();
-                    oRegistroEN.Where = string.Format(" and td.NoCuenta = {0}", NoCuenta);
-                    oRegistroEN.OrderBy = " Order by idCuenta asc  ";
-                    oRegistroEN.TituloDelReporte = "MOVIMIENTOS DEL MES POR CUENTA";
-                    ofrmVisor_4.Entidad = oRegistroEN;
-
-                    ofrmVisor_4.MdiParent = this.ParentForm;
-                    ofrmVisor_4.Show();
-                }
-                else
-                    ofrmVisor_4.BringToFront();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Imprimir movimientos del mes de la cuenta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void tsbAplicarBorde_Click(object sender, EventArgs e)
-        {
-            tsbAplicarBorde.Checked = !tsbAplicarBorde.Checked;
-
-            if (tsbAplicarBorde.Checked == true)
-            {
-                tsbAplicarBorde.Image = Properties.Resources.unchecked16x16;
-            }
-            else
-            {
-                tsbAplicarBorde.Image = Properties.Resources.checked16x16;
-            }
-        }
-
-        private void imprimirToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbImprimir_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsmCatalogoDeCuentas_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (oImprimirCatalogo == null || oImprimirCatalogo.IsDisposed)
-                {
-                    oImprimirCatalogo = new frmVisor();
-
-                    oImprimirCatalogo.NombreReporte = "Cuentas - Imprimir - Catalogo";
-                    oImprimirCatalogo.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
-                    CuentaEN oRegistroEN = new CuentaEN();
-                    oRegistroEN.Where = WhereDinamico();
-                    oRegistroEN.OrderBy = " Order by c.idCuenta asc  ";
-                    oRegistroEN.TituloDelReporte = "CATALOGO DE CUENTAS";
-                    oRegistroEN.SubTituloDelReporte = TituloDinamico();
-                    oImprimirCatalogo.Entidad = oRegistroEN;
-
-                    oImprimirCatalogo.MdiParent = this.ParentForm;
-                    oImprimirCatalogo.Show();
-                }
-                else
-                    oImprimirCatalogo.BringToFront();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Imprimir catalogo de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+                
     }
 }

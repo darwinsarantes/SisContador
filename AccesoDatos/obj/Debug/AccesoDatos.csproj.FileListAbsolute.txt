@@ -50,3 +50,4 @@ I:\SisContador\AccesoDatos\bin\Debug\MySql.Data.xml
 I:\SisContador\AccesoDatos\obj\Debug\AccesoDatos.csprojResolveAssemblyReference.cache
 I:\SisContador\AccesoDatos\obj\Debug\AccesoDatos.dll
 I:\SisContador\AccesoDatos\obj\Debug\AccesoDatos.pdb
+E:\SisContador\AccesoDatos\bin\Debug\MySql.Data.dll

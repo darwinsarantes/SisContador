@@ -72,6 +72,10 @@ namespace SisContador.Formularios
             switch (this.NombreReporte)
             {
 
+                case "Cuentas - Imprimir - Catalogo":
+                    Imprimir_CatalogoDeCuentas();
+                    break;
+
                 case "Cuentas - Catalogo":
                     ImprimirCuentasCatalogoDeCuentas();
                     break;
@@ -239,6 +243,42 @@ namespace SisContador.Formularios
                 default:
                     MessageBox.Show("No existe código asociado al reporte solicitado: " + this.NombreReporte, "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     break;
+            }
+
+        }
+
+        private void Imprimir_CatalogoDeCuentas()
+        {
+            try
+            {
+
+                CuentaEN oRegistroEN = new CuentaEN();
+                CuentaLN oRegistroLN = new CuentaLN();
+
+                oRegistroEN = (CuentaEN)this.Entidad;
+
+                if (oRegistroLN.ListadoParaReportes(oRegistroEN, Program.oDatosDeConexion))
+                {
+                    RPT = new rptListaDeCuentas();
+                    AgregarTablaEmpresaADataSet();
+                    RPT.SetDataSource(AgregarTablaADataSet(oRegistroLN.TraerDatos(), "ListadoDeCuentas"));
+                    LlenarParametros(new string[,] { { "NombreDelSistema", Program.NombreVersionSistema }, { "TituloDelReporte", oRegistroEN.TituloDelReporte }, { "SubTituloDeReporte", oRegistroEN.SubTituloDelReporte }, { "AplicarBorde", this.AplicarBorder.ToString() } });
+                    this.Text = "Catalogo de cuentas";
+                    crvVista.ReportSource = RPT;
+
+                }
+                else
+                {
+                    this.Cursor = Cursors.Default;
+                    MessageBox.Show(oRegistroLN.Error, "Catalogo de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+                oRegistroLN = null;
+                this.Entidad = null;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

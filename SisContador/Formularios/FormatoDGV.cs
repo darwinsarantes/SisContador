@@ -485,7 +485,7 @@ namespace SisContador.Formularios
                     break;
 
                 case "FechaDeCreacion":
-                    this.Descripcion = "Crado el";
+                    this.Descripcion = "Creado el";
                     this.Tamano = 130;
                     this.Alineacion = DataGridViewContentAlignment.MiddleLeft;                    
                     this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
@@ -520,7 +520,71 @@ namespace SisContador.Formularios
             this.Columna = NombreDelaColumna;
             
             switch (Tabla)
-            {//idTransaccionDetalle, NoCuenta, c.idCuenta,c.DescCuenta, Debe, Haber,
+            {
+                case "OtrasConfiguracionDeLaCuenta":
+
+                    this.ValorEncontrado = true;
+
+                    switch (Columna)
+                    {
+                        case "DescCategoriaDeCuenta":
+                            this.Descripcion = "Categoria de la Cuenta";
+                            this.Tamano = 160;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+
+                            break;
+
+                        case "NivelCuenta":
+                            this.Descripcion = "Nivel de la Cuenta";
+                            this.Tamano = 100;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+
+                            break;
+
+                        case "DescCuenta":
+                            this.Descripcion = "Descripción de la cuenta";
+                            this.Tamano = 260;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+
+                            break;
+
+                        case "idOtrasConfiguracionDeLaCuenta":
+                            this.Descripcion = "ID";
+                            this.Tamano = 50;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleCenter;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "NoCuenta":
+                            this.Descripcion = "No. Cuenta";
+                            this.Tamano = 50;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleCenter;
+                            this.SoloLectura = true;
+
+                            break;
+
+                        case "idCuenta":
+                            this.Descripcion = "No. Cuenta";
+                            this.Tamano = 130;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+
+                            break;
+                            
+                        default: this.ValorEncontrado = false; break;
+                    }
+
+                    break;
+
                 case "TransaccionesDetalle":
                     
                     this.ValorEncontrado = true;
