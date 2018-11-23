@@ -9,14 +9,14 @@
     <framework targetVersion="4.5.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="SisContador.exe.manifest" size="28202">
+    <dependentAssembly dependencyType="install" codebase="SisContador.exe.manifest" size="28131">
       <assemblyIdentity name="SisContador.exe" version="1.0.0.36" publicKeyToken="0000000000000000" language="es-NI" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>1bKlu8xutF2ZPOgfXXdVDj30Drl+6LrhL/m4bqSLxmY=</dsig:DigestValue>
+        <dsig:DigestValue>jiOh069yefrrGqCc7S+w4LVZ3EfkWZ6MewkqHwbLdDU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
