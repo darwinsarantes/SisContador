@@ -79,6 +79,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsblMensajes = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -581,6 +582,10 @@
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // frmPeriodoOperacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -667,5 +672,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtCambioOficial;
         private System.Windows.Forms.TextBox txtIdTasaDeCambio;
+        private System.Windows.Forms.Timer timer2;
     }
 }

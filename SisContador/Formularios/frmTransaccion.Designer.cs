@@ -62,6 +62,7 @@
             this.tsbNoRegistros = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
             this.tsbFiltrar = new System.Windows.Forms.ToolStripButton();
+            this.tsbAplicarBorde = new System.Windows.Forms.ToolStripButton();
             this.tsbFiltroAutomatico = new System.Windows.Forms.ToolStripButton();
             this.tsbImprimir = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmListado = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,7 +72,6 @@
             this.tsbMarcarTodos = new System.Windows.Forms.ToolStripButton();
             this.tsbSeleccionarTodos = new System.Windows.Forms.ToolStripButton();
             this.tsbAplicarRangoDeFecha = new System.Windows.Forms.ToolStripButton();
-            this.tsbAplicarBorde = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -131,7 +131,7 @@
             this.groupBox1.Size = new System.Drawing.Size(909, 149);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filtrar informacion de los grupos de cuentas";
+            this.groupBox1.Text = "Filtrar informacion de las cuentas";
             // 
             // cmbCategoriaDeLasCuentas
             // 
@@ -443,6 +443,17 @@
             this.tsbFiltrar.ToolTipText = "Filtrar (F5)";
             this.tsbFiltrar.Click += new System.EventHandler(this.tsbFiltrar_Click);
             // 
+            // tsbAplicarBorde
+            // 
+            this.tsbAplicarBorde.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbAplicarBorde.Image = global::SisContador.Properties.Resources.checked16x16;
+            this.tsbAplicarBorde.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbAplicarBorde.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAplicarBorde.Name = "tsbAplicarBorde";
+            this.tsbAplicarBorde.Size = new System.Drawing.Size(98, 28);
+            this.tsbAplicarBorde.Text = "Aplicar borde";
+            this.tsbAplicarBorde.Click += new System.EventHandler(this.tsbAplicarBorde_Click);
+            // 
             // tsbFiltroAutomatico
             // 
             this.tsbFiltroAutomatico.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -530,17 +541,6 @@
             this.tsbAplicarRangoDeFecha.ToolTipText = "Aplicar Bloque de Mes Desde inicio a fin de mes correspondiente";
             this.tsbAplicarRangoDeFecha.Click += new System.EventHandler(this.tsbAplicarRangoDeFecha_Click);
             // 
-            // tsbAplicarBorde
-            // 
-            this.tsbAplicarBorde.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbAplicarBorde.Image = global::SisContador.Properties.Resources.checked16x16;
-            this.tsbAplicarBorde.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbAplicarBorde.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAplicarBorde.Name = "tsbAplicarBorde";
-            this.tsbAplicarBorde.Size = new System.Drawing.Size(98, 28);
-            this.tsbAplicarBorde.Text = "Aplicar borde";
-            this.tsbAplicarBorde.Click += new System.EventHandler(this.tsbAplicarBorde_Click);
-            // 
             // frmTransaccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -548,8 +548,9 @@
             this.ClientSize = new System.Drawing.Size(933, 533);
             this.Controls.Add(this.splitContainer1);
             this.Name = "frmTransaccion";
-            this.Text = "Grupos de cuentas";
+            this.Text = "Transacciones";
             this.Shown += new System.EventHandler(this.frmTransaccion_Shown);
+            this.Enter += new System.EventHandler(this.frmTransaccion_Enter);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmTransaccion_KeyUp);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

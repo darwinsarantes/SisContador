@@ -355,6 +355,7 @@ namespace SisContador.Formularios
                 PeriodoLN oRegistrosLN = new PeriodoLN();
 
                 oRegistrosEN.Where = WhereDinamico();
+                oRegistrosEN.OrderBy = " Order by Hasta desc ";
 
                 if (oRegistrosLN.Listado(oRegistrosEN, Program.oDatosDeConexion)) {
 
@@ -601,6 +602,9 @@ namespace SisContador.Formularios
             tsbFiltroAutomatico_Click(null, null);
 
             ConfigurarFechas();
+
+            if (tsbFiltroAutomatico.CheckState == CheckState.Checked)
+                LLenarListado();
         }
 
         private void tsbFiltrar_Click(object sender, EventArgs e)
@@ -981,6 +985,12 @@ namespace SisContador.Formularios
         private void tsbImprimir_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmPeriodo_Enter(object sender, EventArgs e)
+        {
+            if (tsbFiltroAutomatico.CheckState == CheckState.Checked)
+                LLenarListado();
         }
     }
 }

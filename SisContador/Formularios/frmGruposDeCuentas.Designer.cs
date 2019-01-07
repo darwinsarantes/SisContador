@@ -373,6 +373,7 @@
             this.Name = "frmGruposDeCuentas";
             this.Text = "Grupos de cuentas";
             this.Shown += new System.EventHandler(this.frmGruposDeCuentas_Shown);
+            this.Enter += new System.EventHandler(this.frmGruposDeCuentas_Enter);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmGruposDeCuentas_KeyUp);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

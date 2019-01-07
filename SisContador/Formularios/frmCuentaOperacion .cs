@@ -685,6 +685,7 @@ namespace SisContador.Formularios
         {
             Properties.Settings.Default.CuentaVentanaDespuesDeOperacion = (chkCerrarVentana.CheckState == CheckState.Checked ? true : false);
             Properties.Settings.Default.Save();
+            
         }
 
         private void LimpiarEP()

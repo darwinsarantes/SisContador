@@ -27,7 +27,7 @@
     <TargetCulture>es-NI</TargetCulture>
     <ProductName>SisContador</ProductName>
     <PublisherName>SisContador</PublisherName>
-    <ApplicationRevision>36</ApplicationRevision>
+    <ApplicationRevision>41</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -800,6 +800,11 @@
     <Content Include="Origen XML\DataSet.xml">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Resources\generador4.png" />
+    <None Include="Resources\generador3.png" />
+    <None Include="Resources\generador2.png" />
+    <None Include="Resources\generador1.png" />
+    <None Include="Resources\generador.png" />
     <None Include="Resources\if_chart_512543.png" />
     <None Include="Resources\if_chart_512543 %284%29.png" />
     <None Include="Resources\if_chart_512543 %283%29.png" />

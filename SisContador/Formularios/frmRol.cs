@@ -534,6 +534,10 @@ namespace SisContador.Formularios
             CargarPrivilegiosDelUsuario();            
             ActivarFiltrosDelaBusqueda();
             tsbFiltroAutomatico_Click(null, null);
+
+            if (tsbFiltroAutomatico.CheckState == CheckState.Checked)
+                LLenarListado();
+
         }
 
         private void tsbFiltrar_Click(object sender, EventArgs e)
@@ -839,6 +843,10 @@ namespace SisContador.Formularios
             
         }
 
-        
+        private void frmRol_Enter(object sender, EventArgs e)
+        {
+            if (tsbFiltroAutomatico.CheckState == CheckState.Checked)
+                LLenarListado();
+        }
     }
 }

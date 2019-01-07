@@ -103,7 +103,7 @@
             this.groupBox1.Size = new System.Drawing.Size(673, 124);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filtrar informacion de los grupos de cuentas";
+            this.groupBox1.Text = "Filtrar información de la categoria";
             // 
             // cmbGruposDeCuentas
             // 
@@ -341,8 +341,9 @@
             this.ClientSize = new System.Drawing.Size(697, 533);
             this.Controls.Add(this.splitContainer1);
             this.Name = "frmCategoriaDeCuenta";
-            this.Text = "Grupos de cuentas";
+            this.Text = "Categoria";
             this.Shown += new System.EventHandler(this.frmCategoriaDeCuenta_Shown);
+            this.Enter += new System.EventHandler(this.frmCategoriaDeCuenta_Enter);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmCategoriaDeCuenta_KeyUp);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

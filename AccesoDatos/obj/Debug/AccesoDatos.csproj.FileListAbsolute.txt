@@ -51,3 +51,11 @@ I:\SisContador\AccesoDatos\obj\Debug\AccesoDatos.csprojResolveAssemblyReference.
 I:\SisContador\AccesoDatos\obj\Debug\AccesoDatos.dll
 I:\SisContador\AccesoDatos\obj\Debug\AccesoDatos.pdb
 E:\SisContador\AccesoDatos\bin\Debug\MySql.Data.dll
+G:\SisContador\AccesoDatos\bin\Debug\AccesoDatos.dll
+G:\SisContador\AccesoDatos\bin\Debug\AccesoDatos.pdb
+G:\SisContador\AccesoDatos\bin\Debug\Entidad.dll
+G:\SisContador\AccesoDatos\bin\Debug\Entidad.pdb
+G:\SisContador\AccesoDatos\bin\Debug\MySql.Data.xml
+G:\SisContador\AccesoDatos\obj\Debug\AccesoDatos.csprojResolveAssemblyReference.cache
+G:\SisContador\AccesoDatos\obj\Debug\AccesoDatos.dll
+G:\SisContador\AccesoDatos\obj\Debug\AccesoDatos.pdb

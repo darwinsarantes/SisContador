@@ -64,3 +64,14 @@ I:\SisContador\Logica\bin\Debug\MySql.Data.xml
 I:\SisContador\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
 I:\SisContador\Logica\obj\Debug\Logica.dll
 I:\SisContador\Logica\obj\Debug\Logica.pdb
+G:\SisContador\Logica\bin\Debug\Logica.dll
+G:\SisContador\Logica\bin\Debug\Logica.pdb
+G:\SisContador\Logica\bin\Debug\AccesoDatos.dll
+G:\SisContador\Logica\bin\Debug\Entidad.dll
+G:\SisContador\Logica\bin\Debug\MySql.Data.dll
+G:\SisContador\Logica\bin\Debug\AccesoDatos.pdb
+G:\SisContador\Logica\bin\Debug\Entidad.pdb
+G:\SisContador\Logica\bin\Debug\MySql.Data.xml
+G:\SisContador\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+G:\SisContador\Logica\obj\Debug\Logica.dll
+G:\SisContador\Logica\obj\Debug\Logica.pdb

@@ -61,11 +61,11 @@
             this.tsbMostrarSaldoDetallado = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbCatalogoDeCuentas = new System.Windows.Forms.ToolStripMenuItem();
             this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmCatalogoDeCuentas = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbNuevoRegistro = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbMarcarTodos = new System.Windows.Forms.ToolStripButton();
             this.tsbSeleccionarTodos = new System.Windows.Forms.ToolStripButton();
-            this.tsmCatalogoDeCuentas = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -94,7 +94,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.dgvLista);
             this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer1.Panel2.Controls.Add(this.tsMenu);
-            this.splitContainer1.Size = new System.Drawing.Size(926, 533);
+            this.splitContainer1.Size = new System.Drawing.Size(870, 533);
             this.splitContainer1.SplitterDistance = 111;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -115,10 +115,10 @@
             this.groupBox1.Controls.Add(this.chkIdentificador);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(902, 88);
+            this.groupBox1.Size = new System.Drawing.Size(846, 88);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filtrar informacion de los grupos de cuentas";
+            this.groupBox1.Text = "Filtrar información la cuentas";
             // 
             // mskidCuenta
             // 
@@ -223,7 +223,7 @@
             this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLista.Location = new System.Drawing.Point(0, 31);
             this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(926, 365);
+            this.dgvLista.Size = new System.Drawing.Size(870, 365);
             this.dgvLista.TabIndex = 10;
             this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellContentClick);
             this.dgvLista.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvLista_CellContextMenuStripNeeded);
@@ -296,7 +296,7 @@
             this.tsbNoRegistros});
             this.statusStrip1.Location = new System.Drawing.Point(0, 396);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(926, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(870, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -320,7 +320,7 @@
             this.tsbSeleccionarTodos});
             this.tsMenu.Location = new System.Drawing.Point(0, 0);
             this.tsMenu.Name = "tsMenu";
-            this.tsMenu.Size = new System.Drawing.Size(926, 31);
+            this.tsMenu.Size = new System.Drawing.Size(870, 31);
             this.tsMenu.TabIndex = 9;
             this.tsMenu.Text = "Filtrar";
             // 
@@ -420,6 +420,15 @@
             this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem.Text = "Movimientos de la cuenta durante el mes";
             this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem.Click += new System.EventHandler(this.movimientosDeLaCuentaDuranteElMesToolStripMenuItem_Click);
             // 
+            // tsmCatalogoDeCuentas
+            // 
+            this.tsmCatalogoDeCuentas.Image = global::SisContador.Properties.Resources.printer16x16;
+            this.tsmCatalogoDeCuentas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmCatalogoDeCuentas.Name = "tsmCatalogoDeCuentas";
+            this.tsmCatalogoDeCuentas.Size = new System.Drawing.Size(292, 22);
+            this.tsmCatalogoDeCuentas.Text = "Catalogo de cuentas";
+            this.tsmCatalogoDeCuentas.Click += new System.EventHandler(this.tsmCatalogoDeCuentas_Click);
+            // 
             // tsbNuevoRegistro
             // 
             this.tsbNuevoRegistro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -456,26 +465,18 @@
             this.tsbSeleccionarTodos.Text = "Seleccionar";
             this.tsbSeleccionarTodos.Click += new System.EventHandler(this.tsbSeleccionarTodos_Click);
             // 
-            // tsmCatalogoDeCuentas
-            // 
-            this.tsmCatalogoDeCuentas.Image = global::SisContador.Properties.Resources.printer16x16;
-            this.tsmCatalogoDeCuentas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmCatalogoDeCuentas.Name = "tsmCatalogoDeCuentas";
-            this.tsmCatalogoDeCuentas.Size = new System.Drawing.Size(292, 22);
-            this.tsmCatalogoDeCuentas.Text = "Catalogo de cuentas";
-            this.tsmCatalogoDeCuentas.Click += new System.EventHandler(this.tsmCatalogoDeCuentas_Click);
-            // 
             // frmCuenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 533);
+            this.ClientSize = new System.Drawing.Size(870, 533);
             this.Controls.Add(this.splitContainer1);
             this.KeyPreview = true;
             this.Name = "frmCuenta";
-            this.Text = "Grupos de cuentas";
+            this.Text = "Cuentas";
             this.Load += new System.EventHandler(this.frmCuenta_Load);
             this.Shown += new System.EventHandler(this.frmCuenta_Shown);
+            this.Enter += new System.EventHandler(this.frmCuenta_Enter);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmCuenta_KeyUp);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

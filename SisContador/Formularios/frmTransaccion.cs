@@ -1053,6 +1053,9 @@ namespace SisContador.Formularios
 
             ConfiguracionesDeLaVentana();
 
+            if (tsbFiltroAutomatico.CheckState == CheckState.Checked)
+                LLenarListado();
+
 
         }
 
@@ -1647,5 +1650,12 @@ namespace SisContador.Formularios
                 tsbAplicarBorde.Image = Properties.Resources.checked16x16;
             }
         }
+
+        private void frmTransaccion_Enter(object sender, EventArgs e)
+        {
+            if(tsbFiltroAutomatico.CheckState == CheckState.Checked)
+                LLenarListado();
+        }
+
     }
 }

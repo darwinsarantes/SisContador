@@ -602,6 +602,9 @@ namespace SisContador.Formularios
             LLenarGrupoDeCuentas();
             ActivarFiltrosDelaBusqueda();
             tsbFiltroAutomatico_Click(null, null);
+
+            if (tsbFiltroAutomatico.CheckState == CheckState.Checked)
+                LLenarListado();
         }
 
         private void tsbFiltrar_Click(object sender, EventArgs e)
@@ -973,6 +976,12 @@ namespace SisContador.Formularios
             {
                 LLenarListado();
             }
+        }
+
+        private void frmUsuario_Enter(object sender, EventArgs e)
+        {
+            if (tsbFiltroAutomatico.CheckState == CheckState.Checked)
+                LLenarListado();
         }
     }
 }

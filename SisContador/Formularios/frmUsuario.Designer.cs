@@ -115,7 +115,7 @@
             this.groupBox1.Size = new System.Drawing.Size(874, 124);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filtrar informacion de los grupos de cuentas";
+            this.groupBox1.Text = "Filtrar información de las cuentas del usuario";
             // 
             // cmbEstado
             // 
@@ -408,8 +408,9 @@
             this.ClientSize = new System.Drawing.Size(898, 533);
             this.Controls.Add(this.splitContainer1);
             this.Name = "frmUsuario";
-            this.Text = "Grupos de cuentas";
+            this.Text = "Usuarios";
             this.Shown += new System.EventHandler(this.frmUsuario_Shown);
+            this.Enter += new System.EventHandler(this.frmUsuario_Enter);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmUsuario_KeyUp);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

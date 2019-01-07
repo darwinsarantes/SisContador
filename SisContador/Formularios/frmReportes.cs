@@ -143,6 +143,9 @@ namespace SisContador.Formularios
             LLenarCategoriasParaLasCuentas();
             LLenarComboListadoTipoDetransacciones();
 
+            tsbSimbolo.Checked = true;
+            tsbSimbolo.Image = Properties.Resources.unchecked16x16;
+
         }
 
         private void ConfigurarMascarDeEntrada()
@@ -536,6 +539,8 @@ namespace SisContador.Formularios
                         {
                             ofrmVisor1 = new frmVisor();
                             ofrmVisor1.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                            ofrmVisor1.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                            ofrmVisor1.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                             ofrmVisor1.NombreReporte = "Reportes - Libro de banco";
                             ReportesEN oRegistroEN = new ReportesEN();
                             oRegistroEN.Where = WhereDinamicoCuenta();
@@ -571,6 +576,9 @@ namespace SisContador.Formularios
                         {
                             ofrmCuentasAxuliarMayor = new frmVisor();
                             ofrmCuentasAxuliarMayor.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                            ofrmCuentasAxuliarMayor.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                            ofrmCuentasAxuliarMayor.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
+
                             ofrmCuentasAxuliarMayor.NombreReporte = "Cuentas - Auxiliar del Mayor";
                             ReportesEN oRegistroEN = new ReportesEN();
                             oRegistroEN.Where = string.Format(" and c.NoCuenta in (Select c1.NoCuenta from cuenta c1 where c1.idCuenta like '{0}%') ", ExtraerCadenaDelaMascar());
@@ -603,6 +611,8 @@ namespace SisContador.Formularios
                             {
                                 ofrmVisorCatalogoDeCuentas = new frmVisor();
                                 ofrmVisorCatalogoDeCuentas.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                                ofrmVisorCatalogoDeCuentas.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmVisorCatalogoDeCuentas.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                                 ofrmVisorCatalogoDeCuentas.NombreReporte = "Cuentas - Catalogo";
                                 CuentaEN oRegistroEN = new CuentaEN();
                                 oRegistroEN.Where = WhereDinamicoCuentasDelCatalago();
@@ -632,6 +642,8 @@ namespace SisContador.Formularios
                             {
                                 ofrmVisorCatalogoDeCuentas1 = new frmVisor();
                                 ofrmVisorCatalogoDeCuentas1.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                                ofrmVisorCatalogoDeCuentas1.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmVisorCatalogoDeCuentas1.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                                 ofrmVisorCatalogoDeCuentas1.NombreReporte = "Cuentas - Traer Saldos";
                                 ReportesEN oRegistroEN = new ReportesEN();
                                 oRegistroEN.Where = WhereDinamicoCuentasDelCatalago();
@@ -660,6 +672,8 @@ namespace SisContador.Formularios
                             {
                                 ofrmVisorCatalogoDeCuentas2 = new frmVisor();
                                 ofrmVisorCatalogoDeCuentas2.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                                ofrmVisorCatalogoDeCuentas2.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmVisorCatalogoDeCuentas2.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                                 ofrmVisorCatalogoDeCuentas2.NombreReporte = "Cuentas - Traer Saldos Detallado";
                                 ReportesEN oRegistroEN = new ReportesEN();
                                 oRegistroEN.Where = WhereDinamicoCuentasDelCatalago();
@@ -688,6 +702,8 @@ namespace SisContador.Formularios
                             {
                                 ofrmMovimientosDeLasCuentas = new frmVisor();
                                 ofrmMovimientosDeLasCuentas.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                                ofrmMovimientosDeLasCuentas.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmMovimientosDeLasCuentas.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                                 ofrmMovimientosDeLasCuentas.NombreReporte = "Transacciones - Listado";
                                 TransaccionTMPEN oRegistroEN = new TransaccionTMPEN();
                                 oRegistroEN.Where = WhereDinamicoMovimientosDeCuentas();
@@ -716,6 +732,8 @@ namespace SisContador.Formularios
                             {
                                 ofrmVisorCatalogoDeCuentas2 = new frmVisor();
                                 ofrmVisorCatalogoDeCuentas2.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                                ofrmVisorCatalogoDeCuentas2.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmVisorCatalogoDeCuentas2.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                                 //para no cambiar el nombre el switch asi lo dejamos -- pero apunta al balance general detallado
                                 ofrmVisorCatalogoDeCuentas2.NombreReporte = "Cuentas - Traer Saldos Detallado por categoria";
                                 ReportesEN oRegistroEN = new ReportesEN();
@@ -744,6 +762,8 @@ namespace SisContador.Formularios
                             {
                                 ofrmEstadoDeResultado = new frmVisor();
                                 ofrmEstadoDeResultado.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                                ofrmEstadoDeResultado.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmEstadoDeResultado.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                                 ofrmEstadoDeResultado.NombreReporte = "Cuentas - Estado de Resultado";
                                 ReportesEN oRegistroEN = new ReportesEN();
                                 oRegistroEN.Where = " and gc.idGrupoDeCuentas in (4,5) ";
@@ -771,6 +791,8 @@ namespace SisContador.Formularios
                             {
                                 ofrmEstadoDeResultadoDelMes = new frmVisor();
                                 ofrmEstadoDeResultadoDelMes.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                                ofrmEstadoDeResultadoDelMes.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmEstadoDeResultadoDelMes.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                                 ofrmEstadoDeResultadoDelMes.NombreReporte = "Cuentas - Estado de Resultado del mes";
                                 ReportesEN oRegistroEN = new ReportesEN();
                                 oRegistroEN.Where = " ";
@@ -798,6 +820,8 @@ namespace SisContador.Formularios
                             {
                                 ofrmBalanzaDeComprobacion = new frmVisor();
                                 ofrmBalanzaDeComprobacion.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                                ofrmBalanzaDeComprobacion.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmBalanzaDeComprobacion.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                                 ofrmBalanzaDeComprobacion.NombreReporte = "Cuentas - Balanza de comprobación";
                                 ReportesEN oRegistroEN = new ReportesEN();
                                 oRegistroEN.Where = " ";
@@ -825,6 +849,8 @@ namespace SisContador.Formularios
                             {
                                 ofrmRecapitulacion = new frmVisor();
                                 ofrmRecapitulacion.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                                ofrmRecapitulacion.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmRecapitulacion.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                                 ofrmRecapitulacion.NombreReporte = "Cuentas - Recapitulacion";
                                 ReportesEN oRegistroEN = new ReportesEN();
                                 oRegistroEN.Where = " ";
@@ -908,6 +934,8 @@ namespace SisContador.Formularios
 
                             ofrmVisor1.NombreReporte = "Reportes - Libro de banco en Dolares";
                             ofrmVisor1.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                            ofrmVisor1.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                            ofrmVisor1.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                             ReportesEN oRegistroEN = new ReportesEN();
                             oRegistroEN.Where = WhereDinamicoCuenta();
 
@@ -982,6 +1010,8 @@ namespace SisContador.Formularios
 
                             ofrmCuentasAxuliarMayor = new frmVisor();
                             ofrmCuentasAxuliarMayor.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                            ofrmCuentasAxuliarMayor.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                            ofrmCuentasAxuliarMayor.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                             ofrmCuentasAxuliarMayor.NombreReporte = "Cuentas - Auxiliar del Mayor en Dolares";
                             ReportesEN oRegistroEN = new ReportesEN();
                             oRegistroEN.Where = string.Format(" and c.NoCuenta in (Select c1.NoCuenta from cuenta c1 where c1.idCuenta like '{0}%') ", ExtraerCadenaDelaMascar());
@@ -1056,6 +1086,8 @@ namespace SisContador.Formularios
                                 }
                                 
                                 ofrmVisorCatalogoDeCuentas.NombreReporte = "Cuentas - Catalogo en Dolares";
+                                ofrmVisorCatalogoDeCuentas.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmVisorCatalogoDeCuentas.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                                 CuentaEN oRegistroEN = new CuentaEN();
                                 oRegistroEN.Where = WhereDinamicoCuentasDelCatalago();
                                 oRegistroEN.OrderBy = " Order by c.idCuenta asc  ";
@@ -1127,6 +1159,8 @@ namespace SisContador.Formularios
 
 
                                 ofrmVisorCatalogoDeCuentas1.NombreReporte = "Cuentas - Traer Saldos en Dolares";
+                                ofrmVisorCatalogoDeCuentas1.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmVisorCatalogoDeCuentas1.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                                 ReportesEN oRegistroEN = new ReportesEN();
                                 oRegistroEN.Where = WhereDinamicoCuentasDelCatalago();
                                 oRegistroEN.OrderBy = " Order by idCuenta asc  ";
@@ -1195,6 +1229,8 @@ namespace SisContador.Formularios
                                 
                                 ofrmVisorCatalogoDeCuentas2 = new frmVisor();
                                 ofrmVisorCatalogoDeCuentas2.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                                ofrmVisorCatalogoDeCuentas2.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmVisorCatalogoDeCuentas2.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
 
                                 ofrmVisorCatalogoDeCuentas2.NombreReporte = "Cuentas - Traer Saldos Detallado en Dalores";
                                 ReportesEN oRegistroEN = new ReportesEN();
@@ -1226,6 +1262,8 @@ namespace SisContador.Formularios
                             {
                                 ofrmMovimientosDeLasCuentas = new frmVisor();
                                 ofrmMovimientosDeLasCuentas.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                                ofrmMovimientosDeLasCuentas.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmMovimientosDeLasCuentas.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
 
                                 ValidarSiExisteTasaDeCambio();
 
@@ -1336,6 +1374,8 @@ namespace SisContador.Formularios
 
                                 ofrmVisorCatalogoDeCuentas2 = new frmVisor();
                                 ofrmVisorCatalogoDeCuentas2.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                                ofrmVisorCatalogoDeCuentas2.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmVisorCatalogoDeCuentas2.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                                 //para no cambiar el nombre el switch asi lo dejamos -- pero apunta al balance general detallado
                                 ofrmVisorCatalogoDeCuentas2.NombreReporte = "Cuentas - Balance General en Dolares";
                                 ReportesEN oRegistroEN = new ReportesEN();
@@ -1404,7 +1444,8 @@ namespace SisContador.Formularios
 
                                 ofrmEstadoDeResultado = new frmVisor();
                                 ofrmEstadoDeResultado.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
-
+                                ofrmEstadoDeResultado.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmEstadoDeResultado.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                                 ofrmEstadoDeResultado.NombreReporte = "Cuentas - Estado de Resultado Consolidado en dolares";
                                 ReportesEN oRegistroEN = new ReportesEN();
                                 oRegistroEN.Where = " and gc.idGrupoDeCuentas in (4,5) ";
@@ -1474,7 +1515,8 @@ namespace SisContador.Formularios
 
                                 ofrmEstadoDeResultadoDelMes = new frmVisor();
                                 ofrmEstadoDeResultadoDelMes.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
-
+                                ofrmEstadoDeResultadoDelMes.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmEstadoDeResultadoDelMes.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                                 ofrmEstadoDeResultadoDelMes.NombreReporte = "Cuentas - Estado de Resultado del mes en dolares";
                                 ReportesEN oRegistroEN = new ReportesEN();
                                 oRegistroEN.TasaDeCambio = TasaDeCambioALDia;
@@ -1542,7 +1584,8 @@ namespace SisContador.Formularios
 
                                 ofrmBalanzaDeComprobacion = new frmVisor();
                                 ofrmBalanzaDeComprobacion.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
-
+                                ofrmBalanzaDeComprobacion.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmBalanzaDeComprobacion.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
                                 ofrmBalanzaDeComprobacion.NombreReporte = "Cuentas - Balanza de comprobación Dolares";
                                 ReportesEN oRegistroEN = new ReportesEN();
                                 oRegistroEN.Where = " ";
@@ -1611,6 +1654,8 @@ namespace SisContador.Formularios
 
                                 ofrmRecapitulacion = new frmVisor();
                                 ofrmRecapitulacion.AplicarBorder = tsbAplicarBorde.CheckState == CheckState.Checked ? 1 : 0;
+                                ofrmRecapitulacion.VisualizarSimbolo = tsbSimbolo.CheckState == CheckState.Checked ? true : false;
+                                ofrmRecapitulacion.VisualizarDolares = tsbVerEnDolares.CheckState == CheckState.Checked ? true : false;
 
                                 ofrmRecapitulacion.NombreReporte = "Cuentas - Recapitulacion en Dolares";
                                 ReportesEN oRegistroEN = new ReportesEN();
@@ -3871,10 +3916,7 @@ namespace SisContador.Formularios
                     cmdMostarOcultarDatosPanelIzquierdo.Tag = "OCULTAR";
                     cmdMostarOcultarDatosPanelIzquierdo.Text = "Ocultar panel";
                 }
-                else
-                {
-
-                }
+              
             }
         }
 
@@ -4292,5 +4334,16 @@ namespace SisContador.Formularios
             }
         }
 
+        private void tsbSimbolo_Click(object sender, EventArgs e)
+        {
+            tsbSimbolo.Checked = !tsbSimbolo.Checked;
+            if(tsbSimbolo.Checked == true)
+            {
+                tsbSimbolo.Image = Properties.Resources.unchecked16x16;
+            }else
+            {
+                tsbSimbolo.Image = Properties.Resources.checked16x16;
+            }
+        }
     }
 }

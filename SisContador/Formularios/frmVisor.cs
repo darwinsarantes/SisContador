@@ -25,6 +25,8 @@ namespace SisContador.Formularios
         public string SubTituloFiltros { set; get; }
         public object Entidad { set; get; }
         public int AplicarBorder { set; get; }
+        public Boolean VisualizarSimbolo { set; get; }
+        public Boolean VisualizarDolares { set; get; }
 
         public DataTable oTablas { set; get; }
 
@@ -40,6 +42,14 @@ namespace SisContador.Formularios
                     break;
                 }
 
+            LlenarParametros("VisualizarSimbolo", VisualizarSimbolo);
+            LlenarParametros("VisualizarDolares", VisualizarDolares);
+
+        }
+
+        private void LlenarParametros(string NombreDelParametro, Boolean Valor)
+        {
+            RPT.SetParameterValue(NombreDelParametro, Valor);            
         }
 
         private DataSet AgregarTablaADataSet(DataTable DT, string Tabla)

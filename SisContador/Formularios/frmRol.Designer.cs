@@ -99,7 +99,7 @@
             this.groupBox1.Size = new System.Drawing.Size(673, 109);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filtrar informacion de los grupos de cuentas";
+            this.groupBox1.Text = "Filtrar información del tipo de cuenta";
             // 
             // txtDescripcion
             // 
@@ -317,8 +317,9 @@
             this.ClientSize = new System.Drawing.Size(697, 533);
             this.Controls.Add(this.splitContainer1);
             this.Name = "frmRol";
-            this.Text = "Grupos de cuentas";
+            this.Text = "Tipos de cuentas del sistema";
             this.Shown += new System.EventHandler(this.frmRol_Shown);
+            this.Enter += new System.EventHandler(this.frmRol_Enter);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmRol_KeyUp);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

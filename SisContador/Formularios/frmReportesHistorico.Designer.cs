@@ -69,10 +69,10 @@
             this.cmdMostarOcultarDatosPanelIzquierdo = new System.Windows.Forms.ToolStripButton();
             this.tsbSearch = new System.Windows.Forms.ToolStripButton();
             this.tsbPrinter = new System.Windows.Forms.ToolStripButton();
-            this.cmdExportarAExcel = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsbVerEnDolares = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbAplicarBorde = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbImprimirComprobante = new System.Windows.Forms.ToolStripButton();
-            this.tsbAplicarBorde = new System.Windows.Forms.ToolStripButton();
-            this.tsbVerEnDolares = new System.Windows.Forms.ToolStripButton();
             this.tsbEtiquetaTasa = new System.Windows.Forms.ToolStripLabel();
             this.tsbTasaDeCambio = new System.Windows.Forms.ToolStripLabel();
             this.dgvListar = new System.Windows.Forms.DataGridView();
@@ -85,6 +85,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lbaBarradeprogreso = new System.Windows.Forms.ToolStripStatusLabel();
             this.Barradeprogreso = new System.Windows.Forms.ToolStripProgressBar();
+            this.tsbSimbolo = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmdExportarAExcel = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -506,10 +508,8 @@
             this.cmdMostarOcultarDatosPanelIzquierdo,
             this.tsbSearch,
             this.tsbPrinter,
-            this.cmdExportarAExcel,
+            this.toolStripDropDownButton1,
             this.tsbImprimirComprobante,
-            this.tsbAplicarBorde,
-            this.tsbVerEnDolares,
             this.tsbEtiquetaTasa,
             this.tsbTasaDeCambio});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -551,16 +551,36 @@
             this.tsbPrinter.Text = "Imprimir";
             this.tsbPrinter.Click += new System.EventHandler(this.tsbPrinter_Click);
             // 
-            // cmdExportarAExcel
+            // toolStripDropDownButton1
             // 
-            this.cmdExportarAExcel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.cmdExportarAExcel.Image = global::SisContador.Properties.Resources.if_logo_brand_brands_logos_excel_2993694__1_;
-            this.cmdExportarAExcel.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.cmdExportarAExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cmdExportarAExcel.Name = "cmdExportarAExcel";
-            this.cmdExportarAExcel.Size = new System.Drawing.Size(115, 28);
-            this.cmdExportarAExcel.Text = "Importar a excel";
-            this.cmdExportarAExcel.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.toolStripDropDownButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbSimbolo,
+            this.tsbVerEnDolares,
+            this.tsbAplicarBorde,
+            this.cmdExportarAExcel});
+            this.toolStripDropDownButton1.Image = global::SisContador.Properties.Resources.generador;
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 28);
+            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            // 
+            // tsbVerEnDolares
+            // 
+            this.tsbVerEnDolares.Image = global::SisContador.Properties.Resources.checked16x16;
+            this.tsbVerEnDolares.Name = "tsbVerEnDolares";
+            this.tsbVerEnDolares.Size = new System.Drawing.Size(316, 22);
+            this.tsbVerEnDolares.Text = "Ver en dolares";
+            this.tsbVerEnDolares.Click += new System.EventHandler(this.tsbVerEnDolares_Click);
+            // 
+            // tsbAplicarBorde
+            // 
+            this.tsbAplicarBorde.Image = global::SisContador.Properties.Resources.checked16x16;
+            this.tsbAplicarBorde.Name = "tsbAplicarBorde";
+            this.tsbAplicarBorde.Size = new System.Drawing.Size(316, 22);
+            this.tsbAplicarBorde.Text = "Ocultar borde en la impresión";
+            this.tsbAplicarBorde.Click += new System.EventHandler(this.tsbAplicarBorde_Click);
             // 
             // tsbImprimirComprobante
             // 
@@ -571,27 +591,6 @@
             this.tsbImprimirComprobante.Size = new System.Drawing.Size(154, 28);
             this.tsbImprimirComprobante.Text = "Imprimir comprobante";
             this.tsbImprimirComprobante.Click += new System.EventHandler(this.tsbImprimirComprobante_Click);
-            // 
-            // tsbAplicarBorde
-            // 
-            this.tsbAplicarBorde.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbAplicarBorde.Image = global::SisContador.Properties.Resources.checked20x20;
-            this.tsbAplicarBorde.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAplicarBorde.Name = "tsbAplicarBorde";
-            this.tsbAplicarBorde.Size = new System.Drawing.Size(100, 28);
-            this.tsbAplicarBorde.Text = "Ocultar Borde";
-            this.tsbAplicarBorde.Click += new System.EventHandler(this.tsbAplicarBorde_Click);
-            // 
-            // tsbVerEnDolares
-            // 
-            this.tsbVerEnDolares.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbVerEnDolares.Image = global::SisContador.Properties.Resources.checked16x16;
-            this.tsbVerEnDolares.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbVerEnDolares.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbVerEnDolares.Name = "tsbVerEnDolares";
-            this.tsbVerEnDolares.Size = new System.Drawing.Size(100, 28);
-            this.tsbVerEnDolares.Text = "Ver en dolares";
-            this.tsbVerEnDolares.Click += new System.EventHandler(this.tsbVerEnDolares_Click);
             // 
             // tsbEtiquetaTasa
             // 
@@ -692,6 +691,22 @@
             this.Barradeprogreso.Name = "Barradeprogreso";
             this.Barradeprogreso.Size = new System.Drawing.Size(100, 16);
             // 
+            // tsbSimbolo
+            // 
+            this.tsbSimbolo.Image = global::SisContador.Properties.Resources.unchecked16x16;
+            this.tsbSimbolo.Name = "tsbSimbolo";
+            this.tsbSimbolo.Size = new System.Drawing.Size(316, 22);
+            this.tsbSimbolo.Text = "Visualizar simbolo de moneda en la impresión";
+            this.tsbSimbolo.Click += new System.EventHandler(this.tsbSimbolo_Click);
+            // 
+            // cmdExportarAExcel
+            // 
+            this.cmdExportarAExcel.Image = global::SisContador.Properties.Resources.if_logo_brand_brands_logos_excel_2993694;
+            this.cmdExportarAExcel.Name = "cmdExportarAExcel";
+            this.cmdExportarAExcel.Size = new System.Drawing.Size(316, 22);
+            this.cmdExportarAExcel.Text = "Importar a excel";
+            this.cmdExportarAExcel.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // frmReportesHistorico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -780,7 +795,6 @@
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.CheckBox chkEstado;
         private System.Windows.Forms.ToolStripButton cmdMostarOcultarDatosPanelIzquierdo;
-        private System.Windows.Forms.ToolStripButton cmdExportarAExcel;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lbaBarradeprogreso;
         private System.Windows.Forms.ToolStripProgressBar Barradeprogreso;
@@ -788,11 +802,14 @@
         private System.Windows.Forms.DataGridView dgvPeriodosCerrados;
         private System.Windows.Forms.TextBox txtBuscarPeriodo;
         private System.Windows.Forms.ToolStripButton tsbImprimirComprobante;
-        private System.Windows.Forms.ToolStripButton tsbVerEnDolares;
         private System.Windows.Forms.ToolStripLabel tsbEtiquetaTasa;
         private System.Windows.Forms.ToolStripLabel tsbTasaDeCambio;
-        private System.Windows.Forms.ToolStripButton tsbAplicarBorde;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbPeriodAños;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem tsbVerEnDolares;
+        private System.Windows.Forms.ToolStripMenuItem tsbAplicarBorde;
+        private System.Windows.Forms.ToolStripMenuItem tsbSimbolo;
+        private System.Windows.Forms.ToolStripMenuItem cmdExportarAExcel;
     }
 }

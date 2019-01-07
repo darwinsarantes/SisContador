@@ -729,25 +729,34 @@ namespace SisContador.Formularios
                         return;
                     }
 
-                    CierreDePeriodoEN oRegistroEN = InformacionSobreELCierreDePeriodo();
-                    CierreDePeriodoLN oRegistroLN = new CierreDePeriodoLN();
-
                     //realiaremos un backup dela base de datos...
-                    RespaldarBaseDeDatos();
-
-                    if (oRegistroLN.AgregarUtilizandoLaMismaConexion(oRegistroEN, Program.oDatosDeConexion))
+                    if (RespaldarBaseDeDatos())
                     {
-                        EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "CERRAR");
+                        this.Cursor = Cursors.WaitCursor;
 
-                        if (CerrarVentana == true)
+                        CierreDePeriodoEN oRegistroEN = InformacionSobreELCierreDePeriodo();
+                        CierreDePeriodoLN oRegistroLN = new CierreDePeriodoLN();
+                        
+                        System.Threading.Thread.Sleep(10000);
+
+                        timer1.Interval = 5000;
+                        timer1.Start();
+
+                        if (oRegistroLN.AgregarUtilizandoLaMismaConexion(oRegistroEN, Program.oDatosDeConexion))
                         {
-                            this.Close();
+                            EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "CERRAR");
+
+                            if (CerrarVentana == true)
+                            {
+                                this.Close();
+                            }
                         }
-                    }
-                    else
-                    {
-                        throw new ArgumentException(oRegistroLN.Error);
-                    }
+                        else
+                        {
+                            throw new ArgumentException(oRegistroLN.Error);
+                        }
+
+                    }                    
 
                 }
 
@@ -756,12 +765,18 @@ namespace SisContador.Formularios
             {
                 MessageBox.Show(ex.Message, "Aplicar cierre de periodo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
         }
 
-        private void RespaldarBaseDeDatos()
+        private Boolean RespaldarBaseDeDatos()
         {
             try
             {
+                this.Cursor = Cursors.WaitCursor;
+
                 CarpetaDeRespaldo();
 
                 System.Globalization.DateTimeFormatInfo formatoFecha = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat;
@@ -790,18 +805,20 @@ namespace SisContador.Formularios
                 
                 tsblMensajes.Text = "Copia de seguridad realizada con éxito";
                 tsblMensajes.ForeColor = Color.Blue;
+                return true;
                 
             }
             catch (Exception ex)
             {                
                 tsblMensajes.Text = string.Format("Se ha producido un error al realizar la copia de seguridad: {0} {1}", Environment.NewLine, ex.Message);
                 tsblMensajes.ForeColor = Color.Red;
+                return false;
 
             }
             finally
             {
-                timer1.Interval = 5000;
-                timer1.Start();
+                this.Cursor = Cursors.Default;
+               
             }
         }
 
@@ -1119,6 +1136,11 @@ namespace SisContador.Formularios
         private void txtCambioOficial_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = Numeros.EnterosYDecimales(e, txtCambioOficial, 4);
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

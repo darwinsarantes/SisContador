@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="SisContador.exe" version="1.0.0.36" publicKeyToken="0000000000000000" language="es-NI" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="SisContador.exe" version="1.0.0.41" publicKeyToken="0000000000000000" language="es-NI" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="LogSistemas128Black.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -55,7 +55,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>a2Ka1hNL2w3auorFWYzrxgKbhhuSxYqoKcwz2/x34q0=</dsig:DigestValue>
+        <dsig:DigestValue>AiVFBWoMY6h0GaLqucELha7ojlviVoiwVYkcIxOJu0o=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -259,7 +259,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>an/nyiBmGNOrIxijrh0ZWI5yvfFSwA/Xj5RXft++cbo=</dsig:DigestValue>
+        <dsig:DigestValue>iYi/V2jrTzmaanixqRxVGidVFr6LQ68mo4ERBuc1MIM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -319,7 +319,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>l29R7nUVWHPh7BRlF4ix2SPf1CKs3R8EePcBZNIFp5I=</dsig:DigestValue>
+        <dsig:DigestValue>pS0lsgW3Zyq1XTBrqNoUYPQXpSrSL1M15jRuy3iI41c=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -420,14 +420,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SisContador.exe" size="1936352">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SisContador.exe" size="1976288">
       <assemblyIdentity name="SisContador" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Yyioq/VRMg1UXHNsBXed0Pwb3SO+e5PXKvfYMs9g7bE=</dsig:DigestValue>
+        <dsig:DigestValue>hmOPq9wWvYAe6sT4eC+FkG/Lw4NdpfdQU8rapDR6FC8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -66,9 +66,11 @@
             this.tsbSearch = new System.Windows.Forms.ToolStripButton();
             this.tsbPrinter = new System.Windows.Forms.ToolStripButton();
             this.tsbEtiquetaTasa = new System.Windows.Forms.ToolStripLabel();
-            this.tsbAplicarBorde = new System.Windows.Forms.ToolStripButton();
-            this.tsbVerEnDolares = new System.Windows.Forms.ToolStripButton();
-            this.cmdExportarAExcel = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsbSimbolo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbVerEnDolares = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbAplicarBorde = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmdExportarAExcel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbTasaDeCambio = new System.Windows.Forms.ToolStripLabel();
             this.dgvListar = new System.Windows.Forms.DataGridView();
             this.ssBarraDeEstado = new System.Windows.Forms.StatusStrip();
@@ -455,9 +457,7 @@
             this.tsbSearch,
             this.tsbPrinter,
             this.tsbEtiquetaTasa,
-            this.tsbAplicarBorde,
-            this.tsbVerEnDolares,
-            this.cmdExportarAExcel,
+            this.toolStripDropDownButton1,
             this.tsbTasaDeCambio});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -506,36 +506,52 @@
             this.tsbEtiquetaTasa.Text = "Cambio Oficial:";
             this.tsbEtiquetaTasa.Visible = false;
             // 
-            // tsbAplicarBorde
+            // toolStripDropDownButton1
             // 
-            this.tsbAplicarBorde.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbAplicarBorde.Image = global::SisContador.Properties.Resources.checked20x20;
-            this.tsbAplicarBorde.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAplicarBorde.Name = "tsbAplicarBorde";
-            this.tsbAplicarBorde.Size = new System.Drawing.Size(100, 28);
-            this.tsbAplicarBorde.Text = "Ocultar borde";
-            this.tsbAplicarBorde.Click += new System.EventHandler(this.tsbAplicarBorde_Click);
+            this.toolStripDropDownButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbSimbolo,
+            this.tsbVerEnDolares,
+            this.tsbAplicarBorde,
+            this.cmdExportarAExcel});
+            this.toolStripDropDownButton1.Image = global::SisContador.Properties.Resources.generador;
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 28);
+            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            // 
+            // tsbSimbolo
+            // 
+            this.tsbSimbolo.Image = global::SisContador.Properties.Resources.unchecked16x16;
+            this.tsbSimbolo.Name = "tsbSimbolo";
+            this.tsbSimbolo.Size = new System.Drawing.Size(232, 22);
+            this.tsbSimbolo.Tag = "Mostrar";
+            this.tsbSimbolo.Text = "Visualizar simbolo de Moneda";
+            this.tsbSimbolo.Click += new System.EventHandler(this.tsbSimbolo_Click);
             // 
             // tsbVerEnDolares
             // 
-            this.tsbVerEnDolares.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tsbVerEnDolares.Image = global::SisContador.Properties.Resources.checked16x16;
-            this.tsbVerEnDolares.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbVerEnDolares.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbVerEnDolares.Name = "tsbVerEnDolares";
-            this.tsbVerEnDolares.Size = new System.Drawing.Size(100, 28);
+            this.tsbVerEnDolares.Size = new System.Drawing.Size(232, 22);
             this.tsbVerEnDolares.Text = "Ver en dolares";
             this.tsbVerEnDolares.Click += new System.EventHandler(this.tsbVerEnDolares_Click);
             // 
+            // tsbAplicarBorde
+            // 
+            this.tsbAplicarBorde.Image = global::SisContador.Properties.Resources.checked16x16;
+            this.tsbAplicarBorde.Name = "tsbAplicarBorde";
+            this.tsbAplicarBorde.Size = new System.Drawing.Size(232, 22);
+            this.tsbAplicarBorde.Text = "Aplicar Borde de impresión";
+            this.tsbAplicarBorde.Click += new System.EventHandler(this.tsbAplicarBorde_Click);
+            // 
             // cmdExportarAExcel
             // 
-            this.cmdExportarAExcel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.cmdExportarAExcel.Image = global::SisContador.Properties.Resources.if_logo_brand_brands_logos_excel_2993694__1_;
-            this.cmdExportarAExcel.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.cmdExportarAExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.cmdExportarAExcel.Image = global::SisContador.Properties.Resources.if_logo_brand_brands_logos_excel_2993694;
             this.cmdExportarAExcel.Name = "cmdExportarAExcel";
-            this.cmdExportarAExcel.Size = new System.Drawing.Size(115, 28);
-            this.cmdExportarAExcel.Text = "Importar a excel";
+            this.cmdExportarAExcel.Size = new System.Drawing.Size(232, 22);
+            this.cmdExportarAExcel.Text = "Importar a Excel";
             this.cmdExportarAExcel.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // tsbTasaDeCambio
@@ -717,13 +733,15 @@
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.CheckBox chkEstado;
         private System.Windows.Forms.ToolStripButton cmdMostarOcultarDatosPanelIzquierdo;
-        private System.Windows.Forms.ToolStripButton cmdExportarAExcel;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lbaBarradeprogreso;
         private System.Windows.Forms.ToolStripProgressBar Barradeprogreso;
-        private System.Windows.Forms.ToolStripButton tsbVerEnDolares;
         private System.Windows.Forms.ToolStripLabel tsbTasaDeCambio;
         private System.Windows.Forms.ToolStripLabel tsbEtiquetaTasa;
-        private System.Windows.Forms.ToolStripButton tsbAplicarBorde;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem tsbSimbolo;
+        private System.Windows.Forms.ToolStripMenuItem tsbVerEnDolares;
+        private System.Windows.Forms.ToolStripMenuItem tsbAplicarBorde;
+        private System.Windows.Forms.ToolStripMenuItem cmdExportarAExcel;
     }
 }

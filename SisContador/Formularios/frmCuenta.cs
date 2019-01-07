@@ -764,7 +764,10 @@ namespace SisContador.Formularios
 
             mskidCuenta.Focus();
 
-            this.BackColor = Properties.Settings.Default.MyColorSetting;  
+            this.BackColor = Properties.Settings.Default.MyColorSetting;
+
+            if (tsbFiltroAutomatico.CheckState == CheckState.Checked)
+                LLenarListado();
 
         }
 
@@ -1453,6 +1456,12 @@ namespace SisContador.Formularios
             {
                 MessageBox.Show(ex.Message, "Imprimir catalogo de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void frmCuenta_Enter(object sender, EventArgs e)
+        {
+            if (tsbFiltroAutomatico.CheckState == CheckState.Checked)
+                LLenarListado();
         }
     }
 }

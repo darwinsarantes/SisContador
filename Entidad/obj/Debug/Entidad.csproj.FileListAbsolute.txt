@@ -28,3 +28,8 @@ I:\SisContador\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
 I:\SisContador\Entidad\obj\Debug\Entidad.dll
 I:\SisContador\Entidad\obj\Debug\Entidad.pdb
 F:\SisContador\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
+G:\SisContador\Entidad\bin\Debug\Entidad.dll
+G:\SisContador\Entidad\bin\Debug\Entidad.pdb
+G:\SisContador\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
+G:\SisContador\Entidad\obj\Debug\Entidad.dll
+G:\SisContador\Entidad\obj\Debug\Entidad.pdb

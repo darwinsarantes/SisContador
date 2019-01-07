@@ -101,7 +101,7 @@
             this.groupBox1.Size = new System.Drawing.Size(445, 96);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filtrar informacion de los grupos de cuentas";
+            this.groupBox1.Text = "Filtrar información de la tasa de cambio";
             // 
             // dtpkFechaFinal
             // 
@@ -330,6 +330,7 @@
             this.Name = "frmTasaDeCambio";
             this.Text = "Tasade Cambio";
             this.Shown += new System.EventHandler(this.frmTasaDeCambio_Shown);
+            this.Enter += new System.EventHandler(this.frmTasaDeCambio_Enter);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmTasaDeCambio_KeyUp);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

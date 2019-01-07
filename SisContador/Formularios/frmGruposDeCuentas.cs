@@ -554,6 +554,10 @@ namespace SisContador.Formularios
 
             ActivarFiltrosDelaBusqueda();
             tsbFiltroAutomatico_Click(null, null);
+
+            if (tsbFiltroAutomatico.CheckState == CheckState.Checked)
+                LLenarListado();
+
         }
 
         private void tsbFiltrar_Click(object sender, EventArgs e)
@@ -889,6 +893,12 @@ namespace SisContador.Formularios
                 tsbFiltroAutomatico.Image = Properties.Resources.checked16x16;
             }
             
+        }
+
+        private void frmGruposDeCuentas_Enter(object sender, EventArgs e)
+        {
+            if (tsbFiltroAutomatico.CheckState == CheckState.Checked)
+                LLenarListado();
         }
     }
 }

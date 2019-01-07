@@ -54,7 +54,10 @@ namespace SisContador.Formularios
                 ofrmRespaldo.Show();
             }
             else
+            {
                 ofrmRespaldo.BringToFront();
+                
+            }
 
             this.Cursor = Cursors.Default;
         }
@@ -366,7 +369,10 @@ namespace SisContador.Formularios
 
             }
             else
+            {
                 oEgresos.BringToFront();
+                oEgresos.Refresh();                
+            }
 
             this.Cursor = Cursors.Default;
         }
